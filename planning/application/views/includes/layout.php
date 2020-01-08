@@ -476,6 +476,12 @@
                                         </li>
                                     </ul>
                                 </li>
+                                <li>
+                                    <a href="<?=base_url()?>status/view">
+                                        <i class="metismenu-icon pe-7s-ribbon"></i>
+                                        Set Status
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </div>

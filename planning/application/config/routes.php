@@ -168,6 +168,8 @@ $route['pengaturan/data/pengguna/create'] = 'data/PenggunaController/action/crea
 $route['pengaturan/data/pengguna/update'] = 'data/PenggunaController/action/update';
 $route['pengaturan/data/pengguna/delete'] = 'data/PenggunaController/action/delete';
 
+$route['status/view'] = 'status/StatController/index';
+
 $route['default_controller'] = 'HomeController';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
