@@ -146,7 +146,7 @@
                             <td <?=$style?>><?=@$data[$i]['tb_kegiatan_nama']?></td>
                             <td <?=$style?>><?=@$data[$i]['tb_rpjmd_kegiatan_indikator']?></td>
                             <td <?=$style?>><?=@$data[$i]['tb_rpjmd_kegiatan_th5_target_kinerja']?></td>
-                            <td <?=$style?>><?=@$data[$i]['tb_rpjmd_kegiatan_th5_target_realisasi']?></td>
+                            <td <?=$style?>><?=number_format(@$data[$i]['tb_rpjmd_kegiatan_th5_target_realisasi'],2,',','.')?></td>
                             <td <?=$style?>><?=@$data[$i]['tb_rpjmd_kegiatan_th'.($tahunKe-1).'_capaian_kinerja']?></td>
                             <td <?=$style?>><?=number_format(@$data[$i]['tb_rpjmd_kegiatan_th'.($tahunKe-1).'_capaian_realisasi'],2,',','.')?></td>
                             <td <?=$style?>><?=@$data[$i]['tb_rpjmd_kegiatan_th'.($tahunKe).'_target_kinerja']?></td>

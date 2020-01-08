@@ -64,7 +64,6 @@ class RkpdController extends CI_Controller {
         if(!@$post['jenis']){
             $post['jenis'] = 1;
         }
-        print_r($post);
 
         $dataAll = $this->setData($post);
         // $dataAll = $this->DataModel->getLraOpd($post['cetakopd'], $post['cetaktahun']);

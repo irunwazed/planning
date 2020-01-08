@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 07, 2020 at 11:10 PM
+-- Generation Time: Jan 08, 2020 at 08:53 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -3953,6 +3953,13 @@ CREATE TABLE `tb_monev_bulanan` (
   `tb_monev_bulanan_pelaksana` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tb_monev_bulanan`
+--
+
+INSERT INTO `tb_monev_bulanan` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_tujuan_kode`, `tb_rpjmd_sasaran_kode`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_program_kode`, `tb_kegiatan_kode`, `tb_monev_bulanan_kode`, `tb_monev_bulanan_tahun`, `tb_monev_bulanan_bulan`, `tb_monev_bulanan_kinerja`, `tb_monev_bulanan_anggaran`, `tb_monev_bulanan_realisasi`, `tb_monev_bulanan_fisik`, `tb_monev_bulanan_pelaksana`) VALUES
+(1, 1, 1, 1, 1, 1, 1, 1, 1, 7, 1, 1, 1, '0', 1919245436, 1282161250, 'fisik', 'pelaksana');
+
 -- --------------------------------------------------------
 
 --
@@ -7543,7 +7550,7 @@ CREATE TABLE `tb_rpjmd` (
 --
 
 INSERT INTO `tb_rpjmd` (`id_tb_rpjmd`, `tb_rpjmd_visi`, `tb_rpjmd_tahun`, `tb_rpjmd_status_tahun`, `tb_rpjmd_status_bulan`, `tb_rpjmd_status_rkpd`, `tb_rpjmd_status_json`) VALUES
-(1, 'Terwujudnya Masyarakat Morowali yang Sejahtera Bersama', 2019, NULL, NULL, NULL, NULL);
+(1, 'Terwujudnya Masyarakat Morowali yang Sejahtera Bersama', 2019, 1, 1, NULL, '{\"tahun1\":{\"bulan1\":1,\"bulan2\":2,\"bulan3\":2,\"bulan4\":2,\"bulan5\":2,\"bulan6\":2,\"bulan7\":3,\"bulan8\":3,\"bulan9\":3,\"bulan10\":3,\"bulan11\":3,\"bulan12\":3},\"tahun2\":{\"bulan1\":1,\"bulan2\":2,\"bulan3\":2,\"bulan4\":2,\"bulan5\":2,\"bulan6\":2,\"bulan7\":3,\"bulan8\":3,\"bulan9\":3,\"bulan10\":3,\"bulan11\":3,\"bulan12\":3},\"tahun3\":{\"bulan1\":1,\"bulan2\":2,\"bulan3\":2,\"bulan4\":2,\"bulan5\":2,\"bulan6\":2,\"bulan7\":3,\"bulan8\":3,\"bulan9\":3,\"bulan10\":3,\"bulan11\":3,\"bulan12\":3},\"tahun4\":{\"bulan1\":1,\"bulan2\":2,\"bulan3\":2,\"bulan4\":2,\"bulan5\":2,\"bulan6\":2,\"bulan7\":3,\"bulan8\":3,\"bulan9\":3,\"bulan10\":3,\"bulan11\":3,\"bulan12\":3},\"tahun5\":{\"bulan1\":1,\"bulan2\":2,\"bulan3\":2,\"bulan4\":2,\"bulan5\":2,\"bulan6\":2,\"bulan7\":3,\"bulan8\":3,\"bulan9\":3,\"bulan10\":3,\"bulan11\":3,\"bulan12\":3}}');
 
 -- --------------------------------------------------------
 
@@ -7622,6 +7629,13 @@ CREATE TABLE `tb_rpjmd_kegiatan` (
   `tb_rpjmd_kegiatan_th_akhir_capaian_kinerja` varchar(45) DEFAULT NULL,
   `tb_rpjmd_kegiatan_th_akhir_capaian_realisasi` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_rpjmd_kegiatan`
+--
+
+INSERT INTO `tb_rpjmd_kegiatan` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_tujuan_kode`, `tb_rpjmd_sasaran_kode`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_program_kode`, `tb_kegiatan_kode`, `tb_rpjmd_kegiatan_nama`, `tb_rpjmd_kegiatan_indikator`, `tb_rpjmd_kegiatan_th1_target_kinerja`, `tb_rpjmd_kegiatan_th2_target_kinerja`, `tb_rpjmd_kegiatan_th3_target_kinerja`, `tb_rpjmd_kegiatan_th4_target_kinerja`, `tb_rpjmd_kegiatan_th5_target_kinerja`, `tb_rpjmd_kegiatan_th1_target_realisasi`, `tb_rpjmd_kegiatan_th2_target_realisasi`, `tb_rpjmd_kegiatan_th3_target_realisasi`, `tb_rpjmd_kegiatan_th4_target_realisasi`, `tb_rpjmd_kegiatan_th5_target_realisasi`, `tb_rpjmd_kegiatan_th1_capaian_kinerja`, `tb_rpjmd_kegiatan_th2_capaian_kinerja`, `tb_rpjmd_kegiatan_th3_capaian_kinerja`, `tb_rpjmd_kegiatan_th4_capaian_kinerja`, `tb_rpjmd_kegiatan_th5_capaian_kinerja`, `tb_rpjmd_kegiatan_th1_capaian_realisasi`, `tb_rpjmd_kegiatan_th2_capaian_realisasi`, `tb_rpjmd_kegiatan_th3_capaian_realisasi`, `tb_rpjmd_kegiatan_th4_capaian_realisasi`, `tb_rpjmd_kegiatan_th5_capaian_realisasi`, `tb_rpjmd_kegiatan_th_awal_target_kinerja`, `tb_rpjmd_kegiatan_th_awal_target_realisasi`, `tb_rpjmd_kegiatan_th_akhir_target_kinerja`, `tb_rpjmd_kegiatan_th_akhir_target_realisasi`, `id_tb_satuan`, `tb_rpjmd_kegiatan_th_awal_capaian_kinerja`, `tb_rpjmd_kegiatan_th_awal_capaian_realisasi`, `tb_rpjmd_kegiatan_th_akhir_capaian_kinerja`, `tb_rpjmd_kegiatan_th_akhir_capaian_realisasi`) VALUES
+(1, 1, 1, 1, 1, 1, 1, 1, 1, 7, NULL, '-', '100', '100', '100', '100', '100', 729799476, 729799476, 729799476, 729799476, 729799476, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', 0, '100', 5000000000, 1, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -7765,6 +7779,14 @@ CREATE TABLE `tb_rpjmd_opd` (
   `tb_sub_unit_kode` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tb_rpjmd_opd`
+--
+
+INSERT INTO `tb_rpjmd_opd` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_tujuan_kode`, `tb_rpjmd_sasaran_kode`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`) VALUES
+(1, 1, 1, 1, 1, 1, 1, 1),
+(1, 1, 1, 1, 1, 2, 1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -7813,6 +7835,13 @@ CREATE TABLE `tb_rpjmd_program` (
   `tb_rpjmd_program_th_akhirl_capaian_kinerja` varchar(45) DEFAULT NULL,
   `tb_rpjmd_program_th_akhir_capaian_realisasi` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_rpjmd_program`
+--
+
+INSERT INTO `tb_rpjmd_program` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_tujuan_kode`, `tb_rpjmd_sasaran_kode`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_program_kode`, `tb_rpjmd_program_nama`, `tb_rpjmd_program_indikator`, `tb_rpjmd_program_th1_target_kinerja`, `tb_rpjmd_program_th2_target_kinerja`, `tb_rpjmd_program_th3_target_kinerja`, `tb_rpjmd_program_th4_target_kinerja`, `tb_rpjmd_program_th5_target_kinerja`, `tb_rpjmd_program_th1_target_realisasi`, `tb_rpjmd_program_th2_target_realisasi`, `tb_rpjmd_program_th3_target_realisasi`, `tb_rpjmd_program_th4_target_realisasi`, `tb_rpjmd_program_th5_target_realisasi`, `tb_rpjmd_program_th1_capaian_kinerja`, `tb_rpjmd_program_th2_capaian_kinerja`, `tb_rpjmd_program_th3_capaian_kinerja`, `tb_rpjmd_program_th4_capaian_kinerja`, `tb_rpjmd_program_th5_capaian_kinerja`, `tb_rpjmd_program_th1_capaian_realisasi`, `tb_rpjmd_program_th2_capaian_realisasi`, `tb_rpjmd_program_th3_capaian_realisasi`, `tb_rpjmd_program_th4_capaian_realisasi`, `tb_rpjmd_program_th5_capaian_realisasi`, `tb_rpjmd_program_th_awal_target_realisasi`, `tb_rpjmd_program_th_awal_target_kinerja`, `tb_rpjmd_program_th_akhir_target_realisasi`, `tb_rpjmd_program_th_akhir_target_kinerja`, `id_tb_satuan`, `tb_rpjmd_program_th_awal_capaian_kinerja`, `tb_rpjmd_program_th_awal_capaian_realisasi`, `tb_rpjmd_program_th_akhirl_capaian_kinerja`, `tb_rpjmd_program_th_akhir_capaian_realisasi`) VALUES
+(1, 1, 1, 1, 1, 1, 1, 1, 1, NULL, 'Mewujudkan Pelayanan Administrasi Perkantoran', '100', '100', '100', '100', '100', 3818161186, 3818161186, 3818161186, 3818161186, 3818161186, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '0', 5000000000, '100', 1, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -8068,6 +8097,13 @@ CREATE TABLE `tb_satuan` (
   `tb_satuan_ket` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tb_satuan`
+--
+
+INSERT INTO `tb_satuan` (`id_tb_satuan`, `tb_satuan_nama`, `tb_satuan_ket`) VALUES
+(1, '%', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -8249,7 +8285,8 @@ CREATE TABLE `tb_user` (
 INSERT INTO `tb_user` (`id_tb_user`, `tb_user_username`, `tb_user_password`, `tb_user_hp`, `tb_user_akun`, `tb_user_level`, `tb_user_date`) VALUES
 (1, 'admin', '$2y$13$ZtzUVhoI/bLqKmpetdHWW.ozUXArLlGrHbX7uCa68du.WSGZX8SQS', '085756733113', 3, 1, NULL),
 (2, 'userlevel', '$2y$13$ZtzUVhoI/bLqKmpetdHWW.ozUXArLlGrHbX7uCa68du.WSGZX8SQS', NULL, 2, 1, NULL),
-(3, 'monev', '$2y$13$ZtzUVhoI/bLqKmpetdHWW.ozUXArLlGrHbX7uCa68du.WSGZX8SQS', NULL, 7, 1, NULL);
+(3, 'monev', '$2y$13$ZtzUVhoI/bLqKmpetdHWW.ozUXArLlGrHbX7uCa68du.WSGZX8SQS', NULL, 7, 1, NULL),
+(5, 'tes', '$2y$10$MAfsaq7anoTTt2p7v84x/.XXjUQKQuFZQwoQOSzOxB5rAXATrTtOe', '0', 7, 3, NULL);
 
 -- --------------------------------------------------------
 
@@ -8307,6 +8344,13 @@ CREATE TABLE `tb_user_opd` (
   `tb_sub_unit_kode` int(11) NOT NULL,
   `id_tb_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_user_opd`
+--
+
+INSERT INTO `tb_user_opd` (`id_tb_user_opd`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `id_tb_user`) VALUES
+(2, 2, 12, 1, 1, 5);
 
 --
 -- Indexes for dumped tables
@@ -8904,7 +8948,7 @@ ALTER TABLE `tb_rpjmd_visi_penjelasan`
 -- AUTO_INCREMENT for table `tb_satuan`
 --
 ALTER TABLE `tb_satuan`
-  MODIFY `id_tb_satuan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_tb_satuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `tb_sumber_dana`
 --
@@ -8914,7 +8958,7 @@ ALTER TABLE `tb_sumber_dana`
 -- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id_tb_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_tb_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `tb_user_bappeda`
 --
@@ -8934,7 +8978,7 @@ ALTER TABLE `tb_user_lokasi`
 -- AUTO_INCREMENT for table `tb_user_opd`
 --
 ALTER TABLE `tb_user_opd`
-  MODIFY `id_tb_user_opd` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_tb_user_opd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- Constraints for dumped tables
 --
