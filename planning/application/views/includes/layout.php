@@ -11,14 +11,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
     <meta name="description" content="This is an example dashboard created using build-in elements and components.">
     <meta name="msapplication-tap-highlight" content="no">
-    <link href="<?=base_url()?>public/template/admin/main.css" rel="stylesheet"></head>
-    <link href="<?=base_url()?>public/template/admin/assets/css/dataTables.bootstrap4.min.css" rel="stylesheet"></head>
+    <link href="<?=base_url()?>public/template/admin/main.css" rel="stylesheet">
+    <link href="<?=base_url()?>public/template/admin/assets/css/mystyle.css" rel="stylesheet">
+    <link href="<?=base_url()?>public/template/admin/assets/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 
     <!-- toast -->
     <link href="<?=base_url()?>public/template/admin/assets/js/toastr/build/toastr.css" rel="stylesheet" type="text/css" />
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="<?=base_url()?>public/template/admin/assets/js/toastr/toastr.js"></script>
 
+    
+    <link href="<?=base_url()?>public/template/admin/assets/css/select2.css" rel="stylesheet">
+</head>
 
 <body>
     <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
@@ -385,43 +389,64 @@
                     </div>    <div class="scrollbar-sidebar">
                         <div class="app-sidebar__inner">
                             <ul class="vertical-nav-menu">
-                                <li class="app-sidebar__heading">Dashboards</li>
+                                <li class="app-sidebar__heading">Beranda</li>
                                 <li>
-                                    <a href="<?=base_url()?>rpjmd/beranda">
+                                    <a href="<?=base_url()?>beranda">
                                         <i class="metismenu-icon pe-7s-home"></i>
-                                        Dashboards
+                                        Beranda
                                     </a>
                                 </li>
-                                <li class="app-sidebar__heading">RPJMD</li>
+                                <li class="app-sidebar__heading">Penyusunan</li>
                                 <li>
-                                    <a href="<?=base_url()?>rpjmd/kota">
-                                        <i class="metismenu-icon pe-7s-plugin"></i>
-                                        Kota
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="<?=base_url()?>rpjmd/kota">
-                                        <i class="metismenu-icon pe-7s-culture"></i>
-                                        OPD
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="<?=base_url()?>rpjmd/kota">
+                                    <a href="<?=base_url()?>rpjmd/penyusunan/misi">
                                         <i class="metismenu-icon pe-7s-network"></i>
                                         Penyusunan
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="<?=base_url()?>rpjmd/kota">
+                                    <a href="<?=base_url()?>renstra/penyusunan/program">
+                                        <i class="metismenu-icon pe-7s-network"></i>
+                                        Penyusunan Renstra
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?=base_url()?>opd/penyusunan/lra">
+                                        <i class="metismenu-icon pe-7s-network"></i>
+                                        Penyusunan LRA
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
                                         <i class="metismenu-icon pe-7s-diskette"></i>
                                         Laporan
+                                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                     </a>
+                                    <ul>
+                                        <li>
+                                            <a href="<?=base_url()?>laporan/rpjmd">
+                                                <i class="metismenu-icon"></i>
+                                                RPJMD
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="<?=base_url()?>laporan/rkpd">
+                                                <i class="metismenu-icon"></i>
+                                                RKPD
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </li>
                                 <li class="app-sidebar__heading">Pengaturan</li>
                                 <li>
-                                    <a href="<?=base_url()?>rpjmd/kota">
+                                    <a href="<?=base_url()?>pengaturan/data/pengguna">
                                         <i class="metismenu-icon pe-7s-users"></i>
                                         Pengguna
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?=base_url()?>pengaturan/rkpd">
+                                        <i class="metismenu-icon pe-7s-users"></i>
+                                        Status RKPD
                                     </a>
                                 </li>
                                 <li>
@@ -432,13 +457,19 @@
                                     </a>
                                     <ul>
                                         <li>
-                                            <a href="<?=base_url()?>rpjmd/kota">
+                                            <a href="<?=base_url()?>pengaturan/data/opd">
+                                                <i class="metismenu-icon"></i>
+                                                OPD
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="<?=base_url()?>pengaturan/data/satuan">
                                                 <i class="metismenu-icon"></i>
                                                 Satuan
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="<?=base_url()?>rpjmd/kota">
+                                            <a href="<?=base_url()?>pengaturan/data/sumber-dana">
                                                 <i class="metismenu-icon"></i>
                                                 Sumber Dana
                                             </a>
@@ -500,6 +531,9 @@
     <script type="text/javascript" src="<?=base_url()?>public/template/admin/assets/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="<?=base_url()?>public/template/admin/assets/js/dataTables.bootstrap4.min.js"></script>
 
+    
+    <script type="text/javascript" src="<?=base_url()?>public/template/admin/assets/js/select2.js"></script>
+    
     <script>
     
     var base_url = '<?=base_url()?>';
@@ -535,9 +569,6 @@
       url: url,
       dataType: "JSON",
       data: dataKirim, 
-      headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-      },
       success: function(respon)
       {   
         loading(false);
@@ -546,14 +577,34 @@
         }else{
           message(respon.pesan, '', 'warning');
         }
-        // console.log(respon);
+        console.log(respon);
       },
       error:function(error){
         loading(false);
         message('Gagal terhubung pada server!', '', 'error');
-        // console.log(error);
-        // $("#myerror").html(error.responseText);
+        console.log(error);
+        $("#myerror").html(error.responseText);
       }
+    });
+  }
+
+  function sendAjaxNewTab(url, dataKirim){
+    loading();
+    return $.ajax({
+        type: "POST",
+        url: url,
+        dataType: "html",
+        data: dataKirim, 
+        success: function(respon)
+        {   
+            var myWindow = window.open("", "_blank");
+            myWindow.document.write(respon);
+            loading(false);
+        },
+            error:function(error){
+            loading(false);
+        $("#myerror").html(error.responseText);
+        }
     });
   }
 
@@ -648,8 +699,8 @@ toastr.options = {
   "hideMethod": "fadeOut"
 }
 
+$(".select2").select2();
 
-   
 </script>
 
 
@@ -666,7 +717,7 @@ toastr.options = {
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                <button type="submit" class="btn btn-primary"  id="pesan-tombol">Simpan</button>
+                <button type="submit" class="btn btn-primary"  id="pesan-tombol">Ya</button>
             </div>
         </div>
     </div>

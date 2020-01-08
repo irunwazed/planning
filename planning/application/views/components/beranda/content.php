@@ -68,8 +68,8 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6 col-xl-4">
-                                
+                            <div class="col-md-6 col-xl-12 d-flex align-items-center justify-content-center">
+                                <img style="height: 100%;" src="<?=base_url()?>public/images/logo.png" alt="">
                             </div>
                         </div>
                         <!-- <div class="row">

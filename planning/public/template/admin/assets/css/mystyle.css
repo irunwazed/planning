@@ -1,0 +1,56 @@
+.style-table {
+    margin: 20px;
+    margin-top: 0px;
+}
+
+.mytable {
+    padding: 10px;
+}
+
+.mylogo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    /* width: 50%; */
+    padding-bottom: 20px;
+}
+
+.mytable-head {
+    border: 5px solid;
+    text-align: center;
+    background-color: #1DAE94;
+    color: #FFFFFF;
+}
+
+.vertical-center {
+    margin: 0;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+
+.mytext-left {
+    text-align: left;
+}
+
+@media only screen and (max-width: 600px) {
+    .col-sm-12{
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+    .col-lg-12{
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+    .card-body{
+        padding: 1;
+        margin: 0;
+        width: 100%;
+
+    }
+    table {
+        text-align: left;
+    }
+  }

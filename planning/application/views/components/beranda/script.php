@@ -38,7 +38,8 @@
     var formData = $('#form-data');
     var link = 'kota';
     var page = 1;
-    getData();
+        // getData();
+
     
     function getData(_page = 1){
         page = _page;
@@ -64,7 +65,6 @@
             
             kodeOneData = element['kota_kode'];
             
-
             tempData = [
                 no,
                 element['kota_nama'],

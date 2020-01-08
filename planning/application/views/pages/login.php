@@ -27,13 +27,17 @@
 	
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('<?=base_url()?>public/template/login/images/img-01.jpg');">
-			<div class="wrap-login100 p-t-190 p-b-30">
-				<form class="login100-form validate-form" action="<?=base_url('login-cek')?>">
+			<div class="wrap-login100 p-t-150 p-b-30">
+				<form class="login100-form validate-form" action="<?=base_url('login-cek')?>" method="POST">
 					<div class="login100-form-avatar">
-						<img src="<?=base_url()?>public/template/login/images/avatar-01.jpg" alt="AVATAR">
+						<img src="<?=base_url()?>public/images/logo.png" alt="AVATAR">
 					</div>
-					<span class="login100-form-title p-t-20 p-b-45">
-						John Doe
+					
+					<span class="login100-form-title p-t-10 p-b-25">
+						Login e-Monev
+					</span>
+					<span class="login100-form-title p-b-10" style="color: #DC143C; font-size: 1rem;">
+						<?=@$this->session->flashdata('pesan')['pesan'];?>
 					</span>
 
 					<div class="wrap-input100 validate-input m-b-10" data-validate = "Username is required">
@@ -63,13 +67,13 @@
                             Kembali
 						</a>
 					</div>
-
-					<div class="text-center w-full">
+					
+					<!-- <div class="text-center w-full">
 						<a class="txt1" href="#">
 							Create new account
 							<i class="fa fa-long-arrow-right"></i>						
 						</a>
-					</div>
+					</div> -->
 				</form>
 			</div>
 		</div>

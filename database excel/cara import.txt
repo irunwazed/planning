@@ -1,0 +1,7 @@
+http://localhost/fgd-morowali/server/data/ImportController/viewImport
+
+1. pilih select dari atas secara tersusun
+2. kemudian cari file pada "..\fgd-morowali\data-pendukung\database excel"
+3. pilih file yang sama dengan pilihan pada select yang telah dipilih
+
+4. kemudian go
