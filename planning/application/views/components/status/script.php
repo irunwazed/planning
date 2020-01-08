@@ -1,44 +1,36 @@
-<!-- Large modal -->
-<div class="modal fade bd-example-modal-lg" id="modal-form" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Form <?=@$judul?></h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form id="form-data">
-                    <input type="hidden" name="kode">
-                    <div class="position-relative form-group">
-                        <label>Satuan</label>
-                        <input name="tb_satuan_nama" type="text" class="form-control" required>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                <button type="submit" class="btn btn-primary" form="form-data">Simpan</button>
-            </div>
-        </div>
-    </div>
-</div>
-
 
 <script type="text/javascript">
 
     $(document).ready(function() {
         
-    } );
+    });
+
+    let refTahun = ['','2019','2020','2021','2022','2023'];
+    let refBulan = ['','Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+
+    var link = 'status/';
+    let url = base_url+link+"get-data";
 
     function tampil(){
         let tahun = $('#thn').val();
         let bulan = $('#bln').val();
+        let data = { tahun : tahun, bulan : bulan };
 
         if (tahun == '' || bulan == '') {}
         else{
-            
+            $.when(sendAjax(url, data)).done(function(respon){
+                if(respon.status){
+                    // console.log(respon.data.bulan);
+                    $('#stat').html();
+                    $('#stat').html('Status Tahun '+refTahun[tahun]+' Bulan '+refBulan[bulan]+' Adalah');
+                    $('#sts').val(respon.data.bulan);
+                    $('#thnPilih').val(tahun);
+                    $('#blnPilih').val(bulan);
+                    $('#tampilkan').fadeIn(1000);
+                }else{
+
+                }
+            });
         }
     }
 
@@ -46,108 +38,28 @@
         tampil();
     });
 
+    let formData = $('#formKirim');
+    formData.submit(function(event){
+        event.preventDefault();
+        let form = $(this);
+        let url = base_url+link+"ubah-data";
+        let data = form.serializeArray();
+        
+        $.when(sendAjax(url, data)).done(function(respon){
+            if(respon.status){
+                alert('Perubahan Tersimpan');
+            }
+        });
+    });
+
     // OLD
     var dataAll;
     var dataPilih;
     var kode;
     var myTable = $('#table-data').DataTable();
-    var formData = $('#form-data');
-    var link = 'pengaturan/data/satuan';
+    
     var page = 1;
     // getData();
     
-    function getData(_page = 1){
-        page = _page;
-        let url = base_url+link+"/get-data";
-        let data = {
-            page : page,
-        }
-        $.when(sendAjax(url, data)).done(function(respon){
-            if(respon.status){
-                setTable(respon.data);
-                dataAll = respon.data;
-            }else{
-
-            }
-        });
-    }
-    function setTable(data){
-        myTable.clear().draw();
-        no = 1;
-        let kodeOneData;
-        data.forEach(element => {
-            kodeOneData = element['id_tb_satuan'];
-            tempData = [
-                no,
-                '<a href="'+base_url+'rpjmd/penyusunan/tujuan/'+kodeOneData+'">'+element['tb_satuan_nama']+'</a>',
-                '<a class="btn btn-info"  href="#" onclick="setUpdate(\''+kodeOneData+'\')" data-toggle="modal" data-target="#modal-form" ><i class="fa fa-edit"></i></a>'+
-                '<a class="btn btn-danger"  href="#"  data-setFunction="doDelete(\''+kodeOneData+'\')" data-judul="Hapus Data!" data-isi="Apakah anda yakin menghapus data?" onclick="setPesan(this)" data-toggle="modal" data-target="#modal-pesan"><i class="fa fa-trash"></i></a>',
-            ]
-            myTable.row.add(tempData).draw(  );
-            no++;
-        });
-    }
-
-    function setCreate(){
-        formData[0].reset();
-        formData.attr("action", base_url+link+"/create");
-    }
-
-    function setUpdate(id){
-        formData[0].reset();
-        formData.attr("action", base_url+link+"/update");
-        dataPilih = getDataPilih(id);
-        setForm(dataPilih);
-    }
-
-    function getDataPilih(id){
-        dataPilih = {};
-        dataAll.forEach(element => {
-            if(id == element['id_tb_satuan'] ){
-                dataPilih = element;
-                kode = id;
-            }
-        });
-        return dataPilih;
-    }
-
-    function setForm(data){
-        $("input[name='kode']").val(kode);
-        $("input[name='tb_satuan_nama']").val(data['tb_satuan_nama']);
-    }
-    
-    formData.submit(function(event){
-        event.preventDefault();
-        let form = $(this);
-        let url = form.attr('action');
-        let data = form.serializeArray();
-        myModalHide();
-        
-        $.when(sendAjax(url, data)).done(function(respon){
-            if(respon.status){
-                getData();
-            }
-            // setPesanIsi("", respon.status, respon.pesan)
-        });
-    });
-
-    function doDelete(id){
-
-        let url = base_url+link+"/delete";
-        let data = {
-            kode : id,
-        }
-        myModalHide();
-        $.when(sendAjax(url, data)).done(function(respon){
-            if(respon.status){
-                getData();
-            }
-        });
-    }
-
-    function myModalHide(){
-        $('.close').click(); 
-    }
-
 
 </script>

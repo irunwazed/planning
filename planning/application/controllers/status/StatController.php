@@ -8,7 +8,7 @@ class StatController extends CI_Controller {
 	public function __construct()
     {
 		parent::__construct();
-        // $this->load->model('data/SatuanModel');
+        $this->load->model('status/StatusModel');
         $this->load->library('Filter');
         $this->levelArr = array(1,2);
     }
@@ -26,27 +26,38 @@ class StatController extends CI_Controller {
         $this->load->view('includes/layout', $file);
 	}
 
-    public function getData($page = 1){
-        $post = $this->input->post();
-        $post['page'] = $page;
-        $jumDataAll = 0;
-        $jumlahDatainPage = 0;
+    public function getData(){
+        $thn = $this->input->post('tahun', true);
+        $bln = $this->input->post('bulan', true);
         $data = array();
-        $jumlahPage = 1;
         $status = $this->filter->cekLogin($this->levelArr);
         
 		if($status){
-            $data = $this->SatuanModel->getAll($post);
-            $jumDataAll = $this->SatuanModel->getCount($post);
-            $jumlahDatainPage = $this->SatuanModel->getJumlahInPage();
-            $jumlahPage = ceil($jumDataAll/$jumlahDatainPage);
+            $xx = $this->StatusModel->getAllJson(); 
+            $tahun = $xx["tahun$thn"];
+            $data['bulan'] = $tahun["bulan$bln"];
 		}
 
         $kirim = array(
-            'jumlahAll' => $jumDataAll,
-            'jumlahPage' => $jumlahPage,
 			'data' => $data,
 			'status' => $status
+        );
+
+        echo json_encode($kirim);
+    }
+
+    public function update(){
+        $data = array();
+        $status = $this->filter->cekLogin($this->levelArr);
+        
+        if($status){
+            $xx = $this->StatusModel->update(); 
+            $data['hasil'] = $xx;
+        }
+
+        $kirim = array(
+            'data' => $data,
+            'status' => $status
         );
 
         echo json_encode($kirim);

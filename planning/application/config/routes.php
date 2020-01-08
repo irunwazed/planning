@@ -169,6 +169,8 @@ $route['pengaturan/data/pengguna/update'] = 'data/PenggunaController/action/upda
 $route['pengaturan/data/pengguna/delete'] = 'data/PenggunaController/action/delete';
 
 $route['status/view'] = 'status/StatController/index';
+$route['status/get-data'] = 'status/StatController/getData';
+$route['status/ubah-data'] = 'status/StatController/update';
 
 $route['default_controller'] = 'HomeController';
 $route['404_override'] = '';

@@ -27,11 +27,11 @@ $des = "";
                                         <label>Pilih Tahun</label>
                                         <select name="thn" id="thn" class="form-control" required>
                                             <option value="">-- Pilih Tahun --</option>
-                                            <option value="2019">2019</option>
-                                            <option value="2020">2020</option>
-                                            <option value="2021">2021</option>
-                                            <option value="2022">2022</option>
-                                            <option value="2023">2023</option>
+                                            <option value="1">2019</option>
+                                            <option value="2">2020</option>
+                                            <option value="3">2021</option>
+                                            <option value="4">2022</option>
+                                            <option value="5">2023</option>
                                         </select>
                                     </div>
                                 </div>
@@ -63,11 +63,12 @@ $des = "";
                     </div>
                 </div>
 
-                <div class="main-card mb-3 card" id="tampilkan">
+                <div class="main-card mb-3 card" id="tampilkan" style="display: none">
                     <div class="card-header">
                         <h5 class="card-title" id="stat">Status Tahun 2020 Bulan Jan Adalah</h5>
                     </div>
                     <div class="card-body">
+                        <form id="formKirim">
                         <div class="row">
                             <div class="col-md-6">
                                 <label>Status</label>
@@ -78,11 +79,14 @@ $des = "";
                                     <option value="3">Perubahan</option>
                                 </select>
                             </div>
+                            <input type="hidden" name="thnPilih" id="thnPilih">
+                            <input type="hidden" name="blnPilih" id="blnPilih">
                             <div class="col-md-6">
                                 <label class="text-white">Simpan</label><br>
                                 <button type="submit" class="btn btn-primary"><i class="pe-7s-diskette"></i> Simpan</button>
                             </div>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
