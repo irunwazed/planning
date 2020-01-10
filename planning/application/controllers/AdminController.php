@@ -8,7 +8,12 @@ class AdminController extends CI_Controller {
 	{
         $data = array();
         $data['judul'] = "Beranda";
+        $data['judul'] = "Beranda";
         
+        $this->load->model('DataModel');
+        $data['jumOpd'] = $this->DataModel->getJumlahOpd();
+        $data['jumProgram'] = $this->DataModel->getJumlahProgram();
+        $data['jumKegiatan'] = $this->DataModel->getJumlahKegiatan();
         $file['content'] = $this->load->view('components/beranda/content', $data, true);
         $this->load->view('includes/layout', $file);
     }
@@ -21,6 +26,16 @@ class AdminController extends CI_Controller {
         $file['content'] = $this->load->view('components/kota/content', $data, true);
         $file['script'] = $this->load->view('components/kota/script', $data, true);
         $this->load->view('includes/layout', $file);
+    }
+
+    public function setSessionOpd(){
+        
+        if(in_array($this->session->level, array(1,2))){
+            $post = $this->input->post();
+            $kode = $post['opd'];
+            $this->session->set_userdata('kodeOpd', $kode);
+        }
+        redirect($_SERVER['HTTP_REFERER']);
     }
 
 	public function login(){
@@ -42,6 +57,10 @@ class AdminController extends CI_Controller {
                     'kodeOpd' => '1-1-1-1',
                     'logged_in' => TRUE,
                 );
+
+                $this->load->model('DataModel');
+                $dataRpjmd = $this->DataModel->getRowRpjmd($data_session['rpjmd']);
+                $data_session['tahun'] = @$dataRpjmd->tb_rpjmd_status_tahun;
                 
                 if($dataOneUser[0]['tb_user_level'] == 3){
                     $dataOpd = $this->LoginModel->selectOneUserOpdById(@$dataOneUser[0]['id_tb_user']);

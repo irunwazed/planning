@@ -48,7 +48,7 @@ class DataModel extends CI_Model
         $this->db->where($table.'.id_tb_rpjmd', $this->session->rpjmd);
         $this->db->where($table.'.tb_rpjmd_misi_kode', $kode[0]);
         $this->db->where($table.'.tb_rpjmd_tujuan_kode', $kode[1]);
-        $data = $this->db->get('tb_rpjmd_tujuan')->row();
+        $data = $this->db->get($table)->row();
         return $data;
     }
 
@@ -65,7 +65,7 @@ class DataModel extends CI_Model
         $this->db->where($table.'.tb_rpjmd_misi_kode', $kode[0]);
         $this->db->where($table.'.tb_rpjmd_tujuan_kode', $kode[1]);
         $this->db->where($table.'.tb_rpjmd_sasaran_kode', $kode[2]);
-        $data = $this->db->get('tb_rpjmd_sasaran')->row();
+        $data = $this->db->get($table)->row();
         return $data;
     }
 
@@ -137,7 +137,7 @@ class DataModel extends CI_Model
         $this->db->where($table.'.tb_unit_kode', $kode[5]);
         $this->db->where($table.'.tb_sub_unit_kode', $kode[6]);
         $this->db->where($table.'.tb_program_kode', $kode[7]);
-        $data = $this->db->get('tb_rpjmd_program')->row();
+        $data = $this->db->get($table)->row();
         return $data;
     }
 
@@ -450,7 +450,6 @@ class DataModel extends CI_Model
         $this->db->where($table.'.tb_unit_kode', $kode[2]);
         $this->db->where($table.'.tb_sub_unit_kode', $kode[3]);
 
-        
         $this->db->order_by($table.'.id_tb_rpjmd', "asc");
         $this->db->order_by($table.'.tb_rpjmd_misi_kode', "asc");
         $this->db->order_by($table.'.tb_rpjmd_tujuan_kode', "asc");

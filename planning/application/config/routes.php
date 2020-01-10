@@ -61,6 +61,9 @@ $route['rpjmd/kota'] = 'AdminController/kota';
 $route['import'] = 'ImportController/viewImport';
 $route['importRek'] = 'ImportController/importRek';
 
+$route['pengaturan/set-opd'] = 'AdminController/setSessionOpd';
+
+
 
 $route['rpjmd/penyusunan/misi'] = 'rpjmd/MisiController/view';
 $route['rpjmd/penyusunan/misi/get-data'] = 'rpjmd/MisiController/getData';
@@ -93,9 +96,9 @@ $route['rpjmd/penyusunan/program/delete'] = 'rpjmd/ProgramController/action/dele
 $route['rpjmd/penyusunan/program/(:any)'] = 'rpjmd/ProgramController/view/$1';
 
 $route['renstra/penyusunan/program/get-data'] = 'opd/ProgramController/getData';
-$route['renstra/penyusunan/program/create'] = 'opd/ProgramController/action/create';
-$route['renstra/penyusunan/program/update'] = 'opd/ProgramController/action/update';
-$route['renstra/penyusunan/program/delete'] = 'opd/ProgramController/action/delete';
+// $route['renstra/penyusunan/program/create'] = 'opd/ProgramController/action/create';
+// $route['renstra/penyusunan/program/update'] = 'opd/ProgramController/action/update';
+// $route['renstra/penyusunan/program/delete'] = 'opd/ProgramController/action/delete';
 $route['renstra/penyusunan/program'] = 'opd/ProgramController/view/$1';
 
 $route['renstra/penyusunan/kegiatan/get-data'] = 'opd/KegiatanController/getData';
@@ -103,6 +106,21 @@ $route['renstra/penyusunan/kegiatan/create'] = 'opd/KegiatanController/action/cr
 $route['renstra/penyusunan/kegiatan/update'] = 'opd/KegiatanController/action/update';
 $route['renstra/penyusunan/kegiatan/delete'] = 'opd/KegiatanController/action/delete';
 $route['renstra/penyusunan/kegiatan/(:any)'] = 'opd/KegiatanController/view/$1';
+
+$route['opd/penyusunan/rkpd-awal/get-data'] = 'opd/RkpdAwalController/getData';
+// $route['opd/penyusunan/rkpd-penetapan/create'] = 'opd/RkpdAwalController/action/create';
+// $route['opd/penyusunan/rkpd-penetapan/update'] = 'opd/RkpdAwalController/action/update';
+// $route['opd/penyusunan/rkpd-penetapan/delete'] = 'opd/RkpdAwalController/action/delete';
+$route['opd/penyusunan/rkpd-awal'] = 'opd/RkpdAwalController/view';
+
+$route['opd/penyusunan/rkpd-penetapan/get-data'] = 'opd/RkpdPenetapanController/getData';
+$route['opd/penyusunan/rkpd-penetapan/create'] = 'opd/RkpdPenetapanController/action/create';
+$route['opd/penyusunan/rkpd-penetapan/update'] = 'opd/RkpdPenetapanController/action/update';
+$route['opd/penyusunan/rkpd-penetapan/delete'] = 'opd/RkpdPenetapanController/action/delete';
+$route['opd/penyusunan/rkpd-penetapan'] = 'opd/RkpdPenetapanController/view';
+
+
+
 
 $route['renstra/penyusunan/bulanan/get-data'] = 'opd/BulananController/getData';
 $route['renstra/penyusunan/bulanan/create'] = 'opd/BulananController/action/create';
@@ -156,6 +174,9 @@ $route['opd/penyusunan/lra/rek5/(:any)'] = 'opd/Rek5Controller/view/$1';
 $route['laporan/rkpd'] = 'laporan/RkpdController/view';
 $route['laporan/rkpd/save/(:any)'] = 'laporan/RkpdController/cetak/$1';
 
+$route['laporan/rpjmd'] = 'laporan/RpjmdController/view';
+$route['laporan/rpjmd/save/(:any)'] = 'laporan/RpjmdController/cetak/$1';
+
 $route['pengaturan/data/satuan'] = 'data/SatuanController/view';
 $route['pengaturan/data/satuan/get-data'] = 'data/SatuanController/getData';
 $route['pengaturan/data/satuan/create'] = 'data/SatuanController/action/create';
@@ -167,6 +188,10 @@ $route['pengaturan/data/pengguna/get-data'] = 'data/PenggunaController/getData';
 $route['pengaturan/data/pengguna/create'] = 'data/PenggunaController/action/create';
 $route['pengaturan/data/pengguna/update'] = 'data/PenggunaController/action/update';
 $route['pengaturan/data/pengguna/delete'] = 'data/PenggunaController/action/delete';
+
+$route['status/view'] = 'status/StatController/index';
+$route['status/get-data'] = 'status/StatController/getData';
+$route['status/ubah-data'] = 'status/StatController/update';
 
 $route['default_controller'] = 'HomeController';
 $route['404_override'] = '';

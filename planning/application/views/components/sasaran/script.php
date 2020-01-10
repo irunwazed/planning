@@ -18,7 +18,66 @@
                     <div class="position-relative form-group">
                         <label>Sasaran</label>
                         <input name="tb_rpjmd_sasaran_nama" type="text" class="form-control" required>
+                    </div><div class="position-relative form-group">
+                        <label>Indikator</label>
+                        <input name="tb_rpjmd_sasaran_indikator" type="text" class="form-control" required>
                     </div>
+                    <div class="position-relative form-group">
+                        <label>Target Awal Kinerja</label>
+                        <input name="tb_rpjmd_sasaran_th_awal_target_kinerja" type="text" class="form-control" required>
+                    </div>
+                    <div class="position-relative form-group">
+                        <label>Target Awal Pagu</label>
+                        <input name="tb_rpjmd_sasaran_th_awal_target_realisasi" onchange="inputToRupiah(this)" type="text" class="form-control" required>
+                    </div>
+                    <div class="position-relative form-group">
+                        <label>Target Kenirja Tahun 1</label>
+                        <input name="tb_rpjmd_sasaran_th1_target_kinerja" type="text" class="form-control" required>
+                    </div>
+                    <div class="position-relative form-group">
+                        <label>Target Realisasi Tahun 1</label>
+                        <input name="tb_rpjmd_sasaran_th1_target_realisasi" onchange="inputToRupiah(this)" type="text" class="form-control" required>
+                    </div>
+                    <div class="position-relative form-group">
+                        <label>Target Kenirja Tahun 2</label>
+                        <input name="tb_rpjmd_sasaran_th2_target_kinerja" type="text" class="form-control" required>
+                    </div>
+                    <div class="position-relative form-group">
+                        <label>Target Realisasi Tahun 2</label>
+                        <input name="tb_rpjmd_sasaran_th2_target_realisasi" onchange="inputToRupiah(this)" type="text" class="form-control" required>
+                    </div>
+                    <div class="position-relative form-group">
+                        <label>Target Kenirja Tahun 3</label>
+                        <input name="tb_rpjmd_sasaran_th3_target_kinerja" type="text" class="form-control" required>
+                    </div>
+                    <div class="position-relative form-group">
+                        <label>Target Realisasi Tahun 3</label>
+                        <input name="tb_rpjmd_sasaran_th3_target_realisasi" onchange="inputToRupiah(this)" type="text" class="form-control" required>
+                    </div>
+                    <div class="position-relative form-group">
+                        <label>Target Kenirja Tahun 4</label>
+                        <input name="tb_rpjmd_sasaran_th4_target_kinerja" type="text" class="form-control" required>
+                    </div>
+                    <div class="position-relative form-group">
+                        <label>Target Realisasi Tahun 4</label>
+                        <input name="tb_rpjmd_sasaran_th4_target_realisasi" onchange="inputToRupiah(this)" type="text" class="form-control" required>
+                    </div>
+                    <div class="position-relative form-group">
+                        <label>Target Kenirja Tahun 5</label>
+                        <input name="tb_rpjmd_sasaran_th5_target_kinerja" type="text" class="form-control" required>
+                    </div>
+                    <div class="position-relative form-group">
+                        <label>Target Realisasi Tahun 5</label>
+                        <input name="tb_rpjmd_sasaran_th5_target_realisasi" onchange="inputToRupiah(this)" type="text" class="form-control" required>
+                    </div>
+                    <!-- <div class="position-relative form-group">
+                        <label>Target Kenirja Tahun Akhir</label>
+                        <input name="tb_rpjmd_sasaran_th_akhir_target_kinerja" type="text" class="form-control" required>
+                    </div>
+                    <div class="position-relative form-group">
+                        <label>Target Realisasi Tahun Akhir</label>
+                        <input name="tb_rpjmd_sasaran_th_akhir_target_realisasi" onchange="inputToRupiah(this)" type="text" class="form-control" required>
+                    </div> -->
                 </form>
             </div>
             <div class="modal-footer">
@@ -67,10 +126,31 @@
         data.forEach(element => {
             kodeOneData = element['tb_rpjmd_misi_kode']+'-'+element['tb_rpjmd_tujuan_kode']+'-'+element['tb_rpjmd_sasaran_kode'];
             kodeShow = element['tb_rpjmd_sasaran_kode'];
+            let realisasiAkhir = parseInt(element['tb_rpjmd_sasaran_th1_target_realisasi'])
+                                +parseInt(element['tb_rpjmd_sasaran_th2_target_realisasi'])
+                                +parseInt(element['tb_rpjmd_sasaran_th3_target_realisasi'])
+                                +parseInt(element['tb_rpjmd_sasaran_th4_target_realisasi'])
+                                +parseInt(element['tb_rpjmd_sasaran_th5_target_realisasi']);
+            
             tempData = [
                 no,
                 kodeShow,
                 '<a href="'+base_url+'rpjmd/penyusunan/opd/'+kodeOneData+'">'+element['tb_rpjmd_sasaran_nama']+'</a>',
+                element['tb_rpjmd_sasaran_indikator'],
+                element['tb_rpjmd_sasaran_th_awal_target_kinerja'],
+                convertToRupiah(element['tb_rpjmd_sasaran_th_awal_target_realisasi']),
+                element['tb_rpjmd_sasaran_th1_target_kinerja'],
+                convertToRupiah(element['tb_rpjmd_sasaran_th1_target_realisasi']),
+                element['tb_rpjmd_sasaran_th2_target_kinerja'],
+                convertToRupiah(element['tb_rpjmd_sasaran_th2_target_realisasi']),
+                element['tb_rpjmd_sasaran_th3_target_kinerja'],
+                convertToRupiah(element['tb_rpjmd_sasaran_th3_target_realisasi']),
+                element['tb_rpjmd_sasaran_th4_target_kinerja'],
+                convertToRupiah(element['tb_rpjmd_sasaran_th4_target_realisasi']),
+                element['tb_rpjmd_sasaran_th5_target_kinerja'],
+                convertToRupiah(element['tb_rpjmd_sasaran_th5_target_realisasi']),
+                element['tb_rpjmd_sasaran_th_akhir_target_kinerja'],
+                convertToRupiah(realisasiAkhir),
                 '<a class="btn btn-info"  href="#" onclick="setUpdate(\''+kodeOneData+'\')" data-toggle="modal" data-target="#modal-form" ><i class="fa fa-edit"></i></a>'+
                 '<a class="btn btn-danger"  href="#"  data-setFunction="doDelete(\''+kodeOneData+'\')" data-judul="Hapus Data!" data-isi="Apakah anda yakin menghapus data?" onclick="setPesan(this)" data-toggle="modal" data-target="#modal-pesan"><i class="fa fa-trash"></i></a>',
             ]
@@ -109,6 +189,21 @@
         $("input[name='kode']").val(kode);
         $("input[name='tb_rpjmd_sasaran_kode']").val(data['tb_rpjmd_sasaran_kode']);
         $("input[name='tb_rpjmd_sasaran_nama']").val(data['tb_rpjmd_sasaran_nama']);
+        $("input[name='tb_rpjmd_sasaran_indikator']").val(data['tb_rpjmd_sasaran_indikator']);
+        $("input[name='tb_rpjmd_sasaran_th_awal_target_kinerja']").val(data['tb_rpjmd_sasaran_th_awal_target_kinerja']);
+        $("input[name='tb_rpjmd_sasaran_th_awal_target_realisasi']").val(data['tb_rpjmd_sasaran_th_awal_target_realisasi']);
+        $("input[name='tb_rpjmd_sasaran_th1_target_kinerja']").val(data['tb_rpjmd_sasaran_th1_target_kinerja']);
+        $("input[name='tb_rpjmd_sasaran_th1_target_realisasi']").val(data['tb_rpjmd_sasaran_th1_target_realisasi']);
+        $("input[name='tb_rpjmd_sasaran_th2_target_kinerja']").val(data['tb_rpjmd_sasaran_th2_target_kinerja']);
+        $("input[name='tb_rpjmd_sasaran_th2_target_realisasi']").val(data['tb_rpjmd_sasaran_th2_target_realisasi']);
+        $("input[name='tb_rpjmd_sasaran_th3_target_kinerja']").val(data['tb_rpjmd_sasaran_th3_target_kinerja']);
+        $("input[name='tb_rpjmd_sasaran_th3_target_realisasi']").val(data['tb_rpjmd_sasaran_th3_target_realisasi']);
+        $("input[name='tb_rpjmd_sasaran_th4_target_kinerja']").val(data['tb_rpjmd_sasaran_th4_target_kinerja']);
+        $("input[name='tb_rpjmd_sasaran_th4_target_realisasi']").val(data['tb_rpjmd_sasaran_th4_target_realisasi']);
+        $("input[name='tb_rpjmd_sasaran_th5_target_kinerja']").val(data['tb_rpjmd_sasaran_th5_target_kinerja']);
+        $("input[name='tb_rpjmd_sasaran_th5_target_realisasi']").val(data['tb_rpjmd_sasaran_th5_target_realisasi']);
+        $("input[name='tb_rpjmd_sasaran_th_akhir_target_kinerja']").val(data['tb_rpjmd_sasaran_th_akhir_target_kinerja']);
+        $("input[name='tb_rpjmd_sasaran_th_akhir_target_realisasi']").val(data['tb_rpjmd_sasaran_th_akhir_target_realisasi']);
     }
     
     formData.submit(function(event){

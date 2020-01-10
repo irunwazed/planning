@@ -22,6 +22,7 @@ class ProgramController extends CI_Controller {
         $this->load->model('rpjmd/DataModel');
         $data['dataRpjmd'] = $this->DataModel->getRowVisi();
         $data['dataSasaran'] = $this->DataModel->getAllSasaran();
+        $data['dataOpd'] = $this->DataModel->getAllOpd();
 
         $file['content'] = $this->load->view('components-opd/program/content', $data, true);
         $file['script'] = $this->load->view('components-opd/program/script', $data, true);

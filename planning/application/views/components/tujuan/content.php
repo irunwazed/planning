@@ -48,11 +48,12 @@ $des = "";
                                         <div class="table-responsive">
                                             <table class="mb-0 table table-bordered table-hover table-striped" id="table-data">
                                                 <thead>
-                                                    <tr class="mytable-head" >
-                                                        <th width="20">No</th>
-                                                        <th width="20">Kode</th>
-                                                        <th>Tujuan</th>
-                                                        <th width="80">Aksi</th>
+                                                    <tr class="mytable-head">
+                                                        <th width="20" class="align-middle">No</th>
+                                                        <th width="20" class="align-middle">Kode</th>
+                                                        <th class="align-middle">Tujuan</th>
+                                                        <th class="align-middle">Indikator</th>
+                                                        <th width="80" class="align-middle">Aksi</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>

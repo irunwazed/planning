@@ -10,6 +10,7 @@ class SasaranController extends CI_Controller {
 		parent::__construct();
         $this->load->model('rpjmd/SasaranModel');
         $this->load->library('Filter');
+        $this->load->library('Fungsi');
         $this->levelArr = array(1,2);
     }
 

@@ -10,7 +10,7 @@ class SatuanController extends CI_Controller {
 		parent::__construct();
         $this->load->model('data/SatuanModel');
         $this->load->library('Filter');
-        $this->levelArr = array(1,2);
+        $this->levelArr = array(1,2,3);
     }
 
     public function view(){

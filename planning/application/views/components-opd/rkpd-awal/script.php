@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Form <?=@$judul?></h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">Form <?=@$judul?> <?=@$dataRpjmd->tb_rpjmd_tahun+@$dataRpjmd->tb_rpjmd_status_tahun-1?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -28,9 +28,9 @@
                                 <option value="<?=$row['id_tb_satuan']?>"><?=$row['tb_satuan_nama']?></option>
                             <?php } ?>
                         </select>
-                    </div> -->
-                    <!-- <div class="position-relative form-group">
-                        <label>Awal Target</label>
+                    </div>
+                    <div class="position-relative form-group">
+                        <label>Target Kinerja</label>
                         <input name="tb_rpjmd_program_th_awal_target_kinerja" type="text" class="form-control" required>
                     </div>
                     <div class="position-relative form-group">
@@ -40,8 +40,8 @@
                     <div class="position-relative form-group">
                         <label>Indikator</label>
                         <input name="tb_rpjmd_program_indikator" type="text" class="form-control" required>
-                    </div>
-                    <div class="position-relative form-group">
+                    </div> -->
+                    <!-- <div class="position-relative form-group">
                         <label>Target Kenirja Tahun 1</label>
                         <input name="tb_rpjmd_program_th1_target_kinerja" type="text" class="form-control" required>
                     </div>
@@ -110,8 +110,9 @@
     var kode;
     var myTable = $('#table-data').DataTable();
     var formData = $('#form-data');
-    var link = 'renstra/penyusunan/program';
+    var link = 'opd/penyusunan/rkpd-awal';
     var page = 1;
+    var tahunKe = '<?=@$dataRpjmd->tb_rpjmd_status_tahun?>'
     getData();
 
     function cariProgram(){
@@ -163,20 +164,10 @@
                 '<a href="'+base_url+'renstra/penyusunan/kegiatan/'+kodeOneData+'">'+element['tb_program_nama']+'</a>',
                 element['tb_rpjmd_program_indikator'],
                 element['tb_satuan_nama'],
-                element['tb_rpjmd_program_th_awal_target_kinerja'],
-                convertToRupiah(element['tb_rpjmd_program_th_awal_target_realisasi']),
-                element['tb_rpjmd_program_th1_target_kinerja'],
-                convertToRupiah(element['tb_rpjmd_program_th1_target_realisasi']),
-                element['tb_rpjmd_program_th2_target_kinerja'],
-                convertToRupiah(element['tb_rpjmd_program_th2_target_realisasi']),
-                element['tb_rpjmd_program_th3_target_kinerja'],
-                convertToRupiah(element['tb_rpjmd_program_th3_target_realisasi']),
-                element['tb_rpjmd_program_th4_target_kinerja'],
-                convertToRupiah(element['tb_rpjmd_program_th4_target_realisasi']),
-                element['tb_rpjmd_program_th5_target_kinerja'],
-                convertToRupiah(element['tb_rpjmd_program_th5_target_realisasi']),
-                element['tb_rpjmd_program_th_akhir_target_kinerja'],
-                convertToRupiah(realisasiAkhir),
+                element['tb_rpjmd_program_th'+tahunKe+'_target_kinerja'],
+                convertToRupiah(element['tb_rpjmd_program_th'+tahunKe+'_target_realisasi']),
+                '<a class="btn btn-info"  href="#" onclick="setUpdate(\''+kodeOneData+'\')" data-toggle="modal" data-target="#modal-form" ><i class="fa fa-edit"></i></a>'+
+                '<a class="btn btn-danger"  href="#"  data-setFunction="doDelete(\''+kodeOneData+'\')" data-judul="Hapus Data!" data-isi="Apakah anda yakin menghapus data?" onclick="setPesan(this)" data-toggle="modal" data-target="#modal-pesan"><i class="fa fa-trash"></i></a>',
             ]
             myTable.row.add(tempData).draw(  );
             no++;

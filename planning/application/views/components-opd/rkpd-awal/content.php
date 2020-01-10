@@ -78,30 +78,13 @@ $des = "";
                                                         <th rowspan="3" class="align-middle">Program</th>
                                                         <th rowspan="3" class="align-middle">Indikator</th>
                                                         <th rowspan="3" class="align-middle">Satuan</th>
-                                                        <th colspan="14" class="align-middle">Target (Tahun)</th>
+                                                        <th colspan="2" class="align-middle">Target (Tahun)</th>
+                                                        <th width="80" rowspan="3" class="align-middle">Aksi</th>
                                                     </tr>
                                                     <tr class="mytable-head">
-                                                        <th colspan="2">Awal</th>
-                                                        <th colspan="2"><?=@$dataRpjmd->tb_rpjmd_tahun?></th>
-                                                        <th colspan="2"><?=@$dataRpjmd->tb_rpjmd_tahun+1?></th>
-                                                        <th colspan="2"><?=@$dataRpjmd->tb_rpjmd_tahun+2?></th>
-                                                        <th colspan="2"><?=@$dataRpjmd->tb_rpjmd_tahun+3?></th>
-                                                        <th colspan="2"><?=@$dataRpjmd->tb_rpjmd_tahun+4?></th>
-                                                        <th colspan="2">Akhir</th>
+                                                        <th colspan="2"><?=@$dataRpjmd->tb_rpjmd_tahun+@$dataRpjmd->tb_rpjmd_status_tahun-1?></th>
                                                     </tr>
                                                     <tr class="mytable-head">
-                                                        <th>K</th>
-                                                        <th>R</th>
-                                                        <th>K</th>
-                                                        <th>R</th>
-                                                        <th>K</th>
-                                                        <th>R</th>
-                                                        <th>K</th>
-                                                        <th>R</th>
-                                                        <th>K</th>
-                                                        <th>R</th>
-                                                        <th>K</th>
-                                                        <th>R</th>
                                                         <th>K</th>
                                                         <th>R</th>
                                                     </tr>

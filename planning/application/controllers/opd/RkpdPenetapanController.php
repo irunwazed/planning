@@ -1,31 +1,35 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class PenggunaController extends CI_Controller {
+class RkpdPenetapanController extends CI_Controller {
     
     private $levelArr;
 
 	public function __construct()
     {
 		parent::__construct();
-        $this->load->model('data/PenggunaModel');
+        $this->load->model('opd/RkpdPenetapanModel');
         $this->load->library('Filter');
         $this->load->library('Fungsi');
-        $this->levelArr = array(1,2,3);
+        $this->levelArr = array(1,3);
     }
 
     public function view(){
         $this->filter->cekLoginOut($this->levelArr);
         
         $data = array();
-        $data['judul'] = "Data Pengguna";
-
+        $data['judul'] = "Data Program";
         $this->load->model('rpjmd/DataModel');
         $data['dataRpjmd'] = $this->DataModel->getRowVisi();
+        $data['dataSasaran'] = $this->DataModel->getAllSasaran();
+        $setKode = explode("-", $this->session->kodeOpd);
+        $setKode = $setKode[0].'-'.$setKode[1];
+        $data['dataProgram'] = $this->DataModel->getProgram($setKode);
+        $data['dataSatuan'] = $this->DataModel->getAllSatuan();
         $data['dataOpd'] = $this->DataModel->getAllOpd();
 
-        $file['content'] = $this->load->view('components/data-pengguna/content', $data, true);
-        $file['script'] = $this->load->view('components/data-pengguna/script', $data, true);
+        $file['content'] = $this->load->view('components-opd/rkpd-penetapan/content', $data, true);
+        $file['script'] = $this->load->view('components-opd/rkpd-penetapan/script', $data, true);
         $this->load->view('includes/layout', $file);
 	}
 
@@ -39,9 +43,9 @@ class PenggunaController extends CI_Controller {
         $status = $this->filter->cekLogin($this->levelArr);
         
 		if($status){
-            $data = $this->PenggunaModel->getAll($post);
-            $jumDataAll = $this->PenggunaModel->getCount($post);
-            $jumlahDatainPage = $this->PenggunaModel->getJumlahInPage();
+            $data = $this->RkpdPenetapanModel->getAll($post);
+            $jumDataAll = $this->RkpdPenetapanModel->getCount($post);
+            $jumlahDatainPage = $this->RkpdPenetapanModel->getJumlahInPage();
             $jumlahPage = ceil($jumDataAll/$jumlahDatainPage);
 		}
 
@@ -63,7 +67,7 @@ class PenggunaController extends CI_Controller {
 			'status' => false,
         );
         if($status){
-            $result = $this->PenggunaModel->$action($post);
+            $result = $this->RkpdPenetapanModel->$action($post);
         }
         $kirim = $result;
 		echo json_encode($kirim);

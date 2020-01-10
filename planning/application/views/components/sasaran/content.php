@@ -53,11 +53,38 @@ $des = "";
                                         <div class="table-responsive">
                                             <table class="mb-0 table table-bordered table-hover table-striped" id="table-data">
                                                 <thead>
-                                                    <tr class="mytable-head" >
-                                                        <th width="20">No</th>
-                                                        <th width="20">Kode</th>
-                                                        <th>Tujuan</th>
-                                                        <th width="80">Aksi</th>
+                                                    <tr class="mytable-head">
+                                                        <th width="20" rowspan="3" class="align-middle">No</th>
+                                                        <th width="20" rowspan="3" class="align-middle">Kode</th>
+                                                        <th rowspan="3" class="align-middle">Sasaran</th>
+                                                        <th rowspan="3" class="align-middle">Indikator</th>
+                                                        <th colspan="14" class="align-middle">Target (Tahun)</th>
+                                                        <th width="80" rowspan="3" class="align-middle">Aksi</th>
+                                                    </tr>
+                                                    <tr class="mytable-head">
+                                                        <th colspan="2">Awal</th>
+                                                        <th colspan="2"><?=@$dataRpjmd->tb_rpjmd_tahun?></th>
+                                                        <th colspan="2"><?=@$dataRpjmd->tb_rpjmd_tahun+1?></th>
+                                                        <th colspan="2"><?=@$dataRpjmd->tb_rpjmd_tahun+2?></th>
+                                                        <th colspan="2"><?=@$dataRpjmd->tb_rpjmd_tahun+3?></th>
+                                                        <th colspan="2"><?=@$dataRpjmd->tb_rpjmd_tahun+4?></th>
+                                                        <th colspan="2">Akhir</th>
+                                                    </tr>
+                                                    <tr class="mytable-head">
+                                                        <th>K</th>
+                                                        <th>R</th>
+                                                        <th>K</th>
+                                                        <th>R</th>
+                                                        <th>K</th>
+                                                        <th>R</th>
+                                                        <th>K</th>
+                                                        <th>R</th>
+                                                        <th>K</th>
+                                                        <th>R</th>
+                                                        <th>K</th>
+                                                        <th>R</th>
+                                                        <th>K</th>
+                                                        <th>R</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>

@@ -73,7 +73,7 @@ class KegiatanModel extends CI_Model
         if($this->cekInput($post)){
             
             $post['tb_rpjmd_kegiatan_th_awal_target_realisasi'] = $this->fungsi->convert_to_number($post['tb_rpjmd_kegiatan_th_awal_target_realisasi']);
-            $post['tb_rpjmd_kegiatan_th_akhir_target_realisasi'] = $this->fungsi->convert_to_number($post['tb_rpjmd_kegiatan_th_akhir_target_realisasi']);
+            // $post['tb_rpjmd_kegiatan_th_akhir_target_realisasi'] = $this->fungsi->convert_to_number($post['tb_rpjmd_kegiatan_th_akhir_target_realisasi']);
             $post['tb_rpjmd_kegiatan_th1_target_realisasi'] = $this->fungsi->convert_to_number($post['tb_rpjmd_kegiatan_th1_target_realisasi']);
             $post['tb_rpjmd_kegiatan_th2_target_realisasi'] = $this->fungsi->convert_to_number($post['tb_rpjmd_kegiatan_th2_target_realisasi']);
             $post['tb_rpjmd_kegiatan_th3_target_realisasi'] = $this->fungsi->convert_to_number($post['tb_rpjmd_kegiatan_th3_target_realisasi']);
@@ -105,8 +105,8 @@ class KegiatanModel extends CI_Model
                 'tb_rpjmd_kegiatan_th5_target_realisasi' => $post['tb_rpjmd_kegiatan_th5_target_realisasi'],
                 'tb_rpjmd_kegiatan_th_awal_target_kinerja' => $post['tb_rpjmd_kegiatan_th_awal_target_kinerja'],
                 'tb_rpjmd_kegiatan_th_awal_target_realisasi' => $post['tb_rpjmd_kegiatan_th_awal_target_realisasi'],
-                'tb_rpjmd_kegiatan_th_akhir_target_kinerja' => $post['tb_rpjmd_kegiatan_th_akhir_target_kinerja'],
-                'tb_rpjmd_kegiatan_th_akhir_target_realisasi' => $post['tb_rpjmd_kegiatan_th_akhir_target_realisasi'],
+                // 'tb_rpjmd_kegiatan_th_akhir_target_kinerja' => $post['tb_rpjmd_kegiatan_th_akhir_target_kinerja'],
+                // 'tb_rpjmd_kegiatan_th_akhir_target_realisasi' => $post['tb_rpjmd_kegiatan_th_akhir_target_realisasi'],
                 'id_tb_satuan' => $post['id_tb_satuan'],
             );
             $status = $this->db->insert($this->table, $data);
@@ -131,7 +131,7 @@ class KegiatanModel extends CI_Model
         if($this->cekInput($post)){
 
             $post['tb_rpjmd_kegiatan_th_awal_target_realisasi'] = $this->fungsi->convert_to_number($post['tb_rpjmd_kegiatan_th_awal_target_realisasi']);
-            $post['tb_rpjmd_kegiatan_th_akhir_target_realisasi'] = $this->fungsi->convert_to_number($post['tb_rpjmd_kegiatan_th_akhir_target_realisasi']);
+            // $post['tb_rpjmd_kegiatan_th_akhir_target_realisasi'] = $this->fungsi->convert_to_number($post['tb_rpjmd_kegiatan_th_akhir_target_realisasi']);
             $post['tb_rpjmd_kegiatan_th1_target_realisasi'] = $this->fungsi->convert_to_number($post['tb_rpjmd_kegiatan_th1_target_realisasi']);
             $post['tb_rpjmd_kegiatan_th2_target_realisasi'] = $this->fungsi->convert_to_number($post['tb_rpjmd_kegiatan_th2_target_realisasi']);
             $post['tb_rpjmd_kegiatan_th3_target_realisasi'] = $this->fungsi->convert_to_number($post['tb_rpjmd_kegiatan_th3_target_realisasi']);
@@ -153,8 +153,8 @@ class KegiatanModel extends CI_Model
                 'tb_rpjmd_kegiatan_th5_target_realisasi' => $post['tb_rpjmd_kegiatan_th5_target_realisasi'],
                 'tb_rpjmd_kegiatan_th_awal_target_kinerja' => $post['tb_rpjmd_kegiatan_th_awal_target_kinerja'],
                 'tb_rpjmd_kegiatan_th_awal_target_realisasi' => $post['tb_rpjmd_kegiatan_th_awal_target_realisasi'],
-                'tb_rpjmd_kegiatan_th_akhir_target_kinerja' => $post['tb_rpjmd_kegiatan_th_akhir_target_kinerja'],
-                'tb_rpjmd_kegiatan_th_akhir_target_realisasi' => $post['tb_rpjmd_kegiatan_th_akhir_target_realisasi'],
+                // 'tb_rpjmd_kegiatan_th_akhir_target_kinerja' => $post['tb_rpjmd_kegiatan_th_akhir_target_kinerja'],
+                // 'tb_rpjmd_kegiatan_th_akhir_target_realisasi' => $post['tb_rpjmd_kegiatan_th_akhir_target_realisasi'],
                 'id_tb_satuan' => $post['id_tb_satuan'],
             );
 

@@ -81,14 +81,14 @@
                         <label>Target Realisasi Tahun 5</label>
                         <input name="tb_rpjmd_program_th5_target_realisasi" onchange="inputToRupiah(this)" type="text" class="form-control" required>
                     </div>
-                    <div class="position-relative form-group">
+                    <!-- <div class="position-relative form-group">
                         <label>Akhir Kinerja</label>
                         <input name="tb_rpjmd_program_th_akhir_target_kinerja" type="text" class="form-control" required>
                     </div>
                     <div class="position-relative form-group">
                         <label>Akhir Pagu</label>
                         <input name="tb_rpjmd_program_th_akhir_target_realisasi" onchange="inputToRupiah(this)" type="text" class="form-control" required>
-                    </div>
+                    </div> -->
                 </form>
             </div>
             <div class="modal-footer">
@@ -145,6 +145,11 @@
                         +'-'+element['tb_sub_unit_kode']
                         +'-'+element['tb_program_kode'];
             kodeShow = element['tb_program_kode'];
+            let realisasiAkhir = parseInt(element['tb_rpjmd_program_th1_target_realisasi'])
+                                + parseInt(element['tb_rpjmd_program_th2_target_realisasi'])
+                                + parseInt(element['tb_rpjmd_program_th3_target_realisasi'])
+                                + parseInt(element['tb_rpjmd_program_th4_target_realisasi'])
+                                + parseInt(element['tb_rpjmd_program_th5_target_realisasi']);
             tempData = [
                 no,
                 kodeShow,
@@ -164,7 +169,7 @@
                 element['tb_rpjmd_program_th5_target_kinerja'],
                 convertToRupiah(element['tb_rpjmd_program_th5_target_realisasi']),
                 element['tb_rpjmd_program_th_akhir_target_kinerja'],
-                convertToRupiah(element['tb_rpjmd_program_th_akhir_target_realisasi']),
+                convertToRupiah(realisasiAkhir),
                 '<a class="btn btn-info"  href="#" onclick="setUpdate(\''+kodeOneData+'\')" data-toggle="modal" data-target="#modal-form" ><i class="fa fa-edit"></i></a>'+
                 '<a class="btn btn-danger"  href="#"  data-setFunction="doDelete(\''+kodeOneData+'\')" data-judul="Hapus Data!" data-isi="Apakah anda yakin menghapus data?" onclick="setPesan(this)" data-toggle="modal" data-target="#modal-pesan"><i class="fa fa-trash"></i></a>',
             ]

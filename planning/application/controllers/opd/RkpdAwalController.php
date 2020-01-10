@@ -1,31 +1,31 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class PenggunaController extends CI_Controller {
+class RkpdAwalController extends CI_Controller {
     
     private $levelArr;
 
 	public function __construct()
     {
 		parent::__construct();
-        $this->load->model('data/PenggunaModel');
+        $this->load->model('opd/ProgramModel');
         $this->load->library('Filter');
         $this->load->library('Fungsi');
-        $this->levelArr = array(1,2,3);
+        $this->levelArr = array(1,3);
     }
 
     public function view(){
         $this->filter->cekLoginOut($this->levelArr);
         
         $data = array();
-        $data['judul'] = "Data Pengguna";
-
+        $data['judul'] = "Data Program";
         $this->load->model('rpjmd/DataModel');
         $data['dataRpjmd'] = $this->DataModel->getRowVisi();
+        $data['dataSasaran'] = $this->DataModel->getAllSasaran();
         $data['dataOpd'] = $this->DataModel->getAllOpd();
 
-        $file['content'] = $this->load->view('components/data-pengguna/content', $data, true);
-        $file['script'] = $this->load->view('components/data-pengguna/script', $data, true);
+        $file['content'] = $this->load->view('components-opd/rkpd-awal/content', $data, true);
+        $file['script'] = $this->load->view('components-opd/rkpd-awal/script', $data, true);
         $this->load->view('includes/layout', $file);
 	}
 
@@ -39,9 +39,9 @@ class PenggunaController extends CI_Controller {
         $status = $this->filter->cekLogin($this->levelArr);
         
 		if($status){
-            $data = $this->PenggunaModel->getAll($post);
-            $jumDataAll = $this->PenggunaModel->getCount($post);
-            $jumlahDatainPage = $this->PenggunaModel->getJumlahInPage();
+            $data = $this->ProgramModel->getAll($post);
+            $jumDataAll = $this->ProgramModel->getCount($post);
+            $jumlahDatainPage = $this->ProgramModel->getJumlahInPage();
             $jumlahPage = ceil($jumDataAll/$jumlahDatainPage);
 		}
 
@@ -63,7 +63,7 @@ class PenggunaController extends CI_Controller {
 			'status' => false,
         );
         if($status){
-            $result = $this->PenggunaModel->$action($post);
+            $result = $this->ProgramModel->$action($post);
         }
         $kirim = $result;
 		echo json_encode($kirim);

@@ -26,7 +26,7 @@
 
 <body>
     <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
-        <div class="app-header header-shadow bg-focus header-text-light">
+        <div class="app-header header-shadow bg-<?=$this->session->level==2?'focus':'night-sky'?> header-text-light">
             <div class="app-header__logo">
                 <div class="logo-src"></div>
                 <div class="header__pane ml-auto">
@@ -77,9 +77,12 @@
             </div>
         </div>        
         <div class="ui-theme-settings">
+            <!-- ubah warna -->
+            <?php if($this->session->level == 1){ ?>
             <button type="button" id="TooltipDemo" class="btn-open-options btn btn-warning">
                 <i class="fa fa-cog fa-w-16 fa-spin fa-2x"></i>
             </button>
+            <?php } ?>
             <div class="theme-settings__inner">
                 <div class="scrollbar-container">
                     <div class="theme-settings__options-wrapper">
@@ -356,7 +359,7 @@
             </div>
         </div>       
             <div class="app-main">
-                <div class="app-sidebar sidebar-shadow bg-focus sidebar-text-light">
+                <div class="app-sidebar sidebar-shadow bg-<?=$this->session->level==2?'focus':'midnight-bloom'?> sidebar-text-light">
                     <div class="app-header__logo">
                         <div class="logo-src"></div>
                         <div class="header__pane ml-auto">
@@ -397,12 +400,15 @@
                                     </a>
                                 </li>
                                 <li class="app-sidebar__heading">Penyusunan</li>
+                                <?php if(in_array($this->session->level, array(1,2))){ ?>
                                 <li>
                                     <a href="<?=base_url()?>rpjmd/penyusunan/misi">
                                         <i class="metismenu-icon pe-7s-network"></i>
                                         Penyusunan
                                     </a>
                                 </li>
+                                <?php } ?>
+                                <?php if(in_array($this->session->level, array(1,3))){ ?>
                                 <li>
                                     <a href="<?=base_url()?>renstra/penyusunan/program">
                                         <i class="metismenu-icon pe-7s-network"></i>
@@ -415,6 +421,40 @@
                                         Penyusunan LRA
                                     </a>
                                 </li>
+                                <?php } ?>
+                                <li>
+                                    <a href="#">
+                                        <i class="metismenu-icon pe-7s-diskette"></i>
+                                        RKPD
+                                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <a href="<?=base_url()?>opd/penyusunan/rkpd-awal">
+                                                <i class="metismenu-icon"></i>
+                                                Rancangan Awal
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="<?=base_url()?>opd/penyusunan/rkpd-penetapan">
+                                                <i class="metismenu-icon"></i>
+                                                Penetaan
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="<?=base_url()?>opd/penyusunan/rkpd-perubahan">
+                                                <i class="metismenu-icon"></i>
+                                                Perubahan
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="<?=base_url()?>opd/penyusunan/rkpd-realisasi">
+                                                <i class="metismenu-icon"></i>
+                                                Hasil Realisasi
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
                                 <li>
                                     <a href="#">
                                         <i class="metismenu-icon pe-7s-diskette"></i>
@@ -422,20 +462,25 @@
                                         <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                     </a>
                                     <ul>
+                                        <?php if(in_array($this->session->level, array(1,2))){ ?>
                                         <li>
                                             <a href="<?=base_url()?>laporan/rpjmd">
                                                 <i class="metismenu-icon"></i>
                                                 RPJMD
                                             </a>
                                         </li>
+                                        <?php } ?>
+                                        <?php if(in_array($this->session->level, array(1,2,3))){ ?>
                                         <li>
                                             <a href="<?=base_url()?>laporan/rkpd">
                                                 <i class="metismenu-icon"></i>
                                                 RKPD
                                             </a>
                                         </li>
+                                        <?php } ?>
                                     </ul>
                                 </li>
+                                <?php if(in_array($this->session->level, array(1,2))){ ?>
                                 <li class="app-sidebar__heading">Pengaturan</li>
                                 <li>
                                     <a href="<?=base_url()?>pengaturan/data/pengguna">
@@ -443,12 +488,12 @@
                                         Pengguna
                                     </a>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <a href="<?=base_url()?>pengaturan/rkpd">
                                         <i class="metismenu-icon pe-7s-users"></i>
                                         Status RKPD
                                     </a>
-                                </li>
+                                </li> -->
                                 <li>
                                     <a href="<?=base_url()?>rpjmd/kota">
                                         <i class="metismenu-icon pe-7s-diamond"></i>
@@ -456,26 +501,33 @@
                                         <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                     </a>
                                     <ul>
-                                        <li>
+                                        <!-- <li>
                                             <a href="<?=base_url()?>pengaturan/data/opd">
                                                 <i class="metismenu-icon"></i>
                                                 OPD
                                             </a>
-                                        </li>
+                                        </li> -->
                                         <li>
                                             <a href="<?=base_url()?>pengaturan/data/satuan">
                                                 <i class="metismenu-icon"></i>
                                                 Satuan
                                             </a>
                                         </li>
-                                        <li>
+                                        <!-- <li>
                                             <a href="<?=base_url()?>pengaturan/data/sumber-dana">
                                                 <i class="metismenu-icon"></i>
                                                 Sumber Dana
                                             </a>
-                                        </li>
+                                        </li> -->
                                     </ul>
                                 </li>
+                                <li>
+                                    <a href="<?=base_url()?>status/view">
+                                        <i class="metismenu-icon pe-7s-ribbon"></i>
+                                        Set Status
+                                    </a>
+                                </li>
+                                <?php } ?>
                             </ul>
                         </div>
                     </div>
@@ -699,7 +751,6 @@ toastr.options = {
   "hideMethod": "fadeOut"
 }
 
-$(".select2").select2();
 
 </script>
 
@@ -724,5 +775,10 @@ $(".select2").select2();
 </div>
     
     <?=@$script?>
+
+<script>
+
+$(".select2").select2();
+</script>
 </body>
 </html>

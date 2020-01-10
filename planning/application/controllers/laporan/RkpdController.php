@@ -7,7 +7,7 @@ class RkpdController extends CI_Controller {
     {
 		parent::__construct();
         $this->load->library('Filter');
-        $this->levelArr = array(1,3);
+        $this->levelArr = array(1,2,3);
     }
 
     public function view(){
@@ -17,6 +17,7 @@ class RkpdController extends CI_Controller {
         $data['judul'] = "Laporan RKPD";
         $this->load->model('rpjmd/DataModel');
         $data['dataRpjmd'] = $this->DataModel->getRowVisi();
+        $data['dataOpd'] = $this->DataModel->getAllOpd();
 
         $file['content'] = $this->load->view('components/laporan-rkpd/content', $data, true);
         $file['script'] = $this->load->view('components/laporan-rkpd/script', $data, true);

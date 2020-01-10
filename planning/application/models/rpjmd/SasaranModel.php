@@ -47,6 +47,16 @@ class SasaranModel extends CI_Model
         $pesan = "Gagal Menambah Data";
         $status = False;
         if($this->cekInput($post)){
+
+            $post['tb_rpjmd_sasaran_th_awal_target_realisasi'] = $this->fungsi->convert_to_number($post['tb_rpjmd_sasaran_th_awal_target_realisasi']);
+            $post['tb_rpjmd_sasaran_th1_target_realisasi'] = $this->fungsi->convert_to_number($post['tb_rpjmd_sasaran_th1_target_realisasi']);
+            $post['tb_rpjmd_sasaran_th2_target_realisasi'] = $this->fungsi->convert_to_number($post['tb_rpjmd_sasaran_th2_target_realisasi']);
+            $post['tb_rpjmd_sasaran_th3_target_realisasi'] = $this->fungsi->convert_to_number($post['tb_rpjmd_sasaran_th3_target_realisasi']);
+            $post['tb_rpjmd_sasaran_th4_target_realisasi'] = $this->fungsi->convert_to_number($post['tb_rpjmd_sasaran_th4_target_realisasi']);
+            $post['tb_rpjmd_sasaran_th5_target_realisasi'] = $this->fungsi->convert_to_number($post['tb_rpjmd_sasaran_th5_target_realisasi']);
+            // $post['tb_rpjmd_sasaran_th_akhir_target_realisasi'] = $this->fungsi->convert_to_number($post['tb_rpjmd_sasaran_th_akhir_target_realisasi']);
+
+
             $kode = explode("-", $post['kode']);
             $data = array(
                 'id_tb_rpjmd' => $this->session->rpjmd,
@@ -54,6 +64,21 @@ class SasaranModel extends CI_Model
                 'tb_rpjmd_tujuan_kode' => $kode[1],
                 'tb_rpjmd_sasaran_kode' => $post['tb_rpjmd_sasaran_kode'],
                 'tb_rpjmd_sasaran_nama' => $post['tb_rpjmd_sasaran_nama'],
+                'tb_rpjmd_sasaran_indikator' => $post['tb_rpjmd_sasaran_indikator'],
+                'tb_rpjmd_sasaran_th_awal_target_kinerja' => $post['tb_rpjmd_sasaran_th_awal_target_kinerja'],
+                'tb_rpjmd_sasaran_th_awal_target_realisasi' => $post['tb_rpjmd_sasaran_th_awal_target_realisasi'],
+                'tb_rpjmd_sasaran_th1_target_kinerja' => $post['tb_rpjmd_sasaran_th1_target_kinerja'],
+                'tb_rpjmd_sasaran_th1_target_realisasi' => $post['tb_rpjmd_sasaran_th1_target_realisasi'],
+                'tb_rpjmd_sasaran_th2_target_kinerja' => $post['tb_rpjmd_sasaran_th2_target_kinerja'],
+                'tb_rpjmd_sasaran_th2_target_realisasi' => $post['tb_rpjmd_sasaran_th2_target_realisasi'],
+                'tb_rpjmd_sasaran_th3_target_kinerja' => $post['tb_rpjmd_sasaran_th3_target_kinerja'],
+                'tb_rpjmd_sasaran_th3_target_realisasi' => $post['tb_rpjmd_sasaran_th3_target_realisasi'],
+                'tb_rpjmd_sasaran_th4_target_kinerja' => $post['tb_rpjmd_sasaran_th4_target_kinerja'],
+                'tb_rpjmd_sasaran_th4_target_realisasi' => $post['tb_rpjmd_sasaran_th4_target_realisasi'],
+                'tb_rpjmd_sasaran_th5_target_kinerja' => $post['tb_rpjmd_sasaran_th5_target_kinerja'],
+                'tb_rpjmd_sasaran_th5_target_realisasi' => $post['tb_rpjmd_sasaran_th5_target_realisasi'],
+                // 'tb_rpjmd_sasaran_th_akhir_target_kinerja' => $post['tb_rpjmd_sasaran_th_akhir_target_kinerja'],
+                // 'tb_rpjmd_sasaran_th_akhir_target_realisasi' => $post['tb_rpjmd_sasaran_th_akhir_target_realisasi'],
             );
             $status = $this->db->insert($this->table, $data);
 
@@ -76,9 +101,32 @@ class SasaranModel extends CI_Model
         
         if($this->cekInput($post)){
 
+            $post['tb_rpjmd_sasaran_th_awal_target_realisasi'] = $this->fungsi->convert_to_number($post['tb_rpjmd_sasaran_th_awal_target_realisasi']);
+            $post['tb_rpjmd_sasaran_th1_target_realisasi'] = $this->fungsi->convert_to_number($post['tb_rpjmd_sasaran_th1_target_realisasi']);
+            $post['tb_rpjmd_sasaran_th2_target_realisasi'] = $this->fungsi->convert_to_number($post['tb_rpjmd_sasaran_th2_target_realisasi']);
+            $post['tb_rpjmd_sasaran_th3_target_realisasi'] = $this->fungsi->convert_to_number($post['tb_rpjmd_sasaran_th3_target_realisasi']);
+            $post['tb_rpjmd_sasaran_th4_target_realisasi'] = $this->fungsi->convert_to_number($post['tb_rpjmd_sasaran_th4_target_realisasi']);
+            $post['tb_rpjmd_sasaran_th5_target_realisasi'] = $this->fungsi->convert_to_number($post['tb_rpjmd_sasaran_th5_target_realisasi']);
+            // $post['tb_rpjmd_sasaran_th_akhir_target_realisasi'] = $this->fungsi->convert_to_number($post['tb_rpjmd_sasaran_th_akhir_target_realisasi']);
+
             $data = array(
                 'tb_rpjmd_sasaran_kode' => $post['tb_rpjmd_sasaran_kode'],
                 'tb_rpjmd_sasaran_nama' => $post['tb_rpjmd_sasaran_nama'],
+                'tb_rpjmd_sasaran_indikator' => $post['tb_rpjmd_sasaran_indikator'],
+                'tb_rpjmd_sasaran_th_awal_target_kinerja' => $post['tb_rpjmd_sasaran_th_awal_target_kinerja'],
+                'tb_rpjmd_sasaran_th_awal_target_realisasi' => $post['tb_rpjmd_sasaran_th_awal_target_realisasi'],
+                'tb_rpjmd_sasaran_th1_target_kinerja' => $post['tb_rpjmd_sasaran_th1_target_kinerja'],
+                'tb_rpjmd_sasaran_th1_target_realisasi' => $post['tb_rpjmd_sasaran_th1_target_realisasi'],
+                'tb_rpjmd_sasaran_th2_target_kinerja' => $post['tb_rpjmd_sasaran_th2_target_kinerja'],
+                'tb_rpjmd_sasaran_th2_target_realisasi' => $post['tb_rpjmd_sasaran_th2_target_realisasi'],
+                'tb_rpjmd_sasaran_th3_target_kinerja' => $post['tb_rpjmd_sasaran_th3_target_kinerja'],
+                'tb_rpjmd_sasaran_th3_target_realisasi' => $post['tb_rpjmd_sasaran_th3_target_realisasi'],
+                'tb_rpjmd_sasaran_th4_target_kinerja' => $post['tb_rpjmd_sasaran_th4_target_kinerja'],
+                'tb_rpjmd_sasaran_th4_target_realisasi' => $post['tb_rpjmd_sasaran_th4_target_realisasi'],
+                'tb_rpjmd_sasaran_th5_target_kinerja' => $post['tb_rpjmd_sasaran_th5_target_kinerja'],
+                'tb_rpjmd_sasaran_th5_target_realisasi' => $post['tb_rpjmd_sasaran_th5_target_realisasi'],
+                // 'tb_rpjmd_sasaran_th_akhir_target_kinerja' => $post['tb_rpjmd_sasaran_th_akhir_target_kinerja'],
+                // 'tb_rpjmd_sasaran_th_akhir_target_realisasi' => $post['tb_rpjmd_sasaran_th_akhir_target_realisasi'],
             );
 
             $kode = explode("-", $post['kode']);
