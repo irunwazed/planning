@@ -11,7 +11,6 @@ class DataModel extends CI_Model{
         $this->db->where('id_tb_rpjmd', $id_rpjmd);
         $data = $this->db->get('tb_rpjmd')->row();
         return $data;
-
     }
     
     public function getJumlahOpd(){

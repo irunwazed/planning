@@ -14,6 +14,7 @@ class Rek5Model extends CI_Model
         
                                     
         $this->db->join('tb_rpjmd', 'tb_rpjmd.id_tb_rpjmd = '.$this->table.'.id_tb_rpjmd', 'left');
+        $this->db->join('tb_sumber_dana', 'tb_sumber_dana.id_tb_sumber_dana = '.$this->table.'.id_tb_sumber_dana', 'left');
         $this->db->join('tb_rekening5', 'tb_rekening5.tb_rekening1_kode = '.$this->table.'.tb_rekening1_kode
                                         AND tb_rekening5.tb_rekening2_kode = '.$this->table.'.tb_rekening2_kode
                                         AND tb_rekening5.tb_rekening3_kode = '.$this->table.'.tb_rekening3_kode
@@ -21,22 +22,26 @@ class Rek5Model extends CI_Model
                                         AND tb_rekening5.tb_rekening5_kode = '.$this->table.'.tb_rekening5_kode', 'left');
         
         $this->db->where($this->table.'.id_tb_rpjmd', $this->session->rpjmd);
+        $this->db->where($this->table.'.tb_monev_lra_tahun', $this->session->tahun);
 
         
         $kode = explode("-", $post['kode']);
-        $this->db->where($this->table.'.tb_monev_lra_kode', $kode[0]);
-        $this->db->where($this->table.'.tb_rekening1_kode', $kode[1]);
-        $this->db->where($this->table.'.tb_rekening2_kode', $kode[2]);
-        $this->db->where($this->table.'.tb_program_kode', $kode[3]);
-        $this->db->where($this->table.'.tb_kegiatan_kode', $kode[4]);
-        $this->db->where($this->table.'.tb_rekening3_kode', $kode[5]);
-        $this->db->where($this->table.'.tb_rekening4_kode', $kode[6]);
+        $this->db->where($this->table.'.tb_rekening1_kode', 5);
+        $this->db->where($this->table.'.tb_rekening2_kode', 2);
+        $this->db->where($this->table.'.tb_program_kode', $kode[0]);
+        $this->db->where($this->table.'.tb_kegiatan_kode', $kode[1]);
+        $this->db->where($this->table.'.tb_rekening3_kode', $kode[2]);
+        $this->db->where($this->table.'.tb_rekening4_kode', $kode[3]);
 
         $kodeOpd = explode("-", $this->session->kodeOpd);
         $this->db->where($this->table.'.tb_urusan_kode', $kodeOpd[0]);
         $this->db->where($this->table.'.tb_bidang_kode', $kodeOpd[1]);
         $this->db->where($this->table.'.tb_unit_kode', $kodeOpd[2]);
         $this->db->where($this->table.'.tb_sub_unit_kode', $kodeOpd[3]);
+
+        if(@$post['bulan']){
+            $this->db->where($this->table.'.tb_monev_lra_rek5_bulan', $post['bulan']);
+        }
         
     }
 
@@ -74,28 +79,33 @@ class Rek5Model extends CI_Model
             $kodeOpd = explode("-", $this->session->kodeOpd);
             $kode = explode("-", $post['kode']);
             $data = array(
-                'tb_monev_lra_kode' => $kode[0],
+                'tb_monev_lra_tahun' => $this->session->tahun,
                 'id_tb_rpjmd' => $this->session->rpjmd,
                 'tb_urusan_kode' => $kodeOpd[0],
                 'tb_bidang_kode' => $kodeOpd[1],
                 'tb_unit_kode' => $kodeOpd[2],
                 'tb_sub_unit_kode' => $kodeOpd[3],
-                'tb_rekening1_kode' => $kode[1],
-                'tb_rekening2_kode' => $kode[2],
-                'tb_program_kode' => $kode[3],
-                'tb_kegiatan_kode' => $kode[4],
-                'tb_rekening3_kode' => $kode[5],
-                'tb_rekening4_kode' => $kode[6],
+                'tb_rekening1_kode' => 5,
+                'tb_rekening2_kode' => 2,
+                'tb_program_kode' => $kode[0],
+                'tb_kegiatan_kode' => $kode[1],
+                'tb_rekening3_kode' => $kode[2],
+                'tb_rekening4_kode' => $kode[3],
                 'tb_rekening5_kode' => $post['tb_rekening5_kode'],
+                'tb_monev_lra_rek5_bulan' => $post['tb_monev_lra_rek5_bulan'],
                 'tb_monev_lra_rek5_anggaran' => $post['tb_monev_lra_rek5_anggaran'],
                 'tb_monev_lra_rek5_realisasi' => $post['tb_monev_lra_rek5_realisasi'],
                 'tb_monev_lra_rek5_fisik' => $post['tb_monev_lra_rek5_fisik'],
                 'tb_monev_lra_rek5_pelaksana' => $post['tb_monev_lra_rek5_pelaksana'],
+                'id_tb_sumber_dana' => $post['id_tb_sumber_dana'],
+                'tb_monev_lra_rek5_lokasi' => $post['tb_monev_lra_rek5_lokasi'],
             );
             $status = $this->db->insert($this->table, $data);
 
             if($status)
                 $pesan = "Berhasil Menambah Data";
+        }else{
+            $pesan = "Anda tidak dapat mengakses data. Mohon Hubungi Admin.";
         }
 
         $kirim = array(
@@ -118,30 +128,35 @@ class Rek5Model extends CI_Model
             
             $data = array(
                 'tb_rekening5_kode' => $post['tb_rekening5_kode'],
+                'tb_monev_lra_rek5_bulan' => $post['tb_monev_lra_rek5_bulan'],
                 'tb_monev_lra_rek5_anggaran' => $post['tb_monev_lra_rek5_anggaran'],
                 'tb_monev_lra_rek5_realisasi' => $post['tb_monev_lra_rek5_realisasi'],
                 'tb_monev_lra_rek5_fisik' => $post['tb_monev_lra_rek5_fisik'],
                 'tb_monev_lra_rek5_pelaksana' => $post['tb_monev_lra_rek5_pelaksana'],
+                'id_tb_sumber_dana' => $post['id_tb_sumber_dana'],
+                'tb_monev_lra_rek5_lokasi' => $post['tb_monev_lra_rek5_lokasi'],
             );
 
             $kodeOpd = explode("-", $this->session->kodeOpd);
             $kode = explode("-", $post['kode']);
             $this->db->where('id_tb_rpjmd', $this->session->rpjmd);
-            $this->db->where('tb_monev_lra_kode', $kode[0]);
+            $this->db->where('tb_monev_lra_tahun', $this->session->tahun);
             $this->db->where('tb_urusan_kode', $kodeOpd[0]);
             $this->db->where('tb_bidang_kode', $kodeOpd[1]);
             $this->db->where('tb_unit_kode', $kodeOpd[2]);
             $this->db->where('tb_sub_unit_kode', $kodeOpd[3]);
-            $this->db->where('tb_rekening1_kode', $kode[1]);
-            $this->db->where('tb_rekening2_kode', $kode[2]);
-            $this->db->where('tb_program_kode', $kode[3]);
-            $this->db->where('tb_kegiatan_kode', $kode[4]);
-            $this->db->where('tb_rekening3_kode', $kode[5]);
-            $this->db->where('tb_rekening4_kode', $kode[6]);
-            $this->db->where('tb_rekening5_kode', $kode[7]);
+            $this->db->where('tb_rekening1_kode', 5);
+            $this->db->where('tb_rekening2_kode', 2);
+            $this->db->where('tb_program_kode', $kode[0]);
+            $this->db->where('tb_kegiatan_kode', $kode[1]);
+            $this->db->where('tb_rekening3_kode', $kode[2]);
+            $this->db->where('tb_rekening4_kode', $kode[3]);
+            $this->db->where('tb_rekening5_kode', $kode[4]);
             $status = $this->db->update($this->table, $data);
             if($status)
                 $pesan = "Berhasil Mengubah Data";
+        }else{
+            $pesan = "Anda tidak dapat mengakses data. Mohon Hubungi Admin.";
         }
 
         $kirim = array(
@@ -160,21 +175,23 @@ class Rek5Model extends CI_Model
             $kodeOpd = explode("-", $this->session->kodeOpd);
             $kode = explode("-", $post['kode']);
             $this->db->where('id_tb_rpjmd', $this->session->rpjmd);
-            $this->db->where('tb_monev_lra_kode', $kode[0]);
+            $this->db->where('tb_monev_lra_tahun', $this->session->tahun);
             $this->db->where('tb_urusan_kode', $kodeOpd[0]);
             $this->db->where('tb_bidang_kode', $kodeOpd[1]);
             $this->db->where('tb_unit_kode', $kodeOpd[2]);
             $this->db->where('tb_sub_unit_kode', $kodeOpd[3]);
-            $this->db->where('tb_rekening1_kode', $kode[1]);
-            $this->db->where('tb_rekening2_kode', $kode[2]);
-            $this->db->where('tb_program_kode', $kode[3]);
-            $this->db->where('tb_kegiatan_kode', $kode[4]);
-            $this->db->where('tb_rekening3_kode', $kode[5]);
-            $this->db->where('tb_rekening4_kode', $kode[6]);
-            $this->db->where('tb_rekening5_kode', $kode[7]);
+            $this->db->where('tb_rekening1_kode', 5);
+            $this->db->where('tb_rekening2_kode', 2);
+            $this->db->where('tb_program_kode', $kode[0]);
+            $this->db->where('tb_kegiatan_kode', $kode[1]);
+            $this->db->where('tb_rekening3_kode', $kode[2]);
+            $this->db->where('tb_rekening4_kode', $kode[3]);
+            $this->db->where('tb_rekening5_kode', $kode[4]);
             $status = $this->db->delete($this->table);
             if($status)
                 $pesan = "Berhasil Menghapus Data";
+        }else{
+            $pesan = "Anda tidak dapat mengakses data. Mohon Hubungi Admin.";
         }
 
         $kirim = array(
@@ -186,7 +203,16 @@ class Rek5Model extends CI_Model
     
     public function cekInput($post){
         
-        return true;
+        $this->db->where('id_tb_user', $this->session->id);
+        $data = $this->db->get('tb_user')->row();
+ 
+        $jalan = false;
+        $hak = json_decode(@$data->tb_user_hak, true);
+        if(@$hak['lra']['rek4'] && in_array($this->session->tahun, @$hak['lra']['tahun'])){
+            $jalan = true;
+        }
+
+        return $jalan;
     }
 
     

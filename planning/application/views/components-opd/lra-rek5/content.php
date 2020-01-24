@@ -1,5 +1,7 @@
 <?php
 $des = "";
+$bulanArr = ['', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni'
+, 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
 ?>
                     <div class="app-main__inner">
                         <div class="app-page-title" >
@@ -56,6 +58,16 @@ $des = "";
                                                         <td><?="(".@$dataLra->tb_rekening4_kode.") ".@$dataLra->tb_rekening4_nama?></td>
                                                     </tr>
                                                 </table>
+                                                <br>
+                                                <div class="position-relative form-group">
+                                                    <label>Pilih Bulan</label>
+                                                    <select name="bulan" class="form-control select2" style="width:20%" required>
+                                                        <option value="">-= Pilih Bulan =-</option>
+                                                        <?php for($i = 1; $i <= 12; $i++){ ?>
+                                                            <option value="<?=$i?>"><?=$bulanArr[$i]?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
                                             </div>
                                             <div class="page-title-wrapper">
                                                 <div class="page-title-actions">
@@ -71,10 +83,13 @@ $des = "";
                                                     <tr class="mytable-head">
                                                         <th rowspan="2" width="20" class="align-middle">No</th>
                                                         <th rowspan="2" width="20" class="align-middle">Kode</th>
+                                                        <th rowspan="2" class="align-middle">Bulan</th>
                                                         <th rowspan="2" class="align-middle">Nama</th>
                                                         <th colspan="2" class="align-middle">Capaian</th>
                                                         <th rowspan="2" class="align-middle">Fisik</th>
                                                         <th rowspan="2" class="align-middle">Pelaksana</th>
+                                                        <th rowspan="2" class="align-middle">Sumber Dana</th>
+                                                        <th rowspan="2" class="align-middle">Lokasi</th>
                                                         <th rowspan="2" width="80" class="align-middle">Aksi</th>
                                                     </tr>
                                                     <tr class="mytable-head">

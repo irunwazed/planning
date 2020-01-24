@@ -14,7 +14,7 @@ class RpjmdController extends CI_Controller {
         $this->filter->cekLoginOut($this->levelArr);
         
         $data = array();
-        $data['judul'] = "Laporan RKPD";
+        $data['judul'] = "Laporan RPJMD";
         $this->load->model('rpjmd/DataModel');
         $data['dataRpjmd'] = $this->DataModel->getRowVisi();
 
@@ -95,15 +95,13 @@ class RpjmdController extends CI_Controller {
 
     public function setData($post){
 
-        $data = $this->DataModel->getOpdKegiatan($this->session->kodeOpd, $post['jenis']);
-        
+        $data = $this->DataModel->getOpdKegiatan($this->session->kodeOpd, 1);
         $tb_rpjmd_sasaran_kode = 0;
         $tb_program_kode = 0;
         $tb_kegiatan_kode = 0;
 
         $indexSasaran = 1;
         $indexProgram = 1;
-
 
         $dataAll = array();
         $index = 0;
@@ -113,6 +111,23 @@ class RpjmdController extends CI_Controller {
 
                 $dataAll[$index] = $data[$i];
                 $dataAll[$index]['level'] = 1;
+
+                $kode = $dataAll[$index]['tb_rpjmd_misi_kode']
+                    ."-".$dataAll[$index]['tb_rpjmd_tujuan_kode']
+                    ."-".$dataAll[$index]['tb_rpjmd_sasaran_kode'];
+                $dataAll[$index]['indikator'] = $this->DataModel->getDataIndikatorSasaran($kode);
+                $dataAll[$index]['indikator_text'] = '';
+                $indikatorIndex = 1;
+                foreach($dataAll[$index]['indikator'] as $row){
+                    if(count($dataAll[$index]['indikator']) > 1){
+                        $indikatorNum = '('.$indikatorIndex.') ';
+                        $indikatorIndex++;
+                    }else{
+                        $indikatorNum = '';
+                    }
+                    $dataAll[$index]['indikator_text'] .= '<div>'.$indikatorNum.$row['tb_rpjmd_sasaran_indikator_nama'].'</div>';
+                }
+
                 $indexSasaran = $index;
                 $index++;
 
@@ -124,6 +139,26 @@ class RpjmdController extends CI_Controller {
 
                 $dataAll[$index] = $data[$i];
                 $dataAll[$index]['level'] = 2;
+                $kode = $dataAll[$index]['tb_rpjmd_misi_kode']
+                    ."-".$dataAll[$index]['tb_rpjmd_tujuan_kode']
+                    ."-".$dataAll[$index]['tb_rpjmd_sasaran_kode']
+                    ."-".$dataAll[$index]['tb_urusan_kode']
+                    ."-".$dataAll[$index]['tb_bidang_kode']
+                    ."-".$dataAll[$index]['tb_unit_kode']
+                    ."-".$dataAll[$index]['tb_sub_unit_kode']
+                    ."-".$dataAll[$index]['tb_program_kode'];
+                $dataAll[$index]['indikator'] = $this->DataModel->getDataIndikatorProgram($kode);
+                $dataAll[$index]['indikator_text'] = '';
+                $indikatorIndex = 1;
+                foreach($dataAll[$index]['indikator'] as $row){
+                    if(count($dataAll[$index]['indikator']) > 1){
+                        $indikatorNum = '('.$indikatorIndex.') ';
+                        $indikatorIndex++;
+                    }else{
+                        $indikatorNum = '';
+                    }
+                    $dataAll[$index]['indikator_text'] .= '<div>'.$indikatorNum.$row['tb_rpjmd_program_indikator_nama'].'</div>';
+                }
                 $indexProgram = $index;
                 $index++;
 
@@ -135,59 +170,86 @@ class RpjmdController extends CI_Controller {
             $dataAll[$index]['level'] = 3;
 
             $kode = $dataAll[$index]['id_tb_rpjmd']
-                ."-".$dataAll[$index]['tb_rpjmd_misi_kode']
-                ."-".$dataAll[$index]['tb_rpjmd_tujuan_kode']
-                ."-".$dataAll[$index]['tb_rpjmd_sasaran_kode']
                 ."-".$dataAll[$index]['tb_urusan_kode']
                 ."-".$dataAll[$index]['tb_bidang_kode']
                 ."-".$dataAll[$index]['tb_unit_kode']
                 ."-".$dataAll[$index]['tb_sub_unit_kode']
                 ."-".$dataAll[$index]['tb_program_kode']
                 ."-".$dataAll[$index]['tb_kegiatan_kode'];
+
             $capaian_semua = 0;
             $jumlah_tahun = 5;
-            for($i = 1; $i <= $jumlah_tahun; $i++){
-                $ulang = 12;
-                for($j = 1; $j <= $ulang; $j++){
+            $capaian_realisasi_semua = 0;
+            $target_realisasi_semua = 0;
+            for($tahunan = 1; $tahunan <= $jumlah_tahun; $tahunan++){
 
-                    // kegiatan
-                    $dataAll[$index]['bulanan_tahun'.$i] = $this->DataModel->getBulanan($kode, $post['jenis'], $i, $j);
-                    $dataAll[$index]['tb_rpjmd_kegiatan_th'.$i.'_capaian_kinerja'] = @$dataAll[$index]['bulanan_tahun'.$i][0]['tb_monev_bulanan_kinerja'] + @$dataAll[$index]['tb_rpjmd_kegiatan_th'.$i.'_capaian_kinerja'];
-                    $dataAll[$index]['tb_rpjmd_kegiatan_th'.$i.'_capaian_anggaran'] = @$dataAll[$index]['bulanan_tahun'.$i][0]['tb_monev_bulanan_anggaran'] + @$dataAll[$index]['tb_rpjmd_kegiatan_th'.$i.'_capaian_anggaran'];
-                    $dataAll[$index]['tb_rpjmd_kegiatan_th'.$i.'_capaian_realisasi'] = @$dataAll[$index]['bulanan_tahun'.$i][0]['tb_monev_bulanan_realisasi'] + @$dataAll[$index]['tb_rpjmd_kegiatan_th'.$i.'_capaian_realisasi'];
-
+                //indikator kegiatan
+                $kodeIndi = $dataAll[$index]['tb_rpjmd_misi_kode']
+                    ."-".$dataAll[$index]['tb_rpjmd_tujuan_kode']
+                    ."-".$dataAll[$index]['tb_rpjmd_sasaran_kode']
+                    ."-".$dataAll[$index]['tb_urusan_kode']
+                    ."-".$dataAll[$index]['tb_bidang_kode']
+                    ."-".$dataAll[$index]['tb_unit_kode']
+                    ."-".$dataAll[$index]['tb_sub_unit_kode']
+                    ."-".$dataAll[$index]['tb_program_kode']
+                    ."-".$dataAll[$index]['tb_kegiatan_kode'];
+                $dataAll[$index]['indikator'] = $this->DataModel->getDataIndikatorKegiatan($kodeIndi);
+                $dataAll[$index]['indikator_text'] = '';
+                $indikatorIndex = 1;
+                foreach($dataAll[$index]['indikator'] as $row){
+                    if(count($dataAll[$index]['indikator']) > 1){
+                        $indikatorNum = '('.$indikatorIndex.') ';
+                        $indikatorIndex++;
+                    }else{
+                        $indikatorNum = '';
+                    }
+                    $dataAll[$index]['indikator_text'] .= '<div>'.$indikatorNum.$row['tb_rpjmd_kegiatan_indikator_nama'].'</div>';
                 }
-                // kegiatan
-                $dataAll[$index]['tb_rpjmd_kegiatan_th'.$i.'_tingkat_capaian_realisasi'] = 100*$dataAll[$index]['tb_rpjmd_kegiatan_th'.$i.'_capaian_realisasi']/$dataAll[$index]['tb_rpjmd_kegiatan_th'.$i.'_target_realisasi'];
-                $dataAll[$index]['tb_rpjmd_kegiatan_th'.$i.'_tingkat_capaian_kinerja'] = 100*$dataAll[$index]['tb_rpjmd_kegiatan_th'.$i.'_capaian_kinerja']/$dataAll[$index]['tb_rpjmd_kegiatan_th'.$i.'_target_kinerja'];
-                $dataAll[$index]['tb_rpjmd_kegiatan_th_akhir2_target_kinerja'] = @$dataAll[$index]['tb_rpjmd_kegiatan_th'.$i.'_target_kinerja'] + @$dataAll[$index]['tb_rpjmd_kegiatan_th_akhir2_target_kinerja'];
-                $dataAll[$index]['tb_rpjmd_kegiatan_th_akhir2_target_realisasi'] = @$dataAll[$index]['tb_rpjmd_kegiatan_th'.$i.'_target_realisasi'] + @$dataAll[$index]['tb_rpjmd_kegiatan_th_akhir2_target_realisasi'];
-                $dataAll[$index]['tb_rpjmd_kegiatan_th_akhir_capaian_kinerja'] = @$dataAll[$index]['tb_rpjmd_kegiatan_th'.$i.'_capaian_kinerja'] + @$dataAll[$index]['tb_rpjmd_kegiatan_th_akhir_capaian_kinerja'];
-                $dataAll[$index]['tb_rpjmd_kegiatan_th_akhir_capaian_realisasi'] = @$dataAll[$index]['tb_rpjmd_kegiatan_th'.$i.'_capaian_realisasi'] + @$dataAll[$index]['tb_rpjmd_kegiatan_th_akhir_capaian_realisasi'];
+
+
+                $dataAll[$index]['dataLra'.$tahunan] = $this->DataModel->getCapaian($kode, $tahunan);
+                $capaian_realisasi = 0;
+                $capaian_anggaran = 0;
+                for($j = 0; $j < count($dataAll[$index]['dataLra'.$tahunan]); $j++){
+                    $capaian_realisasi += $dataAll[$index]['dataLra'.$tahunan][$j]['tb_monev_lra_rek5_realisasi'];
+                    $capaian_anggaran += $dataAll[$index]['dataLra'.$tahunan][$j]['tb_monev_lra_rek5_anggaran'];
+                }
+                $target_realisasi = $dataAll[$index]['tb_rpjmd_kegiatan_th'.$tahunan.'_target_realisasi'];
+                $tingkat_capaian_realisasi = 100*$capaian_realisasi/$target_realisasi;
+
+                $capaian_realisasi_semua += $capaian_realisasi;
+                $target_realisasi_semua += $target_realisasi;
+                $dataAll[$index]['tb_rpjmd_kegiatan_th'.$tahunan.'_capaian_realisasi'] = $capaian_realisasi;
+                $dataAll[$index]['tb_rpjmd_kegiatan_th'.$tahunan.'_capaian_anggaran'] = $capaian_anggaran;
+                $dataAll[$index]['tb_rpjmd_kegiatan_th'.$tahunan.'_tingkat_capaian_realisasi'] = $tingkat_capaian_realisasi;
                 
                 //program
-                $dataAll[$indexProgram]['tb_rpjmd_program_th'.$i.'_capaian_realisasi'] = @$dataAll[$index]['tb_rpjmd_kegiatan_th'.$i.'_capaian_realisasi'] + @$dataAll[$indexProgram]['tb_rpjmd_program_th'.$i.'_capaian_realisasi'];
-                $dataAll[$indexProgram]['tb_rpjmd_program_th'.$i.'_capaian_kinerja'] = @$dataAll[$index]['tb_rpjmd_kegiatan_th'.$i.'_capaian_kinerja'] + @$dataAll[$indexProgram]['tb_rpjmd_program_th'.$i.'_capaian_kinerja'];
-
-                $dataAll[$indexProgram]['tb_rpjmd_program_th'.$i.'_tingkat_capaian_realisasi'] = 100*$dataAll[$indexProgram]['tb_rpjmd_program_th'.$i.'_capaian_realisasi']/$dataAll[$indexProgram]['tb_rpjmd_program_th'.$i.'_target_realisasi'];
-                $dataAll[$indexProgram]['tb_rpjmd_program_th'.$i.'_tingkat_capaian_kinerja'] = 100*$dataAll[$indexProgram]['tb_rpjmd_program_th'.$i.'_capaian_kinerja']/$dataAll[$indexProgram]['tb_rpjmd_program_th'.$i.'_target_kinerja'];
-
-                $dataAll[$indexProgram]['tb_rpjmd_program_th_akhir2_target_kinerja']  = @$dataAll[$indexProgram]['tb_rpjmd_program_th'.$i.'_target_kinerja'] + @$dataAll[$indexProgram]['tb_rpjmd_program_th_akhir2_target_kinerja'];
-                $dataAll[$indexProgram]['tb_rpjmd_program_th_akhir2_target_realisasi'] = @$dataAll[$indexProgram]['tb_rpjmd_program_th'.$i.'_target_realisasi'] + @$dataAll[$indexProgram]['tb_rpjmd_program_th_akhir2_target_realisasi'];
-
-
+                $dataAll[$indexProgram]['tb_rpjmd_program_th'.$tahunan.'_capaian_realisasi'] = $capaian_realisasi + @$dataAll[$indexProgram]['tb_rpjmd_program_th'.$tahunan.'_capaian_realisasi'];
             }
-            // kegiatan
-            $dataAll[$index]['tb_rpjmd_kegiatan_th_akhir_rasio_capaian_realisasi'] = 100*@$dataAll[$index]['tb_rpjmd_kegiatan_th_akhir_capaian_realisasi']/@$dataAll[$index]['tb_rpjmd_kegiatan_th_akhir2_target_realisasi'];
-            $dataAll[$index]['tb_rpjmd_kegiatan_th_akhir_rasio_capaian_kinerja'] = 100*@$dataAll[$index]['tb_rpjmd_kegiatan_th_akhir_capaian_kinerja']/(@$dataAll[$index]['tb_rpjmd_kegiatan_th_akhir2_target_kinerja']/$jumlah_tahun);
+
+            $capaian_realisasi_rasio = 0;
+            if($target_realisasi_semua > 0){
+                $capaian_realisasi_rasio =  100*$capaian_realisasi_semua/$target_realisasi_semua;
+            }
+
+            $dataAll[$index]['tb_rpjmd_kegiatan_th_akhir_target_realisasi'] = $target_realisasi_semua;
+            $dataAll[$index]['tb_rpjmd_kegiatan_th_akhir_capaian_realisasi'] = $capaian_realisasi_semua;
+            $dataAll[$index]['tb_rpjmd_kegiatan_th_akhir_rasio_capaian_realisasi'] = $capaian_realisasi_rasio;
 
             //program
-            $dataAll[$indexProgram]['tb_rpjmd_program_th_akhir_capaian_kinerja'] = @$dataAll[$index]['tb_rpjmd_kegiatan_th_akhir_capaian_kinerja'] + @$dataAll[$indexProgram]['tb_rpjmd_program_th_akhir_capaian_kinerja'];
-            $dataAll[$indexProgram]['tb_rpjmd_program_th_akhir_capaian_realisasi'] = @$dataAll[$index]['tb_rpjmd_kegiatan_th_akhir_capaian_realisasi'] + @$dataAll[$indexProgram]['tb_rpjmd_program_th_akhir_capaian_realisasi'];
+            $dataAll[$indexProgram]['tb_rpjmd_program_th_akhir_capaian_realisasi'] = $capaian_realisasi_semua + @$dataAll[$indexProgram]['tb_rpjmd_program_th_akhir_capaian_realisasi'];
+            
+            $dataAll[$indexProgram]['tb_rpjmd_program_th_akhir_target_realisasi'] = $dataAll[$indexProgram]['tb_rpjmd_program_th1_target_realisasi']
+                                                                                    + $dataAll[$indexProgram]['tb_rpjmd_program_th2_target_realisasi']
+                                                                                    + $dataAll[$indexProgram]['tb_rpjmd_program_th3_target_realisasi']
+                                                                                    + $dataAll[$indexProgram]['tb_rpjmd_program_th4_target_realisasi']
+                                                                                    + $dataAll[$indexProgram]['tb_rpjmd_program_th5_target_realisasi'];
 
-            $dataAll[$indexProgram]['tb_rpjmd_program_th_akhir_rasio_capaian_realisasi'] = 100*@$dataAll[$indexProgram]['tb_rpjmd_program_th_akhir_capaian_realisasi']/@$dataAll[$indexProgram]['tb_rpjmd_program_th_akhir2_target_realisasi'];
-            $dataAll[$indexProgram]['tb_rpjmd_program_th_akhir_rasio_capaian_kinerja'] = 100*@$dataAll[$indexProgram]['tb_rpjmd_program_th_akhir_capaian_kinerja']/(@$dataAll[$indexProgram]['tb_rpjmd_program_th_akhir2_target_kinerja']/$jumlah_tahun);
-
+            if(@$dataAll[$indexProgram]['tb_rpjmd_program_th_akhir_target_realisasi'] > 0){
+                $dataAll[$indexProgram]['tb_rpjmd_program_th_akhir_rasio_capaian_realisasi'] = 100*@$dataAll[$indexProgram]['tb_rpjmd_program_th_akhir_capaian_realisasi']/@$dataAll[$indexProgram]['tb_rpjmd_program_th_akhir_target_realisasi'];
+            }else{
+                $dataAll[$indexProgram]['tb_rpjmd_program_th_akhir_rasio_capaian_realisasi'] = 0;
+            }
 
             $index++;
         }

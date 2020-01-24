@@ -24,7 +24,7 @@ class Rek3Controller extends CI_Controller {
         $data['dataLra'] = $this->DataModel->getLraRek2Kegiatan($kode);
         
         $kode = explode("-", $kode);
-        $setKode = $kode[1]."-".$kode[2];
+        $setKode = "5-2";
         $data['dataRekening'] = $this->DataModel->getRekening3($setKode);
 
         $file['content'] = $this->load->view('components-opd/lra-rek3/content', $data, true);

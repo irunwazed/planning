@@ -14,15 +14,15 @@ class Rek2ProgramController extends CI_Controller {
         $this->levelArr = array(1,3);
     }
 
-    public function view($kode){
+    public function view(){
         $this->filter->cekLoginOut($this->levelArr);
         
         $data = array();
         $data['judul'] = "Data Rek 2 Program";
-        $data['kode'] = $kode;
         $this->load->model('rpjmd/DataModel');
+        $data['dataOpd'] = $this->DataModel->getAllOpd();
         $data['dataProgram'] = $this->DataModel->getProgram($this->session->kodeOpd);
-        $data['dataLra'] = $this->DataModel->getLraRek2($kode);
+        $data['dataLra'] = $this->DataModel->getLraRek2('5-2');
         // $data['dataRpjmd'] = $this->DataModel->getRowVisi();
 
         $file['content'] = $this->load->view('components-opd/lra-rek2-program/content', $data, true);

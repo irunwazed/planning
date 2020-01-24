@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 08, 2020 at 08:53 AM
+-- Generation Time: Jan 20, 2020 at 05:00 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -31,7 +31,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `tb_bidang` (
   `tb_urusan_kode` int(11) NOT NULL,
   `tb_bidang_kode` int(11) NOT NULL,
-  `tb_bidang_nama` varchar(250) DEFAULT NULL,
+  `tb_bidang_nama` text,
   `tb_fungsi_kode` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -113,7 +113,7 @@ CREATE TABLE `tb_dewan` (
 
 CREATE TABLE `tb_fungsi` (
   `tb_fungsi_kode` int(11) NOT NULL,
-  `tb_fungsi_nama` varchar(250) DEFAULT NULL
+  `tb_fungsi_nama` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -212,7 +212,7 @@ CREATE TABLE `tb_kegiatan` (
 --
 
 INSERT INTO `tb_kegiatan` (`tb_urusan_kode`, `tb_bidang_kode`, `tb_program_kode`, `tb_kegiatan_kode`, `tb_kegiatan_nama`) VALUES
-(1, 1, 1, 1, 'Penyediaan jasa surat penyurat'),
+(1, 1, 1, 1, 'Penyediaan jasa surat menyurat'),
 (1, 1, 1, 2, 'Penyediaan jasa komunikasi, sumber daya air dan listrik'),
 (1, 1, 1, 3, 'Penyediaan jasa peralatan dan perlengkapan kantor'),
 (1, 1, 1, 4, 'Penyediaan jasa jaminan pemeliharaan kesehatan PNS'),
@@ -3953,13 +3953,6 @@ CREATE TABLE `tb_monev_bulanan` (
   `tb_monev_bulanan_pelaksana` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `tb_monev_bulanan`
---
-
-INSERT INTO `tb_monev_bulanan` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_tujuan_kode`, `tb_rpjmd_sasaran_kode`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_program_kode`, `tb_kegiatan_kode`, `tb_monev_bulanan_kode`, `tb_monev_bulanan_tahun`, `tb_monev_bulanan_bulan`, `tb_monev_bulanan_kinerja`, `tb_monev_bulanan_anggaran`, `tb_monev_bulanan_realisasi`, `tb_monev_bulanan_fisik`, `tb_monev_bulanan_pelaksana`) VALUES
-(1, 1, 1, 1, 1, 1, 1, 1, 1, 7, 1, 1, 1, '0', 1919245436, 1282161250, 'fisik', 'pelaksana');
-
 -- --------------------------------------------------------
 
 --
@@ -3967,16 +3960,6 @@ INSERT INTO `tb_monev_bulanan` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_t
 --
 
 CREATE TABLE `tb_monev_bulanan_penetapan` (
-  `id_tb_rpjmd` int(11) NOT NULL,
-  `tb_rpjmd_misi_kode` int(11) NOT NULL,
-  `tb_rpjmd_tujuan_kode` int(11) NOT NULL,
-  `tb_rpjmd_sasaran_kode` int(11) NOT NULL,
-  `tb_urusan_kode` int(11) NOT NULL,
-  `tb_bidang_kode` int(11) NOT NULL,
-  `tb_unit_kode` int(11) NOT NULL,
-  `tb_sub_unit_kode` int(11) NOT NULL,
-  `tb_program_kode` int(11) NOT NULL,
-  `tb_kegiatan_kode` int(11) NOT NULL,
   `tb_monev_bulanan_kode` int(11) NOT NULL,
   `tb_monev_bulanan_tahun` int(11) DEFAULT NULL,
   `tb_monev_bulanan_bulan` tinyint(4) DEFAULT NULL,
@@ -3994,16 +3977,6 @@ CREATE TABLE `tb_monev_bulanan_penetapan` (
 --
 
 CREATE TABLE `tb_monev_bulanan_perubahan` (
-  `id_tb_rpjmd` int(11) NOT NULL,
-  `tb_rpjmd_misi_kode` int(11) NOT NULL,
-  `tb_rpjmd_tujuan_kode` int(11) NOT NULL,
-  `tb_rpjmd_sasaran_kode` int(11) NOT NULL,
-  `tb_urusan_kode` int(11) NOT NULL,
-  `tb_bidang_kode` int(11) NOT NULL,
-  `tb_unit_kode` int(11) NOT NULL,
-  `tb_sub_unit_kode` int(11) NOT NULL,
-  `tb_program_kode` int(11) NOT NULL,
-  `tb_kegiatan_kode` int(11) NOT NULL,
   `tb_monev_bulanan_kode` int(11) NOT NULL,
   `tb_monev_bulanan_tahun` int(11) DEFAULT NULL,
   `tb_monev_bulanan_bulan` tinyint(4) DEFAULT NULL,
@@ -4021,12 +3994,12 @@ CREATE TABLE `tb_monev_bulanan_perubahan` (
 --
 
 CREATE TABLE `tb_monev_lra_belanja_lokasi` (
-  `tb_monev_lra_kode` int(11) NOT NULL,
   `id_tb_rpjmd` int(11) NOT NULL,
   `tb_urusan_kode` int(11) NOT NULL,
   `tb_bidang_kode` int(11) NOT NULL,
   `tb_unit_kode` int(11) NOT NULL,
   `tb_sub_unit_kode` int(11) NOT NULL,
+  `tb_monev_lra_tahun` tinyint(4) NOT NULL,
   `tb_rekening1_kode` int(11) NOT NULL,
   `tb_rekening2_kode` int(11) NOT NULL,
   `tb_program_kode` int(11) NOT NULL,
@@ -4037,7 +4010,9 @@ CREATE TABLE `tb_monev_lra_belanja_lokasi` (
   `tb_kecamatan_kode` int(11) NOT NULL,
   `tb_deskel_kode` int(11) NOT NULL,
   `tb_deskel_level` tinyint(4) NOT NULL,
-  `tb_monev_lra_belanja_lokasi_ket` text
+  `tb_monev_lra_belanja_lokasi_ket` text,
+  `tb_provinsi_kode` int(11) DEFAULT NULL,
+  `tb_kabupaten_kode` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -4084,12 +4059,12 @@ CREATE TABLE `tb_monev_lra_rek2` (
 --
 
 CREATE TABLE `tb_monev_lra_rek2_kegiatan` (
-  `tb_monev_lra_kode` int(11) NOT NULL,
   `id_tb_rpjmd` int(11) NOT NULL,
   `tb_urusan_kode` int(11) NOT NULL,
   `tb_bidang_kode` int(11) NOT NULL,
   `tb_unit_kode` int(11) NOT NULL,
   `tb_sub_unit_kode` int(11) NOT NULL,
+  `tb_monev_lra_tahun` tinyint(4) NOT NULL,
   `tb_rekening1_kode` int(11) NOT NULL,
   `tb_rekening2_kode` int(11) NOT NULL,
   `tb_program_kode` int(11) NOT NULL,
@@ -4104,12 +4079,12 @@ CREATE TABLE `tb_monev_lra_rek2_kegiatan` (
 --
 
 CREATE TABLE `tb_monev_lra_rek2_program` (
-  `tb_monev_lra_kode` int(11) NOT NULL,
   `id_tb_rpjmd` int(11) NOT NULL,
   `tb_urusan_kode` int(11) NOT NULL,
   `tb_bidang_kode` int(11) NOT NULL,
   `tb_unit_kode` int(11) NOT NULL,
   `tb_sub_unit_kode` int(11) NOT NULL,
+  `tb_monev_lra_tahun` tinyint(4) NOT NULL,
   `tb_rekening1_kode` int(11) NOT NULL,
   `tb_rekening2_kode` int(11) NOT NULL,
   `tb_program_kode` int(11) NOT NULL,
@@ -4123,12 +4098,12 @@ CREATE TABLE `tb_monev_lra_rek2_program` (
 --
 
 CREATE TABLE `tb_monev_lra_rek3` (
-  `tb_monev_lra_kode` int(11) NOT NULL,
   `id_tb_rpjmd` int(11) NOT NULL,
   `tb_urusan_kode` int(11) NOT NULL,
   `tb_bidang_kode` int(11) NOT NULL,
   `tb_unit_kode` int(11) NOT NULL,
   `tb_sub_unit_kode` int(11) NOT NULL,
+  `tb_monev_lra_tahun` tinyint(4) NOT NULL,
   `tb_rekening1_kode` int(11) NOT NULL,
   `tb_rekening2_kode` int(11) NOT NULL,
   `tb_program_kode` int(11) NOT NULL,
@@ -4144,12 +4119,12 @@ CREATE TABLE `tb_monev_lra_rek3` (
 --
 
 CREATE TABLE `tb_monev_lra_rek4` (
-  `tb_monev_lra_kode` int(11) NOT NULL,
   `id_tb_rpjmd` int(11) NOT NULL,
   `tb_urusan_kode` int(11) NOT NULL,
   `tb_bidang_kode` int(11) NOT NULL,
   `tb_unit_kode` int(11) NOT NULL,
   `tb_sub_unit_kode` int(11) NOT NULL,
+  `tb_monev_lra_tahun` tinyint(4) NOT NULL,
   `tb_rekening1_kode` int(11) NOT NULL,
   `tb_rekening2_kode` int(11) NOT NULL,
   `tb_program_kode` int(11) NOT NULL,
@@ -4165,12 +4140,12 @@ CREATE TABLE `tb_monev_lra_rek4` (
 --
 
 CREATE TABLE `tb_monev_lra_rek5` (
-  `tb_monev_lra_kode` int(11) NOT NULL,
   `id_tb_rpjmd` int(11) NOT NULL,
   `tb_urusan_kode` int(11) NOT NULL,
   `tb_bidang_kode` int(11) NOT NULL,
   `tb_unit_kode` int(11) NOT NULL,
   `tb_sub_unit_kode` int(11) NOT NULL,
+  `tb_monev_lra_tahun` tinyint(4) NOT NULL,
   `tb_rekening1_kode` int(11) NOT NULL,
   `tb_rekening2_kode` int(11) NOT NULL,
   `tb_program_kode` int(11) NOT NULL,
@@ -4178,10 +4153,13 @@ CREATE TABLE `tb_monev_lra_rek5` (
   `tb_rekening3_kode` int(11) NOT NULL,
   `tb_rekening4_kode` int(11) NOT NULL,
   `tb_rekening5_kode` int(11) NOT NULL,
+  `tb_monev_lra_rek5_bulan` tinyint(4) NOT NULL,
   `tb_monev_lra_rek5_anggaran` double DEFAULT NULL,
   `tb_monev_lra_rek5_realisasi` double DEFAULT NULL,
   `tb_monev_lra_rek5_fisik` text,
-  `tb_monev_lra_rek5_pelaksana` text
+  `tb_monev_lra_rek5_pelaksana` text,
+  `id_tb_sumber_dana` int(11) NOT NULL,
+  `tb_monev_lra_rek5_lokasi` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -4349,7 +4327,7 @@ CREATE TABLE `tb_program` (
   `tb_urusan_kode` int(11) NOT NULL,
   `tb_bidang_kode` int(11) NOT NULL,
   `tb_program_kode` int(11) NOT NULL,
-  `tb_program_nama` varchar(45) DEFAULT NULL
+  `tb_program_nama` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -4358,70 +4336,70 @@ CREATE TABLE `tb_program` (
 
 INSERT INTO `tb_program` (`tb_urusan_kode`, `tb_bidang_kode`, `tb_program_kode`, `tb_program_nama`) VALUES
 (1, 1, 1, 'Program Pelayanan Administrasi Perkantoran'),
-(1, 1, 2, 'Program Peningkatan Sarana dan Prasarana Apar'),
+(1, 1, 2, 'Program Peningkatan Sarana dan Prasarana Aparatur '),
 (1, 1, 3, 'Program peningkatan disiplin aparatur'),
 (1, 1, 4, 'Program fasilitasi pindah/purna tugas PNS'),
-(1, 1, 5, 'Program Peningkatan Kapasitas Sumber Daya Apa'),
-(1, 1, 6, 'Program peningkatan pengembangan sistem pelap'),
+(1, 1, 5, 'Program Peningkatan Kapasitas Sumber Daya Aparatur'),
+(1, 1, 6, 'Program peningkatan pengembangan sistem pelaporan capaian kinerja dan keuangan'),
 (1, 1, 15, 'Program Pendidikan Anak Usia Dini'),
-(1, 1, 16, 'Program Wajib Belajar Pendidikan Dasar Sembil'),
+(1, 1, 16, 'Program Wajib Belajar Pendidikan Dasar Sembilan Tahun'),
 (1, 1, 17, 'Program Pendidikan Menengah'),
 (1, 1, 18, 'Program Pendidikan Non Formal'),
 (1, 1, 19, 'Program Pendidikan Luar Biasa'),
-(1, 1, 20, 'Program Peningkatan Mutu Pendidik dan Tenaga '),
-(1, 1, 21, 'Program Pengembangan Budaya Baca dan Pembinaa'),
+(1, 1, 20, 'Program Peningkatan Mutu Pendidik dan Tenaga Kependidikan'),
+(1, 1, 21, 'Program Pengembangan Budaya Baca dan Pembinaan Perpustakaan'),
 (1, 1, 22, 'Program Manajemen Pelayanan Pendidikan'),
 (1, 1, 23, 'Program Pendidikan Formal'),
-(1, 1, 24, 'Program Bantuan Operasional Sekolah (BOS) SD/'),
-(1, 1, 25, 'Program Bantuan Operasional Sekolah (BOS) SMP'),
+(1, 1, 24, 'Program Bantuan Operasional Sekolah (BOS) SD/MI'),
+(1, 1, 25, 'Program Bantuan Operasional Sekolah (BOS) SMP/MTs'),
 (1, 2, 1, 'Program Pelayanan Administrasi Perkantoran'),
-(1, 2, 2, 'Program Peningkatan Sarana dan Prasarana Apar'),
+(1, 2, 2, 'Program Peningkatan Sarana dan Prasarana Aparatur '),
 (1, 2, 3, 'Program peningkatan disiplin aparatur'),
 (1, 2, 4, 'Program fasilitasi pindah/purna tugas PNS'),
-(1, 2, 5, 'Program Peningkatan Kapasitas Sumber Daya Apa'),
-(1, 2, 6, 'Program peningkatan pengembangan sistem pelap'),
+(1, 2, 5, 'Program Peningkatan Kapasitas Sumber Daya Aparatur'),
+(1, 2, 6, 'Program peningkatan pengembangan sistem pelaporan capaian kinerja dan keuangan'),
 (1, 2, 15, 'Program Obat dan Perbekalan Kesehatan'),
 (1, 2, 16, 'Program Upaya Kesehatan Masyarakat'),
 (1, 2, 17, 'Program Pengawasan Obat dan Makanan'),
 (1, 2, 18, 'Program Pengembangan Obat Asli Indonesia'),
-(1, 2, 19, 'Program Promosi Kesehatan dan Pemberdayaan Ma'),
+(1, 2, 19, 'Program Promosi Kesehatan dan Pemberdayaan Masyarakat'),
 (1, 2, 20, 'Program Perbaikan Gizi Masyarakat'),
 (1, 2, 21, 'Program Pengembangan Lingkungan Sehat'),
-(1, 2, 22, 'Program Pencegahan dan Penanggulangan Penyaki'),
+(1, 2, 22, 'Program Pencegahan dan Penanggulangan Penyakit Menular'),
 (1, 2, 23, 'Program Standarisasi Pelayanan Kesehatan'),
 (1, 2, 24, 'Program pelayanan kesehatan penduduk miskin'),
-(1, 2, 25, 'Program pengadaan, peningkatan dan perbaikan '),
-(1, 2, 26, 'Program pengadaan, peningkatan sarana dan pra'),
-(1, 2, 27, 'Program pemeliharaan sarana dan prasarana rum'),
-(1, 2, 28, 'Program kemitraan peningkatan pelayanan keseh'),
-(1, 2, 29, 'Program peningkatan pelayanan kesehatan anak '),
-(1, 2, 30, 'Program peningkatan pelayanan kesehatan lansi'),
-(1, 2, 31, 'Program pengawasan dan pengendalian kesehatan'),
-(1, 2, 32, 'Program peningkatan keselamatan ibu melahirka'),
+(1, 2, 25, 'Program pengadaan, peningkatan dan perbaikan sarana dan prasarana puskesmas/ puskemas pembantu dan jaringannya'),
+(1, 2, 26, 'Program pengadaan, peningkatan sarana dan prasarana rumah sakit/ rumah sakit jiwa/  rumah sakit paru-paru/  rumah sakit mata'),
+(1, 2, 27, 'Program pemeliharaan sarana dan prasarana rumah sakit/ rumah sakit jiwa/  rumah sakit paru-paru/  rumah sakit mata'),
+(1, 2, 28, 'Program kemitraan peningkatan pelayanan kesehatan'),
+(1, 2, 29, 'Program peningkatan pelayanan kesehatan anak balita'),
+(1, 2, 30, 'Program peningkatan pelayanan kesehatan lansia'),
+(1, 2, 31, 'Program pengawasan dan pengendalian kesehatan makanan'),
+(1, 2, 32, 'Program peningkatan keselamatan ibu melahirkan dan anak'),
 (1, 2, 33, 'Program Peningkatan Mutu Pelayanan Kesehatan'),
 (1, 2, 34, 'Penyelesaian Kewajiban Tahun Sebelumnya'),
 (1, 3, 1, 'Program Pelayanan Administrasi Perkantoran'),
-(1, 3, 2, 'Program Peningkatan Sarana dan Prasarana Apar'),
+(1, 3, 2, 'Program Peningkatan Sarana dan Prasarana Aparatur '),
 (1, 3, 3, 'Program peningkatan disiplin aparatur'),
 (1, 3, 4, 'Program fasilitasi pindah/purna tugas PNS'),
-(1, 3, 5, 'Program Peningkatan Kapasitas Sumber Daya Apa'),
-(1, 3, 6, 'Program peningkatan pengembangan sistem pelap'),
+(1, 3, 5, 'Program Peningkatan Kapasitas Sumber Daya Aparatur'),
+(1, 3, 6, 'Program peningkatan pengembangan sistem pelaporan capaian kinerja dan keuangan'),
 (1, 3, 7, 'Program Peningkatan Jalan & Jembatan'),
 (1, 3, 15, 'Program pembangunan jalan dan jembatan'),
-(1, 3, 16, 'Program pembangunan saluran drainase/gorong-g'),
+(1, 3, 16, 'Program pembangunan saluran drainase/gorong-gorong'),
 (1, 3, 17, 'Program pembangunan turap/talud/bronjong'),
-(1, 3, 18, 'Program rehabilitasi/pemeliharaan jalan dan j'),
-(1, 3, 19, 'Program rehabilitasi/pemeliharaan talud/bronj'),
+(1, 3, 18, 'Program rehabilitasi/pemeliharaan jalan dan jembatan'),
+(1, 3, 19, 'Program rehabilitasi/pemeliharaan talud/bronjong'),
 (1, 3, 20, 'Program Inspeksi kondisi jalan dan jembatan'),
 (1, 3, 21, 'Program tanggap darurat jalan dan jembatan'),
-(1, 3, 22, 'Program pembangunan sistem informasi/data bas'),
-(1, 3, 23, 'Program peningkatan sarana dan prasarana kebi'),
-(1, 3, 24, 'Program Pengembangan dan Pengelolaan Jaringan'),
+(1, 3, 22, 'Program pembangunan sistem informasi/data base jalan dan jembatan'),
+(1, 3, 23, 'Program peningkatan sarana dan prasarana kebinamargaan'),
+(1, 3, 24, 'Program Pengembangan dan Pengelolaan Jaringan Irigasi, Rawa dan Jaringan Pengairan lainnya'),
 (1, 3, 25, 'Program Penyediaan dan Pengelolaan Air Baku'),
-(1, 3, 26, 'Program Pengembangan, Pengelolaan, dan Konser'),
-(1, 3, 27, 'Program Pengembangan Kinerja Pengelolaan Air '),
+(1, 3, 26, 'Program Pengembangan, Pengelolaan, dan Konservasi Sungai, Danau dan Sumber Daya Air Lainnya'),
+(1, 3, 27, 'Program Pengembangan Kinerja Pengelolaan Air Minum dan Air Limbah'),
 (1, 3, 28, 'Program Pengendalian Banjir'),
-(1, 3, 29, 'Program Pengembangan Wilayah Strategis dan Ce'),
+(1, 3, 29, 'Program Pengembangan Wilayah Strategis dan Cepat Tumbuh'),
 (1, 3, 30, 'Program pembangunan infrastruktur perdesaan'),
 (1, 3, 31, 'Program Perencanaan Tata Ruang'),
 (1, 3, 32, 'Program Pemanfaatan Ruang'),
@@ -4429,272 +4407,272 @@ INSERT INTO `tb_program` (`tb_urusan_kode`, `tb_bidang_kode`, `tb_program_kode`,
 (1, 3, 34, 'Program Pemberdayaan Jasa Konstruksi '),
 (1, 3, 35, 'Simpan'),
 (1, 4, 1, 'Program Pelayanan Administrasi Perkantoran'),
-(1, 4, 2, 'Program Peningkatan Sarana dan Prasarana Apar'),
+(1, 4, 2, 'Program Peningkatan Sarana dan Prasarana Aparatur '),
 (1, 4, 3, 'Program peningkatan disiplin aparatur'),
 (1, 4, 4, 'Program fasilitasi pindah/purna tugas PNS'),
-(1, 4, 5, 'Program Peningkatan Kapasitas Sumber Daya Apa'),
-(1, 4, 6, 'Program peningkatan pengembangan sistem pelap'),
+(1, 4, 5, 'Program Peningkatan Kapasitas Sumber Daya Aparatur'),
+(1, 4, 6, 'Program peningkatan pengembangan sistem pelaporan capaian kinerja dan keuangan'),
 (1, 4, 15, 'Program Pengembangan Perumahan'),
 (1, 4, 16, 'Program Lingkungan Sehat Perumahan'),
 (1, 4, 17, 'Program Pemberdayaan Komunitas Perumahan'),
-(1, 4, 18, 'Program perbaikan perumahan akibat bencana al'),
-(1, 4, 19, 'Program peningkatan kesiagaan dan pencegahan '),
+(1, 4, 18, 'Program perbaikan perumahan akibat bencana alam/sosial'),
+(1, 4, 19, 'Program peningkatan kesiagaan dan pencegahan bahaya kebakaran'),
 (1, 4, 20, 'Program pengelolaan areal pemakaman'),
-(1, 4, 21, 'Program Penataan, Penguasaan, Pemilikan. Peng'),
-(1, 4, 22, 'Program Pengembangan Wilayah Strategis dan Ce'),
+(1, 4, 21, 'Program Penataan, Penguasaan, Pemilikan. Penggunaan dan Pemanfaatan Tanah'),
+(1, 4, 22, 'Program Pengembangan Wilayah Strategis dan Cepat Tumbuh'),
 (1, 5, 1, 'Program Pelayanan Administrasi Perkantoran'),
-(1, 5, 2, 'Program Peningkatan Sarana dan Prasarana Apar'),
+(1, 5, 2, 'Program Peningkatan Sarana dan Prasarana Aparatur '),
 (1, 5, 3, 'Program peningkatan disiplin aparatur'),
 (1, 5, 4, 'Program fasilitasi pindah/purna tugas PNS'),
-(1, 5, 5, 'Program Peningkatan Kapasitas Sumber Daya Apa'),
-(1, 5, 6, 'Program peningkatan pengembangan sistem pelap'),
-(1, 5, 15, 'Program peningkatan keamanan dan kenyamanan l'),
-(1, 5, 16, 'Program pemeliharaan kantrantibmas dan penceg'),
+(1, 5, 5, 'Program Peningkatan Kapasitas Sumber Daya Aparatur'),
+(1, 5, 6, 'Program peningkatan pengembangan sistem pelaporan capaian kinerja dan keuangan'),
+(1, 5, 15, 'Program peningkatan keamanan dan kenyamanan lingkungan'),
+(1, 5, 16, 'Program pemeliharaan kantrantibmas dan pencegahan tindak kriminal'),
 (1, 5, 17, 'Program pengembangan wawasan kebangsaan'),
-(1, 5, 18, 'Program kemitraan pengembangan wawasan kebang'),
-(1, 5, 19, 'Program pemberdayaan masyarakat untuk menjaga'),
-(1, 5, 20, 'Program peningkatan pemberantasan penyakit ma'),
+(1, 5, 18, 'Program kemitraan pengembangan wawasan kebangsaan'),
+(1, 5, 19, 'Program pemberdayaan masyarakat untuk menjaga ketertiban dan keamanan'),
+(1, 5, 20, 'Program peningkatan pemberantasan penyakit masyarakat (pekat)'),
 (1, 5, 21, 'Program pendidikan politik masyarakat'),
-(1, 5, 22, 'Program pencegahan dini dan penanggulangan ko'),
-(1, 5, 23, 'Program Penataan Peraturan Perundang - Undang'),
-(1, 5, 24, 'Program Pencegahan,Pengendalian, Pemadaman, P'),
-(1, 5, 25, 'Program Pemantauan Orang Asing dan Organisasi'),
+(1, 5, 22, 'Program pencegahan dini dan penanggulangan korban bencana alam'),
+(1, 5, 23, 'Program Penataan Peraturan Perundang - Undangan'),
+(1, 5, 24, 'Program Pencegahan,Pengendalian, Pemadaman, Penyelamatan dan Penanganan Kebakaran'),
+(1, 5, 25, 'Program Pemantauan Orang Asing dan Organisasi Masyarakat Asing'),
 (1, 5, 26, 'Program Komunitas Intelejen Daerah'),
 (1, 5, 27, 'Pembinaan dan Pengembangan Ketahanan Ekonomi'),
 (1, 5, 28, 'Peningkatan Seni Budaya dan Kemasyarakatan'),
 (1, 5, 29, 'Forum Komunikasi Umat Beragama'),
 (1, 6, 1, 'Program Pelayanan Administrasi Perkantoran'),
-(1, 6, 2, 'Program Peningkatan Sarana dan Prasarana Apar'),
+(1, 6, 2, 'Program Peningkatan Sarana dan Prasarana Aparatur '),
 (1, 6, 3, 'Program peningkatan disiplin aparatur'),
 (1, 6, 4, 'Program fasilitasi pindah/purna tugas PNS'),
-(1, 6, 5, 'Program Peningkatan Kapasitas Sumber Daya Apa'),
-(1, 6, 6, 'Program peningkatan pengembangan sistem pelap'),
-(1, 6, 15, 'Program Pemberdayaan Fakir Miskin, Komunitas '),
-(1, 6, 16, 'Program Pelayanan dan Rehabilitasi Kesejahter'),
+(1, 6, 5, 'Program Peningkatan Kapasitas Sumber Daya Aparatur'),
+(1, 6, 6, 'Program peningkatan pengembangan sistem pelaporan capaian kinerja dan keuangan'),
+(1, 6, 15, 'Program Pemberdayaan Fakir Miskin, Komunitas Adat Terpencil (KAT) dan Penyandang Masalah Kesejahteraan Sosial (PMKS) Lainnya'),
+(1, 6, 16, 'Program Pelayanan dan Rehabilitasi Kesejahteraan Sosial'),
 (1, 6, 17, 'Program pembinaan anak terlantar'),
-(1, 6, 18, 'Program pembinaan para penyandang cacat dan t'),
+(1, 6, 18, 'Program pembinaan para penyandang cacat dan trauma'),
 (1, 6, 19, 'Program pembinaan panti asuhan /panti jompo'),
-(1, 6, 20, 'Program pembinaan eks penyandang penyakit sos'),
-(1, 6, 21, 'Program Pemberdayaan Kelembagaan Kesejahteraa'),
-(1, 6, 22, 'Program pencegahan dan pengurangan resiko ben'),
+(1, 6, 20, 'Program pembinaan eks penyandang penyakit sosial (eks narapidana, PSK, narkoba dan penyakit sosial lainnya)'),
+(1, 6, 21, 'Program Pemberdayaan Kelembagaan Kesejahteraan Sosial'),
+(1, 6, 22, 'Program pencegahan dan pengurangan resiko bencana'),
 (1, 6, 23, 'Program tanggap darurat bencana'),
-(1, 6, 24, 'Program rehabilitasi dan rekonstruksi pasca b'),
-(1, 6, 25, 'Program Penguatan Kelembagaan Badan Penanggul'),
-(1, 6, 26, 'Program Pencegahan dan Pengurangan Resiko Ben'),
+(1, 6, 24, 'Program rehabilitasi dan rekonstruksi pasca bencana'),
+(1, 6, 25, 'Program Penguatan Kelembagaan Badan Penanggulangan Bencana'),
+(1, 6, 26, 'Program Pencegahan dan Pengurangan Resiko Bencana'),
 (2, 1, 1, 'Program Pelayanan Administrasi Perkantoran'),
-(2, 1, 2, 'Program Peningkatan Sarana dan Prasarana Apar'),
+(2, 1, 2, 'Program Peningkatan Sarana dan Prasarana Aparatur '),
 (2, 1, 3, 'Program peningkatan disiplin aparatur'),
 (2, 1, 4, 'Program fasilitasi pindah/purna tugas PNS'),
-(2, 1, 5, 'Program Peningkatan Kapasitas Sumber Daya Apa'),
-(2, 1, 6, 'Program peningkatan pengembangan sistem pelap'),
-(2, 1, 15, 'Program Peningkatan Kualitas dan Produktivita'),
+(2, 1, 5, 'Program Peningkatan Kapasitas Sumber Daya Aparatur'),
+(2, 1, 6, 'Program peningkatan pengembangan sistem pelaporan capaian kinerja dan keuangan'),
+(2, 1, 15, 'Program Peningkatan Kualitas dan Produktivitas Tenaga Kerja'),
 (2, 1, 16, 'Program Peningkatan Kesempatan Kerja'),
-(2, 1, 17, 'Program Perlindungan dan Pengembangan Lembaga'),
+(2, 1, 17, 'Program Perlindungan dan Pengembangan Lembaga Ketenagakerjaan'),
 (2, 5, 1, 'Program Pelayanan Administrasi Perkantoran'),
-(2, 5, 2, 'Program Peningkatan Sarana dan Prasarana Apar'),
+(2, 5, 2, 'Program Peningkatan Sarana dan Prasarana Aparatur '),
 (2, 5, 3, 'Program peningkatan disiplin aparatur'),
 (2, 5, 4, 'Program fasilitasi pindah/purna tugas PNS'),
-(2, 5, 5, 'Program Peningkatan Kapasitas Sumber Daya Apa'),
-(2, 5, 6, 'Program peningkatan pengembangan sistem pelap'),
-(2, 5, 15, 'Program Pengembangan Kinerja Pengelolaan Pers'),
-(2, 5, 16, 'Program Pengendalian Pencemaran dan Perusakan'),
-(2, 5, 17, 'Program Perlindungan dan Konservasi Sumber Da'),
-(2, 5, 18, 'Program Rehabilitasi dan Pemulihan Cadangan S'),
-(2, 5, 19, 'Program Peningkatan Kualitas dan Akses Inform'),
+(2, 5, 5, 'Program Peningkatan Kapasitas Sumber Daya Aparatur'),
+(2, 5, 6, 'Program peningkatan pengembangan sistem pelaporan capaian kinerja dan keuangan'),
+(2, 5, 15, 'Program Pengembangan Kinerja Pengelolaan Persampahan'),
+(2, 5, 16, 'Program Pengendalian Pencemaran dan Perusakan Lingkungan Hidup'),
+(2, 5, 17, 'Program Perlindungan dan Konservasi Sumber Daya Alam'),
+(2, 5, 18, 'Program Rehabilitasi dan Pemulihan Cadangan Sumber Daya Alam'),
+(2, 5, 19, 'Program Peningkatan Kualitas dan Akses Informasi Sumber Daya Alam dan Lingkungan Hidup'),
 (2, 5, 20, 'Program peningkatan pengendalian polusi'),
-(2, 5, 21, 'Program pengembangan ekowisata dan jasa lingk'),
+(2, 5, 21, 'Program pengembangan ekowisata dan jasa lingkungan dikawsan-kawasan konservasi laut dan hutan'),
 (2, 5, 22, 'Program pengendalian kebakaran hutan'),
-(2, 5, 23, 'Program pengelolaan dan rehabilitasi ekosiste'),
+(2, 5, 23, 'Program pengelolaan dan rehabilitasi ekosistem pesisir dan laut'),
 (2, 5, 24, 'Program pengelolaan ruang terbuka hijau (RTH)'),
 (2, 6, 1, 'Program Pelayanan Administrasi Perkantoran'),
-(2, 6, 2, 'Program Peningkatan Sarana dan Prasarana Apar'),
+(2, 6, 2, 'Program Peningkatan Sarana dan Prasarana Aparatur '),
 (2, 6, 3, 'Program peningkatan disiplin aparatur'),
 (2, 6, 4, 'Program fasilitasi pindah/purna tugas PNS'),
-(2, 6, 5, 'Program Peningkatan Kapasitas Sumber Daya Apa'),
-(2, 6, 6, 'Program peningkatan pengembangan sistem pelap'),
+(2, 6, 5, 'Program Peningkatan Kapasitas Sumber Daya Aparatur'),
+(2, 6, 6, 'Program peningkatan pengembangan sistem pelaporan capaian kinerja dan keuangan'),
 (2, 6, 15, 'Program Penataan Administrasi Kependudukan'),
 (2, 7, 1, 'Program Pelayanan Administrasi Perkantoran'),
-(2, 7, 2, 'Program Peningkatan Sarana dan Prasarana Apar'),
+(2, 7, 2, 'Program Peningkatan Sarana dan Prasarana Aparatur '),
 (2, 7, 3, 'Program peningkatan disiplin aparatur'),
 (2, 7, 4, 'Program fasilitasi pindah/purna tugas PNS'),
-(2, 7, 5, 'Program Peningkatan Kapasitas Sumber Daya Apa'),
-(2, 7, 6, 'Program peningkatan pengembangan sistem pelap'),
-(2, 7, 15, 'Program Peningkatan Keberdayaan Masyarakat Pe'),
+(2, 7, 5, 'Program Peningkatan Kapasitas Sumber Daya Aparatur'),
+(2, 7, 6, 'Program peningkatan pengembangan sistem pelaporan capaian kinerja dan keuangan'),
+(2, 7, 15, 'Program Peningkatan Keberdayaan Masyarakat Perdesaan'),
 (2, 7, 16, 'Program pengembangan lembaga ekonomi pedesaan'),
-(2, 7, 17, 'Program peningkatan partisipasi masyarakat da'),
-(2, 7, 18, 'Program peningkatan kapasitas aparatur pemeri'),
-(2, 7, 19, 'Program peningkatan peran perempuan di perdes'),
-(2, 7, 20, 'Pembinaan Kelembagaan Aparatur Pemerintah Des'),
-(2, 7, 21, 'Program Penguatan  Kelembagaan Pengarusutamaa'),
-(2, 7, 22, 'Program Peningkatan Peran Serta Dan Kesetaraa'),
+(2, 7, 17, 'Program peningkatan partisipasi masyarakat dalam membangun desa'),
+(2, 7, 18, 'Program peningkatan kapasitas aparatur pemerintah desa'),
+(2, 7, 19, 'Program peningkatan peran perempuan di perdesaan'),
+(2, 7, 20, 'Pembinaan Kelembagaan Aparatur Pemerintah Desa'),
+(2, 7, 21, 'Program Penguatan  Kelembagaan Pengarusutamaan Gender Dan Anak'),
+(2, 7, 22, 'Program Peningkatan Peran Serta Dan Kesetaraan Gender Dalam Pembangunan'),
 (2, 9, 1, 'Program Pelayanan Administrasi Perkantoran'),
-(2, 9, 2, 'Program Peningkatan Sarana dan Prasarana Apar'),
+(2, 9, 2, 'Program Peningkatan Sarana dan Prasarana Aparatur '),
 (2, 9, 3, 'Program peningkatan disiplin aparatur'),
 (2, 9, 4, 'Program fasilitasi pindah/purna tugas PNS'),
-(2, 9, 5, 'Program Peningkatan Kapasitas Sumber Daya Apa'),
-(2, 9, 6, 'Program peningkatan pengembangan sistem pelap'),
-(2, 9, 15, 'Program Pembangunan Prasarana dan Fasilitas P'),
-(2, 9, 16, 'Program Rehabilitasi dan Pemeliharaan Prasara'),
+(2, 9, 5, 'Program Peningkatan Kapasitas Sumber Daya Aparatur'),
+(2, 9, 6, 'Program peningkatan pengembangan sistem pelaporan capaian kinerja dan keuangan'),
+(2, 9, 15, 'Program Pembangunan Prasarana dan Fasilitas Perhubungan'),
+(2, 9, 16, 'Program Rehabilitasi dan Pemeliharaan Prasarana dan Fasilitas LLAJ'),
 (2, 9, 17, 'Pogram peningkatan pelayanan angkutan'),
-(2, 9, 18, 'Program pembangunan sarana dan prasarana perh'),
-(2, 9, 19, 'Program pengendalian dan pengamanan lalu lint'),
-(2, 9, 20, 'Program peningkatan kelaikan pengoperasian ke'),
+(2, 9, 18, 'Program pembangunan sarana dan prasarana perhubungan'),
+(2, 9, 19, 'Program pengendalian dan pengamanan lalu lintas'),
+(2, 9, 20, 'Program peningkatan kelaikan pengoperasian kendaraan bermotor'),
 (2, 10, 1, 'Program Pelayanan Administrasi Perkantoran'),
-(2, 10, 2, 'Program Peningkatan Sarana dan Prasarana Apar'),
+(2, 10, 2, 'Program Peningkatan Sarana dan Prasarana Aparatur '),
 (2, 10, 3, 'Program peningkatan disiplin aparatur'),
 (2, 10, 4, 'Program fasilitasi pindah/purna tugas PNS'),
-(2, 10, 5, 'Program Peningkatan Kapasitas Sumber Daya Apa'),
-(2, 10, 6, 'Program peningkatan pengembangan sistem pelap'),
-(2, 10, 15, 'Program Pengembangan Komunikasi, Informasi da'),
-(2, 10, 16, 'Program pengkajian dan penelitian bidang info'),
-(2, 10, 17, 'Program fasilitasi Peningkatan SDM bidang kom'),
+(2, 10, 5, 'Program Peningkatan Kapasitas Sumber Daya Aparatur'),
+(2, 10, 6, 'Program peningkatan pengembangan sistem pelaporan capaian kinerja dan keuangan'),
+(2, 10, 15, 'Program Pengembangan Komunikasi, Informasi dan Media Massa'),
+(2, 10, 16, 'Program pengkajian dan penelitian bidang informasi dan komunikasi'),
+(2, 10, 17, 'Program fasilitasi Peningkatan SDM bidang komunikasi dan informasi'),
 (2, 10, 18, 'Program kerjasama informasi dengan mas media'),
 (2, 11, 1, 'Program Pelayanan Administrasi Perkantoran'),
-(2, 11, 2, 'Program Peningkatan Sarana dan Prasarana Apar'),
+(2, 11, 2, 'Program Peningkatan Sarana dan Prasarana Aparatur '),
 (2, 11, 3, 'Program peningkatan disiplin aparatur'),
 (2, 11, 4, 'Program fasilitasi pindah/purna tugas PNS'),
-(2, 11, 5, 'Program Peningkatan Kapasitas Sumber Daya Apa'),
-(2, 11, 6, 'Program peningkatan pengembangan sistem pelap'),
-(2, 11, 15, 'Program penciptaan iklim usaha Usaha Kecil Me'),
-(2, 11, 16, 'Program Pengembangan Kewirausahaan dan Keungg'),
-(2, 11, 17, 'Program Pengembangan Sistem Pendukung Usaha B'),
-(2, 11, 18, 'Program Peningkatan Kualitas Kelembagaan Kope'),
+(2, 11, 5, 'Program Peningkatan Kapasitas Sumber Daya Aparatur'),
+(2, 11, 6, 'Program peningkatan pengembangan sistem pelaporan capaian kinerja dan keuangan'),
+(2, 11, 15, 'Program penciptaan iklim usaha Usaha Kecil Menengah yang konduksif'),
+(2, 11, 16, 'Program Pengembangan Kewirausahaan dan Keunggulan Kompetitif Usaha Kecil Menengah'),
+(2, 11, 17, 'Program Pengembangan Sistem Pendukung Usaha Bagi Usaha Mikro Kecil Menengah'),
+(2, 11, 18, 'Program Peningkatan Kualitas Kelembagaan Koperasi'),
 (2, 12, 1, 'Program Pelayanan Administrasi Perkantoran'),
-(2, 12, 2, 'Program Peningkatan Sarana dan Prasarana Apar'),
+(2, 12, 2, 'Program Peningkatan Sarana dan Prasarana Aparatur '),
 (2, 12, 3, 'Program peningkatan disiplin aparatur'),
 (2, 12, 4, 'Program fasilitasi pindah/purna tugas PNS'),
-(2, 12, 5, 'Program Peningkatan Kapasitas Sumber Daya Apa'),
-(2, 12, 6, 'Program peningkatan pengembangan sistem pelap'),
-(2, 12, 15, 'Program Peningkatan Promosi dan Kerjasama Inv'),
-(2, 12, 16, 'Program Peningkatan Iklim Investasi dan Reali'),
-(2, 12, 17, 'Program penyiapan potensi sumberdaya, sarana,'),
+(2, 12, 5, 'Program Peningkatan Kapasitas Sumber Daya Aparatur'),
+(2, 12, 6, 'Program peningkatan pengembangan sistem pelaporan capaian kinerja dan keuangan'),
+(2, 12, 15, 'Program Peningkatan Promosi dan Kerjasama Investasi'),
+(2, 12, 16, 'Program Peningkatan Iklim Investasi dan Realisasi Investasi'),
+(2, 12, 17, 'Program penyiapan potensi sumberdaya, sarana, dan prasarana daerah'),
 (2, 12, 18, 'Program Pengembangan Data/Informasi'),
-(2, 12, 19, 'Program Peningkatan Iklim Investasi dan Reali'),
-(2, 12, 20, 'Program Optimalisasi Pemanfaatan Teknologi In'),
-(2, 12, 21, 'Program Peningkatan Kwalitas Pelayanan Inform'),
+(2, 12, 19, 'Program Peningkatan Iklim Investasi dan Realisasi Investasi'),
+(2, 12, 20, 'Program Optimalisasi Pemanfaatan Teknologi Informasi'),
+(2, 12, 21, 'Program Peningkatan Kwalitas Pelayanan Informasi'),
 (2, 13, 1, 'Program Pelayanan Administrasi Perkantoran'),
-(2, 13, 2, 'Program Peningkatan Sarana dan Prasarana Apar'),
+(2, 13, 2, 'Program Peningkatan Sarana dan Prasarana Aparatur '),
 (2, 13, 3, 'Program peningkatan disiplin aparatur'),
 (2, 13, 4, 'Program fasilitasi pindah/purna tugas PNS'),
-(2, 13, 5, 'Program Peningkatan Kapasitas Sumber Daya Apa'),
-(2, 13, 6, 'Program peningkatan pengembangan sistem pelap'),
-(2, 13, 15, 'Program Pengembangan dan Keserasian Kebijakan'),
+(2, 13, 5, 'Program Peningkatan Kapasitas Sumber Daya Aparatur'),
+(2, 13, 6, 'Program peningkatan pengembangan sistem pelaporan capaian kinerja dan keuangan'),
+(2, 13, 15, 'Program Pengembangan dan Keserasian Kebijakan Pemuda'),
 (2, 13, 16, 'Program peningkatan peran serta kepemudaan'),
-(2, 13, 17, 'Program peningkatan upaya penumbuhan kewiraus'),
-(2, 13, 18, 'Program upaya pencegahan penyalahgunaan narko'),
-(2, 13, 19, 'Program Pengembangan Kebijakan dan Manajemen '),
-(2, 13, 20, 'Program Pembinaan dan Pemasyarakatan Olah Rag'),
-(2, 13, 21, 'Program Peningkatan Sarana dan Prasarana Olah'),
+(2, 13, 17, 'Program peningkatan upaya penumbuhan kewirausahaan dan kecakapan hidup pemuda'),
+(2, 13, 18, 'Program upaya pencegahan penyalahgunaan narkoba'),
+(2, 13, 19, 'Program Pengembangan Kebijakan dan Manajemen Olah Raga'),
+(2, 13, 20, 'Program Pembinaan dan Pemasyarakatan Olah Raga'),
+(2, 13, 21, 'Program Peningkatan Sarana dan Prasarana Olah Raga'),
 (2, 13, 22, 'Program Pengembangan Pemasaran Pariwisata'),
-(2, 13, 23, 'Program Dukungan Kegiatan Bidang Ekonomi Krea'),
-(2, 13, 24, 'Program Pengembangan Riset Unggulan dan Kompe'),
+(2, 13, 23, 'Program Dukungan Kegiatan Bidang Ekonomi Kreatif'),
+(2, 13, 24, 'Program Pengembangan Riset Unggulan dan Kompetensi SDM'),
 (2, 17, 1, 'Program Pelayanan Administrasi Perkantoran'),
-(2, 17, 2, 'Program Peningkatan Sarana dan Prasarana Apar'),
-(2, 17, 5, 'Program Peningkatan Kapasitas Sumber Daya Apa'),
-(2, 17, 15, 'Program Pengembangan Budaya Baca dan Pembinaa'),
-(2, 17, 16, 'Program Penyelamatan dan Pelestarian Dokumen/'),
+(2, 17, 2, 'Program Peningkatan Sarana dan Prasarana Aparatur'),
+(2, 17, 5, 'Program Peningkatan Kapasitas Sumber Daya Aparatur'),
+(2, 17, 15, 'Program Pengembangan Budaya Baca dan Pembinaan Perpustakaan'),
+(2, 17, 16, 'Program Penyelamatan dan Pelestarian Dokumen/Arsip Daerah'),
 (3, 1, 1, 'Program Pelayanan Administrasi Perkantoran'),
-(3, 1, 2, 'Program Peningkatan Sarana dan Prasarana Apar'),
+(3, 1, 2, 'Program Peningkatan Sarana dan Prasarana Aparatur '),
 (3, 1, 3, 'Program peningkatan disiplin aparatur'),
 (3, 1, 4, 'Program fasilitasi pindah/purna tugas PNS'),
-(3, 1, 5, 'Program Peningkatan Kapasitas Sumber Daya Apa'),
-(3, 1, 6, 'Program peningkatan pengembangan sistem pelap'),
-(3, 1, 15, 'Program pemberdayaan ekonomi masyarakat pesis'),
-(3, 1, 16, 'Program pemberdayaan masyarakat dalam pengawa'),
-(3, 1, 17, 'Program peningkatan kesadaran dan penegakan h'),
-(3, 1, 18, 'Program peningkatan mitigasi bencana alam lau'),
-(3, 1, 19, 'Program peningkatan kegiatan budaya kelautan '),
+(3, 1, 5, 'Program Peningkatan Kapasitas Sumber Daya Aparatur'),
+(3, 1, 6, 'Program peningkatan pengembangan sistem pelaporan capaian kinerja dan keuangan'),
+(3, 1, 15, 'Program pemberdayaan ekonomi masyarakat pesisir'),
+(3, 1, 16, 'Program pemberdayaan masyarakat dalam pengawasan dan pengendalian sumberdaya kelautan'),
+(3, 1, 17, 'Program peningkatan kesadaran dan penegakan hukum dalam pendayagunaan sumberdaya laut'),
+(3, 1, 18, 'Program peningkatan mitigasi bencana alam laut dan prakiraan iklim laut'),
+(3, 1, 19, 'Program peningkatan kegiatan budaya kelautan dan wawasan maritim kepada masyarakat'),
 (3, 1, 20, 'Program pengembangan budidaya perikanan'),
 (3, 1, 21, 'Program pengembangan perikanan tangkap'),
-(3, 1, 22, 'Program pengembangan sistem penyuluhan perika'),
-(3, 1, 23, 'Program Optimalisasi pengelolaan dan pemasara'),
-(3, 1, 24, 'Program pengembangan kawasan budidaya laut, a'),
-(3, 1, 25, 'Program Pengembangan Kawasan Budidaya Perikan'),
+(3, 1, 22, 'Program pengembangan sistem penyuluhan perikanan'),
+(3, 1, 23, 'Program Optimalisasi pengelolaan dan pemasaran produksi perikanan'),
+(3, 1, 24, 'Program pengembangan kawasan budidaya laut, air payau dan air tawar'),
+(3, 1, 25, 'Program Pengembangan Kawasan Budidaya Perikanan'),
 (3, 3, 1, 'Program Pelayanan Administrasi Perkantoran'),
-(3, 3, 2, 'Program Peningkatan Sarana dan Prasarana Apar'),
+(3, 3, 2, 'Program Peningkatan Sarana dan Prasarana Aparatur '),
 (3, 3, 3, 'Program peningkatan disiplin aparatur'),
 (3, 3, 4, 'Program fasilitasi pindah/purna tugas PNS'),
-(3, 3, 5, 'Program Peningkatan Kapasitas Sumber Daya Apa'),
-(3, 3, 6, 'Program peningkatan pengembangan sistem pelap'),
+(3, 3, 5, 'Program Peningkatan Kapasitas Sumber Daya Aparatur'),
+(3, 3, 6, 'Program peningkatan pengembangan sistem pelaporan capaian kinerja dan keuangan'),
 (3, 3, 15, 'Program Peningkatan Kesejahteraan Petani'),
-(3, 3, 16, 'Program Peningkatan Ketahan Pangan (pertanian'),
-(3, 3, 17, 'Program peningkatan pemasaran hasil produksi '),
-(3, 3, 18, 'Program peningkatan penerapan teknologi perta'),
-(3, 3, 19, 'Program peningkatan produksi pertanian/perkeb'),
-(3, 3, 20, 'Program pemberdayaan penyuluh pertanian/perke'),
-(3, 3, 21, 'Program pencegahan dan penanggulangan penyaki'),
+(3, 3, 16, 'Program Peningkatan Ketahan Pangan (pertanian/perkebunan)'),
+(3, 3, 17, 'Program peningkatan pemasaran hasil produksi pertanian/perkebunan'),
+(3, 3, 18, 'Program peningkatan penerapan teknologi pertanian/perkebunan'),
+(3, 3, 19, 'Program peningkatan produksi pertanian/perkebunan'),
+(3, 3, 20, 'Program pemberdayaan penyuluh pertanian/perkebunan lapangan'),
+(3, 3, 21, 'Program pencegahan dan penanggulangan penyakit ternak'),
 (3, 3, 22, 'Program peningkatan produksi hasil peternakan'),
-(3, 3, 23, 'Program peningkatan pemasaran hasil produksi '),
+(3, 3, 23, 'Program peningkatan pemasaran hasil produksi peternakan'),
 (3, 3, 24, 'Program peningkatan produksi peternakan'),
-(3, 3, 25, 'Program Pemberdayaan Pertanian / Perkebunan L'),
+(3, 3, 25, 'Program Pemberdayaan Pertanian / Perkebunan Lapangan'),
 (3, 6, 1, 'Program Pelayanan Administrasi Perkantoran'),
-(3, 6, 2, 'Program Peningkatan Sarana dan Prasarana Apar'),
+(3, 6, 2, 'Program Peningkatan Sarana dan Prasarana Aparatur '),
 (3, 6, 3, 'Program peningkatan disiplin aparatur'),
 (3, 6, 4, 'Program fasilitasi pindah/purna tugas PNS'),
-(3, 6, 5, 'Program Peningkatan Kapasitas Sumber Daya Apa'),
-(3, 6, 6, 'Program peningkatan pengembangan sistem pelap'),
-(3, 6, 15, 'Program perlindungan konsumen dan pengamanan '),
-(3, 6, 16, 'Program peningkatan kerjasama perdagangan int'),
+(3, 6, 5, 'Program Peningkatan Kapasitas Sumber Daya Aparatur'),
+(3, 6, 6, 'Program peningkatan pengembangan sistem pelaporan capaian kinerja dan keuangan'),
+(3, 6, 15, 'Program perlindungan konsumen dan pengamanan perdagangan'),
+(3, 6, 16, 'Program peningkatan kerjasama perdagangan internasional'),
 (3, 6, 17, 'Program peningkatan dan pengembangan ekspor'),
-(3, 6, 18, 'Program peningkatan efisiensi perdagangan dal'),
-(3, 6, 19, 'Program pembinaan pedagang kakilima dan asong'),
-(3, 6, 20, 'Perlindungan Konsumen dan Pengamanan Perdagan'),
+(3, 6, 18, 'Program peningkatan efisiensi perdagangan dalam negeri'),
+(3, 6, 19, 'Program pembinaan pedagang kakilima dan asongan'),
+(3, 6, 20, 'Perlindungan Konsumen dan Pengamanan Perdagangan'),
 (4, 1, 1, 'Program Pelayanan Administrasi Perkantoran'),
-(4, 1, 2, 'Program Peningkatan Sarana dan Prasarana Apar'),
+(4, 1, 2, 'Program Peningkatan Sarana dan Prasarana Aparatur '),
 (4, 1, 3, 'Program peningkatan disiplin aparatur'),
 (4, 1, 4, 'Program fasilitasi pindah/purna tugas PNS'),
-(4, 1, 5, 'Program Peningkatan Kapasitas Sumber Daya Apa'),
-(4, 1, 6, 'Program peningkatan pengembangan sistem pelap'),
+(4, 1, 5, 'Program Peningkatan Kapasitas Sumber Daya Aparatur'),
+(4, 1, 6, 'Program peningkatan pengembangan sistem pelaporan capaian kinerja dan keuangan'),
 (4, 1, 7, 'Program Pembinaan dan Pengembangan Aparatur'),
-(4, 1, 8, 'Program Peningkatan Kapasitas Lembaga Perwaki'),
-(4, 1, 9, 'Peningkatan Kerjasama Antar Pemerintah Daerah'),
+(4, 1, 8, 'Program Peningkatan Kapasitas Lembaga Perwakilan Rakyat Daerah'),
+(4, 1, 9, 'Peningkatan Kerjasama Antar Pemerintah Daerah '),
 (4, 1, 10, 'Program Peningkatan Kehidupan Beragama'),
-(4, 1, 11, 'Program Penataan Peraturan Perundang-Undangan'),
-(4, 1, 12, 'Program Peningkatan dan Pengembangan Pengelol'),
+(4, 1, 11, 'Program Penataan Peraturan Perundang-Undangan '),
+(4, 1, 12, 'Program Peningkatan dan Pengembangan Pengelolaan Keuangan Daerah'),
 (4, 1, 13, 'Program Penataan Daerah Otonomi Daerah'),
 (4, 1, 14, 'Program Pembinaan dan Pengembangan Aparatur'),
 (4, 2, 1, 'Program Pelayanan Administrasi Perkantoran'),
-(4, 2, 2, 'Program Peningkatan Sarana dan Prasarana Apar'),
+(4, 2, 2, 'Program Peningkatan Sarana dan Prasarana Aparatur '),
 (4, 2, 3, 'Program peningkatan disiplin aparatur'),
 (4, 2, 4, 'Program fasilitasi pindah/purna tugas PNS'),
-(4, 2, 5, 'Program Peningkatan Kapasitas Sumber Daya Apa'),
-(4, 2, 6, 'Program peningkatan pengembangan sistem pelap'),
+(4, 2, 5, 'Program Peningkatan Kapasitas Sumber Daya Aparatur'),
+(4, 2, 6, 'Program peningkatan pengembangan sistem pelaporan capaian kinerja dan keuangan'),
 (4, 2, 7, 'Program Pembinaan dan Pengembangan Aparatur'),
-(4, 2, 8, 'Program Peningkatan Sistem Pengawasan Interna'),
-(4, 2, 9, 'Program Peningkatan Profesional Tenaga Pemeri'),
+(4, 2, 8, 'Program Peningkatan Sistem Pengawasan Internal dan Pengandalian Pelaksanaan Kebijakan KDH'),
+(4, 2, 9, 'Program Peningkatan Profesional Tenaga Pemeriksa dan Aparatur Pengawasan'),
 (4, 3, 1, 'Program Pelayanan Administrasi Perkantoran'),
-(4, 3, 2, 'Program Peningkatan Sarana dan Prasarana Apar'),
+(4, 3, 2, 'Program Peningkatan Sarana dan Prasarana Aparatur '),
 (4, 3, 3, 'Program peningkatan disiplin aparatur'),
 (4, 3, 4, 'Program fasilitasi pindah/purna tugas PNS'),
-(4, 3, 5, 'Program Peningkatan Kapasitas Sumber Daya Apa'),
-(4, 3, 6, 'Program peningkatan pengembangan sistem pelap'),
+(4, 3, 5, 'Program Peningkatan Kapasitas Sumber Daya Aparatur'),
+(4, 3, 6, 'Program peningkatan pengembangan sistem pelaporan capaian kinerja dan keuangan'),
 (4, 3, 15, 'Program pengembangan data/informasi'),
 (4, 3, 16, 'Program Kerjasama Pembangunan'),
 (4, 3, 17, 'Program Pengembangan Wilayah Perbatasan'),
-(4, 3, 18, 'Program Perencanaan Pengembangan Wilayah Stra'),
-(4, 3, 19, 'Program perencanaan pengembangan kota-kota me'),
-(4, 3, 20, 'Program peningkatan kapasitas kelembagaan per'),
+(4, 3, 18, 'Program Perencanaan Pengembangan Wilayah Strategis dan Cepat Tumbuh'),
+(4, 3, 19, 'Program perencanaan pengembangan kota-kota menengah dan besar'),
+(4, 3, 20, 'Program peningkatan kapasitas kelembagaan perencanaan pembangunan daerah'),
 (4, 3, 21, 'Program perencanaan pembangunan daerah'),
 (4, 3, 22, 'Program perencanaan pembangunan ekonomi'),
 (4, 3, 23, 'Program perencanaan sosial dan budaya'),
-(4, 3, 24, 'Program perancanaan prasarana wilayah dan sum'),
-(4, 3, 25, 'Program perencanaan pembangunan daerah rawan '),
+(4, 3, 24, 'Program perancanaan prasarana wilayah dan sumber daya alam'),
+(4, 3, 25, 'Program perencanaan pembangunan daerah rawan bencana'),
 (4, 3, 26, 'Program Perencanaan Bidang Infrastruktur'),
-(4, 3, 27, 'Program Perencanaan pembangunan Bidang Infast'),
+(4, 3, 27, 'Program Perencanaan pembangunan Bidang Infastruktur'),
 (4, 4, 1, 'Program Pelayanan Administrasi Perkantoran'),
-(4, 4, 2, 'Program Peningkatan Sarana dan Prasarana Apar'),
+(4, 4, 2, 'Program Peningkatan Sarana dan Prasarana Aparatur '),
 (4, 4, 3, 'Program peningkatan disiplin aparatur'),
 (4, 4, 4, 'Program fasilitasi pindah/purna tugas PNS'),
-(4, 4, 5, 'Program Peningkatan Kapasitas Sumber Daya Apa'),
-(4, 4, 6, 'Program peningkatan pengembangan sistem pelap'),
+(4, 4, 5, 'Program Peningkatan Kapasitas Sumber Daya Aparatur'),
+(4, 4, 6, 'Program peningkatan pengembangan sistem pelaporan capaian kinerja dan keuangan'),
 (4, 4, 7, 'Program Pembinaan dan Pengembangan Aparatur'),
-(4, 4, 17, 'Program Peningkatan dan Pengembangan Pengelol'),
+(4, 4, 17, 'Program Peningkatan dan Pengembangan Pengelolaan Keuangan Daerah'),
 (4, 5, 1, 'Program Pelayanan Administrasi Perkantoran'),
-(4, 5, 2, 'Program Peningkatan Sarana dan Prasarana Apar'),
+(4, 5, 2, 'Program Peningkatan Sarana dan Prasarana Aparatur '),
 (4, 5, 3, 'Program peningkatan disiplin aparatur'),
 (4, 5, 4, 'Program fasilitasi pindah/purna tugas PNS'),
-(4, 5, 5, 'Program Peningkatan Kapasitas Sumber Daya Apa'),
-(4, 5, 6, 'Program peningkatan pengembangan sistem pelap'),
+(4, 5, 5, 'Program Peningkatan Kapasitas Sumber Daya Aparatur'),
+(4, 5, 6, 'Program peningkatan pengembangan sistem pelaporan capaian kinerja dan keuangan'),
 (4, 5, 7, 'Program Pembinaan dan Pengembangan Aparatur'),
 (4, 5, 8, 'Program Peningkatan Kualitas Perencanaan ');
 
@@ -7550,7 +7528,7 @@ CREATE TABLE `tb_rpjmd` (
 --
 
 INSERT INTO `tb_rpjmd` (`id_tb_rpjmd`, `tb_rpjmd_visi`, `tb_rpjmd_tahun`, `tb_rpjmd_status_tahun`, `tb_rpjmd_status_bulan`, `tb_rpjmd_status_rkpd`, `tb_rpjmd_status_json`) VALUES
-(1, 'Terwujudnya Masyarakat Morowali yang Sejahtera Bersama', 2019, 1, 1, NULL, '{\"tahun1\":{\"bulan1\":1,\"bulan2\":2,\"bulan3\":2,\"bulan4\":2,\"bulan5\":2,\"bulan6\":2,\"bulan7\":3,\"bulan8\":3,\"bulan9\":3,\"bulan10\":3,\"bulan11\":3,\"bulan12\":3},\"tahun2\":{\"bulan1\":1,\"bulan2\":2,\"bulan3\":2,\"bulan4\":2,\"bulan5\":2,\"bulan6\":2,\"bulan7\":3,\"bulan8\":3,\"bulan9\":3,\"bulan10\":3,\"bulan11\":3,\"bulan12\":3},\"tahun3\":{\"bulan1\":1,\"bulan2\":2,\"bulan3\":2,\"bulan4\":2,\"bulan5\":2,\"bulan6\":2,\"bulan7\":3,\"bulan8\":3,\"bulan9\":3,\"bulan10\":3,\"bulan11\":3,\"bulan12\":3},\"tahun4\":{\"bulan1\":1,\"bulan2\":2,\"bulan3\":2,\"bulan4\":2,\"bulan5\":2,\"bulan6\":2,\"bulan7\":3,\"bulan8\":3,\"bulan9\":3,\"bulan10\":3,\"bulan11\":3,\"bulan12\":3},\"tahun5\":{\"bulan1\":1,\"bulan2\":2,\"bulan3\":2,\"bulan4\":2,\"bulan5\":2,\"bulan6\":2,\"bulan7\":3,\"bulan8\":3,\"bulan9\":3,\"bulan10\":3,\"bulan11\":3,\"bulan12\":3}}');
+(1, 'Terwujudnya Masyarakat Kabupaten Morowali yang Sejahtera Bersama', 2019, 1, 1, 1, '{\"tahun1\":{\"bulan1\":1,\"bulan2\":2,\"bulan3\":2,\"bulan4\":2,\"bulan5\":2,\"bulan6\":2,\"bulan7\":3,\"bulan8\":3,\"bulan9\":3,\"bulan10\":3,\"bulan11\":3,\"bulan12\":3},\"tahun2\":{\"bulan1\":1,\"bulan2\":2,\"bulan3\":2,\"bulan4\":2,\"bulan5\":2,\"bulan6\":2,\"bulan7\":3,\"bulan8\":3,\"bulan9\":3,\"bulan10\":3,\"bulan11\":3,\"bulan12\":3},\"tahun3\":{\"bulan1\":1,\"bulan2\":2,\"bulan3\":2,\"bulan4\":2,\"bulan5\":2,\"bulan6\":2,\"bulan7\":3,\"bulan8\":3,\"bulan9\":3,\"bulan10\":3,\"bulan11\":3,\"bulan12\":3},\"tahun4\":{\"bulan1\":1,\"bulan2\":2,\"bulan3\":2,\"bulan4\":2,\"bulan5\":2,\"bulan6\":2,\"bulan7\":3,\"bulan8\":3,\"bulan9\":3,\"bulan10\":3,\"bulan11\":3,\"bulan12\":3},\"tahun5\":{\"bulan1\":1,\"bulan2\":2,\"bulan3\":2,\"bulan4\":2,\"bulan5\":2,\"bulan6\":2,\"bulan7\":3,\"bulan8\":3,\"bulan9\":3,\"bulan10\":3,\"bulan11\":3,\"bulan12\":3}}');
 
 -- --------------------------------------------------------
 
@@ -7630,12 +7608,70 @@ CREATE TABLE `tb_rpjmd_kegiatan` (
   `tb_rpjmd_kegiatan_th_akhir_capaian_realisasi` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `tb_rpjmd_kegiatan`
+-- Table structure for table `tb_rpjmd_kegiatan_indikator`
 --
 
-INSERT INTO `tb_rpjmd_kegiatan` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_tujuan_kode`, `tb_rpjmd_sasaran_kode`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_program_kode`, `tb_kegiatan_kode`, `tb_rpjmd_kegiatan_nama`, `tb_rpjmd_kegiatan_indikator`, `tb_rpjmd_kegiatan_th1_target_kinerja`, `tb_rpjmd_kegiatan_th2_target_kinerja`, `tb_rpjmd_kegiatan_th3_target_kinerja`, `tb_rpjmd_kegiatan_th4_target_kinerja`, `tb_rpjmd_kegiatan_th5_target_kinerja`, `tb_rpjmd_kegiatan_th1_target_realisasi`, `tb_rpjmd_kegiatan_th2_target_realisasi`, `tb_rpjmd_kegiatan_th3_target_realisasi`, `tb_rpjmd_kegiatan_th4_target_realisasi`, `tb_rpjmd_kegiatan_th5_target_realisasi`, `tb_rpjmd_kegiatan_th1_capaian_kinerja`, `tb_rpjmd_kegiatan_th2_capaian_kinerja`, `tb_rpjmd_kegiatan_th3_capaian_kinerja`, `tb_rpjmd_kegiatan_th4_capaian_kinerja`, `tb_rpjmd_kegiatan_th5_capaian_kinerja`, `tb_rpjmd_kegiatan_th1_capaian_realisasi`, `tb_rpjmd_kegiatan_th2_capaian_realisasi`, `tb_rpjmd_kegiatan_th3_capaian_realisasi`, `tb_rpjmd_kegiatan_th4_capaian_realisasi`, `tb_rpjmd_kegiatan_th5_capaian_realisasi`, `tb_rpjmd_kegiatan_th_awal_target_kinerja`, `tb_rpjmd_kegiatan_th_awal_target_realisasi`, `tb_rpjmd_kegiatan_th_akhir_target_kinerja`, `tb_rpjmd_kegiatan_th_akhir_target_realisasi`, `id_tb_satuan`, `tb_rpjmd_kegiatan_th_awal_capaian_kinerja`, `tb_rpjmd_kegiatan_th_awal_capaian_realisasi`, `tb_rpjmd_kegiatan_th_akhir_capaian_kinerja`, `tb_rpjmd_kegiatan_th_akhir_capaian_realisasi`) VALUES
-(1, 1, 1, 1, 1, 1, 1, 1, 1, 7, NULL, '-', '100', '100', '100', '100', '100', 729799476, 729799476, 729799476, 729799476, 729799476, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', 0, '100', 5000000000, 1, NULL, NULL, NULL, NULL);
+CREATE TABLE `tb_rpjmd_kegiatan_indikator` (
+  `id_tb_rpjmd` int(11) NOT NULL,
+  `tb_rpjmd_misi_kode` int(11) NOT NULL,
+  `tb_rpjmd_tujuan_kode` int(11) NOT NULL,
+  `tb_rpjmd_sasaran_kode` int(11) NOT NULL,
+  `tb_urusan_kode` int(11) NOT NULL,
+  `tb_bidang_kode` int(11) NOT NULL,
+  `tb_unit_kode` int(11) NOT NULL,
+  `tb_sub_unit_kode` int(11) NOT NULL,
+  `tb_program_kode` int(11) NOT NULL,
+  `tb_kegiatan_kode` int(11) NOT NULL,
+  `tb_rpjmd_kegiatan_indikator_kode` int(11) NOT NULL,
+  `tb_rpjmd_kegiatan_indikator_nama` text
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_rpjmd_kegiatan_indikator_penetapan`
+--
+
+CREATE TABLE `tb_rpjmd_kegiatan_indikator_penetapan` (
+  `id_tb_rpjmd` int(11) NOT NULL,
+  `tb_rpjmd_misi_kode` int(11) NOT NULL,
+  `tb_rpjmd_tujuan_kode` int(11) NOT NULL,
+  `tb_rpjmd_sasaran_kode` int(11) NOT NULL,
+  `tb_urusan_kode` int(11) NOT NULL,
+  `tb_bidang_kode` int(11) NOT NULL,
+  `tb_unit_kode` int(11) NOT NULL,
+  `tb_sub_unit_kode` int(11) NOT NULL,
+  `tb_program_kode` int(11) NOT NULL,
+  `tb_rpjmd_program_tahun` tinyint(4) NOT NULL,
+  `tb_kegiatan_kode` int(11) NOT NULL,
+  `tb_rpjmd_kegiatan_indikator_kode` int(11) NOT NULL,
+  `tb_rpjmd_kegiatan_indikator_nama` text
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_rpjmd_kegiatan_indikator_perubahan`
+--
+
+CREATE TABLE `tb_rpjmd_kegiatan_indikator_perubahan` (
+  `id_tb_rpjmd` int(11) NOT NULL,
+  `tb_rpjmd_misi_kode` int(11) NOT NULL,
+  `tb_rpjmd_tujuan_kode` int(11) NOT NULL,
+  `tb_rpjmd_sasaran_kode` int(11) NOT NULL,
+  `tb_urusan_kode` int(11) NOT NULL,
+  `tb_bidang_kode` int(11) NOT NULL,
+  `tb_unit_kode` int(11) NOT NULL,
+  `tb_sub_unit_kode` int(11) NOT NULL,
+  `tb_program_kode` int(11) NOT NULL,
+  `tb_rpjmd_program_tahun` tinyint(4) NOT NULL,
+  `tb_kegiatan_kode` int(11) NOT NULL,
+  `tb_rpjmd_kegiatan_indikator_kode` int(11) NOT NULL,
+  `tb_rpjmd_kegiatan_indikator_nama` text
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -7653,38 +7689,18 @@ CREATE TABLE `tb_rpjmd_kegiatan_penetapan` (
   `tb_unit_kode` int(11) NOT NULL,
   `tb_sub_unit_kode` int(11) NOT NULL,
   `tb_program_kode` int(11) NOT NULL,
+  `tb_rpjmd_program_tahun` tinyint(4) NOT NULL,
   `tb_kegiatan_kode` int(11) NOT NULL,
   `tb_rpjmd_kegiatan_nama` text,
   `tb_rpjmd_kegiatan_indikator` text,
-  `tb_rpjmd_kegiatan_th1_target_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th2_target_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th3_target_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th4_target_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th5_target_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th1_target_realisasi` double DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th2_target_realisasi` double DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th3_target_realisasi` double DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th4_target_realisasi` double DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th5_target_realisasi` double DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th1_capaian_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th2_capaian_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th3_capaian_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th4_capaian_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th5_capaian_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th1_capaian_realisasi` double DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th2_capaian_realisasi` double DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th3_capaian_realisasi` double DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th4_capaian_realisasi` double DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th5_capaian_realisasi` double DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th_awal_target_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th_awal_target_realisasi` double DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th_akhir_target_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th_akhir_target_realisasi` double DEFAULT NULL,
-  `id_tb_satuan` int(11) NOT NULL,
-  `tb_rpjmd_kegiatan_th_awal_capaian_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th_awal_capaian_realisasi` double DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th_akhir_capaian_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th_akhir_capaian_realisasi` double DEFAULT NULL
+  `tb_rpjmd_kegiatan_awal_target_kinerja` varchar(45) DEFAULT NULL,
+  `tb_rpjmd_kegiatan_awal_target_realisasi` double DEFAULT NULL,
+  `tb_rpjmd_kegiatan_target_kinerja` varchar(45) DEFAULT NULL,
+  `tb_rpjmd_kegiatan_target_realisasi` double DEFAULT NULL,
+  `tb_rpjmd_kegiatan_capaian_kinerja` varchar(45) DEFAULT NULL,
+  `tb_rpjmd_kegiatan_capaian_realisasi` double DEFAULT NULL,
+  `tb_rpjmd_kegiatan_catatan` text,
+  `id_tb_satuan` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -7703,38 +7719,18 @@ CREATE TABLE `tb_rpjmd_kegiatan_perubahan` (
   `tb_unit_kode` int(11) NOT NULL,
   `tb_sub_unit_kode` int(11) NOT NULL,
   `tb_program_kode` int(11) NOT NULL,
+  `tb_rpjmd_program_tahun` tinyint(4) NOT NULL,
   `tb_kegiatan_kode` int(11) NOT NULL,
   `tb_rpjmd_kegiatan_nama` text,
   `tb_rpjmd_kegiatan_indikator` text,
-  `tb_rpjmd_kegiatan_th1_target_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th2_target_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th3_target_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th4_target_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th5_target_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th1_target_realisasi` double DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th2_target_realisasi` double DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th3_target_realisasi` double DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th4_target_realisasi` double DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th5_target_realisasi` double DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th1_capaian_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th2_capaian_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th3_capaian_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th4_capaian_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th5_capaian_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th1_capaian_realisasi` double DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th2_capaian_realisasi` double DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th3_capaian_realisasi` double DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th4_capaian_realisasi` double DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th5_capaian_realisasi` double DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th_awal_target_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th_awal_target_realisasi` double DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th_akhir_target_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th_akhir_target_realisasi` double DEFAULT NULL,
-  `id_tb_satuan` int(11) NOT NULL,
-  `tb_rpjmd_kegiatan_th_awal_capaian_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th_awal_capaian_realisasi` double DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th_akhir_capaian_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_kegiatan_th_akhir_capaian_realisasi` double DEFAULT NULL
+  `tb_rpjmd_kegiatan_awal_target_kinerja` varchar(45) DEFAULT NULL,
+  `tb_rpjmd_kegiatan_awal_target_realisasi` double DEFAULT NULL,
+  `tb_rpjmd_kegiatan_target_kinerja` varchar(45) DEFAULT NULL,
+  `tb_rpjmd_kegiatan_target_realisasi` double DEFAULT NULL,
+  `tb_rpjmd_kegiatan_capaian_kinerja` varchar(45) DEFAULT NULL,
+  `tb_rpjmd_kegiatan_capaian_realisasi` double DEFAULT NULL,
+  `tb_rpjmd_kegiatan_catatan` text,
+  `id_tb_satuan` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -7784,8 +7780,28 @@ CREATE TABLE `tb_rpjmd_opd` (
 --
 
 INSERT INTO `tb_rpjmd_opd` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_tujuan_kode`, `tb_rpjmd_sasaran_kode`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`) VALUES
-(1, 1, 1, 1, 1, 1, 1, 1),
-(1, 1, 1, 1, 1, 2, 1, 1);
+(1, 1, 1, 1, 4, 1, 3, 1),
+(1, 1, 1, 1, 4, 1, 3, 2),
+(1, 1, 1, 1, 4, 1, 3, 5),
+(1, 2, 1, 1, 2, 11, 1, 1),
+(1, 2, 1, 1, 2, 13, 1, 1),
+(1, 2, 1, 1, 3, 6, 1, 1),
+(1, 2, 1, 1, 4, 1, 3, 4),
+(1, 2, 2, 1, 2, 1, 1, 1),
+(1, 2, 2, 1, 2, 12, 1, 1),
+(1, 3, 1, 1, 1, 1, 1, 1),
+(1, 3, 1, 2, 1, 1, 1, 1),
+(1, 3, 1, 2, 2, 13, 1, 1),
+(1, 3, 1, 2, 2, 17, 1, 1),
+(1, 4, 1, 1, 1, 2, 1, 1),
+(1, 4, 1, 2, 1, 2, 1, 1),
+(1, 4, 1, 2, 1, 6, 1, 1),
+(1, 4, 1, 2, 2, 7, 1, 1),
+(1, 6, 1, 1, 1, 3, 1, 1),
+(1, 6, 1, 1, 1, 4, 1, 1),
+(1, 6, 1, 1, 2, 9, 1, 1),
+(1, 6, 1, 2, 1, 6, 2, 1),
+(1, 6, 1, 2, 2, 5, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -7833,15 +7849,206 @@ CREATE TABLE `tb_rpjmd_program` (
   `tb_rpjmd_program_th_awal_capaian_kinerja` varchar(45) DEFAULT NULL,
   `tb_rpjmd_program_th_awal_capaian_realisasi` double DEFAULT NULL,
   `tb_rpjmd_program_th_akhirl_capaian_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_program_th_akhir_capaian_realisasi` double DEFAULT NULL
+  `tb_rpjmd_program_th_akhir_capaian_realisasi` double DEFAULT NULL,
+  `tb_rpjmd_program_status_tahun` tinyint(4) DEFAULT NULL,
+  `tb_rpjmd_program_status_bulan` tinyint(4) DEFAULT NULL,
+  `tb_rpjmd_program_status_jenis` tinyint(4) DEFAULT NULL,
+  `tb_rpjmd_program_status_ke` tinyint(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tb_rpjmd_program`
 --
 
-INSERT INTO `tb_rpjmd_program` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_tujuan_kode`, `tb_rpjmd_sasaran_kode`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_program_kode`, `tb_rpjmd_program_nama`, `tb_rpjmd_program_indikator`, `tb_rpjmd_program_th1_target_kinerja`, `tb_rpjmd_program_th2_target_kinerja`, `tb_rpjmd_program_th3_target_kinerja`, `tb_rpjmd_program_th4_target_kinerja`, `tb_rpjmd_program_th5_target_kinerja`, `tb_rpjmd_program_th1_target_realisasi`, `tb_rpjmd_program_th2_target_realisasi`, `tb_rpjmd_program_th3_target_realisasi`, `tb_rpjmd_program_th4_target_realisasi`, `tb_rpjmd_program_th5_target_realisasi`, `tb_rpjmd_program_th1_capaian_kinerja`, `tb_rpjmd_program_th2_capaian_kinerja`, `tb_rpjmd_program_th3_capaian_kinerja`, `tb_rpjmd_program_th4_capaian_kinerja`, `tb_rpjmd_program_th5_capaian_kinerja`, `tb_rpjmd_program_th1_capaian_realisasi`, `tb_rpjmd_program_th2_capaian_realisasi`, `tb_rpjmd_program_th3_capaian_realisasi`, `tb_rpjmd_program_th4_capaian_realisasi`, `tb_rpjmd_program_th5_capaian_realisasi`, `tb_rpjmd_program_th_awal_target_realisasi`, `tb_rpjmd_program_th_awal_target_kinerja`, `tb_rpjmd_program_th_akhir_target_realisasi`, `tb_rpjmd_program_th_akhir_target_kinerja`, `id_tb_satuan`, `tb_rpjmd_program_th_awal_capaian_kinerja`, `tb_rpjmd_program_th_awal_capaian_realisasi`, `tb_rpjmd_program_th_akhirl_capaian_kinerja`, `tb_rpjmd_program_th_akhir_capaian_realisasi`) VALUES
-(1, 1, 1, 1, 1, 1, 1, 1, 1, NULL, 'Mewujudkan Pelayanan Administrasi Perkantoran', '100', '100', '100', '100', '100', 3818161186, 3818161186, 3818161186, 3818161186, 3818161186, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '0', 5000000000, '100', 1, NULL, NULL, NULL, NULL);
+INSERT INTO `tb_rpjmd_program` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_tujuan_kode`, `tb_rpjmd_sasaran_kode`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_program_kode`, `tb_rpjmd_program_nama`, `tb_rpjmd_program_indikator`, `tb_rpjmd_program_th1_target_kinerja`, `tb_rpjmd_program_th2_target_kinerja`, `tb_rpjmd_program_th3_target_kinerja`, `tb_rpjmd_program_th4_target_kinerja`, `tb_rpjmd_program_th5_target_kinerja`, `tb_rpjmd_program_th1_target_realisasi`, `tb_rpjmd_program_th2_target_realisasi`, `tb_rpjmd_program_th3_target_realisasi`, `tb_rpjmd_program_th4_target_realisasi`, `tb_rpjmd_program_th5_target_realisasi`, `tb_rpjmd_program_th1_capaian_kinerja`, `tb_rpjmd_program_th2_capaian_kinerja`, `tb_rpjmd_program_th3_capaian_kinerja`, `tb_rpjmd_program_th4_capaian_kinerja`, `tb_rpjmd_program_th5_capaian_kinerja`, `tb_rpjmd_program_th1_capaian_realisasi`, `tb_rpjmd_program_th2_capaian_realisasi`, `tb_rpjmd_program_th3_capaian_realisasi`, `tb_rpjmd_program_th4_capaian_realisasi`, `tb_rpjmd_program_th5_capaian_realisasi`, `tb_rpjmd_program_th_awal_target_realisasi`, `tb_rpjmd_program_th_awal_target_kinerja`, `tb_rpjmd_program_th_akhir_target_realisasi`, `tb_rpjmd_program_th_akhir_target_kinerja`, `id_tb_satuan`, `tb_rpjmd_program_th_awal_capaian_kinerja`, `tb_rpjmd_program_th_awal_capaian_realisasi`, `tb_rpjmd_program_th_akhirl_capaian_kinerja`, `tb_rpjmd_program_th_akhir_capaian_realisasi`, `tb_rpjmd_program_status_tahun`, `tb_rpjmd_program_status_bulan`, `tb_rpjmd_program_status_jenis`, `tb_rpjmd_program_status_ke`) VALUES
+(1, 2, 1, 1, 2, 11, 1, 1, 15, NULL, 'Persentase pelaku UMKM yang memperoleh bantuan', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 2, 1, 1, 2, 11, 1, 1, 16, NULL, 'Persentase usaha mikro yang naik kelas', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 2, 1, 1, 2, 11, 1, 1, 17, NULL, 'Persentase promosi produk UMKM', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 2, 1, 1, 2, 11, 1, 1, 18, NULL, '\"Persentase koperasi yang sehat/aktif \"', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 2, 1, 1, 2, 13, 1, 1, 22, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 2, 1, 1, 2, 13, 1, 1, 23, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 2, 1, 1, 2, 13, 1, 1, 25, NULL, 'Persentase Destinasi Wisata Dalam Kondisi Baik', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 2, 1, 1, 2, 13, 1, 1, 26, NULL, 'Persentase pertumbuhan wisatawan', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 2, 1, 1, 2, 13, 1, 1, 27, NULL, 'Tingkat kepuasan pengunjung atas ketersediaan akomodasi dan konsumsi', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 2, 1, 1, 3, 6, 1, 1, 17, NULL, 'Persentase Produk unggulan yang diperdagangkan keluar Morowali', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 2, 1, 1, 3, 6, 1, 1, 18, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 2, 1, 1, 3, 6, 1, 1, 21, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 2, 1, 1, 3, 6, 1, 1, 22, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 2, 1, 1, 3, 6, 1, 1, 23, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 2, 1, 1, 3, 6, 1, 1, 24, NULL, 'Persentase Sarana dan Prasarana Perdagangan dalam kondisi layak', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 2, 1, 1, 3, 6, 1, 1, 25, NULL, 'perubahan harga barang pokok di pasar', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 2, 1, 1, 4, 1, 3, 4, 15, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 2, 2, 1, 2, 1, 1, 1, 15, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 2, 2, 1, 2, 1, 1, 1, 16, NULL, 'Persentase tenaga kerja terserap yang mendapat pelatihan yang bekerja', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 2, 2, 1, 2, 1, 1, 1, 17, NULL, 'Persentase kasus ketenaga kerjaan yang diselesaikan dengan perjanjian bersama', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 2, 2, 1, 2, 12, 1, 1, 15, NULL, 'Nilai Investasi berdasarkan sektor', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 2, 2, 1, 2, 12, 1, 1, 16, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 3, 1, 1, 1, 1, 1, 1, 15, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 3, 1, 1, 1, 1, 1, 1, 16, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 3, 1, 1, 1, 1, 1, 1, 18, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 3, 1, 1, 1, 1, 1, 1, 19, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 3, 1, 1, 1, 1, 1, 1, 20, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 3, 1, 1, 1, 1, 1, 1, 22, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 3, 1, 1, 1, 1, 1, 1, 23, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 3, 1, 1, 1, 1, 1, 1, 26, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 3, 1, 1, 1, 1, 1, 1, 27, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 3, 1, 1, 1, 1, 1, 1, 28, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 3, 1, 2, 1, 1, 1, 1, 29, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 3, 1, 2, 1, 1, 1, 1, 30, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 3, 1, 2, 1, 1, 1, 1, 31, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 3, 1, 2, 2, 13, 1, 1, 16, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 3, 1, 2, 2, 13, 1, 1, 20, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 3, 1, 2, 2, 13, 1, 1, 21, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 3, 1, 2, 2, 13, 1, 1, 28, NULL, 'Persentase organisasi pemuda yang aktif', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 3, 1, 2, 2, 17, 1, 1, 15, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 3, 1, 2, 2, 17, 1, 1, 17, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 3, 1, 2, 2, 17, 1, 1, 18, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 1, 1, 1, 2, 1, 1, 15, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 1, 1, 1, 2, 1, 1, 16, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 1, 1, 1, 2, 1, 1, 17, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 1, 1, 1, 2, 1, 1, 19, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 1, 1, 1, 2, 1, 1, 20, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 1, 1, 1, 2, 1, 1, 21, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 1, 1, 1, 2, 1, 1, 22, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 1, 1, 1, 2, 1, 1, 23, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 1, 1, 1, 2, 1, 1, 28, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 1, 1, 1, 2, 1, 1, 30, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 1, 1, 1, 2, 1, 1, 32, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 1, 1, 1, 2, 1, 1, 35, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 1, 1, 1, 2, 1, 1, 36, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 1, 1, 1, 2, 1, 1, 37, NULL, 'Rasio tenaga kesehatan terhadap jumlah penduduk', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 1, 1, 1, 2, 1, 1, 38, NULL, 'Persentase sarana apotek, toko obat, toko alkes, optikal, UMOT, IRTP dan TTU Mamin yang memenuhi standar', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 1, 1, 1, 2, 1, 1, 39, NULL, 'Persentase stunting yang tertanggulangi', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 1, 2, 1, 2, 1, 1, 40, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 1, 2, 1, 2, 1, 1, 41, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 1, 2, 1, 2, 1, 1, 42, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 1, 2, 1, 2, 1, 1, 43, NULL, 'Cakupan PUS peserta KB anggota Usaha Peningkatan Pendapatan Keluarga Sejahtera (UPPKS) yang ber-KB mandiri', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 1, 2, 1, 6, 1, 1, 15, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 1, 2, 1, 6, 1, 1, 16, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 1, 2, 1, 6, 1, 1, 17, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 1, 2, 1, 6, 1, 1, 18, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 1, 2, 1, 6, 1, 1, 27, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 1, 2, 1, 6, 1, 1, 28, NULL, 'Persentase korban bencana yang menerima bantuan sosial selama masa tanggap darurat', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 1, 2, 1, 6, 1, 1, 29, NULL, 'Persentase korban bencana yang menerima bantuan sosial selama masa tanggap darurat', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 1, 2, 2, 7, 1, 1, 15, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 1, 2, 2, 7, 1, 1, 16, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 1, 2, 2, 7, 1, 1, 17, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 1, 2, 2, 7, 1, 1, 18, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 1, 2, 2, 7, 1, 1, 21, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 1, 2, 2, 7, 1, 1, 22, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 1, 2, 2, 7, 1, 1, 23, NULL, 'Indeks Pemberdayaan Gender', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 1, 2, 2, 7, 1, 1, 24, NULL, 'Jumlah kasus laporan kekerasan terhadap perempuan yang terselesaikan', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 1, 2, 2, 7, 1, 1, 25, NULL, 'Partisipasi Angkatan Kerja Perempuan', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 1, 2, 2, 7, 1, 1, 26, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 1, 2, 2, 7, 1, 1, 27, NULL, 'Persentase desa yang menerapkan administrasi pemerintahan desa yang baik dan benar', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 1, 2, 2, 7, 1, 1, 28, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 1, 1, 1, 3, 1, 1, 15, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 1, 1, 1, 3, 1, 1, 16, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 1, 1, 1, 3, 1, 1, 17, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 1, 1, 1, 3, 1, 1, 18, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 1, 1, 1, 3, 1, 1, 23, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 1, 1, 1, 3, 1, 1, 24, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 1, 1, 1, 3, 1, 1, 27, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 1, 1, 1, 3, 1, 1, 28, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 1, 1, 1, 3, 1, 1, 29, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 1, 1, 1, 3, 1, 1, 31, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 1, 1, 1, 3, 1, 1, 35, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 1, 1, 1, 3, 1, 1, 36, NULL, 'Persentase kondisi jalan dan jembatan dalam kondisi baik', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 1, 1, 1, 3, 1, 1, 37, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 1, 1, 1, 3, 1, 1, 38, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 1, 1, 1, 3, 1, 1, 39, NULL, '-', 'Persentase ketaatan terhadap RTRW ', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 1, 1, 1, 3, 1, 1, 40, NULL, 'Indeks kualitas jasa konstruksi', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 1, 1, 1, 4, 1, 1, 15, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 1, 1, 1, 4, 1, 1, 16, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 1, 1, 1, 4, 1, 1, 17, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 1, 1, 1, 4, 1, 1, 20, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 1, 1, 1, 4, 1, 1, 22, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 1, 1, 1, 4, 1, 1, 23, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 1, 1, 1, 4, 1, 1, 24, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 1, 1, 1, 4, 1, 1, 25, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 1, 1, 1, 4, 1, 1, 26, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 1, 1, 1, 4, 1, 1, 27, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 1, 1, 2, 9, 1, 1, 15, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 1, 1, 2, 9, 1, 1, 18, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 1, 1, 2, 9, 1, 1, 21, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 1, 1, 2, 9, 1, 1, 22, NULL, 'Persentase prasarana perhubungan dalam kondisi baik', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 1, 1, 2, 9, 1, 1, 23, NULL, 'Persentase moda transportasi yang layak', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 1, 1, 2, 9, 1, 1, 24, NULL, 'Persentase ketersediaan sarana perhubungan', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 1, 2, 1, 6, 2, 1, 22, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 1, 2, 1, 6, 2, 1, 23, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 1, 2, 1, 6, 2, 1, 24, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 1, 2, 1, 6, 2, 1, 25, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 1, 2, 1, 6, 2, 1, 30, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 1, 2, 2, 5, 1, 1, 15, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 1, 2, 2, 5, 1, 1, 16, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 1, 2, 2, 5, 1, 1, 17, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 1, 2, 2, 5, 1, 1, 24, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 1, 2, 2, 5, 1, 1, 25, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 1, 2, 2, 5, 1, 1, 26, NULL, 'Persentase sampah yang tertangani', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 1, 2, 2, 5, 1, 1, 27, NULL, 'Indeks Kualitas Tanah', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 1, 2, 2, 5, 1, 1, 28, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_rpjmd_program_indikator`
+--
+
+CREATE TABLE `tb_rpjmd_program_indikator` (
+  `id_tb_rpjmd` int(11) NOT NULL,
+  `tb_rpjmd_misi_kode` int(11) NOT NULL,
+  `tb_rpjmd_tujuan_kode` int(11) NOT NULL,
+  `tb_rpjmd_sasaran_kode` int(11) NOT NULL,
+  `tb_urusan_kode` int(11) NOT NULL,
+  `tb_bidang_kode` int(11) NOT NULL,
+  `tb_unit_kode` int(11) NOT NULL,
+  `tb_sub_unit_kode` int(11) NOT NULL,
+  `tb_program_kode` int(11) NOT NULL,
+  `tb_rpjmd_program_indikator_kode` int(11) NOT NULL,
+  `tb_rpjmd_program_indikator_nama` text
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_rpjmd_program_indikator_penetapan`
+--
+
+CREATE TABLE `tb_rpjmd_program_indikator_penetapan` (
+  `id_tb_rpjmd` int(11) NOT NULL,
+  `tb_rpjmd_misi_kode` int(11) NOT NULL,
+  `tb_rpjmd_tujuan_kode` int(11) NOT NULL,
+  `tb_rpjmd_sasaran_kode` int(11) NOT NULL,
+  `tb_urusan_kode` int(11) NOT NULL,
+  `tb_bidang_kode` int(11) NOT NULL,
+  `tb_unit_kode` int(11) NOT NULL,
+  `tb_sub_unit_kode` int(11) NOT NULL,
+  `tb_program_kode` int(11) NOT NULL,
+  `tb_rpjmd_program_tahun` tinyint(4) NOT NULL,
+  `tb_rpjmd_program_indikator_kode` int(11) NOT NULL,
+  `tb_rpjmd_program_indikator_nama` text
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_rpjmd_program_indikator_perubahan`
+--
+
+CREATE TABLE `tb_rpjmd_program_indikator_perubahan` (
+  `id_tb_rpjmd` int(11) NOT NULL,
+  `tb_rpjmd_misi_kode` int(11) NOT NULL,
+  `tb_rpjmd_tujuan_kode` int(11) NOT NULL,
+  `tb_rpjmd_sasaran_kode` int(11) NOT NULL,
+  `tb_urusan_kode` int(11) NOT NULL,
+  `tb_bidang_kode` int(11) NOT NULL,
+  `tb_unit_kode` int(11) NOT NULL,
+  `tb_sub_unit_kode` int(11) NOT NULL,
+  `tb_program_kode` int(11) NOT NULL,
+  `tb_rpjmd_program_tahun` tinyint(4) NOT NULL,
+  `tb_rpjmd_program_indikator_kode` int(11) NOT NULL,
+  `tb_rpjmd_program_indikator_nama` text
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -7859,37 +8066,17 @@ CREATE TABLE `tb_rpjmd_program_penetapan` (
   `tb_unit_kode` int(11) NOT NULL,
   `tb_sub_unit_kode` int(11) NOT NULL,
   `tb_program_kode` int(11) NOT NULL,
+  `tb_rpjmd_program_tahun` tinyint(4) NOT NULL,
   `tb_rpjmd_program_nama` text,
   `tb_rpjmd_program_indikator` text,
-  `tb_rpjmd_program_th1_target_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_program_th2_target_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_program_th3_target_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_program_th4_target_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_program_th5_target_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_program_th1_target_realisasi` double DEFAULT NULL,
-  `tb_rpjmd_program_th2_target_realisasi` double DEFAULT NULL,
-  `tb_rpjmd_program_th3_target_realisasi` double DEFAULT NULL,
-  `tb_rpjmd_program_th4_target_realisasi` double DEFAULT NULL,
-  `tb_rpjmd_program_th5_target_realisasi` double DEFAULT NULL,
-  `tb_rpjmd_program_th1_capaian_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_program_th2_capaian_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_program_th3_capaian_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_program_th4_capaian_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_program_th5_capaian_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_program_th1_capaian_realisasi` double DEFAULT NULL,
-  `tb_rpjmd_program_th2_capaian_realisasi` double DEFAULT NULL,
-  `tb_rpjmd_program_th3_capaian_realisasi` double DEFAULT NULL,
-  `tb_rpjmd_program_th4_capaian_realisasi` double DEFAULT NULL,
-  `tb_rpjmd_program_th5_capaian_realisasi` double DEFAULT NULL,
-  `tb_rpjmd_program_th_awal_target_realisasi` double DEFAULT NULL,
-  `tb_rpjmd_program_th_awal_target_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_program_th_akhir_target_realisasi` double DEFAULT NULL,
-  `tb_rpjmd_program_th_akhir_target_kinerja` varchar(45) DEFAULT NULL,
-  `id_tb_satuan` int(11) NOT NULL,
-  `tb_rpjmd_program_th_awal_capaian_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_program_th_awal_capaian_realisasi` double DEFAULT NULL,
-  `tb_rpjmd_program_th_akhir_capaian_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_program_th_akhir_capaian_realisasi` double DEFAULT NULL
+  `tb_rpjmd_program_awal_target_kinerja` varchar(45) DEFAULT NULL,
+  `tb_rpjmd_program_awal_target_realisasi` double DEFAULT NULL,
+  `tb_rpjmd_program_target_kinerja` varchar(45) DEFAULT NULL,
+  `tb_rpjmd_program_target_realisasi` double DEFAULT NULL,
+  `tb_rpjmd_program_capaian_kinerja` varchar(45) DEFAULT NULL,
+  `tb_rpjmd_program_capaian_realisasi` double DEFAULT NULL,
+  `tb_rpjmd_program_catatan` text,
+  `id_tb_satuan` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -7908,37 +8095,17 @@ CREATE TABLE `tb_rpjmd_program_perubahan` (
   `tb_unit_kode` int(11) NOT NULL,
   `tb_sub_unit_kode` int(11) NOT NULL,
   `tb_program_kode` int(11) NOT NULL,
+  `tb_rpjmd_program_tahun` tinyint(4) NOT NULL,
   `tb_rpjmd_program_nama` text,
   `tb_rpjmd_program_indikator` text,
-  `tb_rpjmd_program_th1_target_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_program_th2_target_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_program_th3_target_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_program_th4_target_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_program_th5_target_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_program_th1_target_realisasi` double DEFAULT NULL,
-  `tb_rpjmd_program_th2_target_realisasi` double DEFAULT NULL,
-  `tb_rpjmd_program_th3_target_realisasi` double DEFAULT NULL,
-  `tb_rpjmd_program_th4_target_realisasi` double DEFAULT NULL,
-  `tb_rpjmd_program_th5_target_realisasi` double DEFAULT NULL,
-  `tb_rpjmd_program_th1_capaian_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_program_th2_capaian_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_program_th3_capaian_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_program_th4_capaian_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_program_th5_capaian_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_program_th1_capaian_realisasi` double DEFAULT NULL,
-  `tb_rpjmd_program_th2_capaian_realisasi` double DEFAULT NULL,
-  `tb_rpjmd_program_th3_capaian_realisasi` double DEFAULT NULL,
-  `tb_rpjmd_program_th4_capaian_realisasi` double DEFAULT NULL,
-  `tb_rpjmd_program_th5_capaian_realisasi` double DEFAULT NULL,
-  `tb_rpjmd_program_th_awal_target_realisasi` double DEFAULT NULL,
-  `tb_rpjmd_program_th_awal_target_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_program_th_akhir_target_realisasi` double DEFAULT NULL,
-  `tb_rpjmd_program_th_akhir_target_kinerja` varchar(45) DEFAULT NULL,
-  `id_tb_satuan` int(11) NOT NULL,
-  `tb_rpjmd_program_th_awal_capaian_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_program_th_awal_capaian_realisasi` double DEFAULT NULL,
-  `tb_rpjmd_program_th_akhir_capaian_kinerja` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_program_th_akhir_capaian_realisasi` double DEFAULT NULL
+  `tb_rpjmd_program_awal_target_kinerja` varchar(45) DEFAULT NULL,
+  `tb_rpjmd_program_awal_target_realisasi` double DEFAULT NULL,
+  `tb_rpjmd_program_target_kinerja` varchar(45) DEFAULT NULL,
+  `tb_rpjmd_program_target_realisasi` double DEFAULT NULL,
+  `tb_rpjmd_program_capaian_kinerja` varchar(45) DEFAULT NULL,
+  `tb_rpjmd_program_capaian_realisasi` double DEFAULT NULL,
+  `tb_rpjmd_program_catatan` text,
+  `id_tb_satuan` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -7964,10 +8131,15 @@ CREATE TABLE `tb_rpjmd_sasaran` (
   `tb_rpjmd_sasaran_th3_target_realisasi` double DEFAULT NULL,
   `tb_rpjmd_sasaran_th4_target_realisasi` double DEFAULT NULL,
   `tb_rpjmd_sasaran_th5_target_realisasi` double DEFAULT NULL,
-  `tb_rpjmd_sasaran_th_awal_target_kinerka` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_sasaran_th_awal_capaian_kinerka` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_sasaran_th_akhir_target_kinerka` varchar(45) DEFAULT NULL,
-  `tb_rpjmd_sasaran_th_akhir_capaian_kinerka` varchar(45) DEFAULT NULL,
+  `tb_rpjmd_sasaran_th1_capaian_kinerja` varchar(45) DEFAULT NULL,
+  `tb_rpjmd_sasaran_th2_capaian_kinerja` varchar(45) DEFAULT NULL,
+  `tb_rpjmd_sasaran_th3_capaian_kinerja` varchar(45) DEFAULT NULL,
+  `tb_rpjmd_sasaran_th4_capaian_kinerja` varchar(45) DEFAULT NULL,
+  `tb_rpjmd_sasaran_th5_capaian_kinerja` varchar(45) DEFAULT NULL,
+  `tb_rpjmd_sasaran_th_awal_target_kinerja` varchar(45) DEFAULT NULL,
+  `tb_rpjmd_sasaran_th_awal_capaian_kinerja` varchar(45) DEFAULT NULL,
+  `tb_rpjmd_sasaran_th_akhir_target_kinerja` varchar(45) DEFAULT NULL,
+  `tb_rpjmd_sasaran_th_akhir_capaian_kinerja` varchar(45) DEFAULT NULL,
   `tb_rpjmd_sasaran_th_awal_target_realisasi` double DEFAULT NULL,
   `tb_rpjmd_sasaran_th_awal_capaian_realisasi` double DEFAULT NULL,
   `tb_rpjmd_sasaran_th_akhir_target_realisasi` double DEFAULT NULL,
@@ -7978,8 +8150,57 @@ CREATE TABLE `tb_rpjmd_sasaran` (
 -- Dumping data for table `tb_rpjmd_sasaran`
 --
 
-INSERT INTO `tb_rpjmd_sasaran` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_tujuan_kode`, `tb_rpjmd_sasaran_kode`, `tb_rpjmd_sasaran_nama`, `tb_rpjmd_sasaran_indikator`, `tb_rpjmd_sasaran_th1_target_kinerja`, `tb_rpjmd_sasaran_th2_target_kinerja`, `tb_rpjmd_sasaran_th3_target_kinerja`, `tb_rpjmd_sasaran_th4_target_kinerja`, `tb_rpjmd_sasaran_th5_target_kinerja`, `tb_rpjmd_sasaran_th1_target_realisasi`, `tb_rpjmd_sasaran_th2_target_realisasi`, `tb_rpjmd_sasaran_th3_target_realisasi`, `tb_rpjmd_sasaran_th4_target_realisasi`, `tb_rpjmd_sasaran_th5_target_realisasi`, `tb_rpjmd_sasaran_th_awal_target_kinerka`, `tb_rpjmd_sasaran_th_awal_capaian_kinerka`, `tb_rpjmd_sasaran_th_akhir_target_kinerka`, `tb_rpjmd_sasaran_th_akhir_capaian_kinerka`, `tb_rpjmd_sasaran_th_awal_target_realisasi`, `tb_rpjmd_sasaran_th_awal_capaian_realisasi`, `tb_rpjmd_sasaran_th_akhir_target_realisasi`, `tb_rpjmd_sasaran_th_akhir_capaian_realisasi`) VALUES
-(1, 1, 1, 1, 'sasaran1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `tb_rpjmd_sasaran` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_tujuan_kode`, `tb_rpjmd_sasaran_kode`, `tb_rpjmd_sasaran_nama`, `tb_rpjmd_sasaran_indikator`, `tb_rpjmd_sasaran_th1_target_kinerja`, `tb_rpjmd_sasaran_th2_target_kinerja`, `tb_rpjmd_sasaran_th3_target_kinerja`, `tb_rpjmd_sasaran_th4_target_kinerja`, `tb_rpjmd_sasaran_th5_target_kinerja`, `tb_rpjmd_sasaran_th1_target_realisasi`, `tb_rpjmd_sasaran_th2_target_realisasi`, `tb_rpjmd_sasaran_th3_target_realisasi`, `tb_rpjmd_sasaran_th4_target_realisasi`, `tb_rpjmd_sasaran_th5_target_realisasi`, `tb_rpjmd_sasaran_th1_capaian_kinerja`, `tb_rpjmd_sasaran_th2_capaian_kinerja`, `tb_rpjmd_sasaran_th3_capaian_kinerja`, `tb_rpjmd_sasaran_th4_capaian_kinerja`, `tb_rpjmd_sasaran_th5_capaian_kinerja`, `tb_rpjmd_sasaran_th_awal_target_kinerja`, `tb_rpjmd_sasaran_th_awal_capaian_kinerja`, `tb_rpjmd_sasaran_th_akhir_target_kinerja`, `tb_rpjmd_sasaran_th_akhir_capaian_kinerja`, `tb_rpjmd_sasaran_th_awal_target_realisasi`, `tb_rpjmd_sasaran_th_awal_capaian_realisasi`, `tb_rpjmd_sasaran_th_akhir_target_realisasi`, `tb_rpjmd_sasaran_th_akhir_capaian_realisasi`) VALUES
+(1, 1, 1, 1, 'Terciptanya tata kelola pemerintahan yang baik dan bersih ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 1, 1, 2, 'Meningkatnya Kapabilitas professional', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 1, 1, 3, 'Meningkatnya kesejahteraan aparatur pemerintah ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 1, 2, 1, 'Meningkatnya pelayanan Publik yang cepat dan Prima ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 2, 1, 1, 'Meningkatnya Pendapatan Asli Daerah (PAD)', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 2, 1, 2, 'Meningkatnya Taraf hidup masyarakat', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 2, 2, 1, 'Meningkatnya penyerapan Tenaga Kerja Lokal', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 2, 2, 2, 'Terciptanya iklim investasi yang kondusif', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 2, 3, 1, 'Meningkatnya peran koperasi dan UMKM dalam pengelolaan SDA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 2, 4, 1, 'Meningkatnya peran industri kecil dan menengah dalam meningkatkan taraf hidup masyarakat  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 2, 5, 1, 'Terwujudnya perlindungan  konsumen dan pembinaan pedagang kaki lima dan asongan  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 2, 6, 1, 'Terwujudnya pengembangan wilayah transmigrasi  Terlaksananya Pembiayaan Pendidikan Gratis', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 3, 1, 1, 'Terlaksananya Pembiayaan Pendidikan Gratis', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 3, 1, 2, 'Meningkatnya kuantitas dan kualitas tenaga pengajar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 3, 1, 3, 'Meningkatnya kualitas peserta didik pada semua jenjang pendidikan', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 3, 1, 4, 'Meningkatnya sarana dan prasarana pendidikan', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 3, 2, 1, 'Terwujudnya Pengembangan dan pelestarian nilai-nilai Budaya Masyarakat dan kearifan lokal ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 1, 1, 'Meningkatnya akses terhadap pelayanan Kesehatan gratis', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 1, 2, 'Meningkatnya sarana dan prasarana kesehatan', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 1, 3, 'Meningkatnya kuantitas dan kualitas tenaga kesehatan', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 1, 4, 'Tersedianya obat yang berkualitas', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 1, 5, 'Meningkatnya Status Gizi Masyarakat', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 2, 1, 'Terwujudnya Pembinaan Keluarga Sehat dan Sejahtera', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 3, 1, 'Terciptanya Kebersihan, keindahan dan kesehatan lingkungan', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 4, 1, 'Meningkatnya Kualitas Hidup dan Perlindungan perempuan', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 5, 1, 'Meningkatnya Keberdayaan Masyarakat desa dalam perekonomian dan pembangunan', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 5, 1, 1, 'Terwujudnya Pengembangan infrastruktur pertanian/ perkebunan dan peternakan  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 5, 1, 2, 'Terwujudnya Pengembangan infrastruktur perikanan dan kelautan serta pengawasan Sumber daya kelautan', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 5, 1, 3, 'Terwujudnya Peningkatan produksi dan pengolahan hasil perikanan  dan kelautan  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 5, 2, 1, 'Terwujudnya Perlindungan dan konservasi hutan', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 5, 3, 1, 'Terwujudnya Penyediaan modal usaha', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 5, 4, 1, 'Terwujudnya Penerapan TTG', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 5, 5, 1, 'Terwujudnya stabilitas harga dan kepastian pasar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 1, 1, 'Meningkatnya fasilitas air bersih', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 1, 2, 'Meningkatnya pengelolaan sumber daya air dan pengendalian banjir', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 1, 3, 'Meningkatnya Fasilitas Listrik', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 1, 4, 'Meningkatnya Penyediaan Infrastruktur daerah', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 2, 1, 'Meningkatnya Penyediaan Fasilitas Perhubungan ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 2, 2, 'Tersedianya Perumahan bagi masyarakat berpendapatan rendah (MBR)', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 2, 3, 'Terwujudnya Lingkungan Perumahan yang sehat dan penataan areal pemakaman', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 2, 4, 'Terwujudnya Ketertiban dan Keamanan Lingkungan  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 2, 5, 'Terwujudnya penanggulangan dan mitigasi bencana secara terpadu  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 3, 1, 'Terwujudnya Pengembangan dan Penataan ruang dan kewilayahan', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 4, 1, 'Meningkatnya ketersediaan Fasilitas olahraga ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 4, 2, 'Meningkatnya Pengembangan Potensi dan peran serta pemuda ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 5, 1, 'Terlaksananya Inventarisasi Destinasi wisata', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 5, 2, 'Meningkatnya aksesibiltas obyek wisata', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 6, 1, 'Meningkatnya Pengembangan seni dan budaya', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 7, 1, 1, 'Meningkatnya Pembinaan masyarakat', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 7, 1, 2, 'Meningkatnya Pemberdayaan Lembaga Sosial', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -7996,6 +8217,16 @@ CREATE TABLE `tb_rpjmd_sasaran_indikator` (
   `tb_rpjmd_sasaran_indikator_nama` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tb_rpjmd_sasaran_indikator`
+--
+
+INSERT INTO `tb_rpjmd_sasaran_indikator` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_tujuan_kode`, `tb_rpjmd_sasaran_kode`, `tb_rpjmd_sasaran_indikator_kode`, `tb_rpjmd_sasaran_indikator_nama`) VALUES
+(1, 1, 1, 1, 1, '-'),
+(1, 1, 1, 2, 1, '-'),
+(1, 1, 1, 3, 1, 'yrd'),
+(1, 1, 1, 3, 2, '-');
+
 -- --------------------------------------------------------
 
 --
@@ -8010,6 +8241,90 @@ CREATE TABLE `tb_rpjmd_strategi` (
   `tb_rpjmd_strategi_kode` int(11) NOT NULL,
   `tb_rpjmd_strategi_nama` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_rpjmd_strategi`
+--
+
+INSERT INTO `tb_rpjmd_strategi` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_tujuan_kode`, `tb_rpjmd_sasaran_kode`, `tb_rpjmd_strategi_kode`, `tb_rpjmd_strategi_nama`) VALUES
+(1, 1, 1, 1, 1, 'Meningkatkan penataan organisasi dan tatalaksana '),
+(1, 1, 1, 1, 2, 'Meningkatkan akuntabilitas dan kinerja pemerintahan'),
+(1, 1, 1, 1, 3, 'Meningkatkan akuntabilitas pengelolaan keuangan daerah'),
+(1, 1, 1, 1, 4, 'Meningkatkan pengawasan Internal Pemerintah Daerah. '),
+(1, 1, 1, 1, 5, 'Meningkatkan koordinasi lintas OPD'),
+(1, 1, 1, 1, 6, 'Meningkatkan kualitas penyusunan perencanaan dan evaluasi penyelenggaraan pemerintahan '),
+(1, 1, 1, 2, 1, 'Meningkatkan budaya kerja dan profesionalistas ASN'),
+(1, 1, 1, 2, 2, 'Meningkatkan kapasitas sumberdaya ASN'),
+(1, 1, 1, 3, 1, 'Mewujudkan penerapan Tunjangan Kinerja (Tukin)  '),
+(1, 1, 2, 1, 1, 'Mewujudkan Pelayanan Publik  berbasis teknologi informasi '),
+(1, 2, 1, 1, 1, 'Mengoptimalkan sumber-sumber penerimaan daerah'),
+(1, 2, 1, 1, 2, 'Meningkatkan upaya penanggulangan kemiskinan secara terpadu dan menyeluruh   '),
+(1, 2, 2, 1, 1, 'Meningkatkan peluang kerja usia produktif dan perluasan lapangan kerja daerah '),
+(1, 2, 2, 2, 1, 'Meningkatkan promosi investasi secara berkelanjutan   '),
+(1, 2, 2, 2, 2, 'Memberikan insentif dan penyederhanaan pelayanan investasi  '),
+(1, 2, 3, 1, 1, 'Pemberdayaan Koperasi dan Usaha Kecil Menengah (UMKM)'),
+(1, 2, 4, 1, 1, 'Pemberdayaan Industri kecil dan menengah berbasis potensi daerah/lokal '),
+(1, 2, 5, 1, 1, 'Perlindungan konsumen dan pedagang kaki lima'),
+(1, 2, 5, 1, 2, 'Meningkatkan kerjasama perdagangan dan eskpor'),
+(1, 2, 6, 1, 1, 'Peningkatan kerjsama dan penyediaan sarana dan prasaranan dalam kawasan transmigrasi'),
+(1, 3, 1, 1, 1, 'Meningkatkan pelayanan pendidikan untuk semua  '),
+(1, 3, 1, 1, 2, 'Meningkatkan pelayanan pendidikan untuk semua  '),
+(1, 3, 1, 2, 1, 'Meningkatkan pelayanan pendidikan yang berkualitas  '),
+(1, 3, 1, 2, 2, 'Meningkatkan kualitas SDM tenaga Pendidik dan kependidikan'),
+(1, 3, 1, 3, 1, 'Meningkatkan mutu lulusan pada semua jenjang pendidikan '),
+(1, 3, 1, 3, 2, 'Mendorong tumbuhnya minat baca bagi masyarakat'),
+(1, 3, 1, 4, 1, 'Meningkatkan sarana dan prasarana pendidikan yang berkualitas  '),
+(1, 3, 2, 1, 1, 'Penguatan Pemahaman tentang Nilai-Nilai Budaya di masyarakat'),
+(1, 3, 2, 1, 2, 'Pengembangan Sarana dan Prasarana Kebudayaan, '),
+(1, 3, 2, 1, 3, 'Mengembangkan Kesenian  dan kebudayaan daerah'),
+(1, 3, 2, 1, 4, 'Mendorong Kerjasama antar daerah  dan pemangku kepntingan dalam pengelolaan kekayaan budaya  '),
+(1, 4, 1, 1, 1, 'Meningkatkan pelayanan kesehatan bagi seluruh masyarakat secara merata'),
+(1, 4, 1, 2, 1, 'Meningkatkan sarana dan prasarana kesehatan yang berkualitas'),
+(1, 4, 1, 3, 1, 'Meningkatkan pelayanan kesehatan yang berkualitas'),
+(1, 4, 1, 4, 1, 'Meningkatkan penyediaan obat  yang berkualitas'),
+(1, 4, 1, 5, 1, 'Meningkatkan Pelayanan  Gizi masyarakat'),
+(1, 4, 2, 1, 1, 'Mendorong kesadaran masyarakat dan meningkatkan pelayanan KB dan Penanggulangan HIV/AIDS'),
+(1, 4, 2, 1, 2, 'Meningkatkan pembinaan tumbuh kembang anak dan bina keluarga'),
+(1, 4, 3, 1, 1, 'Mendorong kesadaran masyarakat dalam menjaga kenyamanan lingkungan sehat'),
+(1, 4, 3, 1, 2, 'Mewujudkan terciptanya keindahan lingkungan'),
+(1, 4, 3, 1, 3, 'Mewujudkan Perlindungan dan Konservasi SDA'),
+(1, 4, 4, 1, 1, 'Meningkatkan Kelembagaan Pengarusutamaan Gender dan Perlindungan Perempuan dan Anak'),
+(1, 4, 5, 1, 1, 'Meningkatkan pengembangan lembaga ekonomi pedesaan'),
+(1, 4, 5, 1, 2, 'Meningkatkan partisipasi Masyarakat dan kapasitas aparatur pemerintah desa'),
+(1, 5, 1, 1, 1, 'Pembangunan dan peningkatan infrastruktur Pertanian, Perkebunan dan Peternakan '),
+(1, 5, 1, 1, 2, 'Peningkatan Produksi dan produktivitas pertanian, perkebunan dan peternakan '),
+(1, 5, 1, 2, 1, 'Pembangunan dan peningkatan infrastruktur perikanan dan kelautan'),
+(1, 5, 1, 2, 2, 'Pengawasan dan Pengendalian sumberdaya kelautan'),
+(1, 5, 1, 3, 1, 'Peningkatan Produksi Perikanan dan Kelautan'),
+(1, 5, 1, 3, 2, 'Mengembangkan usaha pengolahan hasil Perikanan dan Kelautan'),
+(1, 5, 2, 1, 1, 'Mewujudkan pemanfaatan hutan dan kawasan baton industri'),
+(1, 5, 2, 1, 2, 'Mewujudkan rehabilitasi lahan dan meningkatkan penertiban industri hasil hutan'),
+(1, 5, 3, 1, 1, 'Memfasilitasi Bantuan permodalan usaha'),
+(1, 5, 3, 1, 2, 'Mendorong Penguatan Dunia Usaha Lokal yang Berbasis Potensi Daerah '),
+(1, 5, 3, 1, 3, 'Penataan Kebijakan Investasi'),
+(1, 5, 4, 1, 1, 'Memfasilitasi Pemanfaatan Teknologi Tepat Guna (TTG)'),
+(1, 5, 5, 1, 1, 'Menciptakan stabilitas harga  '),
+(1, 5, 5, 1, 2, 'Menjamin terciptanya  kepastian pasar'),
+(1, 6, 1, 1, 1, 'Meningkatkan pembangunan infrastruktur jaringan air bersih '),
+(1, 6, 1, 2, 1, 'Mengembangkan pengelolaan sumber daya air'),
+(1, 6, 1, 3, 1, 'Meningkatkan penyediaan infrastruktur energi ketenagalistrikan '),
+(1, 6, 1, 4, 1, 'Meningkatkan pembangunan dan penyediaan infrastruktur   '),
+(1, 6, 2, 1, 1, 'Meningkatkan Pembangunan Prasarana Perhubungan   '),
+(1, 6, 2, 2, 1, 'Peningkatan kuantias dan kualitas rumah  layak huni '),
+(1, 6, 2, 3, 1, 'Mewujudkan Lingkungan Perumahan yang sehat dan penataan areal pemakaman'),
+(1, 6, 2, 4, 1, 'Mewujudkan pemeliharaan kamtibmas dan pengembangan wawasan kebangsaan'),
+(1, 6, 2, 5, 1, 'Mewujudkan Pencegahan dan Penanggulangan Bencana Alam'),
+(1, 6, 3, 1, 1, 'Meningkatkan penataan ruang untuk mendukung keseimbangan pembangunan antar wilayah'),
+(1, 6, 3, 1, 2, 'Meningkatkan penataan, pemanfaatan dan penyelesaian konflik pertanahan'),
+(1, 6, 3, 1, 3, 'Meningkatkan pembinaan potensi pemuda dan olahraga '),
+(1, 6, 4, 1, 1, 'Meningkatkan upaya penumbuhan kewirausahaan pemuda '),
+(1, 6, 4, 2, 1, 'Meningkatkan upaya penumbuhan kewirausahaan pemuda '),
+(1, 6, 5, 1, 1, 'Tersedianya informasi destinasi wisata daerah'),
+(1, 6, 5, 2, 1, 'Mengembangkan keunggulan dan daya tarik wisata potensial '),
+(1, 6, 6, 1, 1, 'Meningkatkan pembinaan seni dan budaya daerah'),
+(1, 6, 6, 1, 2, 'Meningkatkan Pelestarian adat dan seni budaya daerah'),
+(1, 7, 1, 1, 1, 'Meningkatkan pembinaan Penyandang Masalah sosial  '),
+(1, 7, 1, 2, 1, 'Meningkatkan pembinaan Kelembagaan Kesejahteraan sosial  ');
 
 -- --------------------------------------------------------
 
@@ -8048,7 +8363,33 @@ CREATE TABLE `tb_rpjmd_tujuan` (
 --
 
 INSERT INTO `tb_rpjmd_tujuan` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_tujuan_kode`, `tb_rpjmd_tujuan_nama`, `tb_rpjmd_tujuan_indikator`, `tb_rpjmd_tujuan_th1_target_kinerja`, `tb_rpjmd_tujuan_th2_target_kinerja`, `tb_rpjmd_tujuan_th3_target_kinerja`, `tb_rpjmd_tujuan_th4_target_kinerja`, `tb_rpjmd_tujuan_th5_target_kinerja`, `tb_rpjmd_tujuan_th1_target_realisasi`, `tb_rpjmd_tujuan_th2_target_realisasi`, `tb_rpjmd_tujuan_th3_target_realisasi`, `tb_rpjmd_tujuan_th4_target_realisasi`, `tb_rpjmd_tujuan_th5_target_realisasi`, `tb_rpjmd_tujuan_th_awal_target_kinerja`, `tb_rpjmd_tujuan_th_akhir_target_kinerja`, `tb_rpjmd_tujuan_th_awal_capaian_kinerja`, `tb_rpjmd_tujuan_th_akhir_capaian_kinerja`, `tb_rpjmd_tujuan_th_awal_target_realisasi`, `tb_rpjmd_tujuan_th_akhir_target_realisasi`, `tb_rpjmd_tujuan_th_awal_capaian_realisasi`, `tb_rpjmd_tujuan_th_akhir_capaian_realisasi`) VALUES
-(1, 1, 1, 'tujuan1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(1, 1, 1, 'Menciptakan pemerintahan yang baik dan bersih ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 1, 2, 'Meningkatkan kualitas pelayanan publik yang efektif,akuntabel, dan transparan  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 2, 1, 'Meningkatkan pengelolaan SDA ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 2, 2, 'Meningkatkan penyerapan tenaga kerja lokal dan iklim investasi ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 2, 3, 'Meningkatkan Peran Koperasi dan UMKM ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 2, 4, 'Meningkatkan Pengembangan industri kecil dan menengah  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 2, 5, 'Mewujudkan perlindungan konsumen,  pembinaan pedagang kaki lima dan efisiensi perdagangan ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 2, 6, 'Mewujudkan pengembangan wilayah transmigrasi ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 3, 1, 'Meningkatkan pelayanan pendidikan yang berkualitasguna menciptakan SDM yang cerdas, kreatif, inovatif dan bertaqwa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 3, 2, 'Mewujudkan pelestarian nilai-nilai budaya masyarakat dan pembentukan lembaga adat', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 1, 'Meningkatkan pelayanan kesehatan yang merata dan berkualitas', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 2, 'Meningkatkan pelayanan Keluarga Berencana dan Keluarga Sejahtera', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 3, 'Mewujudkan Keindahan Lingkungan agar tercipta suasana sehat dan nyaman', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 4, 'Mewujudkan Pemberdayaan Perempuan dan Perlindungan Anak', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 4, 5, 'Mewujudkan Pemberdayaan Masyarakat Desa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 5, 1, 'Meningkatkan produksi pangan dan ketahanan pangan', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 5, 2, 'Mewujudkan Perlindungan sumber daya hutan', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 5, 3, 'Meningkatkan penyediaan dan kemudahan modal usaha', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 5, 4, 'Meningkatkan pemanfaatan teknologi', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 5, 5, 'Mewujudkan terciptanya stabilitas harga dan kepastian pasar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 1, 'Meningkatkan kualitas hidup masyarakat yang harmonis dan bahagia  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 2, 'Mewujudkan Penyediaan rumah Layak huni dan Keamanan Lingkungan Perumahan', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 3, 'Mewujudkan Penataan Ruang yang terpadu dan berkelanjutan', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 4, 'Mengembangkan Potensi Pemuda dan Olahraga', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 5, 'Mengembangkan obyek wisata', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 6, 6, 'Mengembangkan seni dan budaya', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 7, 1, 'Mewujudkan kehidupan masyarakat yang beriman dan bertaqwa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -8063,6 +8404,14 @@ CREATE TABLE `tb_rpjmd_tujuan_indikator` (
   `tb_rpjmd_tujuan_indikator_kode` int(11) NOT NULL,
   `tb_rpjmd_tujuan_indikator_nama` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_rpjmd_tujuan_indikator`
+--
+
+INSERT INTO `tb_rpjmd_tujuan_indikator` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_tujuan_kode`, `tb_rpjmd_tujuan_indikator_kode`, `tb_rpjmd_tujuan_indikator_nama`) VALUES
+(1, 1, 1, 1, '-'),
+(1, 1, 2, 1, '-');
 
 -- --------------------------------------------------------
 
@@ -8115,7 +8464,7 @@ CREATE TABLE `tb_sub_unit` (
   `tb_bidang_kode` int(11) NOT NULL,
   `tb_unit_kode` int(11) NOT NULL,
   `tb_sub_unit_kode` int(11) NOT NULL,
-  `tb_sub_unit_nama` varchar(105) DEFAULT NULL
+  `tb_sub_unit_nama` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -8125,6 +8474,7 @@ CREATE TABLE `tb_sub_unit` (
 INSERT INTO `tb_sub_unit` (`tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_sub_unit_nama`) VALUES
 (1, 1, 1, 1, 'Dinas Pendidikan Dan Kebudayaan'),
 (1, 2, 1, 1, 'Dinas Kesehatan, Pengendalian Penduduk dan Keluarga Berencana'),
+(1, 2, 1, 2, 'Rumah Sakit Umum Daerah Morowali'),
 (1, 3, 1, 1, 'Dinas Pekerjaan Umum dan Penataan Ruang '),
 (1, 4, 1, 1, 'Dinas Perumahan, Kawasan Pemukiman dan Pertanahan'),
 (1, 5, 1, 1, 'Badan Kesatuan Bangsa dan Politik Daerah'),
@@ -8183,6 +8533,13 @@ CREATE TABLE `tb_sumber_dana` (
   `tb_sumber_dana_ket` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tb_sumber_dana`
+--
+
+INSERT INTO `tb_sumber_dana` (`id_tb_sumber_dana`, `tb_sumber_dana_nama`, `tb_sumber_dana_ket`) VALUES
+(1, 'APBN', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -8193,7 +8550,7 @@ CREATE TABLE `tb_unit` (
   `tb_urusan_kode` int(11) NOT NULL,
   `tb_bidang_kode` int(11) NOT NULL,
   `tb_unit_kode` int(11) NOT NULL,
-  `tb_unit_nama` varchar(105) DEFAULT NULL
+  `tb_unit_nama` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -8249,7 +8606,7 @@ INSERT INTO `tb_unit` (`tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_u
 
 CREATE TABLE `tb_urusan` (
   `tb_urusan_kode` int(11) NOT NULL,
-  `tb_urusan_nama` varchar(250) DEFAULT NULL
+  `tb_urusan_nama` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -8285,8 +8642,7 @@ CREATE TABLE `tb_user` (
 INSERT INTO `tb_user` (`id_tb_user`, `tb_user_username`, `tb_user_password`, `tb_user_hp`, `tb_user_akun`, `tb_user_level`, `tb_user_date`) VALUES
 (1, 'admin', '$2y$13$ZtzUVhoI/bLqKmpetdHWW.ozUXArLlGrHbX7uCa68du.WSGZX8SQS', '085756733113', 3, 1, NULL),
 (2, 'userlevel', '$2y$13$ZtzUVhoI/bLqKmpetdHWW.ozUXArLlGrHbX7uCa68du.WSGZX8SQS', NULL, 2, 1, NULL),
-(3, 'monev', '$2y$13$ZtzUVhoI/bLqKmpetdHWW.ozUXArLlGrHbX7uCa68du.WSGZX8SQS', NULL, 7, 1, NULL),
-(5, 'tes', '$2y$10$MAfsaq7anoTTt2p7v84x/.XXjUQKQuFZQwoQOSzOxB5rAXATrTtOe', '0', 7, 3, NULL);
+(3, 'monev', '$2y$13$ZtzUVhoI/bLqKmpetdHWW.ozUXArLlGrHbX7uCa68du.WSGZX8SQS', NULL, 7, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -8344,13 +8700,6 @@ CREATE TABLE `tb_user_opd` (
   `tb_sub_unit_kode` int(11) NOT NULL,
   `id_tb_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tb_user_opd`
---
-
-INSERT INTO `tb_user_opd` (`id_tb_user_opd`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `id_tb_user`) VALUES
-(2, 2, 12, 1, 1, 5);
 
 --
 -- Indexes for dumped tables
@@ -8510,24 +8859,22 @@ ALTER TABLE `tb_monev_bulanan`
 -- Indexes for table `tb_monev_bulanan_penetapan`
 --
 ALTER TABLE `tb_monev_bulanan_penetapan`
-  ADD PRIMARY KEY (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_program_kode`,`tb_kegiatan_kode`,`tb_monev_bulanan_kode`),
-  ADD UNIQUE KEY `bulanan_unique` (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_program_kode`,`tb_kegiatan_kode`,`tb_monev_bulanan_kode`,`tb_monev_bulanan_tahun`,`tb_monev_bulanan_bulan`),
-  ADD KEY `fk_tb_monev_bulanan_penetapan_tb_rpjmd_kegiatan_penetapan1_idx` (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_program_kode`,`tb_kegiatan_kode`);
+  ADD PRIMARY KEY (`tb_monev_bulanan_kode`),
+  ADD UNIQUE KEY `bulanan_unique` (`tb_monev_bulanan_kode`,`tb_monev_bulanan_tahun`,`tb_monev_bulanan_bulan`);
 
 --
 -- Indexes for table `tb_monev_bulanan_perubahan`
 --
 ALTER TABLE `tb_monev_bulanan_perubahan`
-  ADD PRIMARY KEY (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_program_kode`,`tb_kegiatan_kode`,`tb_monev_bulanan_kode`),
-  ADD UNIQUE KEY `bulanan_unique` (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_program_kode`,`tb_kegiatan_kode`,`tb_monev_bulanan_kode`,`tb_monev_bulanan_tahun`,`tb_monev_bulanan_bulan`),
-  ADD KEY `fk_tb_monev_bulanan_perubahan_tb_rpjmd_kegiatan_perubahan1_idx` (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_program_kode`,`tb_kegiatan_kode`);
+  ADD PRIMARY KEY (`tb_monev_bulanan_kode`),
+  ADD UNIQUE KEY `bulanan_unique` (`tb_monev_bulanan_kode`,`tb_monev_bulanan_tahun`,`tb_monev_bulanan_bulan`);
 
 --
 -- Indexes for table `tb_monev_lra_belanja_lokasi`
 --
 ALTER TABLE `tb_monev_lra_belanja_lokasi`
-  ADD PRIMARY KEY (`tb_monev_lra_kode`,`id_tb_rpjmd`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_rekening1_kode`,`tb_rekening2_kode`,`tb_program_kode`,`tb_kegiatan_kode`,`tb_rekening3_kode`,`tb_rekening4_kode`,`tb_rekening5_kode`,`tb_kecamatan_kode`,`tb_deskel_kode`,`tb_deskel_level`),
-  ADD KEY `fk_tb_monev_lra_belanja_lokasi_tb_monev_lra_rek51_idx` (`tb_monev_lra_kode`,`id_tb_rpjmd`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_rekening1_kode`,`tb_rekening2_kode`,`tb_program_kode`,`tb_kegiatan_kode`,`tb_rekening3_kode`,`tb_rekening4_kode`,`tb_rekening5_kode`);
+  ADD PRIMARY KEY (`id_tb_rpjmd`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_monev_lra_tahun`,`tb_rekening1_kode`,`tb_rekening2_kode`,`tb_program_kode`,`tb_kegiatan_kode`,`tb_rekening3_kode`,`tb_rekening4_kode`,`tb_rekening5_kode`,`tb_kecamatan_kode`,`tb_deskel_kode`,`tb_deskel_level`),
+  ADD KEY `fk_tb_monev_lra_belanja_lokasi_tb_monev_lra_rek51_idx` (`id_tb_rpjmd`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_monev_lra_tahun`,`tb_rekening1_kode`,`tb_rekening2_kode`,`tb_program_kode`,`tb_kegiatan_kode`,`tb_rekening3_kode`,`tb_rekening4_kode`,`tb_rekening5_kode`);
 
 --
 -- Indexes for table `tb_monev_lra_rek1`
@@ -8542,43 +8889,44 @@ ALTER TABLE `tb_monev_lra_rek1`
 -- Indexes for table `tb_monev_lra_rek2`
 --
 ALTER TABLE `tb_monev_lra_rek2`
-  ADD PRIMARY KEY (`tb_monev_lra_kode`,`id_tb_rpjmd`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_rekening1_kode`,`tb_rekening2_kode`),
-  ADD KEY `fk_tb_monev_lra_rek2_tb_monev_lra_rek11_idx` (`tb_monev_lra_kode`,`id_tb_rpjmd`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_rekening1_kode`);
+  ADD PRIMARY KEY (`tb_monev_lra_kode`,`id_tb_rpjmd`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_rekening1_kode`,`tb_rekening2_kode`);
 
 --
 -- Indexes for table `tb_monev_lra_rek2_kegiatan`
 --
 ALTER TABLE `tb_monev_lra_rek2_kegiatan`
-  ADD PRIMARY KEY (`tb_monev_lra_kode`,`id_tb_rpjmd`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_rekening1_kode`,`tb_rekening2_kode`,`tb_program_kode`,`tb_kegiatan_kode`),
-  ADD KEY `fk_tb_monev_lra_rek2_kegiatan_tb_monev_lra_rek2_program1_idx` (`tb_monev_lra_kode`,`id_tb_rpjmd`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_rekening1_kode`,`tb_rekening2_kode`,`tb_program_kode`);
+  ADD PRIMARY KEY (`id_tb_rpjmd`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_monev_lra_tahun`,`tb_rekening1_kode`,`tb_rekening2_kode`,`tb_program_kode`,`tb_kegiatan_kode`),
+  ADD KEY `fk_tb_monev_lra_rek2_kegiatan_tb_monev_lra_rek2_program1_idx` (`id_tb_rpjmd`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_monev_lra_tahun`,`tb_rekening1_kode`,`tb_rekening2_kode`,`tb_program_kode`);
 
 --
 -- Indexes for table `tb_monev_lra_rek2_program`
 --
 ALTER TABLE `tb_monev_lra_rek2_program`
-  ADD PRIMARY KEY (`tb_monev_lra_kode`,`id_tb_rpjmd`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_rekening1_kode`,`tb_rekening2_kode`,`tb_program_kode`),
-  ADD KEY `fk_tb_monev_lra_rek2_program_tb_monev_lra_rek21_idx` (`tb_monev_lra_kode`,`id_tb_rpjmd`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_rekening1_kode`,`tb_rekening2_kode`);
+  ADD PRIMARY KEY (`id_tb_rpjmd`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_monev_lra_tahun`,`tb_rekening1_kode`,`tb_rekening2_kode`,`tb_program_kode`),
+  ADD KEY `fk_tb_monev_lra_rek2_program_tb_rpjmd1_idx` (`id_tb_rpjmd`),
+  ADD KEY `fk_tb_monev_lra_rek2_program_tb_sub_unit1_idx` (`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`);
 
 --
 -- Indexes for table `tb_monev_lra_rek3`
 --
 ALTER TABLE `tb_monev_lra_rek3`
-  ADD PRIMARY KEY (`tb_monev_lra_kode`,`id_tb_rpjmd`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_rekening1_kode`,`tb_rekening2_kode`,`tb_program_kode`,`tb_kegiatan_kode`,`tb_rekening3_kode`),
-  ADD KEY `fk_tb_monev_lra_rek3_tb_monev_lra_rek2_kegiatan1_idx` (`tb_monev_lra_kode`,`id_tb_rpjmd`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_rekening1_kode`,`tb_rekening2_kode`,`tb_program_kode`,`tb_kegiatan_kode`);
+  ADD PRIMARY KEY (`id_tb_rpjmd`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_monev_lra_tahun`,`tb_rekening1_kode`,`tb_rekening2_kode`,`tb_program_kode`,`tb_kegiatan_kode`,`tb_rekening3_kode`),
+  ADD KEY `fk_tb_monev_lra_rek3_tb_monev_lra_rek2_kegiatan1_idx` (`id_tb_rpjmd`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_monev_lra_tahun`,`tb_rekening1_kode`,`tb_rekening2_kode`,`tb_program_kode`,`tb_kegiatan_kode`);
 
 --
 -- Indexes for table `tb_monev_lra_rek4`
 --
 ALTER TABLE `tb_monev_lra_rek4`
-  ADD PRIMARY KEY (`tb_monev_lra_kode`,`id_tb_rpjmd`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_rekening1_kode`,`tb_rekening2_kode`,`tb_program_kode`,`tb_kegiatan_kode`,`tb_rekening3_kode`,`tb_rekening4_kode`),
-  ADD KEY `fk_tb_monev_lra_rek4_tb_monev_lra_rek31_idx` (`tb_monev_lra_kode`,`id_tb_rpjmd`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_rekening1_kode`,`tb_rekening2_kode`,`tb_program_kode`,`tb_kegiatan_kode`,`tb_rekening3_kode`);
+  ADD PRIMARY KEY (`id_tb_rpjmd`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_monev_lra_tahun`,`tb_rekening1_kode`,`tb_rekening2_kode`,`tb_program_kode`,`tb_kegiatan_kode`,`tb_rekening3_kode`,`tb_rekening4_kode`),
+  ADD KEY `fk_tb_monev_lra_rek4_tb_monev_lra_rek31_idx` (`id_tb_rpjmd`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_monev_lra_tahun`,`tb_rekening1_kode`,`tb_rekening2_kode`,`tb_program_kode`,`tb_kegiatan_kode`,`tb_rekening3_kode`);
 
 --
 -- Indexes for table `tb_monev_lra_rek5`
 --
 ALTER TABLE `tb_monev_lra_rek5`
-  ADD PRIMARY KEY (`tb_monev_lra_kode`,`id_tb_rpjmd`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_rekening1_kode`,`tb_rekening2_kode`,`tb_program_kode`,`tb_kegiatan_kode`,`tb_rekening3_kode`,`tb_rekening4_kode`,`tb_rekening5_kode`),
-  ADD KEY `fk_tb_monev_lra_rek5_tb_monev_lra_rek41_idx` (`tb_monev_lra_kode`,`id_tb_rpjmd`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_rekening1_kode`,`tb_rekening2_kode`,`tb_program_kode`,`tb_kegiatan_kode`,`tb_rekening3_kode`,`tb_rekening4_kode`);
+  ADD PRIMARY KEY (`id_tb_rpjmd`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_monev_lra_tahun`,`tb_rekening1_kode`,`tb_rekening2_kode`,`tb_program_kode`,`tb_kegiatan_kode`,`tb_rekening3_kode`,`tb_rekening4_kode`,`tb_rekening5_kode`,`tb_monev_lra_rek5_bulan`),
+  ADD KEY `fk_tb_monev_lra_rek5_tb_monev_lra_rek41_idx` (`id_tb_rpjmd`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_monev_lra_tahun`,`tb_rekening1_kode`,`tb_rekening2_kode`,`tb_program_kode`,`tb_kegiatan_kode`,`tb_rekening3_kode`,`tb_rekening4_kode`),
+  ADD KEY `fk_tb_monev_lra_rek5_tb_sumber_dana1_idx` (`id_tb_sumber_dana`);
 
 --
 -- Indexes for table `tb_musrenbang_grub`
@@ -8700,20 +9048,41 @@ ALTER TABLE `tb_rpjmd_kegiatan`
   ADD KEY `fk_tb_rpjmd_kegiatan_renstra_tb_satuan1_idx` (`id_tb_satuan`);
 
 --
+-- Indexes for table `tb_rpjmd_kegiatan_indikator`
+--
+ALTER TABLE `tb_rpjmd_kegiatan_indikator`
+  ADD PRIMARY KEY (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_program_kode`,`tb_kegiatan_kode`,`tb_rpjmd_kegiatan_indikator_kode`),
+  ADD KEY `fk_tb_rpjmd_kegiatan_indikator_tb_rpjmd_kegiatan1_idx` (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_program_kode`,`tb_kegiatan_kode`);
+
+--
+-- Indexes for table `tb_rpjmd_kegiatan_indikator_penetapan`
+--
+ALTER TABLE `tb_rpjmd_kegiatan_indikator_penetapan`
+  ADD PRIMARY KEY (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_program_kode`,`tb_rpjmd_program_tahun`,`tb_kegiatan_kode`,`tb_rpjmd_kegiatan_indikator_kode`),
+  ADD KEY `fk_tb_rpjmd_kegiatan_indikator_penetapan_tb_rpjmd_kegiatan__idx` (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_program_kode`,`tb_rpjmd_program_tahun`,`tb_kegiatan_kode`);
+
+--
+-- Indexes for table `tb_rpjmd_kegiatan_indikator_perubahan`
+--
+ALTER TABLE `tb_rpjmd_kegiatan_indikator_perubahan`
+  ADD PRIMARY KEY (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_program_kode`,`tb_rpjmd_program_tahun`,`tb_kegiatan_kode`,`tb_rpjmd_kegiatan_indikator_kode`),
+  ADD KEY `fk_tb_rpjmd_kegiatan_indikator_perubahan_tb_rpjmd_kegiatan__idx` (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_program_kode`,`tb_rpjmd_program_tahun`,`tb_kegiatan_kode`);
+
+--
 -- Indexes for table `tb_rpjmd_kegiatan_penetapan`
 --
 ALTER TABLE `tb_rpjmd_kegiatan_penetapan`
-  ADD PRIMARY KEY (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_program_kode`,`tb_kegiatan_kode`),
+  ADD PRIMARY KEY (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_program_kode`,`tb_rpjmd_program_tahun`,`tb_kegiatan_kode`),
   ADD KEY `fk_tb_rpjmd_kegiatan_renstra_tb_satuan1_idx` (`id_tb_satuan`),
-  ADD KEY `fk_tb_rpjmd_kegiatan_penetapan_tb_rpjmd_program_penetapan1_idx` (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_program_kode`);
+  ADD KEY `fk_tb_rpjmd_kegiatan_penetapan_tb_rpjmd_program_penetapan1_idx` (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_program_kode`,`tb_rpjmd_program_tahun`);
 
 --
 -- Indexes for table `tb_rpjmd_kegiatan_perubahan`
 --
 ALTER TABLE `tb_rpjmd_kegiatan_perubahan`
-  ADD PRIMARY KEY (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_program_kode`,`tb_kegiatan_kode`),
+  ADD PRIMARY KEY (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_program_kode`,`tb_rpjmd_program_tahun`,`tb_kegiatan_kode`),
   ADD KEY `fk_tb_rpjmd_kegiatan_renstra_tb_satuan1_idx` (`id_tb_satuan`),
-  ADD KEY `fk_tb_rpjmd_kegiatan_perubahan_tb_rpjmd_program_perubahan1_idx` (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_program_kode`);
+  ADD KEY `fk_tb_rpjmd_kegiatan_perubahan_tb_rpjmd_program_perubahan1_idx` (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_program_kode`,`tb_rpjmd_program_tahun`);
 
 --
 -- Indexes for table `tb_rpjmd_misi`
@@ -8739,20 +9108,43 @@ ALTER TABLE `tb_rpjmd_program`
   ADD KEY `fk_tb_rpjmd_program_tb_satuan1_idx` (`id_tb_satuan`);
 
 --
+-- Indexes for table `tb_rpjmd_program_indikator`
+--
+ALTER TABLE `tb_rpjmd_program_indikator`
+  ADD PRIMARY KEY (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_program_kode`,`tb_rpjmd_program_indikator_kode`),
+  ADD KEY `fk_tb_rpjmd_program_indikator_tb_rpjmd_program1_idx` (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_program_kode`);
+
+--
+-- Indexes for table `tb_rpjmd_program_indikator_penetapan`
+--
+ALTER TABLE `tb_rpjmd_program_indikator_penetapan`
+  ADD PRIMARY KEY (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_program_kode`,`tb_rpjmd_program_tahun`,`tb_rpjmd_program_indikator_kode`),
+  ADD KEY `fk_tb_rpjmd_program_indikator_penetapan_tb_rpjmd_program_pe_idx` (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_program_kode`,`tb_rpjmd_program_tahun`);
+
+--
+-- Indexes for table `tb_rpjmd_program_indikator_perubahan`
+--
+ALTER TABLE `tb_rpjmd_program_indikator_perubahan`
+  ADD PRIMARY KEY (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_program_kode`,`tb_rpjmd_program_tahun`,`tb_rpjmd_program_indikator_kode`),
+  ADD KEY `fk_tb_rpjmd_program_indikator_perubahan_tb_rpjmd_program_pe_idx` (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_program_kode`,`tb_rpjmd_program_tahun`);
+
+--
 -- Indexes for table `tb_rpjmd_program_penetapan`
 --
 ALTER TABLE `tb_rpjmd_program_penetapan`
-  ADD PRIMARY KEY (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_program_kode`),
+  ADD PRIMARY KEY (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_program_kode`,`tb_rpjmd_program_tahun`),
   ADD KEY `fk_tb_rpjmd_program_tb_satuan1_idx` (`id_tb_satuan`),
-  ADD KEY `fk_tb_rpjmd_program_penetapan_tb_rpjmd_opd1_idx` (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`);
+  ADD KEY `fk_tb_rpjmd_program_penetapan_tb_rpjmd_sasaran1_idx` (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`),
+  ADD KEY `fk_tb_rpjmd_program_penetapan_tb_sub_unit1_idx` (`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`);
 
 --
 -- Indexes for table `tb_rpjmd_program_perubahan`
 --
 ALTER TABLE `tb_rpjmd_program_perubahan`
-  ADD PRIMARY KEY (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_program_kode`),
+  ADD PRIMARY KEY (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_program_kode`,`tb_rpjmd_program_tahun`),
   ADD KEY `fk_tb_rpjmd_program_tb_satuan1_idx` (`id_tb_satuan`),
-  ADD KEY `fk_tb_rpjmd_program_perubahan_tb_rpjmd_opd1_idx` (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`);
+  ADD KEY `fk_tb_rpjmd_program_perubahan_tb_rpjmd_sasaran1_idx` (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`),
+  ADD KEY `fk_tb_rpjmd_program_perubahan_tb_sub_unit1_idx` (`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`);
 
 --
 -- Indexes for table `tb_rpjmd_sasaran`
@@ -8948,17 +9340,17 @@ ALTER TABLE `tb_rpjmd_visi_penjelasan`
 -- AUTO_INCREMENT for table `tb_satuan`
 --
 ALTER TABLE `tb_satuan`
-  MODIFY `id_tb_satuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_tb_satuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `tb_sumber_dana`
 --
 ALTER TABLE `tb_sumber_dana`
-  MODIFY `id_tb_sumber_dana` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_tb_sumber_dana` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id_tb_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_tb_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `tb_user_bappeda`
 --
@@ -8978,7 +9370,7 @@ ALTER TABLE `tb_user_lokasi`
 -- AUTO_INCREMENT for table `tb_user_opd`
 --
 ALTER TABLE `tb_user_opd`
-  MODIFY `id_tb_user_opd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_tb_user_opd` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- Constraints for dumped tables
 --
@@ -9063,25 +9455,13 @@ ALTER TABLE `tb_laporan_user`
 -- Constraints for table `tb_monev_bulanan`
 --
 ALTER TABLE `tb_monev_bulanan`
-  ADD CONSTRAINT `fk_tb_monev_bulanan_tb_rpjmd_kegiatan1` FOREIGN KEY (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_program_kode`,`tb_kegiatan_kode`) REFERENCES `tb_rpjmd_kegiatan` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_tujuan_kode`, `tb_rpjmd_sasaran_kode`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_program_kode`, `tb_kegiatan_kode`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `tb_monev_bulanan_penetapan`
---
-ALTER TABLE `tb_monev_bulanan_penetapan`
-  ADD CONSTRAINT `fk_tb_monev_bulanan_penetapan_tb_rpjmd_kegiatan_penetapan1` FOREIGN KEY (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_program_kode`,`tb_kegiatan_kode`) REFERENCES `tb_rpjmd_kegiatan_penetapan` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_tujuan_kode`, `tb_rpjmd_sasaran_kode`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_program_kode`, `tb_kegiatan_kode`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `tb_monev_bulanan_perubahan`
---
-ALTER TABLE `tb_monev_bulanan_perubahan`
-  ADD CONSTRAINT `fk_tb_monev_bulanan_perubahan_tb_rpjmd_kegiatan_perubahan1` FOREIGN KEY (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_program_kode`,`tb_kegiatan_kode`) REFERENCES `tb_rpjmd_kegiatan_perubahan` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_tujuan_kode`, `tb_rpjmd_sasaran_kode`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_program_kode`, `tb_kegiatan_kode`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_tb_monev_bulanan_tb_rpjmd_kegiatan1` FOREIGN KEY (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_program_kode`,`tb_kegiatan_kode`) REFERENCES `tb_rpjmd_kegiatan` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_tujuan_kode`, `tb_rpjmd_sasaran_kode`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_program_kode`, `tb_kegiatan_kode`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tb_monev_lra_belanja_lokasi`
 --
 ALTER TABLE `tb_monev_lra_belanja_lokasi`
-  ADD CONSTRAINT `fk_tb_monev_lra_belanja_lokasi_tb_monev_lra_rek51` FOREIGN KEY (`tb_monev_lra_kode`,`id_tb_rpjmd`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_rekening1_kode`,`tb_rekening2_kode`,`tb_program_kode`,`tb_kegiatan_kode`,`tb_rekening3_kode`,`tb_rekening4_kode`,`tb_rekening5_kode`) REFERENCES `tb_monev_lra_rek5` (`tb_monev_lra_kode`, `id_tb_rpjmd`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_rekening1_kode`, `tb_rekening2_kode`, `tb_program_kode`, `tb_kegiatan_kode`, `tb_rekening3_kode`, `tb_rekening4_kode`, `tb_rekening5_kode`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_tb_monev_lra_belanja_lokasi_tb_monev_lra_rek51` FOREIGN KEY (`id_tb_rpjmd`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_monev_lra_tahun`,`tb_rekening1_kode`,`tb_rekening2_kode`,`tb_program_kode`,`tb_kegiatan_kode`,`tb_rekening3_kode`,`tb_rekening4_kode`,`tb_rekening5_kode`) REFERENCES `tb_monev_lra_rek5` (`id_tb_rpjmd`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_monev_lra_tahun`, `tb_rekening1_kode`, `tb_rekening2_kode`, `tb_program_kode`, `tb_kegiatan_kode`, `tb_rekening3_kode`, `tb_rekening4_kode`, `tb_rekening5_kode`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `tb_monev_lra_rek1`
@@ -9091,40 +9471,36 @@ ALTER TABLE `tb_monev_lra_rek1`
   ADD CONSTRAINT `fk_tb_monev_lra_rek1_tb_sub_unit1` FOREIGN KEY (`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`) REFERENCES `tb_sub_unit` (`tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `tb_monev_lra_rek2`
---
-ALTER TABLE `tb_monev_lra_rek2`
-  ADD CONSTRAINT `fk_tb_monev_lra_rek2_tb_monev_lra_rek11` FOREIGN KEY (`tb_monev_lra_kode`,`id_tb_rpjmd`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_rekening1_kode`) REFERENCES `tb_monev_lra_rek1` (`tb_monev_lra_kode`, `id_tb_rpjmd`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_rekening1_kode`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
 -- Constraints for table `tb_monev_lra_rek2_kegiatan`
 --
 ALTER TABLE `tb_monev_lra_rek2_kegiatan`
-  ADD CONSTRAINT `fk_tb_monev_lra_rek2_kegiatan_tb_monev_lra_rek2_program1` FOREIGN KEY (`tb_monev_lra_kode`,`id_tb_rpjmd`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_rekening1_kode`,`tb_rekening2_kode`,`tb_program_kode`) REFERENCES `tb_monev_lra_rek2_program` (`tb_monev_lra_kode`, `id_tb_rpjmd`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_rekening1_kode`, `tb_rekening2_kode`, `tb_program_kode`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_tb_monev_lra_rek2_kegiatan_tb_monev_lra_rek2_program1` FOREIGN KEY (`id_tb_rpjmd`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_monev_lra_tahun`,`tb_rekening1_kode`,`tb_rekening2_kode`,`tb_program_kode`) REFERENCES `tb_monev_lra_rek2_program` (`id_tb_rpjmd`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_monev_lra_tahun`, `tb_rekening1_kode`, `tb_rekening2_kode`, `tb_program_kode`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `tb_monev_lra_rek2_program`
 --
 ALTER TABLE `tb_monev_lra_rek2_program`
-  ADD CONSTRAINT `fk_tb_monev_lra_rek2_program_tb_monev_lra_rek21` FOREIGN KEY (`tb_monev_lra_kode`,`id_tb_rpjmd`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_rekening1_kode`,`tb_rekening2_kode`) REFERENCES `tb_monev_lra_rek2` (`tb_monev_lra_kode`, `id_tb_rpjmd`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_rekening1_kode`, `tb_rekening2_kode`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_tb_monev_lra_rek2_program_tb_rpjmd1` FOREIGN KEY (`id_tb_rpjmd`) REFERENCES `tb_rpjmd` (`id_tb_rpjmd`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_tb_monev_lra_rek2_program_tb_sub_unit1` FOREIGN KEY (`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`) REFERENCES `tb_sub_unit` (`tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `tb_monev_lra_rek3`
 --
 ALTER TABLE `tb_monev_lra_rek3`
-  ADD CONSTRAINT `fk_tb_monev_lra_rek3_tb_monev_lra_rek2_kegiatan1` FOREIGN KEY (`tb_monev_lra_kode`,`id_tb_rpjmd`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_rekening1_kode`,`tb_rekening2_kode`,`tb_program_kode`,`tb_kegiatan_kode`) REFERENCES `tb_monev_lra_rek2_kegiatan` (`tb_monev_lra_kode`, `id_tb_rpjmd`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_rekening1_kode`, `tb_rekening2_kode`, `tb_program_kode`, `tb_kegiatan_kode`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_tb_monev_lra_rek3_tb_monev_lra_rek2_kegiatan1` FOREIGN KEY (`id_tb_rpjmd`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_monev_lra_tahun`,`tb_rekening1_kode`,`tb_rekening2_kode`,`tb_program_kode`,`tb_kegiatan_kode`) REFERENCES `tb_monev_lra_rek2_kegiatan` (`id_tb_rpjmd`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_monev_lra_tahun`, `tb_rekening1_kode`, `tb_rekening2_kode`, `tb_program_kode`, `tb_kegiatan_kode`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `tb_monev_lra_rek4`
 --
 ALTER TABLE `tb_monev_lra_rek4`
-  ADD CONSTRAINT `fk_tb_monev_lra_rek4_tb_monev_lra_rek31` FOREIGN KEY (`tb_monev_lra_kode`,`id_tb_rpjmd`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_rekening1_kode`,`tb_rekening2_kode`,`tb_program_kode`,`tb_kegiatan_kode`,`tb_rekening3_kode`) REFERENCES `tb_monev_lra_rek3` (`tb_monev_lra_kode`, `id_tb_rpjmd`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_rekening1_kode`, `tb_rekening2_kode`, `tb_program_kode`, `tb_kegiatan_kode`, `tb_rekening3_kode`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_tb_monev_lra_rek4_tb_monev_lra_rek31` FOREIGN KEY (`id_tb_rpjmd`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_monev_lra_tahun`,`tb_rekening1_kode`,`tb_rekening2_kode`,`tb_program_kode`,`tb_kegiatan_kode`,`tb_rekening3_kode`) REFERENCES `tb_monev_lra_rek3` (`id_tb_rpjmd`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_monev_lra_tahun`, `tb_rekening1_kode`, `tb_rekening2_kode`, `tb_program_kode`, `tb_kegiatan_kode`, `tb_rekening3_kode`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `tb_monev_lra_rek5`
 --
 ALTER TABLE `tb_monev_lra_rek5`
-  ADD CONSTRAINT `fk_tb_monev_lra_rek5_tb_monev_lra_rek41` FOREIGN KEY (`tb_monev_lra_kode`,`id_tb_rpjmd`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_rekening1_kode`,`tb_rekening2_kode`,`tb_program_kode`,`tb_kegiatan_kode`,`tb_rekening3_kode`,`tb_rekening4_kode`) REFERENCES `tb_monev_lra_rek4` (`tb_monev_lra_kode`, `id_tb_rpjmd`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_rekening1_kode`, `tb_rekening2_kode`, `tb_program_kode`, `tb_kegiatan_kode`, `tb_rekening3_kode`, `tb_rekening4_kode`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_tb_monev_lra_rek5_tb_monev_lra_rek41` FOREIGN KEY (`id_tb_rpjmd`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_monev_lra_tahun`,`tb_rekening1_kode`,`tb_rekening2_kode`,`tb_program_kode`,`tb_kegiatan_kode`,`tb_rekening3_kode`,`tb_rekening4_kode`) REFERENCES `tb_monev_lra_rek4` (`id_tb_rpjmd`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_monev_lra_tahun`, `tb_rekening1_kode`, `tb_rekening2_kode`, `tb_program_kode`, `tb_kegiatan_kode`, `tb_rekening3_kode`, `tb_rekening4_kode`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_tb_monev_lra_rek5_tb_sumber_dana1` FOREIGN KEY (`id_tb_sumber_dana`) REFERENCES `tb_sumber_dana` (`id_tb_sumber_dana`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `tb_musrenbang_kec`
@@ -9205,17 +9581,35 @@ ALTER TABLE `tb_rpjmd_kegiatan`
   ADD CONSTRAINT `fk_tb_rpjmd_kegiatan_tb_rpjmd_program1` FOREIGN KEY (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_program_kode`) REFERENCES `tb_rpjmd_program` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_tujuan_kode`, `tb_rpjmd_sasaran_kode`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_program_kode`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Constraints for table `tb_rpjmd_kegiatan_indikator`
+--
+ALTER TABLE `tb_rpjmd_kegiatan_indikator`
+  ADD CONSTRAINT `fk_tb_rpjmd_kegiatan_indikator_tb_rpjmd_kegiatan1` FOREIGN KEY (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_program_kode`,`tb_kegiatan_kode`) REFERENCES `tb_rpjmd_kegiatan` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_tujuan_kode`, `tb_rpjmd_sasaran_kode`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_program_kode`, `tb_kegiatan_kode`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tb_rpjmd_kegiatan_indikator_penetapan`
+--
+ALTER TABLE `tb_rpjmd_kegiatan_indikator_penetapan`
+  ADD CONSTRAINT `fk_tb_rpjmd_kegiatan_indikator_penetapan_tb_rpjmd_kegiatan_pe1` FOREIGN KEY (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_program_kode`,`tb_rpjmd_program_tahun`,`tb_kegiatan_kode`) REFERENCES `tb_rpjmd_kegiatan_penetapan` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_tujuan_kode`, `tb_rpjmd_sasaran_kode`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_program_kode`, `tb_rpjmd_program_tahun`, `tb_kegiatan_kode`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tb_rpjmd_kegiatan_indikator_perubahan`
+--
+ALTER TABLE `tb_rpjmd_kegiatan_indikator_perubahan`
+  ADD CONSTRAINT `fk_tb_rpjmd_kegiatan_indikator_perubahan_tb_rpjmd_kegiatan_pe1` FOREIGN KEY (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_program_kode`,`tb_rpjmd_program_tahun`,`tb_kegiatan_kode`) REFERENCES `tb_rpjmd_kegiatan_perubahan` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_tujuan_kode`, `tb_rpjmd_sasaran_kode`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_program_kode`, `tb_rpjmd_program_tahun`, `tb_kegiatan_kode`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `tb_rpjmd_kegiatan_penetapan`
 --
 ALTER TABLE `tb_rpjmd_kegiatan_penetapan`
-  ADD CONSTRAINT `fk_tb_rpjmd_kegiatan_penetapan_tb_rpjmd_program_penetapan1` FOREIGN KEY (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_program_kode`) REFERENCES `tb_rpjmd_program_penetapan` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_tujuan_kode`, `tb_rpjmd_sasaran_kode`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_program_kode`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_tb_rpjmd_kegiatan_penetapan_tb_rpjmd_program_penetapan1` FOREIGN KEY (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_program_kode`,`tb_rpjmd_program_tahun`) REFERENCES `tb_rpjmd_program_penetapan` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_tujuan_kode`, `tb_rpjmd_sasaran_kode`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_program_kode`, `tb_rpjmd_program_tahun`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_tb_rpjmd_kegiatan_renstra_tb_satuan10` FOREIGN KEY (`id_tb_satuan`) REFERENCES `tb_satuan` (`id_tb_satuan`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `tb_rpjmd_kegiatan_perubahan`
 --
 ALTER TABLE `tb_rpjmd_kegiatan_perubahan`
-  ADD CONSTRAINT `fk_tb_rpjmd_kegiatan_perubahan_tb_rpjmd_program_perubahan1` FOREIGN KEY (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_program_kode`) REFERENCES `tb_rpjmd_program_perubahan` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_tujuan_kode`, `tb_rpjmd_sasaran_kode`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_program_kode`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_tb_rpjmd_kegiatan_perubahan_tb_rpjmd_program_perubahan1` FOREIGN KEY (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_program_kode`,`tb_rpjmd_program_tahun`) REFERENCES `tb_rpjmd_program_perubahan` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_tujuan_kode`, `tb_rpjmd_sasaran_kode`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_program_kode`, `tb_rpjmd_program_tahun`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_tb_rpjmd_kegiatan_renstra_tb_satuan100` FOREIGN KEY (`id_tb_satuan`) REFERENCES `tb_satuan` (`id_tb_satuan`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
@@ -9239,17 +9633,37 @@ ALTER TABLE `tb_rpjmd_program`
   ADD CONSTRAINT `fk_tb_rpjmd_program_tb_satuan1` FOREIGN KEY (`id_tb_satuan`) REFERENCES `tb_satuan` (`id_tb_satuan`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
+-- Constraints for table `tb_rpjmd_program_indikator`
+--
+ALTER TABLE `tb_rpjmd_program_indikator`
+  ADD CONSTRAINT `fk_tb_rpjmd_program_indikator_tb_rpjmd_program1` FOREIGN KEY (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_program_kode`) REFERENCES `tb_rpjmd_program` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_tujuan_kode`, `tb_rpjmd_sasaran_kode`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_program_kode`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tb_rpjmd_program_indikator_penetapan`
+--
+ALTER TABLE `tb_rpjmd_program_indikator_penetapan`
+  ADD CONSTRAINT `fk_tb_rpjmd_program_indikator_penetapan_tb_rpjmd_program_pene1` FOREIGN KEY (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_program_kode`,`tb_rpjmd_program_tahun`) REFERENCES `tb_rpjmd_program_penetapan` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_tujuan_kode`, `tb_rpjmd_sasaran_kode`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_program_kode`, `tb_rpjmd_program_tahun`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tb_rpjmd_program_indikator_perubahan`
+--
+ALTER TABLE `tb_rpjmd_program_indikator_perubahan`
+  ADD CONSTRAINT `fk_tb_rpjmd_program_indikator_perubahan_tb_rpjmd_program_peru1` FOREIGN KEY (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`,`tb_program_kode`,`tb_rpjmd_program_tahun`) REFERENCES `tb_rpjmd_program_perubahan` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_tujuan_kode`, `tb_rpjmd_sasaran_kode`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_program_kode`, `tb_rpjmd_program_tahun`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `tb_rpjmd_program_penetapan`
 --
 ALTER TABLE `tb_rpjmd_program_penetapan`
-  ADD CONSTRAINT `fk_tb_rpjmd_program_penetapan_tb_rpjmd_opd1` FOREIGN KEY (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`) REFERENCES `tb_rpjmd_opd` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_tujuan_kode`, `tb_rpjmd_sasaran_kode`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_tb_rpjmd_program_penetapan_tb_rpjmd_sasaran1` FOREIGN KEY (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`) REFERENCES `tb_rpjmd_sasaran` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_tujuan_kode`, `tb_rpjmd_sasaran_kode`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_tb_rpjmd_program_penetapan_tb_sub_unit1` FOREIGN KEY (`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`) REFERENCES `tb_sub_unit` (`tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_tb_rpjmd_program_tb_satuan10` FOREIGN KEY (`id_tb_satuan`) REFERENCES `tb_satuan` (`id_tb_satuan`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `tb_rpjmd_program_perubahan`
 --
 ALTER TABLE `tb_rpjmd_program_perubahan`
-  ADD CONSTRAINT `fk_tb_rpjmd_program_perubahan_tb_rpjmd_opd1` FOREIGN KEY (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`,`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`) REFERENCES `tb_rpjmd_opd` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_tujuan_kode`, `tb_rpjmd_sasaran_kode`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_tb_rpjmd_program_perubahan_tb_rpjmd_sasaran1` FOREIGN KEY (`id_tb_rpjmd`,`tb_rpjmd_misi_kode`,`tb_rpjmd_tujuan_kode`,`tb_rpjmd_sasaran_kode`) REFERENCES `tb_rpjmd_sasaran` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_tujuan_kode`, `tb_rpjmd_sasaran_kode`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_tb_rpjmd_program_perubahan_tb_sub_unit1` FOREIGN KEY (`tb_urusan_kode`,`tb_bidang_kode`,`tb_unit_kode`,`tb_sub_unit_kode`) REFERENCES `tb_sub_unit` (`tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_tb_rpjmd_program_tb_satuan100` FOREIGN KEY (`id_tb_satuan`) REFERENCES `tb_satuan` (`id_tb_satuan`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --

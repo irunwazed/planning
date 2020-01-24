@@ -8,13 +8,16 @@ class ProgramModel extends CI_Model
         parent::__construct();
         $this->jumlah = 2000;
         $this->table = 'tb_rpjmd_program';
+        $this->tableIndikator = 'tb_rpjmd_program_indikator';
         
         $this->load->library('Filter');
         $jenis = $this->filter->getJenisRpjmd();
         if($jenis == 2){
             $this->table = 'tb_rpjmd_program_penetapan';
+            $this->tableIndikator = 'tb_rpjmd_program_indikator_penetapan';
         }else if($jenis == 3){
             $this->table = 'tb_rpjmd_program_perubahan';
+            $this->tableIndikator = 'tb_rpjmd_program_indikator_perubahan';
         }
     }
 
@@ -64,8 +67,20 @@ class ProgramModel extends CI_Model
 
         $this->setQuery($post);
         $this->db->limit($jumlah,$awal); 
-        $query = $this->db->get($this->table)->result_array();
-        return $query;
+        $data = $this->db->get($this->table)->result_array();
+        for($i = 0; $i < count($data); $i++){
+            $this->db->where($this->tableIndikator.'.id_tb_rpjmd', $data[$i]['id_tb_rpjmd']);
+            $this->db->where($this->tableIndikator.'.tb_rpjmd_misi_kode', $data[$i]['tb_rpjmd_misi_kode']);
+            $this->db->where($this->tableIndikator.'.tb_rpjmd_tujuan_kode', $data[$i]['tb_rpjmd_tujuan_kode']);
+            $this->db->where($this->tableIndikator.'.tb_rpjmd_sasaran_kode', $data[$i]['tb_rpjmd_sasaran_kode']);
+            $this->db->where($this->tableIndikator.'.tb_urusan_kode', $data[$i]['tb_urusan_kode']);
+            $this->db->where($this->tableIndikator.'.tb_bidang_kode', $data[$i]['tb_bidang_kode']);
+            $this->db->where($this->tableIndikator.'.tb_unit_kode', $data[$i]['tb_unit_kode']);
+            $this->db->where($this->tableIndikator.'.tb_sub_unit_kode', $data[$i]['tb_sub_unit_kode']);
+            $this->db->where($this->tableIndikator.'.tb_program_kode', $data[$i]['tb_program_kode']);
+            $data[$i]['indikator'] = $this->db->get($this->tableIndikator)->result_array();
+        }
+        return $data;
     }
 
     // public function create($post){

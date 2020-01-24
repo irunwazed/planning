@@ -51,6 +51,8 @@ class MisiModel extends CI_Model
 
             if($status)
                 $pesan = "Berhasil Menambah Data";
+        }else{
+            $pesan = "Anda tidak dapat mengakses data. Mohon Hubungi Admin.";
         }
 
         $kirim = array(
@@ -78,6 +80,8 @@ class MisiModel extends CI_Model
             $status = $this->db->update($this->table, $data);
             if($status)
                 $pesan = "Berhasil Mengubah Data";
+        }else{
+            $pesan = "Anda tidak dapat mengakses data. Mohon Hubungi Admin.";
         }
 
         $kirim = array(
@@ -98,6 +102,8 @@ class MisiModel extends CI_Model
             $status = $this->db->delete($this->table);
             if($status)
                 $pesan = "Berhasil Menghapus Data";
+        }else{
+            $pesan = "Anda tidak dapat mengakses data. Mohon Hubungi Admin.";
         }
 
         $kirim = array(
@@ -109,7 +115,14 @@ class MisiModel extends CI_Model
     
     public function cekInput($post){
         
-        return true;
+        $this->db->where('id_tb_user', $this->session->id);
+        $data = $this->db->get('tb_user')->row();
+ 
+        $jalan = false;
+        $hak = json_decode(@$data->tb_user_hak, true);
+        if(@$hak['rpjmd']['misi'])$jalan = true;
+
+        return $jalan;
     }
 
 

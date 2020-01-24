@@ -63,7 +63,7 @@
             kodeOneData = element['id_tb_satuan'];
             tempData = [
                 no,
-                '<a href="'+base_url+'rpjmd/penyusunan/tujuan/'+kodeOneData+'">'+element['tb_satuan_nama']+'</a>',
+                element['tb_satuan_nama'],
                 '<a class="btn btn-info"  href="#" onclick="setUpdate(\''+kodeOneData+'\')" data-toggle="modal" data-target="#modal-form" ><i class="fa fa-edit"></i></a>'+
                 '<a class="btn btn-danger"  href="#"  data-setFunction="doDelete(\''+kodeOneData+'\')" data-judul="Hapus Data!" data-isi="Apakah anda yakin menghapus data?" onclick="setPesan(this)" data-toggle="modal" data-target="#modal-pesan"><i class="fa fa-trash"></i></a>',
             ]

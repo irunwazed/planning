@@ -13,16 +13,14 @@
     }
     // getData();
     function getData(save = ''){
-
         // let tahun = $("select[name=tahun]").val();
         // let bulan = $("select[name=bulan]").val();
         // let jenis = $("select[name=jenis]").val();
-        
         let data = {
             // tahun : tahun,
             // bulan : bulan,
             // jenis : jenis,
-        }
+        };
         if(save == 'pdf'){
             let url = base_url+link+"/save/pdf";
             console.log(url);
@@ -43,8 +41,6 @@
                 }
             });
         }
-        
     }
-
 
 </script>

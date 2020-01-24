@@ -12,7 +12,7 @@ $des = "";
                                 </div>
                             </div>
                         </div> 
-                        <?php if(in_array($this->session->level, array(1,2))){ ?>           
+                        <?php if(in_array($this->session->level, array(1))){ ?>           
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="main-card mb-3 card">
@@ -24,7 +24,7 @@ $des = "";
                                                     <div class="col-4">
                                                         <div class="form-group">
                                                         <!-- <label>OPD</label> -->
-                                                            <select class="form-control" name="opd" required>
+                                                            <select class="form-control select2" name="opd" required>
                                                                 <option value="">-= Pilih OPD =-</option>
                                                                 <?php foreach($dataOpd as $row){ ?>
                                                                 <option <?=$this->session->kodeOpd==$row['tb_urusan_kode']."-".$row['tb_bidang_kode']."-".$row['tb_unit_kode']."-".$row['tb_sub_unit_kode']?'selected':''?> value="<?=$row['tb_urusan_kode']."-".$row['tb_bidang_kode']."-".$row['tb_unit_kode']."-".$row['tb_sub_unit_kode']?>"><?=@$row['tb_sub_unit_nama']?></option>
@@ -63,17 +63,6 @@ $des = "";
                                                                 <option value="">-= Pilih Tahun =-</option>
                                                                 <?php for($i =1; $i <=5; $i++){ ?>
                                                                 <option value="<?=$i?>"><?=@$dataRpjmd->tb_rpjmd_tahun+$i-1?></option>
-                                                                <?php } ?>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-4">
-                                                        <div class="form-group">
-                                                        <label>Bulan</label>
-                                                            <select class="form-control" name="bulan" required>
-                                                                <option value="">-= Pilih Bulan =-</option>
-                                                                <?php for($i =1; $i <=12; $i++){ ?>
-                                                                <option value="<?=$i?>"><?=$i?></option>
                                                                 <?php } ?>
                                                             </select>
                                                         </div>

@@ -140,7 +140,17 @@
         myTable.clear().draw();
         no = 1;
         let kodeOneData;
+        let indikatorArr = '';
+        let indikatorIndex = 1;
         data.forEach(element => {
+            
+            indikatorIndex = 1;
+            if(element['indikator'] != null){
+                element['indikator'].forEach(row =>{
+                    indikatorArr += '<div>'+(element['indikator'].length>1?indikatorIndex+'.) ':'')+row['tb_rpjmd_program_indikator_nama']+'</div>';
+                    indikatorIndex++;
+                });
+            }
             kodeOneData = element['tb_rpjmd_misi_kode']
                         +'-'+element['tb_rpjmd_tujuan_kode']
                         +'-'+element['tb_rpjmd_sasaran_kode']
@@ -161,7 +171,9 @@
                 no,
                 kodeShow,
                 '<a href="'+base_url+'renstra/penyusunan/kegiatan/'+kodeOneData+'">'+element['tb_program_nama']+'</a>',
-                element['tb_rpjmd_program_indikator'],
+                '<div id="indikator-'+kodeOneData+'">'+
+                indikatorArr+
+                '</div>',
                 element['tb_satuan_nama'],
                 element['tb_rpjmd_program_th_awal_target_kinerja'],
                 convertToRupiah(element['tb_rpjmd_program_th_awal_target_realisasi']),
@@ -179,6 +191,7 @@
                 convertToRupiah(realisasiAkhir),
             ]
             myTable.row.add(tempData).draw(  );
+            indikatorArr = '';
             no++;
         });
     }

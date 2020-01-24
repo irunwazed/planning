@@ -1,0 +1,78 @@
+.pesan {
+    font-size: 12px;
+    
+}
+
+.danger {
+    color: red;
+}
+
+.success {
+    color: green;
+}
+
+.set-hide {
+    display: none;
+}
+
+.set-bg {
+    background-color: aqua;
+}
+
+.bg-batik {
+
+    background-image: url('../../../images/batik2.jpg');
+    background-repeat: repeat;
+    background-size: 14%;
+}
+
+.bg-batik2 {
+    background-image: url('../../../images/batik42.png');
+    background-repeat: repeat;
+    background-size: 50%;
+}
+
+.skin-blue .main-header li.user-header{background-color:#ac7339;}
+
+.skin-blue .main-header .navbar{background-color:#ac7339}
+.skin-blue .main-header .navbar .sidebar-toggle:hover{background-color:#734d26}
+
+.skin-blue .main-header .logo{background-color: #4b3116;color:#fff;border-bottom:0 solid transparent}
+.skin-blue .main-header .logo:hover{background-color:#4d3319}
+
+.skin-blue .sidebar-menu>li:hover>a,.skin-blue .sidebar-menu>li.active>a,.skin-blue .sidebar-menu>li.menu-open>a{color:#fff;background:#130d06}
+.skin-blue .sidebar-menu>li.header{color:#FFFFFF;background:#130d06; margin-top: 10px}
+.skin-blue .wrapper,.skin-blue .main-sidebar,.skin-blue .left-side{background-color:#261a0d}
+.skin-blue .sidebar-menu>li>.treeview-menu{margin:0 1px;background:#4d3319;}
+
+.menu-atas {
+    /* position: relative;   */
+    /* z-index:1; */
+    /* overflow:hidden; */
+    
+}
+
+.menu-atas::before {
+
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.3;
+    background-image: url('../../../images/batik.png');
+    background-repeat: repeat;
+    background-position: 50% 0;
+    -ms-background-size: cover;
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    background-size: 14%;
+    
+}
+
+
+    

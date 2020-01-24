@@ -14,7 +14,6 @@ class OpdModel extends CI_Model
         
         $kode = explode("-", $post['kode']);
 
-        
         $this->db->join('tb_sub_unit', 'tb_sub_unit.tb_urusan_kode = '.$this->table.'.tb_urusan_kode
                                     AND tb_sub_unit.tb_bidang_kode = '.$this->table.'.tb_bidang_kode
                                     AND tb_sub_unit.tb_unit_kode = '.$this->table.'.tb_unit_kode
@@ -71,6 +70,8 @@ class OpdModel extends CI_Model
 
             if($status)
                 $pesan = "Berhasil Menambah Data";
+        }else{
+            $pesan = "Anda tidak dapat mengakses data. Mohon Hubungi Admin.";
         }
 
         $kirim = array(
@@ -108,6 +109,8 @@ class OpdModel extends CI_Model
             $status = $this->db->update($this->table, $data);
             if($status)
                 $pesan = "Berhasil Mengubah Data";
+        }else{
+            $pesan = "Anda tidak dapat mengakses data. Mohon Hubungi Admin.";
         }
 
         $kirim = array(
@@ -135,6 +138,8 @@ class OpdModel extends CI_Model
             $status = $this->db->delete($this->table);
             if($status)
                 $pesan = "Berhasil Menghapus Data";
+        }else{
+            $pesan = "Anda tidak dapat mengakses data. Mohon Hubungi Admin.";
         }
 
         $kirim = array(
@@ -146,7 +151,14 @@ class OpdModel extends CI_Model
     
     public function cekInput($post){
         
-        return true;
+        $this->db->where('id_tb_user', $this->session->id);
+        $data = $this->db->get('tb_user')->row();
+ 
+        $jalan = false;
+        $hak = json_decode(@$data->tb_user_hak, true);
+        if(@$hak['rpjmd']['opd'])$jalan = true;
+
+        return $jalan;
     }
 
 

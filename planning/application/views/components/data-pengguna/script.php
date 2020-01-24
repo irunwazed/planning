@@ -34,7 +34,7 @@
                     </div>
                     <div class="position-relative form-group" id="input-opd">
                         <label>OPD</label>
-                        <select name="opd" class="form-control" required>
+                        <select name="opd" class="form-control select2" style="width: 100%" required>
                             <option value="">-= Pilih OPD =-</option>
                             <?php foreach(@$dataOpd as $row){ ?>
                                 <option value="<?=$row['tb_urusan_kode']."-".$row['tb_bidang_kode']."-".$row['tb_unit_kode']."-".$row['tb_sub_unit_kode']?>"><?=$row['tb_sub_unit_nama']?></option>

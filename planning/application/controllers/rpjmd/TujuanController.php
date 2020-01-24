@@ -43,7 +43,7 @@ class TujuanController extends CI_Controller {
             $jumDataAll = $this->TujuanModel->getCount($post);
             $jumlahDatainPage = $this->TujuanModel->getJumlahInPage();
             $jumlahPage = ceil($jumDataAll/$jumlahDatainPage);
-		}
+        }
 
         $kirim = array(
             'jumlahAll' => $jumDataAll,

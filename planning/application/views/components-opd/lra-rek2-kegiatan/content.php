@@ -11,7 +11,7 @@ $des = "";
                                     </div>
                                 </div>
                                 <div class="page-title-actions">
-                                    <a href="<?=base_url()?>opd/penyusunan/lra/rek2-program/<?=@$kode?>" data-toggle="tooltip" title="Kembali" data-placement="bottom" class="btn-shadow mr-3 btn btn-info">
+                                    <a href="<?=base_url()?>opd/penyusunan/lra/program" data-toggle="tooltip" title="Kembali" data-placement="bottom" class="btn-shadow mr-3 btn btn-info">
                                         <i class="fa fa-reply"></i>
                                     </a>
                                 </div>
@@ -28,12 +28,12 @@ $des = "";
                                                     <tr>
                                                         <td width="80">Rekening 1</td>
                                                         <td width="10">:</td>
-                                                        <td><a href="<?=base_url()?>opd/penyusunan/lra/rek2/<?=@$kode?>"><?="(".@$dataLra->tb_rekening1_kode.") ".@$dataLra->tb_rekening1_nama?></a></td>
+                                                        <td><?="(".@$dataLra->tb_rekening1_kode.") ".@$dataLra->tb_rekening1_nama?></td>
                                                     </tr>
                                                     <tr>
                                                         <td width="80">Rekening 2</td>
                                                         <td width="10">:</td>
-                                                        <td><a href="<?=base_url()?>opd/penyusunan/lra/rek2-program/<?=@$kode?>"><?="(".@$dataLra->tb_rekening2_kode.") ".@$dataLra->tb_rekening2_nama?></a></td>
+                                                        <td><a href="<?=base_url()?>opd/penyusunan/lra/program"><?="(".@$dataLra->tb_rekening2_kode.") ".@$dataLra->tb_rekening2_nama?></a></td>
                                                     </tr>
                                                     <tr>
                                                         <td width="80">Program</td>

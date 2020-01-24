@@ -25,7 +25,6 @@ class RkpdController extends CI_Controller {
 	}
 
     public function cetak($save = ''){
-        
         // error_reporting(0);
         $status = false;
         $pesan = "Data Tidak Ditemukan";
@@ -41,8 +40,6 @@ class RkpdController extends CI_Controller {
         $dataAll = array();
 
         // print_r($post);
-
-        
         if(!@$post['tahun']){
             $post['tahun'] = 1;
         }
@@ -52,8 +49,6 @@ class RkpdController extends CI_Controller {
             $post['bulan'] = 1;
         }
         $bulan = $post['bulan'];
-
-        
 
         $this->load->model('rpjmd/DataModel');
         $dataRpjmd = $this->DataModel->getRowVisi();
@@ -69,7 +64,6 @@ class RkpdController extends CI_Controller {
         $dataAll = $this->setData($post);
         // $dataAll = $this->DataModel->getLraOpd($post['cetakopd'], $post['cetaktahun']);
         // $dataOpd = $this->DataModel->selectOneOpdByKode($post['cetakopd']);
-
 
         $kirim = array(
             "dataRpjmd" => $dataRpjmd,
@@ -97,12 +91,9 @@ class RkpdController extends CI_Controller {
 
     public function setData($post){
 
-        
-
-
 
         $data = $this->DataModel->getOpdKegiatan($this->session->kodeOpd, $post['jenis']);
-        
+
         $tb_urusan_kode = 0;
         $tb_bidang_kode = 0;
         $tb_program_kode = 0;
@@ -119,7 +110,6 @@ class RkpdController extends CI_Controller {
                 $dataAll[$index] = $data[$i];
                 $dataAll[$index]['level'] = 1;
                 $index++;
-
                 $tb_urusan_kode = $data[$i]['tb_urusan_kode'];
                 $tb_bidang_kode = 0;
                 $tb_program_kode = 0;
@@ -139,18 +129,39 @@ class RkpdController extends CI_Controller {
 
                 $dataAll[$index] = $data[$i];
                 $dataAll[$index]['level'] = 3;
+                $kode = $dataAll[$index]['tb_rpjmd_misi_kode']
+                    ."-".$dataAll[$index]['tb_rpjmd_tujuan_kode']
+                    ."-".$dataAll[$index]['tb_rpjmd_sasaran_kode']
+                    ."-".$dataAll[$index]['tb_urusan_kode']
+                    ."-".$dataAll[$index]['tb_bidang_kode']
+                    ."-".$dataAll[$index]['tb_unit_kode']
+                    ."-".$dataAll[$index]['tb_sub_unit_kode']
+                    ."-".$dataAll[$index]['tb_program_kode'];
+                $dataAll[$index]['indikator'] = $this->DataModel->getDataIndikatorProgram($kode);
+                $dataAll[$index]['indikator_text'] = '';
+                $indikatorIndex = 1;
+                foreach($dataAll[$index]['indikator'] as $row){
+                    if(count($dataAll[$index]['indikator']) > 1){
+                        $indikatorNum = '('.$indikatorIndex.') ';
+                        $indikatorIndex++;
+                    }else{
+                        $indikatorNum = '';
+                    }
+                    $dataAll[$index]['indikator_text'] .= '<div>'.$indikatorNum.$row['tb_rpjmd_program_indikator_nama'].'</div>';
+                }
+                $indexProgram = $index;
                 $index++;
 
                 $tb_program_kode = $data[$i]['tb_program_kode'];
                 $tb_kegiatan_kode = 0;
             }
 
-
             $dataAll[$index] = $data[$i];
             $dataAll[$index]['level'] = 4;
 
-            $kode = $dataAll[$index]['id_tb_rpjmd']
-                ."-".$dataAll[$index]['tb_rpjmd_misi_kode']
+            
+            //indikator kegiatan
+            $kodeIndi = $dataAll[$index]['tb_rpjmd_misi_kode']
                 ."-".$dataAll[$index]['tb_rpjmd_tujuan_kode']
                 ."-".$dataAll[$index]['tb_rpjmd_sasaran_kode']
                 ."-".$dataAll[$index]['tb_urusan_kode']
@@ -159,29 +170,78 @@ class RkpdController extends CI_Controller {
                 ."-".$dataAll[$index]['tb_sub_unit_kode']
                 ."-".$dataAll[$index]['tb_program_kode']
                 ."-".$dataAll[$index]['tb_kegiatan_kode'];
-            $capaian_semua = 0;
-            for($i = 1; $i <= $post['tahun']; $i++){
-                $ulang = 12;
-                if($post['tahun'] == $i){
-                    $ulang = $post['bulan'];
+            $dataAll[$index]['indikator'] = $this->DataModel->getDataIndikatorKegiatan($kodeIndi);
+            $dataAll[$index]['indikator_text'] = '';
+            $indikatorIndex = 1;
+            foreach($dataAll[$index]['indikator'] as $row){
+                if(count($dataAll[$index]['indikator']) > 1){
+                    $indikatorNum = '('.$indikatorIndex.') ';
+                    $indikatorIndex++;
+                }else{
+                    $indikatorNum = '';
                 }
-                for($j = 1; $j <= $ulang; $j++){
-                    $dataAll[$index]['bulanan_tahun'.$i] = $this->DataModel->getBulanan($kode, $post['jenis'], $i, $j);
-                    $dataAll[$index]['tb_rpjmd_kegiatan_th'.$i.'_capaian_kinerja'] = @$dataAll[$index]['bulanan_tahun'.$i][0]['tb_monev_bulanan_kinerja'] + @$dataAll[$index]['tb_rpjmd_kegiatan_th'.$i.'_capaian_kinerja'];
-                    $dataAll[$index]['tb_rpjmd_kegiatan_th'.$i.'_capaian_anggaran'] = @$dataAll[$index]['bulanan_tahun'.$i][0]['tb_monev_bulanan_anggaran'] + @$dataAll[$index]['tb_rpjmd_kegiatan_th'.$i.'_capaian_anggaran'];
-                    $dataAll[$index]['tb_rpjmd_kegiatan_th'.$i.'_capaian_realisasi'] = @$dataAll[$index]['bulanan_tahun'.$i][0]['tb_monev_bulanan_realisasi'] + @$dataAll[$index]['tb_rpjmd_kegiatan_th'.$i.'_capaian_realisasi'];
-                    
-                }
-                $dataAll[$index]['tb_rpjmd_kegiatan_th'.$i.'_capaian_realisasi_anggaran'] = @$dataAll[$index]['tb_rpjmd_kegiatan_th'.$i.'_capaian_realisasi'] - @$dataAll[$index]['tb_rpjmd_kegiatan_th'.$i.'_capaian_anggaran'];
-                $capaian_semua += $dataAll[$index]['tb_rpjmd_kegiatan_th'.$i.'_capaian_realisasi_anggaran'];
-                
+                $dataAll[$index]['indikator_text'] .= '<div>'.$indikatorNum.$row['tb_rpjmd_kegiatan_indikator_nama'].'</div>';
             }
-            $capaian_semua = ABS($capaian_semua);
-            $dataAll[$index]['tb_rpjmd_kegiatan_th'.$post['tahun'].'_capaian_realisasi_semua'] = $capaian_semua;
-            $dataAll[$index]['tb_rpjmd_kegiatan_th'.$post['tahun'].'_capaian_realisasi_persen'] = 100*$capaian_semua/@$dataAll[$index]['tb_rpjmd_kegiatan_th5_target_realisasi'];
+
+            $kode = $dataAll[$index]['id_tb_rpjmd']
+                ."-".$dataAll[$index]['tb_urusan_kode']
+                ."-".$dataAll[$index]['tb_bidang_kode']
+                ."-".$dataAll[$index]['tb_unit_kode']
+                ."-".$dataAll[$index]['tb_sub_unit_kode']
+                ."-".$dataAll[$index]['tb_program_kode']
+                ."-".$dataAll[$index]['tb_kegiatan_kode'];
+
+            // kegiatan
+            $dataAll[$index]['dataRkpdAwal'] = $this->DataModel->getRkpdAwalKegiatan($kode);
+            $targetAkhirRealisasi = @$dataAll[$index]['dataRkpdAwal'][0]['tb_rpjmd_kegiatan_th1_target_realisasi']
+                                    +@$dataAll[$index]['dataRkpdAwal'][0]['tb_rpjmd_kegiatan_th2_target_realisasi']
+                                    +@$dataAll[$index]['dataRkpdAwal'][0]['tb_rpjmd_kegiatan_th3_target_realisasi']
+                                    +@$dataAll[$index]['dataRkpdAwal'][0]['tb_rpjmd_kegiatan_th4_target_realisasi']
+                                    +@$dataAll[$index]['dataRkpdAwal'][0]['tb_rpjmd_kegiatan_th5_target_realisasi'];
+            
+            $jumlahAllRealisasi = 0;
+            for($tahunan = 1; $tahunan <= $post['tahun']; $tahunan++){
+                $jumAnggaran = 0;
+                $jumRealisasi = 0;
+                $dataAll[$index]['dataLra'] = $this->DataModel->getCapaian($kode, $tahunan);
+
+                for($j = 0; $j < count($dataAll[$index]['dataLra']); $j++){
+                    $jumAnggaran += $dataAll[$index]['dataLra'][$j]['tb_monev_lra_rek5_anggaran'];
+                    $jumRealisasi += $dataAll[$index]['dataLra'][$j]['tb_monev_lra_rek5_realisasi'];
+                }
+                $dataAll[$index]['tb_rpjmd_kegiatan_th'.$tahunan.'_capaian_anggaran'] = $jumAnggaran;
+                $dataAll[$index]['tb_rpjmd_kegiatan_th'.$tahunan.'_capaian_realisasi'] = $jumRealisasi;
+                $dataAll[$index]['tb_rpjmd_kegiatan_th'.$tahunan.'_capaian_realisasi_anggaran'] = $jumRealisasi - $jumAnggaran;
+                $jumlahAllRealisasi += $jumRealisasi;
+            }
+
+            $capaian_realisasi_persen = 0;
+            if($targetAkhirRealisasi > 0){
+                $capaian_realisasi_persen = 100*$jumlahAllRealisasi/$targetAkhirRealisasi;
+            }
+            $dataAll[$index]['tb_rpjmd_kegiatan_th_akhir_target_realisasi'] = $targetAkhirRealisasi;
+            $dataAll[$index]['tb_rpjmd_kegiatan_th'.($post['tahun']).'_capaian_realisasi_semua'] = $jumlahAllRealisasi;
+            $dataAll[$index]['tb_rpjmd_kegiatan_th'.($post['tahun']).'_capaian_realisasi_persen'] = $capaian_realisasi_persen;
+
+
+            //program
+            $dataAll[$indexProgram]['dataRkpdAwalProgram'] = $this->DataModel->getRkpdAwalProgram($kode);
+            $targetAkhirRealisasiProgram = @$dataAll[$indexProgram]['dataRkpdAwalProgram'][0]['tb_rpjmd_program_th1_target_realisasi']
+                                    +@$dataAll[$indexProgram]['dataRkpdAwalProgram'][0]['tb_rpjmd_program_th2_target_realisasi']
+                                    +@$dataAll[$indexProgram]['dataRkpdAwalProgram'][0]['tb_rpjmd_program_th3_target_realisasi']
+                                    +@$dataAll[$indexProgram]['dataRkpdAwalProgram'][0]['tb_rpjmd_program_th4_target_realisasi']
+                                    +@$dataAll[$indexProgram]['dataRkpdAwalProgram'][0]['tb_rpjmd_program_th5_target_realisasi'];
+            $dataAll[$indexProgram]['tb_rpjmd_program_th_akhir_target_realisasi'] = $targetAkhirRealisasiProgram;
+            $dataAll[$indexProgram]['tb_rpjmd_program_th'.$post['tahun'].'_capaian_anggaran'] = @$dataAll[$index]['tb_rpjmd_kegiatan_th'.$post['tahun'].'_capaian_anggaran'] 
+                                                                                        + @$dataAll[$indexProgram]['tb_rpjmd_program_th'.$post['tahun'].'_capaian_anggaran'];
+            $dataAll[$indexProgram]['tb_rpjmd_program_th'.$post['tahun'].'_capaian_realisasi'] = @$dataAll[$index]['tb_rpjmd_kegiatan_th'.$post['tahun'].'_capaian_realisasi'] 
+                                                                                        + @$dataAll[$indexProgram]['tb_rpjmd_program_th'.$post['tahun'].'_capaian_realisasi'];
+            $dataAll[$indexProgram]['tb_rpjmd_program_th'.$post['tahun'].'_capaian_realisasi_persen'] = @$dataAll[$index]['tb_rpjmd_kegiatan_th'.$post['tahun'].'_capaian_realisasi_persen'] 
+                                                                                        + @$dataAll[$indexProgram]['tb_rpjmd_program_th'.$post['tahun'].'_capaian_realisasi_persen'];
+            
+
             $index++;
         }
-        
         return $dataAll;
 
     }

@@ -50,20 +50,16 @@ https://templatemo.com/tm-537-art-factory
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <li class="scroll-to-section"><a href="#welcome" class="active">Home</a></li>
-                            <li class="scroll-to-section"><a href="#about">About</a></li>
-                            <li class="scroll-to-section"><a href="#services">Services</a></li>
-                            <li class="scroll-to-section"><a href="#frequently-question">Frequently Questions</a></li>
+                            <li class="scroll-to-section"><a href="#about">Tentang</a></li>
+                            <!-- <li class="scroll-to-section"><a href="#services">Services</a></li>
+                            <li class="scroll-to-section"><a href="#frequently-question">Frequently Questions</a></li> -->
                             <li class="submenu">
-                                <a href="javascript:;">Drop Down</a>
+                                <a href="javascript:;">Sistem</a>
                                 <ul>
-                                    <li><a href="">About Us</a></li>
-                                    <li><a href="">Features</a></li>
-                                    <li><a href="">FAQ's</a></li>
-                                    <li><a href="">Blog</a></li>
+                                    <li><a href="<?=base_url('login')?>">E-Monev</a></li>
+                                    <li><a href="<?=base_url('e-dak')?>">E-DAK</a></li>
                                 </ul>
                             </li>
-                            <li class="scroll-to-section"><a href="#contact-us">Contact Us</a></li>
-                            <li class="scroll-to-section"><a href="<?=base_url('login')?>">Login</a></li>
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -85,9 +81,9 @@ https://templatemo.com/tm-537-art-factory
             <div class="container">
                 <div class="row">
                     <div class="left-text col-lg-6 col-md-6 col-sm-12 col-xs-12" data-scroll-reveal="enter left move 30px over 0.6s after 0.4s">
-                        <h1>Art Factory is free <strong>for YOU</strong></h1>
-                        <p>This template is available for 100% free of charge on TemplateMo. Download, modify and use this for your business website.</p>
-                        <a href="#about" class="main-button-slider">Find Out More</a>
+                        <h1>MONEV <strong>Elektronik</strong></h1>
+                        <p>Sistem Monitoring Evaluasi Elektronik.</p>
+                        <a href="#about" class="main-button-slider">Lihat</a>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" data-scroll-reveal="enter right move 30px over 0.6s after 0.4s">
                         <img src="<?=base_url()?>public/template/awal/assets/images/slider-icon.png" class="rounded img-fluid d-block mx-auto" alt="First Vector Graphic">
@@ -109,12 +105,12 @@ https://templatemo.com/tm-537-art-factory
                 </div>
                 <div class="right-text col-lg-5 col-md-12 col-sm-12 mobile-top-fix">
                     <div class="left-heading">
-                        <h5>Vivamus sodales nisi id ante molestie venenatis</h5>
+                        <h5>E-Monev</h5>
                     </div>
                     <div class="left-text">
-                        <p>This template is <a href="#">last updated on 20 August 2019 </a>for main menu drop-down arrow and sub menu text color. Duis auctor dolor eu scelerisque vestibulum. Vestibulum lacinia, nisl sit amet tristique condimentum. <br><br>
-                        Sed a consequat velit. Morbi lectus sapien, vestibulum et sapien sit amet, ultrices malesuada odio. Donec non quam euismod, mattis dui a, ultrices nisi.</p>
-                        <a href="#about2" class="main-button">Discover More</a>
+                        <p>Sistem monitoring evaluasi RPJMD</p>
+                        <a href="<?=base_url('login')?>" class="main-button">Lihat Aplikasi</a>
+                        <a href="#about2" class="main-button">Lihat Aplikasi Lain</a>
                     </div>
                 </div>
             </div>
@@ -134,32 +130,36 @@ https://templatemo.com/tm-537-art-factory
             <div class="row">
                 <div class="left-text col-lg-5 col-md-12 col-sm-12 mobile-bottom-fix">
                     <div class="left-heading">
-                        <h5>Curabitur aliquam eget tellus id porta</h5>
+                        <h5>E-DAK</h5>
                     </div>
-                    <p>Proin justo sapien, posuere suscipit tortor in, fermentum mattis elit. Aenean in feugiat purus.</p>
+                    <p>Sistem Pelaporan Dana Alokasi Khusus Morowali.</p>
                     <ul>
                         <li>
                             <img src="<?=base_url()?>public/template/awal/assets/images/about-icon-01.png" alt="">
                             <div class="text">
-                                <h6>Nulla ultricies risus quis risus</h6>
-                                <p>You can use this website template for commercial or non-commercial purposes.</p>
+                                <h6>Penyusunan</h6>
+                                <br>
+                                <!-- <p>You can use this website template for commercial or non-commercial purposes.</p> -->
                             </div>
                         </li>
                         <li>
                             <img src="<?=base_url()?>public/template/awal/assets/images/about-icon-02.png" alt="">
                             <div class="text">
-                                <h6>Donec consequat commodo purus</h6>
-                                <p>You have no right to re-distribute this template as a downloadable ZIP file on any website.</p>
+                                <h6>Pengisian Data</h6>
+                                <br>
+                                <!-- <p>You have no right to re-distribute this template as a downloadable ZIP file on any website.</p> -->
                             </div>
                         </li>
                         <li>
                             <img src="<?=base_url()?>public/template/awal/assets/images/about-icon-03.png" alt="">
                             <div class="text">
-                                <h6>Sed placerat sollicitudin mauris</h6>
-                                <p>If you have any question or comment, please <a rel="nofollow" href="https://templatemo.com/contact">contact</a> us on TemplateMo.</p>
+                                <h6>Pelaporan</h6>
+                                <br>
+                                <!-- <p>If you have any question or comment, please <a rel="nofollow" href="https://templatemo.com/contact">contact</a> us on TemplateMo.</p> -->
                             </div>
                         </li>
                     </ul>
+                    <a href="<?=base_url('e-dak')?>" class="main-button">Lihat Aplikasi</a>
                 </div>
                 <div class="right-image col-lg-7 col-md-12 col-sm-12 mobile-bottom-fix-big" data-scroll-reveal="enter right move 30px over 0.6s after 0.4s">
                     <img src="<?=base_url()?>public/template/awal/assets/images/right-image.png" class="rounded img-fluid d-block mx-auto" alt="App">
@@ -171,7 +171,7 @@ https://templatemo.com/tm-537-art-factory
 
 
     <!-- ***** Features Small Start ***** -->
-    <section class="section" id="services">
+    <!-- <section class="section" id="services">
         <div class="container">
             <div class="row">
                 <div class="owl-carousel owl-theme">
@@ -234,14 +234,13 @@ https://templatemo.com/tm-537-art-factory
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- ***** Features Small End ***** -->
 
 
     <!-- ***** Frequently Question Start ***** -->
-    <section class="section" id="frequently-question">
+    <!-- <section class="section" id="frequently-question">
         <div class="container">
-            <!-- ***** Section Title Start ***** -->
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-heading">
@@ -254,7 +253,6 @@ https://templatemo.com/tm-537-art-factory
                     </div>
                 </div>
             </div>
-            <!-- ***** Section Title End ***** -->
 
             <div class="row">
                 <div class="left-text col-lg-6 col-md-6 col-sm-12">
@@ -360,29 +358,25 @@ https://templatemo.com/tm-537-art-factory
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- ***** Frequently Question End ***** -->
 
 
     <!-- ***** Contact Us Start ***** -->
-    <section class="section" id="contact-us">
+        <!-- How to change your own map point
+            1. Go to Google Maps
+            2. Click on your location point
+            3. Click "Share" and choose "Embed map" tab
+            4. Copy only URL and paste it within the src="" field below
+    -->
+    <!-- <section class="section" id="contact-us">
         <div class="container-fluid">
             <div class="row">
-                <!-- ***** Contact Map Start ***** -->
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div id="map">
-                      <!-- How to change your own map point
-                           1. Go to Google Maps
-                           2. Click on your location point
-                           3. Click "Share" and choose "Embed map" tab
-                           4. Copy only URL and paste it within the src="" field below
-                    -->
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1197183.8373802372!2d-1.9415093691103689!3d6.781986417238027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdb96f349e85efd%3A0xb8d1e0b88af1f0f5!2sKumasi+Central+Market!5e0!3m2!1sen!2sth!4v1532967884907" width="100%" height="500px" frameborder="0" style="border:0" allowfullscreen></iframe>
                     </div>
                 </div>
-                <!-- ***** Contact Map End ***** -->
-
-                <!-- ***** Contact Form Start ***** -->
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="contact-form">
                         <form id="contact" action="" method="post">
@@ -411,10 +405,9 @@ https://templatemo.com/tm-537-art-factory
                         </form>
                     </div>
                 </div>
-                <!-- ***** Contact Form End ***** -->
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- ***** Contact Us End ***** -->
 
     
@@ -423,9 +416,9 @@ https://templatemo.com/tm-537-art-factory
         <div class="container">
             <div class="row">
                 <div class="col-lg-7 col-md-12 col-sm-12">
-                    <p class="copyright">Copyright &copy; 2020 Art Factory Company 
+                    <p class="copyright">Copyright &copy; 2020 BAPPEDA MOROWALI
                 
-                . Design: <a rel="nofollow" href="https://templatemo.com">TemplateMo</a></p>
+                . Design: <a rel="nofollow" href="#">Code XV</a></p>
                 </div>
                 <div class="col-lg-5 col-md-12 col-sm-12">
                     <ul class="social">

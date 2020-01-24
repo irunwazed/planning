@@ -25,7 +25,7 @@ class Rek2KegiatanController extends CI_Controller {
 
         $setKode = explode("-", $this->session->kodeOpd);
         $kode = explode("-", $kode);
-        $setKode = $setKode[0]."-".$setKode[1]."-".$kode[3];
+        $setKode = $setKode[0]."-".$setKode[1]."-".$kode[0];
         $data['dataKegiatan'] = $this->DataModel->getKegiatan($setKode);
         
         $file['content'] = $this->load->view('components-opd/lra-rek2-kegiatan/content', $data, true);

@@ -8,9 +8,12 @@ class AdminController extends CI_Controller {
 	{
         $data = array();
         $data['judul'] = "Beranda";
-        $data['judul'] = "Beranda";
         
         $this->load->model('DataModel');
+        
+        $this->load->library('Filter');
+        $this->filter->cekLoginOut(array(1,2,3));
+
         $data['jumOpd'] = $this->DataModel->getJumlahOpd();
         $data['jumProgram'] = $this->DataModel->getJumlahProgram();
         $data['jumKegiatan'] = $this->DataModel->getJumlahKegiatan();

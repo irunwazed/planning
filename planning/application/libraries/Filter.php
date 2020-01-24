@@ -21,7 +21,11 @@ class Filter {
     public function cekLoginOut($levelArr){
         $status = $this->cekLogin($levelArr);
         if(!$status){
-            redirect(base_url('beranda'));
+            if(@$this->session->logged_in == TRUE){
+                redirect(base_url('beranda'));
+            }else{
+                redirect(base_url('logout'));
+            }
         }
     }
 

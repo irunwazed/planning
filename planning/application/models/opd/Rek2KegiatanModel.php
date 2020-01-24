@@ -21,11 +21,12 @@ class Rek2KegiatanModel extends CI_Model
                                     AND tb_kegiatan.tb_kegiatan_kode = '.$this->table.'.tb_kegiatan_kode', 'left');
         
         $this->db->where($this->table.'.id_tb_rpjmd', $this->session->rpjmd);
+        $this->db->where($this->table.'.tb_monev_lra_tahun', $this->session->tahun);
         
         $kode = explode("-", $post['kode']);
-        $this->db->where($this->table.'.tb_rekening1_kode', $kode[1]);
-        $this->db->where($this->table.'.tb_rekening2_kode', $kode[2]);
-        $this->db->where($this->table.'.tb_program_kode', $kode[3]);
+        $this->db->where($this->table.'.tb_rekening1_kode', 5);
+        $this->db->where($this->table.'.tb_rekening2_kode', 2);
+        $this->db->where($this->table.'.tb_program_kode', $kode[0]);
 
         $kodeOpd = explode("-", $this->session->kodeOpd);
         $this->db->where($this->table.'.tb_urusan_kode', $kodeOpd[0]);
@@ -67,15 +68,15 @@ class Rek2KegiatanModel extends CI_Model
             $kodeOpd = explode("-", $this->session->kodeOpd);
             $kode = explode("-", $post['kode']);
             $data = array(
-                'tb_monev_lra_kode' => $kode[0],
+                'tb_monev_lra_tahun' => $this->session->tahun,
                 'id_tb_rpjmd' => $this->session->rpjmd,
                 'tb_urusan_kode' => $kodeOpd[0],
                 'tb_bidang_kode' => $kodeOpd[1],
                 'tb_unit_kode' => $kodeOpd[2],
                 'tb_sub_unit_kode' => $kodeOpd[3],
-                'tb_rekening1_kode' => $kode[1],
-                'tb_rekening2_kode' => $kode[2],
-                'tb_program_kode' => $kode[3],
+                'tb_rekening1_kode' => 5,
+                'tb_rekening2_kode' => 2,
+                'tb_program_kode' => $kode[0],
                 'tb_kegiatan_kode' => $post['tb_kegiatan_kode'],
                 'tb_monev_lra_rek2_kegiatan_fisik' => $post['tb_monev_lra_rek2_kegiatan_fisik'],
             );
@@ -84,6 +85,8 @@ class Rek2KegiatanModel extends CI_Model
 
             if($status)
                 $pesan = "Berhasil Menambah Data";
+        }else{
+            $pesan = "Anda tidak dapat mengakses data. Mohon Hubungi Admin.";
         }
 
         $kirim = array(
@@ -109,18 +112,20 @@ class Rek2KegiatanModel extends CI_Model
             $kodeOpd = explode("-", $this->session->kodeOpd);
             $kode = explode("-", $post['kode']);
             $this->db->where('id_tb_rpjmd', $this->session->rpjmd);
-            $this->db->where('tb_monev_lra_kode', $kode[0]);
+            $this->db->where('tb_monev_lra_tahun', $this->session->tahun);
             $this->db->where('tb_urusan_kode', $kodeOpd[0]);
             $this->db->where('tb_bidang_kode', $kodeOpd[1]);
             $this->db->where('tb_unit_kode', $kodeOpd[2]);
             $this->db->where('tb_sub_unit_kode', $kodeOpd[3]);
-            $this->db->where('tb_rekening1_kode', $kode[1]);
-            $this->db->where('tb_rekening2_kode', $kode[2]);
-            $this->db->where('tb_program_kode', $kode[3]);
-            $this->db->where('tb_kegiatan_kode', $kode[4]);
+            $this->db->where('tb_rekening1_kode', 5);
+            $this->db->where('tb_rekening2_kode', 2);
+            $this->db->where('tb_program_kode', $kode[0]);
+            $this->db->where('tb_kegiatan_kode', $kode[1]);
             $status = $this->db->update($this->table, $data);
             if($status)
                 $pesan = "Berhasil Mengubah Data";
+        }else{
+            $pesan = "Anda tidak dapat mengakses data. Mohon Hubungi Admin.";
         }
 
         $kirim = array(
@@ -139,18 +144,20 @@ class Rek2KegiatanModel extends CI_Model
             $kodeOpd = explode("-", $this->session->kodeOpd);
             $kode = explode("-", $post['kode']);
             $this->db->where('id_tb_rpjmd', $this->session->rpjmd);
-            $this->db->where('tb_monev_lra_kode', $kode[0]);
+            $this->db->where('tb_monev_lra_tahun', $this->session->tahun);
             $this->db->where('tb_urusan_kode', $kodeOpd[0]);
             $this->db->where('tb_bidang_kode', $kodeOpd[1]);
             $this->db->where('tb_unit_kode', $kodeOpd[2]);
             $this->db->where('tb_sub_unit_kode', $kodeOpd[3]);
-            $this->db->where('tb_rekening1_kode', $kode[1]);
-            $this->db->where('tb_rekening2_kode', $kode[2]);
-            $this->db->where('tb_program_kode', $kode[3]);
-            $this->db->where('tb_kegiatan_kode', $kode[4]);
+            $this->db->where('tb_rekening1_kode', 5);
+            $this->db->where('tb_rekening2_kode', 2);
+            $this->db->where('tb_program_kode', $kode[0]);
+            $this->db->where('tb_kegiatan_kode', $kode[1]);
             $status = $this->db->delete($this->table);
             if($status)
                 $pesan = "Berhasil Menghapus Data";
+        }else{
+            $pesan = "Anda tidak dapat mengakses data. Mohon Hubungi Admin.";
         }
 
         $kirim = array(
@@ -162,7 +169,14 @@ class Rek2KegiatanModel extends CI_Model
     
     public function cekInput($post){
         
-        return true;
+        $this->db->where('id_tb_user', $this->session->id);
+        $data = $this->db->get('tb_user')->row();
+ 
+        $jalan = false;
+        $hak = json_decode(@$data->tb_user_hak, true);
+        if(@$hak['lra']['kegiatan'])$jalan = true;
+
+        return $jalan;
     }
 
     

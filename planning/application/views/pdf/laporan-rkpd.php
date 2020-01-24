@@ -43,7 +43,7 @@
             </div>
             <div style="width: 90%; text-align: center; float:left; font-size: 20px">
                 <span>Evaluasi Terhadap Hasil RKPD (<?=$jenisArr[$jenis]?>) </span><br>
-                <span>KABUPATEN MOROWALI</span><br>
+                <span>Kabupaten Morowali</span><br>
                 <span>Tahun <?=$tahun?></span>
             </div>
         </div>
@@ -116,16 +116,16 @@
                             <td <?=$style?>><?=@$data[$i]['tb_rpjmd_sasaran_nama']?></td>
                             <td <?=$style?>><?=@$data[$i]['tb_urusan_kode'].".".$data[$i]['tb_bidang_kode'].".".$data[$i]['tb_program_kode']?></td>
                             <td <?=$style?>><?=@$data[$i]['tb_program_nama']?></td>
-                            <td <?=$style?>><?=@$data[$i]['tb_rpjmd_program_indikator']?></td>
+                            <td <?=$style?>><?=@$data[$i]['indikator_text']?></td>
                             <td <?=$style?>><?=@$data[$i]['tb_rpjmd_program_th5_target_kinerja']?></td>
-                            <td <?=$style?>><?=number_format(@$data[$i]['tb_rpjmd_program_th5_target_realisasi'],2,',','.')?></td>
+                            <td <?=$style?>><?=number_format(@$data[$i]['tb_rpjmd_program_th_akhir_target_realisasi'],2,',','.')?></td>
                             <td <?=$style?>><?=@$data[$i]['tb_rpjmd_program_th'.($tahunKe-1).'_capaian_kinerja']?></td>
                             <td <?=$style?>><?=number_format(@$data[$i]['tb_rpjmd_program_th'.($tahunKe-1).'_capaian_realisasi'],2,',','.')?></td>
                             <td <?=$style?>><?=@$data[$i]['tb_rpjmd_program_th'.($tahunKe).'_target_kinerja']?></td>
                             <td <?=$style?>><?=number_format(@$data[$i]['tb_rpjmd_program_th'.($tahunKe).'_target_realisasi'],2,',','.')?></td>
-                            <td <?=$style?>></td>
-                            <td <?=$style?>></td>
-                            <td <?=$style?>></td>
+                            <td <?=$style?>><?=number_format(@$data[$i]['tb_rpjmd_program_th'.($tahunKe).'_capaian_anggaran'],2,',','.')?></td>
+                            <td <?=$style?>><?=@$data[$i]['tb_rpjmd_program_th'.($tahunKe).'_capaian_kinerja']?></td>
+                            <td <?=$style?>><?=number_format(@$data[$i]['tb_rpjmd_program_th'.($tahunKe).'_capaian_realisasi'],2,',','.')?></td>
                             <td <?=$style?>></td>
                             <td <?=$style?>></td>
                             <td <?=$style?>></td>
@@ -137,16 +137,15 @@
                         <?php }else if($data[$i]['level'] == 4){ 
                             $realisasi_anggaran = @$data[$i]['tb_rpjmd_kegiatan_th'.($tahunKe).'_capaian_realisasi_anggaran'];
 
-                            
                         ?>
                         <tr>
                             <td <?=$style?>><?=$no?></td>
                             <td <?=$style?>><?=@$data[$i]['tb_rpjmd_sasaran_nama']?></td>
                             <td <?=$style?>><?=@$data[$i]['tb_urusan_kode'].".".$data[$i]['tb_bidang_kode'].".".$data[$i]['tb_program_kode'].".".$data[$i]['tb_kegiatan_kode']?></td>
                             <td <?=$style?>><?=@$data[$i]['tb_kegiatan_nama']?></td>
-                            <td <?=$style?>><?=@$data[$i]['tb_rpjmd_kegiatan_indikator']?></td>
-                            <td <?=$style?>><?=@$data[$i]['tb_rpjmd_kegiatan_th5_target_kinerja']?></td>
-                            <td <?=$style?>><?=number_format(@$data[$i]['tb_rpjmd_kegiatan_th5_target_realisasi'],2,',','.')?></td>
+                            <td <?=$style?>><?=@$data[$i]['indikator_text']?></td>
+                            <td <?=$style?>><?=@$data[$i]['tb_rpjmd_kegiatan_akhir_target_kinerja']?></td>
+                            <td <?=$style?>><?=number_format(@$data[$i]['tb_rpjmd_kegiatan_th_akhir_target_realisasi'],2,',','.')?></td>
                             <td <?=$style?>><?=@$data[$i]['tb_rpjmd_kegiatan_th'.($tahunKe-1).'_capaian_kinerja']?></td>
                             <td <?=$style?>><?=number_format(@$data[$i]['tb_rpjmd_kegiatan_th'.($tahunKe-1).'_capaian_realisasi'],2,',','.')?></td>
                             <td <?=$style?>><?=@$data[$i]['tb_rpjmd_kegiatan_th'.($tahunKe).'_target_kinerja']?></td>
@@ -155,7 +154,7 @@
                             <td <?=$style?>><?=@$data[$i]['tb_rpjmd_kegiatan_th'.($tahunKe).'_capaian_kinerja']?></td>
                             <td <?=$style?>><?=number_format(@$data[$i]['tb_rpjmd_kegiatan_th'.($tahunKe).'_capaian_realisasi'],2,',','.')?></td>
                             <td <?=$style?>></td>
-                            <td <?=$style?>><?=$realisasi_anggaran<0?'('.ABS(number_format($realisasi_anggaran,2,',','.')).')':number_format($realisasi_anggaran,2,',','.')?></td>
+                            <td <?=$style?>><?=$realisasi_anggaran<0?'('.(number_format((-1*$realisasi_anggaran),2,',','.')).')':number_format($realisasi_anggaran,2,',','.')?></td>
                             <td <?=$style?>></td>
                             <td <?=$style?>><?=number_format(@$data[$i]['tb_rpjmd_kegiatan_th'.($tahunKe).'_capaian_realisasi_semua'],2,',','.')?></td>
                             <td <?=$style?>></td>

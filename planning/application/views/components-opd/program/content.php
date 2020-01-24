@@ -24,7 +24,7 @@ $des = "";
                                                     <div class="col-4">
                                                         <div class="form-group">
                                                         <!-- <label>OPD</label> -->
-                                                            <select class="form-control" name="opd" required>
+                                                            <select class="form-control select2" name="opd" required>
                                                                 <option value="">-= Pilih OPD =-</option>
                                                                 <?php foreach($dataOpd as $row){ ?>
                                                                 <option <?=$this->session->kodeOpd==$row['tb_urusan_kode']."-".$row['tb_bidang_kode']."-".$row['tb_unit_kode']."-".$row['tb_sub_unit_kode']?'selected':''?> value="<?=$row['tb_urusan_kode']."-".$row['tb_bidang_kode']."-".$row['tb_unit_kode']."-".$row['tb_sub_unit_kode']?>"><?=@$row['tb_sub_unit_nama']?></option>

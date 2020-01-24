@@ -56,6 +56,7 @@ class PenggunaModel extends CI_Model
                 'tb_user_akun' => 7,
                 'tb_user_level' => $post['tb_user_level'],
                 'tb_user_hp' => $post['tb_user_hp'],
+                'tb_user_hak' => $this->createHakUser(),
             );
             $status = $this->db->insert($this->table, $data);
 
@@ -71,9 +72,6 @@ class PenggunaModel extends CI_Model
                 );
                 $status = $this->db->insert('tb_user_opd', $data);
             }
-            
-
-
 
             if($status)
                 $pesan = "Berhasil Menambah Data";
@@ -157,6 +155,61 @@ class PenggunaModel extends CI_Model
             'status' => $status,
         );
         return $kirim;
+    }
+
+    public function createHakUser(){
+        $rpjmd = array(
+            'misi' => false,
+            'tujuan' => false,
+            'sasaran' => false,
+            'opd' => false,
+            'program' => false,
+        );
+
+        $renstra = array(
+            'kegiatan' => false,
+        );
+
+        $rkpdPenetapan = array(
+            'program' => false,
+            'kegiatan' => false,
+            'tahun' => array(),
+        );
+
+        $rkpdPerubahan = array(
+            'program' => false,
+            'kegiatan' => false,
+            'tahun' => array(),
+        );
+
+        $lra = array(
+            'program' => false,
+            'kegiatan' => false,
+            'rek3' => false,
+            'rek4' => false,
+            'rek5' => false,
+            'tahun' => array(),
+            'bulan' => array(),
+        );
+
+        $pk = array(
+            'sasaran' => false,
+            'program' => false,
+            'kegiatan' => false,
+            'tahun' => array(),
+        );
+        
+		$hak = array(
+            'rpjmd' => $rpjmd,
+            'renstra' => $renstra,
+            'rkpdPenetapan' => $rkpdPenetapan,
+            'rkpdPerubahan' => $rkpdPerubahan,
+            'lra' => $lra,
+            'pk' => $pk,
+        );
+
+        $json = json_encode($hak);
+        return $json;
     }
     
     public function cekInput($post){

@@ -42,9 +42,8 @@
                 <img src="<?=base_url()?>public/images/logo.png" style="height: 100px"/>
             </div>
             <div style="width: 90%; text-align: center; float:left; font-size: 20px">
-                <span>Evaluasi Terhadap Hasil RKPD (<?=$jenisArr[$jenis]?>) </span><br>
-                <span>KABUPATEN MOROWALI</span><br>
-                <span>Tahun <?=$tahun?></span>
+                <span>Evaluasi Terhadap Hasil RPJMD </span><br>
+                <span>Kabupaten Morowali</span><br>
             </div>
         </div>
         <div>
@@ -137,7 +136,7 @@
                             <td <?=$style?>><?=$no?></td>
                             <td <?=$style?>><?=@$data[$i]['tb_rpjmd_sasaran_kode']?></td>
                             <td <?=$style?>><?=@$data[$i]['tb_rpjmd_sasaran_nama']?></td>
-                            <td <?=$style?>><?=$data[$i]['tb_rpjmd_sasaran_indikator']?></td>
+                            <td <?=$style?>><?=@$data[$i]['indikator_text']?></td>
                             <td <?=$style?>></td>
                             <td <?=$style?>></td>
                             <td <?=$style?>></td>
@@ -183,11 +182,11 @@
                             <td <?=$style?>><?=$no?></td>
                             <td <?=$style?>><?=@$data[$i]['tb_rpjmd_sasaran_kode'].".".@$data[$i]['tb_program_kode']?></td>
                             <td <?=$style?>><?=@$data[$i]['tb_program_nama']?></td>
-                            <td <?=$style?>><?=$data[$i]['tb_rpjmd_program_indikator']?></td>
+                            <td <?=$style?>><?=@$data[$i]['indikator_text']?></td>
                             <td <?=$style?>><?=$data[$i]['tb_rpjmd_program_th1_capaian_kinerja']?></td>
                             <td <?=$style?>><?=number_format(@$data[$i]['tb_rpjmd_program_th1_capaian_realisasi'],2,',','.')?></td>
                             <td <?=$style?>><?=$data[$i]['tb_rpjmd_program_th_akhir_target_kinerja']?></td>
-                            <td <?=$style?>><?=number_format(@$data[$i]['tb_rpjmd_program_th_akhir2_target_realisasi'],2,',','.')?></td>
+                            <td <?=$style?>><?=number_format(@$data[$i]['tb_rpjmd_program_th_akhir_target_realisasi'],2,',','.')?></td>
                             <td <?=$style?>><?=$data[$i]['tb_rpjmd_program_th1_target_kinerja']?></td>
                             <td <?=$style?>><?=number_format(@$data[$i]['tb_rpjmd_program_th1_target_realisasi'],2,',','.')?></td>
                             <td <?=$style?>><?=$data[$i]['tb_rpjmd_program_th2_target_kinerja']?></td>
@@ -198,77 +197,77 @@
                             <td <?=$style?>><?=number_format(@$data[$i]['tb_rpjmd_program_th4_target_realisasi'],2,',','.')?></td>
                             <td <?=$style?>><?=$data[$i]['tb_rpjmd_program_th5_target_kinerja']?></td>
                             <td <?=$style?>><?=number_format(@$data[$i]['tb_rpjmd_program_th5_target_realisasi'],2,',','.')?></td>
-                            <td <?=$style?>><?=$data[$i]['tb_rpjmd_program_th1_capaian_kinerja']?></td>
+                            <td <?=$style?>><?=@$data[$i]['tb_rpjmd_program_th1_capaian_kinerja']?></td>
                             <td <?=$style?>><?=number_format(@$data[$i]['tb_rpjmd_program_th1_capaian_realisasi'],2,',','.')?></td>
-                            <td <?=$style?>><?=$data[$i]['tb_rpjmd_program_th2_capaian_kinerja']?></td>
+                            <td <?=$style?>><?=@$data[$i]['tb_rpjmd_program_th2_capaian_kinerja']?></td>
                             <td <?=$style?>><?=number_format(@$data[$i]['tb_rpjmd_program_th2_capaian_realisasi'],2,',','.')?></td>
-                            <td <?=$style?>><?=$data[$i]['tb_rpjmd_program_th3_capaian_kinerja']?></td>
+                            <td <?=$style?>><?=@$data[$i]['tb_rpjmd_program_th3_capaian_kinerja']?></td>
                             <td <?=$style?>><?=number_format(@$data[$i]['tb_rpjmd_program_th3_capaian_realisasi'],2,',','.')?></td>
-                            <td <?=$style?>><?=$data[$i]['tb_rpjmd_program_th4_capaian_kinerja']?></td>
+                            <td <?=$style?>><?=@$data[$i]['tb_rpjmd_program_th4_capaian_kinerja']?></td>
                             <td <?=$style?>><?=number_format(@$data[$i]['tb_rpjmd_program_th4_capaian_realisasi'],2,',','.')?></td>
-                            <td <?=$style?>><?=$data[$i]['tb_rpjmd_program_th5_capaian_kinerja']?></td>
+                            <td <?=$style?>><?=@$data[$i]['tb_rpjmd_program_th5_capaian_kinerja']?></td>
                             <td <?=$style?>><?=number_format(@$data[$i]['tb_rpjmd_program_th5_capaian_realisasi'],2,',','.')?></td>
-                            <td <?=$style?>><?=$data[$i]['tb_rpjmd_program_th1_tingkat_capaian_kinerja']?></td>
+                            <td <?=$style?>><?=@$data[$i]['tb_rpjmd_program_th1_tingkat_capaian_kinerja']?></td>
                             <td <?=$style?>><?=number_format(@$data[$i]['tb_rpjmd_program_th1_tingkat_capaian_realisasi'],2,',','.')?></td>
-                            <td <?=$style?>><?=$data[$i]['tb_rpjmd_program_th2_tingkat_capaian_kinerja']?></td>
+                            <td <?=$style?>><?=@$data[$i]['tb_rpjmd_program_th2_tingkat_capaian_kinerja']?></td>
                             <td <?=$style?>><?=number_format(@$data[$i]['tb_rpjmd_program_th2_tingkat_capaian_realisasi'],2,',','.')?></td>
-                            <td <?=$style?>><?=$data[$i]['tb_rpjmd_program_th3_tingkat_capaian_kinerja']?></td>
+                            <td <?=$style?>><?=@$data[$i]['tb_rpjmd_program_th3_tingkat_capaian_kinerja']?></td>
                             <td <?=$style?>><?=number_format(@$data[$i]['tb_rpjmd_program_th3_tingkat_capaian_realisasi'],2,',','.')?></td>
-                            <td <?=$style?>><?=$data[$i]['tb_rpjmd_program_th4_tingkat_capaian_kinerja']?></td>
+                            <td <?=$style?>><?=@$data[$i]['tb_rpjmd_program_th4_tingkat_capaian_kinerja']?></td>
                             <td <?=$style?>><?=number_format(@$data[$i]['tb_rpjmd_program_th4_tingkat_capaian_realisasi'],2,',','.')?></td>
-                            <td <?=$style?>><?=$data[$i]['tb_rpjmd_program_th5_tingkat_capaian_kinerja']?></td>
+                            <td <?=$style?>><?=@$data[$i]['tb_rpjmd_program_th5_tingkat_capaian_kinerja']?></td>
                             <td <?=$style?>><?=number_format(@$data[$i]['tb_rpjmd_program_th5_tingkat_capaian_realisasi'],2,',','.')?></td>
-                            <td <?=$style?>><?=$data[$i]['tb_rpjmd_program_th_akhir_capaian_kinerja']?></td>
+                            <td <?=$style?>><?=@$data[$i]['tb_rpjmd_program_th_akhir_capaian_kinerja']?></td>
                             <td <?=$style?>><?=number_format(@$data[$i]['tb_rpjmd_program_th_akhir_capaian_realisasi'],2,',','.')?></td>
-                            <td <?=$style?>><?=$data[$i]['tb_rpjmd_program_th_akhir_rasio_capaian_kinerja']?></td>
+                            <td <?=$style?>><?=@$data[$i]['tb_rpjmd_program_th_akhir_rasio_capaian_kinerja']?></td>
                             <td <?=$style?>><?=number_format(@$data[$i]['tb_rpjmd_program_th_akhir_rasio_capaian_realisasi'],2,',','.')?></td>
-                            <td <?=$style?>><?=$data[$i]['tb_sub_unit_nama']?></td>
+                            <td <?=$style?>><?=@$data[$i]['tb_sub_unit_nama']?></td>
                         </tr>
                         <?php }else if($data[$i]['level'] == 3){ ?>
                         <tr>
                             <td <?=$style?>><?=$no?></td>
                             <td <?=$style?>><?=@$data[$i]['tb_rpjmd_sasaran_kode'].".".@$data[$i]['tb_program_kode'].".".@$data[$i]['tb_kegiatan_kode']?></td>
                             <td <?=$style?>><?=@$data[$i]['tb_kegiatan_nama']?></td>
-                            <td <?=$style?>><?=$data[$i]['tb_rpjmd_kegiatan_indikator']?></td>
-                            <td <?=$style?>><?=$data[$i]['tb_rpjmd_kegiatan_th1_capaian_kinerja']?></td>
+                            <td <?=$style?>><?=@$data[$i]['indikator_text']?></td>
+                            <td <?=$style?>><?=@$data[$i]['tb_rpjmd_kegiatan_th1_capaian_kinerja']?></td>
                             <td <?=$style?>><?=number_format(@$data[$i]['tb_rpjmd_kegiatan_th1_capaian_realisasi'],2,',','.')?></td>
-                            <td <?=$style?>><?=$data[$i]['tb_rpjmd_kegiatan_th_akhir_target_kinerja']?></td>
-                            <td <?=$style?>><?=number_format(@$data[$i]['tb_rpjmd_kegiatan_th_akhir2_target_realisasi'],2,',','.')?></td>
-                            <td <?=$style?>><?=$data[$i]['tb_rpjmd_kegiatan_th1_target_kinerja']?></td>
+                            <td <?=$style?>><?=@$data[$i]['tb_rpjmd_kegiatan_th_akhir_target_kinerja']?></td>
+                            <td <?=$style?>><?=number_format(@$data[$i]['tb_rpjmd_kegiatan_th_akhir_target_realisasi'],2,',','.')?></td>
+                            <td <?=$style?>><?=@$data[$i]['tb_rpjmd_kegiatan_th1_target_kinerja']?></td>
                             <td <?=$style?>><?=number_format(@$data[$i]['tb_rpjmd_kegiatan_th1_target_realisasi'],2,',','.')?></td>
-                            <td <?=$style?>><?=$data[$i]['tb_rpjmd_kegiatan_th2_target_kinerja']?></td>
+                            <td <?=$style?>><?=@$data[$i]['tb_rpjmd_kegiatan_th2_target_kinerja']?></td>
                             <td <?=$style?>><?=number_format(@$data[$i]['tb_rpjmd_kegiatan_th2_target_realisasi'],2,',','.')?></td>
-                            <td <?=$style?>><?=$data[$i]['tb_rpjmd_kegiatan_th3_target_kinerja']?></td>
+                            <td <?=$style?>><?=@$data[$i]['tb_rpjmd_kegiatan_th3_target_kinerja']?></td>
                             <td <?=$style?>><?=number_format(@$data[$i]['tb_rpjmd_kegiatan_th3_target_realisasi'],2,',','.')?></td>
-                            <td <?=$style?>><?=$data[$i]['tb_rpjmd_kegiatan_th4_target_kinerja']?></td>
+                            <td <?=$style?>><?=@$data[$i]['tb_rpjmd_kegiatan_th4_target_kinerja']?></td>
                             <td <?=$style?>><?=number_format(@$data[$i]['tb_rpjmd_kegiatan_th4_target_realisasi'],2,',','.')?></td>
-                            <td <?=$style?>><?=$data[$i]['tb_rpjmd_kegiatan_th5_target_kinerja']?></td>
+                            <td <?=$style?>><?=@$data[$i]['tb_rpjmd_kegiatan_th5_target_kinerja']?></td>
                             <td <?=$style?>><?=number_format(@$data[$i]['tb_rpjmd_kegiatan_th5_target_realisasi'],2,',','.')?></td>
-                            <td <?=$style?>><?=$data[$i]['tb_rpjmd_kegiatan_th1_capaian_kinerja']?></td>
+                            <td <?=$style?>><?=@$data[$i]['tb_rpjmd_kegiatan_th1_capaian_kinerja']?></td>
                             <td <?=$style?>><?=number_format(@$data[$i]['tb_rpjmd_kegiatan_th1_capaian_realisasi'],2,',','.')?></td>
-                            <td <?=$style?>><?=$data[$i]['tb_rpjmd_kegiatan_th2_capaian_kinerja']?></td>
+                            <td <?=$style?>><?=@$data[$i]['tb_rpjmd_kegiatan_th2_capaian_kinerja']?></td>
                             <td <?=$style?>><?=number_format(@$data[$i]['tb_rpjmd_kegiatan_th2_capaian_realisasi'],2,',','.')?></td>
-                            <td <?=$style?>><?=$data[$i]['tb_rpjmd_kegiatan_th3_capaian_kinerja']?></td>
+                            <td <?=$style?>><?=@$data[$i]['tb_rpjmd_kegiatan_th3_capaian_kinerja']?></td>
                             <td <?=$style?>><?=number_format(@$data[$i]['tb_rpjmd_kegiatan_th3_capaian_realisasi'],2,',','.')?></td>
-                            <td <?=$style?>><?=$data[$i]['tb_rpjmd_kegiatan_th4_capaian_kinerja']?></td>
+                            <td <?=$style?>><?=@$data[$i]['tb_rpjmd_kegiatan_th4_capaian_kinerja']?></td>
                             <td <?=$style?>><?=number_format(@$data[$i]['tb_rpjmd_kegiatan_th4_capaian_realisasi'],2,',','.')?></td>
-                            <td <?=$style?>><?=$data[$i]['tb_rpjmd_kegiatan_th5_capaian_kinerja']?></td>
+                            <td <?=$style?>><?=@$data[$i]['tb_rpjmd_kegiatan_th5_capaian_kinerja']?></td>
                             <td <?=$style?>><?=number_format(@$data[$i]['tb_rpjmd_kegiatan_th5_capaian_realisasi'],2,',','.')?></td>
-                            <td <?=$style?>><?=$data[$i]['tb_rpjmd_kegiatan_th1_tingkat_capaian_kinerja']?></td>
+                            <td <?=$style?>><?=@$data[$i]['tb_rpjmd_kegiatan_th1_tingkat_capaian_kinerja']?></td>
                             <td <?=$style?>><?=number_format(@$data[$i]['tb_rpjmd_kegiatan_th1_tingkat_capaian_realisasi'],2,',','.')?></td>
-                            <td <?=$style?>><?=$data[$i]['tb_rpjmd_kegiatan_th2_tingkat_capaian_kinerja']?></td>
+                            <td <?=$style?>><?=@$data[$i]['tb_rpjmd_kegiatan_th2_tingkat_capaian_kinerja']?></td>
                             <td <?=$style?>><?=number_format(@$data[$i]['tb_rpjmd_kegiatan_th2_tingkat_capaian_realisasi'],2,',','.')?></td>
-                            <td <?=$style?>><?=$data[$i]['tb_rpjmd_kegiatan_th3_tingkat_capaian_kinerja']?></td>
+                            <td <?=$style?>><?=@$data[$i]['tb_rpjmd_kegiatan_th3_tingkat_capaian_kinerja']?></td>
                             <td <?=$style?>><?=number_format(@$data[$i]['tb_rpjmd_kegiatan_th3_tingkat_capaian_realisasi'],2,',','.')?></td>
-                            <td <?=$style?>><?=$data[$i]['tb_rpjmd_kegiatan_th4_tingkat_capaian_kinerja']?></td>
+                            <td <?=$style?>><?=@$data[$i]['tb_rpjmd_kegiatan_th4_tingkat_capaian_kinerja']?></td>
                             <td <?=$style?>><?=number_format(@$data[$i]['tb_rpjmd_kegiatan_th4_tingkat_capaian_realisasi'],2,',','.')?></td>
-                            <td <?=$style?>><?=$data[$i]['tb_rpjmd_kegiatan_th5_tingkat_capaian_kinerja']?></td>
+                            <td <?=$style?>><?=@$data[$i]['tb_rpjmd_kegiatan_th5_tingkat_capaian_kinerja']?></td>
                             <td <?=$style?>><?=number_format(@$data[$i]['tb_rpjmd_kegiatan_th5_tingkat_capaian_realisasi'],2,',','.')?></td>
-                            <td <?=$style?>><?=$data[$i]['tb_rpjmd_kegiatan_th_akhir_capaian_kinerja']?></td>
+                            <td <?=$style?>><?=@$data[$i]['tb_rpjmd_kegiatan_th_akhir_capaian_kinerja']?></td>
                             <td <?=$style?>><?=number_format(@$data[$i]['tb_rpjmd_kegiatan_th_akhir_capaian_realisasi'],2,',','.')?></td>
-                            <td <?=$style?>><?=$data[$i]['tb_rpjmd_kegiatan_th_akhir_rasio_capaian_kinerja']?></td>
+                            <td <?=$style?>><?=@$data[$i]['tb_rpjmd_kegiatan_th_akhir_rasio_capaian_kinerja']?></td>
                             <td <?=$style?>><?=number_format(@$data[$i]['tb_rpjmd_kegiatan_th_akhir_rasio_capaian_realisasi'],2,',','.')?></td>
-                            <td <?=$style?>><?=$data[$i]['tb_sub_unit_nama']?></td>
+                            <td <?=$style?>><?=@$data[$i]['tb_sub_unit_nama']?></td>
                         </tr>
                         <?php } ?>
                     <?php $no++; } ?>

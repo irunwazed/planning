@@ -1,7 +1,6 @@
 
 <!doctype html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,7 +16,8 @@
 
     <!-- toast -->
     <link href="<?=base_url()?>public/template/admin/assets/js/toastr/build/toastr.css" rel="stylesheet" type="text/css" />
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
+    <script src="<?=base_url()?>public/template/admin/assets/js/toastr/jquery.min.js"></script>
     <script src="<?=base_url()?>public/template/admin/assets/js/toastr/toastr.js"></script>
 
     
@@ -58,6 +58,23 @@
                 </span>
             </div>    
             <div class="app-header__content">
+                <div class="app-header-left">
+                    <div class="header-btn-lg pr-0">
+                        <div class="widget-content p-0">
+                            <div class="widget-content-wrapper">
+                                <div class="widget-content-left">
+                                    <div class="btn-group" style="color: #FFFFFF">
+                                        <?php 
+                                            $this->db->where("id_tb_rpjmd", $this->session->rpjmd);
+                                            $dataRpjmdSet = $this->db->get("tb_rpjmd")->row();
+                                        ?>
+                                        Tahun <?=@$dataRpjmdSet->tb_rpjmd_tahun+$this->session->tahun-1?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>        
+                </div>
                 <div class="app-header-right">
                     <div class="header-btn-lg pr-0">
                         <div class="widget-content p-0">
@@ -404,25 +421,73 @@
                                 <li>
                                     <a href="<?=base_url()?>rpjmd/penyusunan/misi">
                                         <i class="metismenu-icon pe-7s-network"></i>
-                                        Penyusunan
+                                        RPJMD
                                     </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="metismenu-icon pe-7s-news-paper"></i>
+                                        RKPD
+                                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <a href="<?=base_url()?>opd/penyusunan/rkpd-awal">
+                                                <i class="metismenu-icon"></i>
+                                                Rancangan Awal
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="<?=base_url()?>opd/penyusunan/rkpd-penetapan">
+                                                <i class="metismenu-icon"></i>
+                                                Penetapan
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="<?=base_url()?>opd/penyusunan/rkpd-perubahan">
+                                                <i class="metismenu-icon"></i>
+                                                Perubahan
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </li>
                                 <?php } ?>
                                 <?php if(in_array($this->session->level, array(1,3))){ ?>
                                 <li>
                                     <a href="<?=base_url()?>renstra/penyusunan/program">
-                                        <i class="metismenu-icon pe-7s-network"></i>
-                                        Penyusunan Renstra
+                                        <i class="metismenu-icon pe-7s-display2"></i>
+                                        Renstra
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="<?=base_url()?>opd/penyusunan/lra">
-                                        <i class="metismenu-icon pe-7s-network"></i>
-                                        Penyusunan LRA
+                                    <a href="<?=base_url()?>opd/penyusunan/lra/program">
+                                        <i class="metismenu-icon pe-7s-cash"></i>
+                                        LRA
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?=base_url()?>opd/penyusunan/pk-sasaran">
+                                        <i class="metismenu-icon pe-7s-culture"></i>
+                                        Perjanjian Kinerja
                                     </a>
                                 </li>
                                 <?php } ?>
+                                <li class="app-sidebar__heading">Laporan</li>
+                                
+                                <?php if(in_array($this->session->level, array(1,2))){ ?>
                                 <li>
+                                    <a href="<?=base_url()?>laporan/rpjmd">
+                                        <i class="metismenu-icon pe-7s-note2"></i>
+                                        RPJMD
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?=base_url()?>laporan/rkpd">
+                                        <i class="metismenu-icon pe-7s-mail-open-file"></i>
+                                        RKPD
+                                    </a>
+                                </li>
+                                <!-- <li>
                                     <a href="#">
                                         <i class="metismenu-icon pe-7s-diskette"></i>
                                         RKPD
@@ -430,7 +495,7 @@
                                     </a>
                                     <ul>
                                         <li>
-                                            <a href="<?=base_url()?>opd/penyusunan/rkpd-awal">
+                                            <a href="<?=base_url()?>laporan/rkpd">
                                                 <i class="metismenu-icon"></i>
                                                 Rancangan Awal
                                             </a>
@@ -447,45 +512,35 @@
                                                 Perubahan
                                             </a>
                                         </li>
-                                        <li>
-                                            <a href="<?=base_url()?>opd/penyusunan/rkpd-realisasi">
-                                                <i class="metismenu-icon"></i>
-                                                Hasil Realisasi
-                                            </a>
-                                        </li>
                                     </ul>
-                                </li>
+                                </li> -->
+                                <?php } ?>
+                                <?php if(in_array($this->session->level, array(1,2,3))){ ?>
                                 <li>
-                                    <a href="#">
-                                        <i class="metismenu-icon pe-7s-diskette"></i>
-                                        Laporan
-                                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                    <a href="<?=base_url()?>laporan/lra">
+                                        <i class="metismenu-icon pe-7s-credit"></i>
+                                        LRA
                                     </a>
-                                    <ul>
-                                        <?php if(in_array($this->session->level, array(1,2))){ ?>
-                                        <li>
-                                            <a href="<?=base_url()?>laporan/rpjmd">
-                                                <i class="metismenu-icon"></i>
-                                                RPJMD
-                                            </a>
-                                        </li>
-                                        <?php } ?>
-                                        <?php if(in_array($this->session->level, array(1,2,3))){ ?>
-                                        <li>
-                                            <a href="<?=base_url()?>laporan/rkpd">
-                                                <i class="metismenu-icon"></i>
-                                                RKPD
-                                            </a>
-                                        </li>
-                                        <?php } ?>
-                                    </ul>
                                 </li>
+                                <?php } ?>
                                 <?php if(in_array($this->session->level, array(1,2))){ ?>
                                 <li class="app-sidebar__heading">Pengaturan</li>
                                 <li>
                                     <a href="<?=base_url()?>pengaturan/data/pengguna">
                                         <i class="metismenu-icon pe-7s-users"></i>
                                         Pengguna
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?=base_url()?>pengaturan/data/tahun">
+                                        <i class="metismenu-icon pe-7s-alarm"></i>
+                                        Tahun
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?=base_url()?>pengaturan/data/hak">
+                                        <i class="metismenu-icon pe-7s-science"></i>
+                                        HAK
                                     </a>
                                 </li>
                                 <!-- <li>
@@ -501,32 +556,34 @@
                                         <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                     </a>
                                     <ul>
-                                        <!-- <li>
-                                            <a href="<?=base_url()?>pengaturan/data/opd">
+                                    <?php if(in_array($this->session->level, array(1))){ ?>
+                                        <li>
+                                            <a href="<?=base_url()?>pengaturan/data/sotk/urusan">
                                                 <i class="metismenu-icon"></i>
-                                                OPD
+                                                SOTK
                                             </a>
-                                        </li> -->
+                                        </li>
+                                    <?php } ?>
                                         <li>
                                             <a href="<?=base_url()?>pengaturan/data/satuan">
                                                 <i class="metismenu-icon"></i>
                                                 Satuan
                                             </a>
                                         </li>
-                                        <!-- <li>
+                                        <li>
                                             <a href="<?=base_url()?>pengaturan/data/sumber-dana">
                                                 <i class="metismenu-icon"></i>
                                                 Sumber Dana
                                             </a>
-                                        </li> -->
+                                        </li>
                                     </ul>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <a href="<?=base_url()?>status/view">
                                         <i class="metismenu-icon pe-7s-ribbon"></i>
                                         Set Status
                                     </a>
-                                </li>
+                                </li> -->
                                 <?php } ?>
                             </ul>
                         </div>
@@ -535,9 +592,19 @@
                 <div class="app-main__outer">
                     <div id="loading"></div>
                     <div id="myerror"></div>
-                    
                     <?=@$content?>
 
+                
+
+<!-- <div class="wrapper">
+<input type="submit"/>
+</div> -->
+
+<div class="overlay"></div>
+<div class="spanner">
+  <div class="loader"></div>
+  <p>Mohon tunggu..</p>
+</div>
                     <div class="app-wrapper-footer">
                         <div class="app-footer">
                             <div class="app-footer__inner">
@@ -574,10 +641,14 @@
                                 </div> -->
                             </div>
                         </div>
-                    </div>    </div>
+                    </div>   
+                </div>
                 <!-- <script src="http://maps.google.com/maps/api/js?sensor=true"></script> -->
         </div>
     </div>
+
+    
+
     <script type="text/javascript" src="<?=base_url()?>public/template/admin/assets/scripts/main.js"></script>
     <script type="text/javascript" src="<?=base_url()?>public/template/admin/assets/js/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="<?=base_url()?>public/template/admin/assets/js/jquery.dataTables.min.js"></script>
@@ -587,171 +658,166 @@
     <script type="text/javascript" src="<?=base_url()?>public/template/admin/assets/js/select2.js"></script>
     
     <script>
+
+        
     
     var base_url = '<?=base_url()?>';
   
-  function setPesan(obj){
-    let judul = $(obj).attr("data-judul");
-    let isi = $(obj).attr("data-isi");
-    let setFunction = $(obj).attr("data-setFunction");
+    function setPesan(obj){
+        let judul = $(obj).attr("data-judul");
+        let isi = $(obj).attr("data-isi");
+        let setFunction = $(obj).attr("data-setFunction");
 
-    $('#pesan-judul').text(judul);
-    $('#pesan-isi').text(isi);
-    $('#pesan-tombol').attr("onclick", setFunction);
-  }
-
-  function setPesanIsi(id, status = false, pesan=""){
-    $('#'+id).text(pesan);
-    $("html, body").animate({
-        scrollTop: $('#'+id).offset().top-50
-    }, 500);  
-    if(status){
-        $('#'+id).removeClass("danger");
-        $('#'+id).addClass("success");
-    }else{
-        $('#'+id).addClass("danger");
-        $('#'+id).removeClass("success");
+        $('#pesan-judul').text(judul);
+        $('#pesan-isi').text(isi);
+        $('#pesan-tombol').attr("onclick", setFunction);
     }
-  }
 
-  function sendAjax(url, dataKirim){
-    loading();
-    return $.ajax({
-      type: "POST",
-      url: url,
-      dataType: "JSON",
-      data: dataKirim, 
-      success: function(respon)
-      {   
-        loading(false);
-        if(respon.status){
-            message(respon.pesan);
+    function setPesanIsi(id, status = false, pesan=""){
+        $('#'+id).text(pesan);
+        $("html, body").animate({
+            scrollTop: $('#'+id).offset().top-50
+        }, 500);  
+        if(status){
+            $('#'+id).removeClass("danger");
+            $('#'+id).addClass("success");
         }else{
-          message(respon.pesan, '', 'warning');
+            $('#'+id).addClass("danger");
+            $('#'+id).removeClass("success");
         }
-        console.log(respon);
-      },
-      error:function(error){
-        loading(false);
-        message('Gagal terhubung pada server!', '', 'error');
-        console.log(error);
-        $("#myerror").html(error.responseText);
-      }
-    });
-  }
+    }
 
-  function sendAjaxNewTab(url, dataKirim){
-    loading();
-    return $.ajax({
+    function sendAjax(url, dataKirim){
+        loading();
+        return $.ajax({
+        type: "POST",
+        url: url,
+        dataType: "JSON",
+        data: dataKirim, 
+        success: function(respon)
+        {   
+            loading(false);
+            if(respon.status){
+                message(respon.pesan);
+            }else{
+            message(respon.pesan, '', 'warning');
+            }
+            console.log(respon);
+        },
+        error:function(error){
+            loading(false);
+            message('Gagal terhubung pada server!', '', 'error');
+            console.log(error);
+            $("#myerror").html(error.responseText);
+        }
+        });
+    }
+
+    function sendAjaxNewTab(url, dataKirim){
+        loading();
+        return $.ajax({
+            type: "POST",
+            url: url,
+            dataType: "html",
+            data: dataKirim, 
+            success: function(respon)
+            {   
+                var myWindow = window.open("", "_blank");
+                myWindow.document.write(respon);
+                loading(false);
+            },
+                error:function(error){
+                loading(false);
+            $("#myerror").html(error.responseText);
+            }
+        });
+    }
+
+    function sendAjaxHtml(url, dataKirim){
+        loading();
+        return $.ajax({
         type: "POST",
         url: url,
         dataType: "html",
         data: dataKirim, 
         success: function(respon)
         {   
-            var myWindow = window.open("", "_blank");
-            myWindow.document.write(respon);
             loading(false);
+            if(respon.status){
+                message(respon.pesan);
+            }else{
+            message(respon.pesan, '', 'warning');
+            }
+            console.log(respon);
         },
-            error:function(error){
+        error:function(error){
             loading(false);
-        $("#myerror").html(error.responseText);
+            message('Gagal terhubung pada server!', '', 'error');
+            console.log(error);
+            $("#myerror").html(error.responseText);
         }
-    });
-  }
+        });
+    }
 
-  function sendAjaxHtml(url, dataKirim){
-    loading();
-    return $.ajax({
-      type: "POST",
-      url: url,
-      dataType: "html",
-      data: dataKirim, 
-      headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-      },
-      success: function(respon)
-      {   
-        loading(false);
-        if(respon.status){
-            message(respon.pesan);
+    function loading(status = true){
+        if(status){
+            //$("#loading").text("loading");
+            
+            $("div.spanner").addClass("show");
+            $("div.overlay").addClass("show");
         }else{
-          message(respon.pesan, '', 'warning');
+            
+        $("div.spanner").removeClass("show");
+        $("div.overlay").removeClass("show");
+            // $("#loading").text("");
         }
-        console.log(respon);
-      },
-      error:function(error){
-        loading(false);
-        message('Gagal terhubung pada server!', '', 'error');
-        console.log(error);
-        $("#myerror").html(error.responseText);
-      }
-    });
-  }
-
-  function loading(status = true){
-    if(status){
-      $("#loading").text("loading");
-    }else{
-      $("#loading").text("");
     }
-  }
 
-  function message(pesan = "", judul = '', status = 'success'){
-    if(pesan != '')
-      toastr[status](judul, pesan)
-  }
-
-  function inputToRupiah(obj){
-    let val = $(obj).val();
-    val = convertToAngka(val);
-    $(obj).val(convertToRupiah(val));
-  }
-
-  function convertToRupiah(angka)
-  {
-    if(angka == null){
-      angka = 0;
+    function message(pesan = "", judul = '', status = 'success'){
+        if(pesan != '')
+        toastr[status](judul, pesan)
     }
-    var rupiah = '';		
-    var angkarev = angka.toString().split('').reverse().join('');
-    for(var i = 0; i < angkarev.length; i++) if(i%3 == 0) rupiah += angkarev.substr(i,3)+'.';
-    return rupiah.split('',rupiah.length-1).reverse().join('');
-  }
-  
-  function convertToAngka(rupiah)
-  {
-    return parseInt(rupiah.replace(/,.*|[^0-9]/g, ''), 10);
-  }
+
+    function inputToRupiah(obj){
+        let val = $(obj).val();
+        val = convertToAngka(val);
+        $(obj).val(convertToRupiah(val));
+    }
+
+    function convertToRupiah(angka)
+    {
+        if(angka == null){
+        angka = 0;
+        }
+        var rupiah = '';		
+        var angkarev = angka.toString().split('').reverse().join('');
+        for(var i = 0; i < angkarev.length; i++) if(i%3 == 0) rupiah += angkarev.substr(i,3)+'.';
+        return rupiah.split('',rupiah.length-1).reverse().join('');
+    }
     
-    </script>
-
-<script type="text/javascript">
-
-
-// toastr["info"]("tes", "sdfsf")
-
-
-toastr.options = {
-  "closeButton": true,
-  "debug": false,
-  "newestOnTop": false,
-  "progressBar": true,
-  "rtl": false,
-  "positionClass": "toast-top-right",
-  "preventDuplicates": false,
-  "onclick": null,
-  "showDuration": 300,
-  "hideDuration": 1000,
-  "timeOut": 5000,
-  "extendedTimeOut": 1000,
-  "showEasing": "swing",
-  "hideEasing": "linear",
-  "showMethod": "fadeIn",
-  "hideMethod": "fadeOut"
-}
-
-
+    function convertToAngka(rupiah)
+    {
+        return parseInt(rupiah.replace(/,.*|[^0-9]/g, ''), 10);
+    }
+    
+    toastr.options = {
+    "closeButton": true,
+    "debug": false,
+    "newestOnTop": false,
+    "progressBar": true,
+    "rtl": false,
+    "positionClass": "toast-top-right",
+    "preventDuplicates": false,
+    "onclick": null,
+    "showDuration": 300,
+    "hideDuration": 1000,
+    "timeOut": 5000,
+    "extendedTimeOut": 1000,
+    "showEasing": "swing",
+    "hideEasing": "linear",
+    "showMethod": "fadeIn",
+    "hideMethod": "fadeOut"
+    }
 </script>
 
 
@@ -773,12 +839,16 @@ toastr.options = {
         </div>
     </div>
 </div>
+
     
     <?=@$script?>
 
 <script>
-
-$(".select2").select2();
+    $(".select2").select2();
+    $("input[type='submit']").click(function(){
+        $("div.spanner").addClass("show");
+        $("div.overlay").addClass("show");
+    });
 </script>
 </body>
 </html>

@@ -13,7 +13,7 @@
                     <input type="hidden" name="kode" value="<?=@$kode?>">
                     <div class="position-relative form-group">
                         <label>Rekening</label>
-                        <select name="tb_rekening3_kode" class="form-control" required>
+                        <select name="tb_rekening3_kode" class="form-control select2" style="width: 100%" required>
                             <option value="">-= Pilih Rekening =-</option>
                             <?php foreach($dataRekening as $row){ ?>
                                 <option value="<?=$row['tb_rekening3_kode']?>"><?=$row['tb_rekening3_nama']?></option>
@@ -72,10 +72,7 @@
         no = 1;
         let kodeOneData;
         data.forEach(element => {
-            kodeOneData = element['tb_monev_lra_kode']
-                        +'-'+element['tb_rekening1_kode']
-                        +'-'+element['tb_rekening2_kode']
-                        +'-'+element['tb_program_kode']
+            kodeOneData = element['tb_program_kode']
                         +'-'+element['tb_kegiatan_kode']
                         +'-'+element['tb_rekening3_kode'];
             kodeShow =  element['tb_rekening1_kode']
@@ -111,12 +108,9 @@
         dataPilih = {};
         let setKode = id.split("-");
         dataAll.forEach(element => {
-            if(setKode[0] == element['tb_monev_lra_kode']
-            && setKode[1] == element['tb_rekening1_kode'] 
-            && setKode[2] == element['tb_rekening2_kode']
-            && setKode[3] == element['tb_program_kode']
-            && setKode[4] == element['tb_kegiatan_kode'] 
-            && setKode[5] == element['tb_rekening3_kode']  ){
+            if(setKode[0] == element['tb_program_kode']
+            && setKode[1] == element['tb_kegiatan_kode'] 
+            && setKode[2] == element['tb_rekening3_kode']  ){
                 dataPilih = element;
                 kode = id;
             }

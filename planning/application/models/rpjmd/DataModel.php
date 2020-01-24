@@ -24,9 +24,19 @@ class DataModel extends CI_Model
         return $data;
     }
 
+    public function getSumberDana(){
+        $data = $this->db->get('tb_sumber_dana')->result_array();
+        return $data;
+    }
+
     public function getRowVisi(){
         $this->db->where('id_tb_rpjmd', $this->session->rpjmd);
         $data = $this->db->get('tb_rpjmd')->row();
+        return $data;
+    }
+
+    public function getDataFungsi(){
+        $data = $this->db->get('tb_fungsi')->result_array();
         return $data;
     }
 
@@ -99,10 +109,12 @@ class DataModel extends CI_Model
         return $data;
     }
 
-    public function getRowProgram($kode){
+    public function getRowProgram($kode, $jenis = null){
         $kode = explode("-", $kode);
         $table = 'tb_rpjmd_program';
-        $jenis = $this->filter->getJenisRpjmd();
+        if($jenis == null){
+            $jenis = $this->filter->getJenisRpjmd();
+        }
         if($jenis == 2){
             $table = 'tb_rpjmd_program_penetapan';
         }else if($jenis == 3){
@@ -141,11 +153,13 @@ class DataModel extends CI_Model
         return $data;
     }
 
-    public function getRowKegiatan($kode){
+    public function getRowKegiatan($kode, $jenis = null){
         $kode = explode("-", $kode);
         
         $table = 'tb_rpjmd_kegiatan';
-        $jenis = $this->filter->getJenisRpjmd();
+        if($jenis == null){
+            $jenis = $this->filter->getJenisRpjmd();
+        }
         if($jenis == 2){
             $table = 'tb_rpjmd_kegiatan_penetapan';
         }else if($jenis == 3){
@@ -228,7 +242,7 @@ class DataModel extends CI_Model
         $this->db->where('tb_rekening1_kode', $kode[0]);
         $this->db->where('tb_rekening2_kode', $kode[1]);
         $this->db->where('tb_rekening3_kode', $kode[2]);
-        $this->db->where('tb_rekening4_kode', $kode[2]);
+        $this->db->where('tb_rekening4_kode', $kode[3]);
         $data = $this->db->get('tb_rekening5')->result_array();
         return $data;
     }
@@ -245,30 +259,21 @@ class DataModel extends CI_Model
 
         $kode = explode("-", $kode);
         $this->db->where($table.'.id_tb_rpjmd', $this->session->rpjmd);
-        $this->db->where($table.'.tb_monev_lra_kode', $kode[0]);
-        $this->db->where($table.'.tb_rekening1_kode', $kode[1]);
+        $this->db->where($table.'.tb_monev_lra_tahun', $this->session->tahun);
+        $this->db->where($table.'.tb_rekening1_kode', $kode[0]);
         $data = $this->db->get($table)->row();
         return $data;
     }
 
     public function getLraRek2($kode){
-        $table = 'tb_monev_lra_rek2';
+        $table = 'tb_rekening2';
         $this->db->join('tb_rekening1', 'tb_rekening1.tb_rekening1_kode = '.$table.'.tb_rekening1_kode', 'left');
-        $this->db->join('tb_rekening2', 'tb_rekening2.tb_rekening1_kode = '.$table.'.tb_rekening1_kode
-                                    AND tb_rekening2.tb_rekening2_kode = '.$table.'.tb_rekening2_kode', 'left');
-
-        $kodeOpd = explode("-", $this->session->kodeOpd);
-        $this->db->where($table.'.tb_urusan_kode', $kodeOpd[0]);
-        $this->db->where($table.'.tb_bidang_kode', $kodeOpd[1]);
-        $this->db->where($table.'.tb_unit_kode', $kodeOpd[2]);
-        $this->db->where($table.'.tb_sub_unit_kode', $kodeOpd[3]);
 
         $kode = explode("-", $kode);
-        $this->db->where($table.'.id_tb_rpjmd', $this->session->rpjmd);
-        $this->db->where($table.'.tb_monev_lra_kode', $kode[0]);
-        $this->db->where($table.'.tb_rekening1_kode', $kode[1]);
-        $this->db->where($table.'.tb_rekening2_kode', $kode[2]);
+        $this->db->where($table.'.tb_rekening1_kode', $kode[0]);
+        $this->db->where($table.'.tb_rekening2_kode', $kode[1]);
         $data = $this->db->get($table)->row();
+        print_r($data);
         return $data;
     }
 
@@ -289,10 +294,10 @@ class DataModel extends CI_Model
 
         $kode = explode("-", $kode);
         $this->db->where($table.'.id_tb_rpjmd', $this->session->rpjmd);
-        $this->db->where($table.'.tb_monev_lra_kode', $kode[0]);
-        $this->db->where($table.'.tb_rekening1_kode', $kode[1]);
-        $this->db->where($table.'.tb_rekening2_kode', $kode[2]);
-        $this->db->where($table.'.tb_program_kode', $kode[3]);
+        $this->db->where($table.'.tb_monev_lra_tahun', $this->session->tahun);
+        $this->db->where($table.'.tb_rekening1_kode', 5);
+        $this->db->where($table.'.tb_rekening2_kode', 2);
+        $this->db->where($table.'.tb_program_kode', $kode[0]);
         $data = $this->db->get($table)->row();
         return $data;
     }
@@ -318,11 +323,11 @@ class DataModel extends CI_Model
 
         $kode = explode("-", $kode);
         $this->db->where($table.'.id_tb_rpjmd', $this->session->rpjmd);
-        $this->db->where($table.'.tb_monev_lra_kode', $kode[0]);
-        $this->db->where($table.'.tb_rekening1_kode', $kode[1]);
-        $this->db->where($table.'.tb_rekening2_kode', $kode[2]);
-        $this->db->where($table.'.tb_program_kode', $kode[3]);
-        $this->db->where($table.'.tb_kegiatan_kode', $kode[4]);
+        $this->db->where($table.'.tb_monev_lra_tahun', $this->session->tahun);
+        $this->db->where($table.'.tb_rekening1_kode', 5);
+        $this->db->where($table.'.tb_rekening2_kode', 2);
+        $this->db->where($table.'.tb_program_kode', $kode[0]);
+        $this->db->where($table.'.tb_kegiatan_kode', $kode[1]);
         $data = $this->db->get($table)->row();
         return $data;
     }
@@ -351,12 +356,12 @@ class DataModel extends CI_Model
 
         $kode = explode("-", $kode);
         $this->db->where($table.'.id_tb_rpjmd', $this->session->rpjmd);
-        $this->db->where($table.'.tb_monev_lra_kode', $kode[0]);
-        $this->db->where($table.'.tb_rekening1_kode', $kode[1]);
-        $this->db->where($table.'.tb_rekening2_kode', $kode[2]);
-        $this->db->where($table.'.tb_program_kode', $kode[3]);
-        $this->db->where($table.'.tb_kegiatan_kode', $kode[4]);
-        $this->db->where($table.'.tb_rekening3_kode', $kode[5]);
+        $this->db->where($table.'.tb_monev_lra_tahun', $this->session->tahun);
+        $this->db->where($table.'.tb_rekening1_kode', 5);
+        $this->db->where($table.'.tb_rekening2_kode', 2);
+        $this->db->where($table.'.tb_program_kode', $kode[0]);
+        $this->db->where($table.'.tb_kegiatan_kode', $kode[1]);
+        $this->db->where($table.'.tb_rekening3_kode', $kode[2]);
         $data = $this->db->get($table)->row();
         return $data;
     }
@@ -389,13 +394,13 @@ class DataModel extends CI_Model
 
         $kode = explode("-", $kode);
         $this->db->where($table.'.id_tb_rpjmd', $this->session->rpjmd);
-        $this->db->where($table.'.tb_monev_lra_kode', $kode[0]);
-        $this->db->where($table.'.tb_rekening1_kode', $kode[1]);
-        $this->db->where($table.'.tb_rekening2_kode', $kode[2]);
-        $this->db->where($table.'.tb_program_kode', $kode[3]);
-        $this->db->where($table.'.tb_kegiatan_kode', $kode[4]);
-        $this->db->where($table.'.tb_rekening3_kode', $kode[5]);
-        $this->db->where($table.'.tb_rekening4_kode', $kode[6]);
+        $this->db->where($table.'.tb_monev_lra_tahun', $this->session->tahun);
+        $this->db->where($table.'.tb_rekening1_kode', 5);
+        $this->db->where($table.'.tb_rekening2_kode', 2);
+        $this->db->where($table.'.tb_program_kode', $kode[0]);
+        $this->db->where($table.'.tb_kegiatan_kode', $kode[1]);
+        $this->db->where($table.'.tb_rekening3_kode', $kode[2]);
+        $this->db->where($table.'.tb_rekening4_kode', $kode[3]);
         $data = $this->db->get($table)->row();
         return $data;
     }
@@ -444,11 +449,14 @@ class DataModel extends CI_Model
                                     AND tb_sub_unit.tb_unit_kode = '.$table.'.tb_unit_kode
                                     AND tb_sub_unit.tb_sub_unit_kode = '.$table.'.tb_sub_unit_kode', 'left');
 
-        $kode = explode("-", $kode);
-        $this->db->where($table.'.tb_urusan_kode', $kode[0]);
-        $this->db->where($table.'.tb_bidang_kode', $kode[1]);
-        $this->db->where($table.'.tb_unit_kode', $kode[2]);
-        $this->db->where($table.'.tb_sub_unit_kode', $kode[3]);
+        if($jenis != 1){
+
+            $kode = explode("-", $kode);
+            $this->db->where($table.'.tb_urusan_kode', $kode[0]);
+            $this->db->where($table.'.tb_bidang_kode', $kode[1]);
+            $this->db->where($table.'.tb_unit_kode', $kode[2]);
+            $this->db->where($table.'.tb_sub_unit_kode', $kode[3]);
+        }
 
         $this->db->order_by($table.'.id_tb_rpjmd', "asc");
         $this->db->order_by($table.'.tb_rpjmd_misi_kode', "asc");
@@ -465,40 +473,369 @@ class DataModel extends CI_Model
         return $data;
     }
 
-    public function getBulanan($kode, $jenis, $tahun = 1, $bulan = 1){
-        $table = 'tb_monev_bulanan';
-        if($jenis == 2){
-            $table = 'tb_monev_bulanan_penetapan';
-        }else if($jenis == 3){
-            $table = 'tb_monev_bulanan_perubahan';
-        }
-        
-        $kode = explode("-", $kode);
-        $this->db->where($table.'.id_tb_rpjmd', $kode[0]);
-        $this->db->where($table.'.tb_rpjmd_misi_kode', $kode[1]);
-        $this->db->where($table.'.tb_rpjmd_tujuan_kode', $kode[2]);
-        $this->db->where($table.'.tb_rpjmd_sasaran_kode', $kode[3]);
-        $this->db->where($table.'.tb_urusan_kode', $kode[4]);
-        $this->db->where($table.'.tb_bidang_kode', $kode[5]);
-        $this->db->where($table.'.tb_unit_kode', $kode[6]);
-        $this->db->where($table.'.tb_sub_unit_kode', $kode[7]);
-        $this->db->where($table.'.tb_program_kode', $kode[8]);
-        $this->db->where($table.'.tb_kegiatan_kode', $kode[9]);
-        $this->db->where($table.'.tb_monev_bulanan_tahun', $tahun);
-        $this->db->where($table.'.tb_monev_bulanan_bulan', $bulan);
+    // laporan LRA
+    public function getOpdKegiatanLra($kode, $tahun){
+        $table = 'tb_monev_lra_rek5';
 
-        // $this->db->order_by($table.'.id_tb_rpjmd', "asc");
-        // $this->db->order_by($table.'.tb_rpjmd_misi_kode', "asc");
-        // $this->db->order_by($table.'.tb_rpjmd_tujuan_kode', "asc");
-        // $this->db->order_by($table.'.tb_rpjmd_sasaran_kode', "asc");
-        // $this->db->order_by($table.'.tb_urusan_kode', "asc");
-        // $this->db->order_by($table.'.tb_bidang_kode', "asc");
-        // $this->db->order_by($table.'.tb_unit_kode', "asc");
-        // $this->db->order_by($table.'.tb_sub_unit_kode', "asc");
-        // $this->db->order_by($table.'.tb_program_kode', "asc");
-        // $this->db->order_by($table.'.tb_kegiatan_kode', "asc");
+        $this->db->select($table.".*, tb_urusan.tb_urusan_nama, tb_bidang.tb_bidang_nama, tb_sub_unit.tb_sub_unit_nama, tb_program.tb_program_nama, tb_kegiatan.tb_kegiatan_nama");
+        $this->db->select_max('tb_monev_lra_rek5_bulan');
+
+        $this->db->join('tb_urusan', 'tb_urusan.tb_urusan_kode = '.$table.'.tb_urusan_kode', 'left');
+        $this->db->join('tb_bidang', 'tb_bidang.tb_urusan_kode = '.$table.'.tb_urusan_kode
+                                    AND tb_bidang.tb_bidang_kode = '.$table.'.tb_bidang_kode', 'left');
+        $this->db->join('tb_program', 'tb_program.tb_urusan_kode = '.$table.'.tb_urusan_kode
+                                    AND tb_program.tb_bidang_kode = '.$table.'.tb_bidang_kode
+                                    AND tb_program.tb_program_kode = '.$table.'.tb_program_kode', 'left');
+        $this->db->join('tb_kegiatan', 'tb_kegiatan.tb_urusan_kode = '.$table.'.tb_urusan_kode
+                                    AND tb_kegiatan.tb_bidang_kode = '.$table.'.tb_bidang_kode
+                                    AND tb_kegiatan.tb_program_kode = '.$table.'.tb_program_kode
+                                    AND tb_kegiatan.tb_kegiatan_kode = '.$table.'.tb_kegiatan_kode', 'left');
+        $this->db->join('tb_sub_unit', 'tb_sub_unit.tb_urusan_kode = '.$table.'.tb_urusan_kode
+                                    AND tb_sub_unit.tb_bidang_kode = '.$table.'.tb_bidang_kode
+                                    AND tb_sub_unit.tb_unit_kode = '.$table.'.tb_unit_kode
+                                    AND tb_sub_unit.tb_sub_unit_kode = '.$table.'.tb_sub_unit_kode', 'left');
+
+        $kode = explode("-", $kode);
+        $this->db->where($table.'.tb_urusan_kode', $kode[0]);
+        $this->db->where($table.'.tb_bidang_kode', $kode[1]);
+        $this->db->where($table.'.tb_unit_kode', $kode[2]);
+        $this->db->where($table.'.tb_sub_unit_kode', $kode[3]);
+        $this->db->where($table.'.tb_monev_lra_tahun', $tahun);
+
+        $this->db->order_by($table.'.id_tb_rpjmd', "asc");
+        $this->db->order_by($table.'.tb_urusan_kode', "asc");
+        $this->db->order_by($table.'.tb_bidang_kode', "asc");
+        $this->db->order_by($table.'.tb_unit_kode', "asc");
+        $this->db->order_by($table.'.tb_sub_unit_kode', "asc");
+        $this->db->order_by($table.'.tb_monev_lra_tahun', "asc");
+        $this->db->order_by($table.'.tb_rekening1_kode', "asc");
+        $this->db->order_by($table.'.tb_rekening2_kode', "asc");
+        $this->db->order_by($table.'.tb_program_kode', "asc");
+        $this->db->order_by($table.'.tb_kegiatan_kode', "asc");
+        $this->db->order_by($table.'.tb_rekening3_kode', "asc");
+        $this->db->order_by($table.'.tb_rekening4_kode', "asc");
+        $this->db->order_by($table.'.tb_rekening5_kode', "asc");
+        $this->db->order_by($table.'.tb_monev_lra_rek5_bulan', "desc");
+
+        $groupBy = array(
+            $table.'.id_tb_rpjmd',
+            $table.'.tb_urusan_kode',
+            $table.'.tb_bidang_kode',
+            $table.'.tb_unit_kode',
+            $table.'.tb_sub_unit_kode',
+            $table.'.tb_rekening1_kode',
+            $table.'.tb_rekening2_kode',
+            $table.'.tb_program_kode',
+            $table.'.tb_kegiatan_kode',
+        );
+        $this->db->group_by($groupBy);
+
         $data = $this->db->get($table)->result_array();
         return $data;
     }
+
+    // . laporan LRA
+
+    public function getCapaian($kode, $tahun = 1, $tahunan = true){
+        $table = 'tb_monev_lra_rek5';
+        $this->db->select($table.".*");
+        $this->db->select_max('tb_monev_lra_rek5_bulan');
+        $kode = explode("-", $kode);
+        $this->db->where($table.'.id_tb_rpjmd', $kode[0]);
+        $this->db->where($table.'.tb_urusan_kode', $kode[1]);
+        $this->db->where($table.'.tb_bidang_kode', $kode[2]);
+        $this->db->where($table.'.tb_unit_kode', $kode[3]);
+        $this->db->where($table.'.tb_sub_unit_kode', $kode[4]);
+        $this->db->where($table.'.tb_program_kode', $kode[5]);
+        $this->db->where($table.'.tb_kegiatan_kode', $kode[6]);
+        $this->db->where($table.'.tb_monev_lra_tahun', $tahun);
+
+        $this->db->order_by($table.'.id_tb_rpjmd', "asc");
+        $this->db->order_by($table.'.tb_urusan_kode', "asc");
+        $this->db->order_by($table.'.tb_bidang_kode', "asc");
+        $this->db->order_by($table.'.tb_unit_kode', "asc");
+        $this->db->order_by($table.'.tb_sub_unit_kode', "asc");
+        $this->db->order_by($table.'.tb_rekening1_kode', "asc");
+        $this->db->order_by($table.'.tb_rekening2_kode', "asc");
+        $this->db->order_by($table.'.tb_program_kode', "asc");
+        $this->db->order_by($table.'.tb_kegiatan_kode', "asc");
+        $this->db->order_by($table.'.tb_rekening3_kode', "asc");
+        $this->db->order_by($table.'.tb_rekening4_kode', "asc");
+        $this->db->order_by($table.'.tb_rekening5_kode', "asc");
+        $this->db->order_by($table.'.tb_monev_lra_rek5_bulan', "desc");
+
+        $groupBy = array(
+            $table.'.id_tb_rpjmd',
+            $table.'.tb_urusan_kode',
+            $table.'.tb_bidang_kode',
+            $table.'.tb_unit_kode',
+            $table.'.tb_sub_unit_kode',
+            $table.'.tb_rekening1_kode',
+            $table.'.tb_rekening2_kode',
+            $table.'.tb_program_kode',
+            $table.'.tb_kegiatan_kode',
+            $table.'.tb_rekening3_kode',
+            $table.'.tb_rekening4_kode',
+            $table.'.tb_rekening5_kode',
+        );
+        $this->db->group_by($groupBy);
+
+        $data = $this->db->get($table)->result_array();
+        return $data;
+    }
+
+    public function getRkpdAwalKegiatan($kode){
+        $table = 'tb_rpjmd_kegiatan';
+        
+        $kode = explode("-", $kode);
+        $this->db->where($table.'.id_tb_rpjmd', $kode[0]);
+        $this->db->where($table.'.tb_urusan_kode', $kode[1]);
+        $this->db->where($table.'.tb_bidang_kode', $kode[2]);
+        $this->db->where($table.'.tb_unit_kode', $kode[3]);
+        $this->db->where($table.'.tb_sub_unit_kode', $kode[4]);
+        $this->db->where($table.'.tb_program_kode', $kode[5]);
+        $this->db->where($table.'.tb_kegiatan_kode', $kode[6]);
+
+        $data = $this->db->get($table)->result_array();
+        return $data;
+    }
+
+    public function getRkpdAwalProgram($kode){
+        $table = 'tb_rpjmd_program';
+        
+        $kode = explode("-", $kode);
+        $this->db->where($table.'.id_tb_rpjmd', $kode[0]);
+        $this->db->where($table.'.tb_urusan_kode', $kode[1]);
+        $this->db->where($table.'.tb_bidang_kode', $kode[2]);
+        $this->db->where($table.'.tb_unit_kode', $kode[3]);
+        $this->db->where($table.'.tb_sub_unit_kode', $kode[4]);
+        $this->db->where($table.'.tb_program_kode', $kode[5]);
+
+        $data = $this->db->get($table)->result_array();
+        return $data;
+    }
+
+    public function getDataMisi(){
+        $table = 'tb_rpjmd_misi';
+        $this->db->join('tb_rpjmd', 'tb_rpjmd.id_tb_rpjmd = '.$table.'.id_tb_rpjmd', 'left');
+        $this->db->where($table.'.id_tb_rpjmd', $this->session->rpjmd);
+        $data = $this->db->get($table)->result_array();
+        return $data;
+    }
+
+    public function checkProgram($kode, $jenis, $tahun = null){
+
+        $kode = explode("-", $kode);
+        $table = 'tb_rpjmd_program';
+        if($jenis == 2){
+            $table = 'tb_rpjmd_program_penetapan';
+        }else if($jenis == 3){
+            $table = 'tb_rpjmd_program_perubahan';
+        }
+        
+        $this->db->where($table.'.id_tb_rpjmd', $this->session->rpjmd);
+        $this->db->where($table.'.tb_urusan_kode', $kode[0]);
+        $this->db->where($table.'.tb_bidang_kode', $kode[1]);
+        $this->db->where($table.'.tb_unit_kode', $kode[2]);
+        $this->db->where($table.'.tb_sub_unit_kode', $kode[3]);
+        $this->db->where($table.'.tb_program_kode', $kode[4]);
+
+        if($tahun != null){
+            $this->db->where($table.'.tb_rpjmd_program_tahun', $tahun);
+        }
+
+        $data = $this->db->get($table)->num_rows();
+        $hasil = 0;
+        if($data > 0){
+            $hasil = 1;
+        }
+        return $hasil;
+    }
+
+    public function checkKegiatan($kode, $jenis, $tahun = null){
+
+        $kode = explode("-", $kode);
+        $table = 'tb_rpjmd_kegiatan';
+        if($jenis == 2){
+            $table = 'tb_rpjmd_kegiatan_penetapan';
+        }else if($jenis == 3){
+            $table = 'tb_rpjmd_kegiatan_perubahan';
+        }
+        
+        $this->db->where($table.'.id_tb_rpjmd', $this->session->rpjmd);
+        $this->db->where($table.'.tb_urusan_kode', $kode[0]);
+        $this->db->where($table.'.tb_bidang_kode', $kode[1]);
+        $this->db->where($table.'.tb_unit_kode', $kode[2]);
+        $this->db->where($table.'.tb_sub_unit_kode', $kode[3]);
+        $this->db->where($table.'.tb_program_kode', $kode[4]);
+        $this->db->where($table.'.tb_kegiatan_kode', $kode[5]);
+
+        if($tahun != null){
+            $this->db->where($table.'.tb_rpjmd_program_tahun', $tahun);
+        }
+
+        $data = $this->db->get($table)->num_rows();
+        $hasil = 0;
+        if($data > 0){
+            $hasil = 1;
+        }
+        return $hasil;
+    }
+
+    // sotk 
+
     
+
+    public function getRowUrusan($kode){
+        $this->db->where('tb_urusan_kode', $kode);
+        $data = $this->db->get('tb_urusan')->row();
+        return $data;
+    }
+
+    public function getRowBidang($kode){
+
+        $table = "tb_bidang";
+        $this->db->join('tb_urusan', 'tb_urusan.tb_urusan_kode = '.$table.'.tb_urusan_kode', 'left');
+        
+
+        $kode = explode("-", $kode);
+        $this->db->where($table.'.tb_urusan_kode', $kode[0]);
+        $this->db->where($table.'.tb_bidang_kode', $kode[1]);
+        $data = $this->db->get($table )->row();
+        return $data;
+    }
+
+    public function getRowProgram2($kode){
+
+        $table = "tb_program";
+        $this->db->join('tb_urusan', 'tb_urusan.tb_urusan_kode = '.$table.'.tb_urusan_kode', 'left');
+        $this->db->join('tb_bidang', 'tb_bidang.tb_urusan_kode = '.$table.'.tb_urusan_kode
+                                AND tb_bidang.tb_bidang_kode = '.$table.'.tb_bidang_kode', 'left');
+        
+
+        $kode = explode("-", $kode);
+        $this->db->where($table.'.tb_urusan_kode', $kode[0]);
+        $this->db->where($table.'.tb_bidang_kode', $kode[1]);
+        $this->db->where($table.'.tb_program_kode', $kode[2]);
+        $data = $this->db->get($table )->row();
+        return $data;
+    }
+
+    public function getRowUnit($kode){
+
+        $table = "tb_unit";
+        $this->db->join('tb_urusan', 'tb_urusan.tb_urusan_kode = '.$table.'.tb_urusan_kode', 'left');
+        $this->db->join('tb_bidang', 'tb_bidang.tb_urusan_kode = '.$table.'.tb_urusan_kode
+                                AND tb_bidang.tb_bidang_kode = '.$table.'.tb_bidang_kode', 'left');
+        
+
+        $kode = explode("-", $kode);
+        $this->db->where($table.'.tb_urusan_kode', $kode[0]);
+        $this->db->where($table.'.tb_bidang_kode', $kode[1]);
+        $this->db->where($table.'.tb_unit_kode', $kode[2]);
+        $data = $this->db->get($table )->row();
+        return $data;
+    }
+
+    
+
+    public function getDataIndikatorTujuan($kode){
+        $table = "tb_rpjmd_tujuan_indikator";
+        $kode = explode("-", $kode);
+        $this->db->where($table.'.id_tb_rpjmd', $this->session->rpjmd);
+        $this->db->where($table.'.tb_rpjmd_misi_kode', $kode[0]);
+        $this->db->where($table.'.tb_rpjmd_tujuan_kode', $kode[1]);
+        $data = $this->db->get($table)->result_array();
+        return $data;
+    }
+
+    public function getDataIndikatorSasaran($kode){
+        $table = "tb_rpjmd_sasaran_indikator";
+        $kode = explode("-", $kode);
+        $this->db->where($table.'.id_tb_rpjmd', $this->session->rpjmd);
+        $this->db->where($table.'.tb_rpjmd_misi_kode', $kode[0]);
+        $this->db->where($table.'.tb_rpjmd_tujuan_kode', $kode[1]);
+        $this->db->where($table.'.tb_rpjmd_sasaran_kode', $kode[2]);
+        $data = $this->db->get($table)->result_array();
+        return $data;
+    }
+
+    public function getDataIndikatorProgram($kode){
+        $table = "tb_rpjmd_program_indikator";
+        $kode = explode("-", $kode);
+        $this->db->where($table.'.id_tb_rpjmd', $this->session->rpjmd);
+        $this->db->where($table.'.tb_rpjmd_misi_kode', $kode[0]);
+        $this->db->where($table.'.tb_rpjmd_tujuan_kode', $kode[1]);
+        $this->db->where($table.'.tb_rpjmd_sasaran_kode', $kode[2]);
+        $this->db->where($table.'.tb_urusan_kode', $kode[3]);
+        $this->db->where($table.'.tb_bidang_kode', $kode[4]);
+        $this->db->where($table.'.tb_unit_kode', $kode[5]);
+        $this->db->where($table.'.tb_sub_unit_kode', $kode[6]);
+        $this->db->where($table.'.tb_program_kode', $kode[7]);
+        $data = $this->db->get($table)->result_array();
+        return $data;
+    }
+
+    public function getDataIndikatorKegiatan($kode){
+        $table = "tb_rpjmd_kegiatan_indikator";
+        $kode = explode("-", $kode);
+        $this->db->where($table.'.id_tb_rpjmd', $this->session->rpjmd);
+        $this->db->where($table.'.tb_rpjmd_misi_kode', $kode[0]);
+        $this->db->where($table.'.tb_rpjmd_tujuan_kode', $kode[1]);
+        $this->db->where($table.'.tb_rpjmd_sasaran_kode', $kode[2]);
+        $this->db->where($table.'.tb_urusan_kode', $kode[3]);
+        $this->db->where($table.'.tb_bidang_kode', $kode[4]);
+        $this->db->where($table.'.tb_unit_kode', $kode[5]);
+        $this->db->where($table.'.tb_sub_unit_kode', $kode[6]);
+        $this->db->where($table.'.tb_program_kode', $kode[7]);
+        $this->db->where($table.'.tb_kegiatan_kode', $kode[8]);
+        $data = $this->db->get($table)->result_array();
+        return $data;
+    }
+
+    public function getAllPkOpd(){
+        $table = 'tb_rpjmd_opd';
+
+        $this->db->join('tb_rpjmd_sasaran', 'tb_rpjmd_sasaran.id_tb_rpjmd = '.$table.'.id_tb_rpjmd
+                    AND tb_rpjmd_sasaran.tb_rpjmd_misi_kode = '.$table.'.tb_rpjmd_misi_kode
+                    AND tb_rpjmd_sasaran.tb_rpjmd_tujuan_kode = '.$table.'.tb_rpjmd_tujuan_kode
+                    AND tb_rpjmd_sasaran.tb_rpjmd_sasaran_kode = '.$table.'.tb_rpjmd_sasaran_kode');
+
+        $kodeOpd = explode("-", $this->session->kodeOpd);
+        $this->db->where($table.'.tb_urusan_kode', $kodeOpd[0]);
+        $this->db->where($table.'.tb_bidang_kode', $kodeOpd[1]);
+        $this->db->where($table.'.tb_unit_kode', $kodeOpd[2]);
+        $this->db->where($table.'.tb_sub_unit_kode', $kodeOpd[3]);
+
+        $groupBy = array(
+            $table.'.id_tb_rpjmd',
+            $table.'.tb_rpjmd_misi_kode',
+            $table.'.tb_rpjmd_tujuan_kode',
+            $table.'.tb_rpjmd_sasaran_kode',
+        );
+        $this->db->group_by($groupBy);
+
+        $data = $this->db->get($table)->result_array();
+        return $data;
+
+    }
+    // . sotk
+
+    // hak
+    public function getHak($id){
+        
+        $table = 'tb_user';
+        $this->db->where($table.'.id_tb_user', $id);
+        $data = $this->db->get($table)->result_array();
+        return json_decode(@$data[0]['tb_user_hak'], true);
+    }
+
+    public function getDataUser(){
+        $table = 'tb_user';
+        $this->db->where($table.'.tb_user_akun', 7);
+        $data = $this->db->get($table)->result_array();
+        return $data;
+
+    }
+
 }
