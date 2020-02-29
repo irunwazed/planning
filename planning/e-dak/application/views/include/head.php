@@ -36,6 +36,7 @@ if(!@$_SESSION['id'] || !@$_SESSION['lapor']){
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="<?=base_url()?>public/admin/dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="<?=base_url()?>public/admin/dist/css/mystyle.css">
   <link rel="icon" href="<?=base_url()?>public/images/Lambang_Kabupaten_Kolaka_Utara.png">
 
   <!-- toast -->

@@ -21,7 +21,7 @@ $des = "";
                                         <div>
                                             <form action="<?=base_url()?>pengaturan/set-opd" method="POST" id="form-cetak">
                                                 <div class="row">
-                                                    <div class="col-4">
+                                                    <div class="col-sm-4">
                                                         <div class="form-group">
                                                         <!-- <label>OPD</label> -->
                                                             <select class="form-control select2" name="opd" required>
@@ -32,7 +32,7 @@ $des = "";
                                                             </select>
                                                         </div>
                                                     </div>
-                                                    <div class="col-4">
+                                                    <div class="col-sm-4">
                                                         <div class="form-group">
                                                             <button type="submit" class="btn btn-primary mr-2">Gunakan</button>
                                                     
@@ -54,7 +54,7 @@ $des = "";
                                     <div class="card-body">
                                         <h5 class="card-title"><?=@$judul?></h5>
                                         <div>
-                                            <form action="<?=base_url()?>laporan/rkpd/save/pdf" method="POST" id="form-cetak">
+                                            <form action="<?=base_url()?>laporan/lra/save/pdf" method="POST" id="form-cetak">
                                                 <div class="row">
                                                     <div class="col-4">
                                                         <div class="form-group">

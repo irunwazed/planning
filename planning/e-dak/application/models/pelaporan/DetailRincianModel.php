@@ -26,6 +26,7 @@ class DetailRincianModel extends CI_Model
         $this->db->where($this->table.'.sub_bidang_kode', $kode[2]);
         $this->db->where($this->table.'.kegiatan_kode', $kode[3]);
         $this->db->where($this->table.'.rincian_kode', $kode[4]);
+        $this->db->where($this->table.'.confirm_pusat', 1);
 
         $this->db->order_by($this->table.".detail_rincian_kode", "asc");
     }

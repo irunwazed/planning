@@ -1,0 +1,98 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title"> <i class="mdi mdi-folder-upload"></i> Upload Berkas</h4>
+                <hr>
+                <div id="alert"></div>
+                <form id="form-upload">
+                	<div class="row">
+	                    <div class="col-md-5 col-xs-12">
+	                		<div class="form-group" style="display: none">
+			                    <label>Upload Berita Acara dan Absen <span class="text-danger">*</span></label>
+			                    <div class="input-group">
+			                        <div class="input-group-prepend">
+			                            <!-- <span class="input-group-text" id="inputGroupFileAddon01">Upload</span> -->
+			                        </div>
+			                        <div class="custom-file">
+			                            <input type="file" class="custom-file-input" id="berita_absen" name="berita_absen">
+			                            <label class="custom-file-label" for="inputGroupFile01">Pilih file</label>
+			                        </div>
+			                    </div>
+			                </div>
+			                <input type="hidden" name="level" id="levelx">
+                            <input type="hidden" name="id_user" id="id_userx">
+                            <input type="hidden" name="id_grub" id="id_grubx">
+                            <input type="hidden" name="idUsul" id="idUsulx">
+			                <div class="form-group">
+			                    <label>Upload Lampiran Usulan <span class="text-danger">*</span></label>
+			                    <div class="input-group">
+			                        <div class="input-group-prepend">
+			                            <!-- <span class="input-group-text" id="inputGroupFileAddon01">Upload</span> -->
+			                        </div>
+			                        <div class="custom-file">
+			                            <input type="file" class="custom-file-input" id="lampiran_usulan" name="lampiran_usulan" required>
+			                            <label class="custom-file-label" for="inputGroupFile01">Pilih file</label>
+			                        </div>
+			                    </div>
+			                </div>
+	                    </div>
+	                    <div class="col-md-12 col-xs-12">
+	                    	<button type="submit" class="btn btn-info"><i class="mdi mdi-folder-upload"></i> Upload Berkas</button>
+	                    </div>
+                	</div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+	$(".custom-file-input").on("change",function(){
+		var e = $(this).val();
+		$(this).next(".custom-file-label").html(e);
+	});
+
+	$('#id_grubx').val(idUsul);
+    $('#id_userx').val(dataSession.id_user);
+    $('#levelx').val(level);
+    $('#idUsulx').val(idUsul);
+
+    $("#form-upload").on('submit', function(e){
+	    e.preventDefault();
+    	if (idUsul == false) {
+            $('#modal-tambah').modal('hide');
+            $('#alert').html('<div class="alert alert-warning"><button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button><i class="fa fa-exclamation-triangle"></i> Periksa/Pilih Usulan Terlebih Dahulu</div>');
+        }
+        else{
+	        var url = config.apiRoot+link+'uploadBerkas';
+	        $.ajax({
+	            url: url,
+	            type: "POST",
+	            data: new FormData(this),
+	            dataType: "JSON",
+	            contentType: false,
+	            cache: false,
+	            processData:false,
+	            success: function(r){
+	                if (r.data == 0) {
+	                    $('#alert').html('<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button><i class="fa fa-exclamation-triangle"></i> File tidak valid. Upload gagal!</div>');
+	                }
+	                else{
+	                    $('#alert').html('<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button><i class="fa fa-check"></i> Upload berhasil</div>');
+	                }
+	                console.log(r);
+	                bersih();
+	            },
+	            error: function(e){
+	                console.log(e);
+	            }          
+	        });
+	    }
+    });
+
+    function bersih(){
+        $('#form-upload').trigger("reset");
+        $(".custom-file-label").html('Pilih File');
+    }
+</script>

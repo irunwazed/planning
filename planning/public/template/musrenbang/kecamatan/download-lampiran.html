@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title"><i class="mdi mdi-download"></i> Download Lampiran Usulan</h4>
+                <hr>
+                <div class="row">
+                    <div class="col-md-12">
+                        <form id="form-donlot" method="POST" action="" target="_blank">
+                            <input type="hidden" name="level" id="levelx">
+                            <input type="hidden" name="id_user" id="id_userx">
+                            <input type="hidden" name="kode_lokasi" id="kode_lokasix">
+                            <input type="hidden" name="id_grub" id="id_grubx">
+                            <input type="hidden" name="idUsul" id="idUsulx">
+	                    <button type="submit" class="btn btn-primary"> <i class="mdi mdi-file-document"></i> Download Usulan</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var url = config.apiRoot+link+'downloadUsulan';
+    $('#form-donlot').attr('action', url);
+
+    $('#id_grubx').val(idUsul);
+    $('#id_userx').val(dataSession.id_user);
+    $('#kode_lokasix').val(dataLokasi.data.lokasi);
+    $('#levelx').val(level);
+    $('#idUsulx').val(idUsul);
+</script>

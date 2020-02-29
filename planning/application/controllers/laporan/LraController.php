@@ -54,10 +54,13 @@ class LraController extends CI_Controller {
 
         $this->load->model('rpjmd/DataModel');
         $dataRpjmd = $this->DataModel->getRowVisi();
+        $kodeOpd = $this->session->kodeOpd;
+        $dataOpd = $this->DataModel->getOneOpd($kodeOpd);
 
         $dataAll = $this->setData($post);
 
         $kirim = array(
+            "dataOpd" => $dataOpd,
             "dataRpjmd" => $dataRpjmd,
             "tahunKe" => $tahun,
             "bulanKe" => $bulan,

@@ -37,4 +37,25 @@ class Filter {
         return $jenis;
     }
 
+    
+    
+    public function MuscekLogin($levelArr){
+        $status = false;
+        if(in_array(self::$CI->session->level, $levelArr) && self::$CI->session->akun == 10){
+            $status = true;
+        }
+        return $status;
+    }
+
+    public function MusCekLoginOut($levelArr){
+        $status = $this->MuscekLogin($levelArr);
+        if(!$status){
+            if(@$this->session->logged_in == TRUE){
+                redirect(base_url('musrenbang/beranda'));
+            }else{
+                redirect(base_url('musrenbang/logout'));
+            }
+        }
+    }
+
 }

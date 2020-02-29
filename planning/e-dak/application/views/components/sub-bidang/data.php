@@ -22,12 +22,12 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body" style="margin: 15px;">
-              <?php $level = array(1,2,3); if(in_array($_SESSION['level'], $level)){ ?>
+              <?php $level = array(1); if(in_array($_SESSION['level'], $level)){ ?>
               <button data-toggle="modal" onclick="setCreate()" data-target="#modal-form" class="btn btn-primary" style="margin: 10px"><i class="fa fa-plus"></i> Tambah</button>
               <?php } ?>
               <div class="table-responsive">
                 <table id="table-user" class="table table-bordered table-striped">
-                  <thead>
+                  <thead class="my-head">
                     <tr>
                       <th>No</th>
                       <th>KODE</th>

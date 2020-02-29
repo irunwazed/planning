@@ -176,4 +176,15 @@ class Fungsi {
         return false;
     }
 
+    function convert_to_rupiah($angka)
+	{
+		return strrev(implode('.',str_split(strrev(strval($angka)),3)));
+    }
+    	 
+	function convert_to_number($rupiah)
+	{
+        // return intval(preg_replace('/,.*|[^0-9]/', '', $rupiah));
+        return (preg_replace('/,.*|[^0-9]/', '', $rupiah));
+	}
+
 }

@@ -125,4 +125,8 @@ class HomeController extends CI_Controller {
         }
 
     }
+
+    public function privacy(){
+        $this->load->view('pages/privacy');
+    }
 }

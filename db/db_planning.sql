@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 20, 2020 at 05:00 AM
+-- Generation Time: Jan 31, 2020 at 06:29 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -77,6 +77,13 @@ CREATE TABLE `tb_dapil` (
   `tb_dapil_tahun` year(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tb_dapil`
+--
+
+INSERT INTO `tb_dapil` (`tb_dapil_kode`, `tb_dapil_nama`, `tb_dapil_tahun`) VALUES
+(0, 'dapil1', 2020);
+
 -- --------------------------------------------------------
 
 --
@@ -92,6 +99,145 @@ CREATE TABLE `tb_deskel` (
   `tb_deskel_nama` varchar(105) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tb_deskel`
+--
+
+INSERT INTO `tb_deskel` (`tb_provinsi_kode`, `tb_kabupaten_kode`, `tb_kecamatan_kode`, `tb_deskel_kode`, `tb_deskel_level`, `tb_deskel_nama`) VALUES
+(72, 6, 1, 2, 1, 'Mendui'),
+(72, 6, 1, 3, 1, 'Lamberea'),
+(72, 6, 1, 4, 1, 'Marsaoleh'),
+(72, 6, 1, 5, 1, 'Matano'),
+(72, 6, 1, 6, 1, 'Tofoiso'),
+(72, 6, 1, 7, 1, 'Bungi'),
+(72, 6, 1, 8, 2, 'Puungkoilu'),
+(72, 6, 1, 9, 2, 'Bahontobungku'),
+(72, 6, 1, 10, 2, 'Tofuti'),
+(72, 6, 1, 11, 2, 'Sakita'),
+(72, 6, 1, 12, 2, 'Matansala'),
+(72, 6, 1, 13, 2, 'Bahoruru'),
+(72, 6, 1, 14, 2, 'Bente'),
+(72, 6, 1, 15, 2, 'Ipi'),
+(72, 6, 1, 16, 2, 'Bahomohoni'),
+(72, 6, 1, 17, 2, 'Bahomoleo'),
+(72, 6, 1, 18, 2, 'Bahomante'),
+(72, 6, 1, 19, 2, 'Lanona'),
+(72, 6, 1, 20, 2, 'Tudua'),
+(72, 6, 2, 1, 2, 'Bahomotefe'),
+(72, 6, 2, 2, 2, 'Bahomoahi'),
+(72, 6, 2, 3, 2, 'Ululere'),
+(72, 6, 2, 4, 2, 'Kolono'),
+(72, 6, 2, 5, 2, 'Geresa'),
+(72, 6, 2, 6, 1, 'Laroue'),
+(72, 6, 2, 7, 2, 'Nambo'),
+(72, 6, 2, 8, 2, 'Unsongi'),
+(72, 6, 2, 9, 2, 'Lahuafu'),
+(72, 6, 2, 10, 2, 'Onepute Jaya'),
+(72, 6, 3, 1, 2, 'Sambalagi'),
+(72, 6, 3, 2, 2, 'Laroenai'),
+(72, 6, 3, 3, 2, 'Buleleng'),
+(72, 6, 3, 4, 2, 'Torete'),
+(72, 6, 3, 5, 2, 'Lafeu'),
+(72, 6, 3, 6, 2, 'Tandaoleo'),
+(72, 6, 3, 7, 2, 'One Ete'),
+(72, 6, 3, 8, 2, 'Tangofa'),
+(72, 6, 3, 9, 2, 'Puungkeu'),
+(72, 6, 3, 10, 2, 'Were\'a'),
+(72, 6, 4, 3, 2, 'Umbele'),
+(72, 6, 4, 4, 2, 'Pulau Dua'),
+(72, 6, 4, 7, 2, 'Koburu'),
+(72, 6, 4, 11, 2, 'Bungingkela'),
+(72, 6, 4, 12, 2, 'Lokombulo'),
+(72, 6, 4, 13, 2, 'Buajangka'),
+(72, 6, 4, 15, 2, 'Padabale'),
+(72, 6, 4, 16, 2, 'Pado - pado'),
+(72, 6, 4, 17, 2, 'Pulau Bapa'),
+(72, 6, 4, 19, 2, 'Lamontoli'),
+(72, 6, 4, 20, 2, 'Bungintende'),
+(72, 6, 4, 21, 2, 'Panimbawang'),
+(72, 6, 4, 23, 2, 'Boelimau'),
+(72, 6, 4, 24, 2, 'Poaro'),
+(72, 6, 4, 25, 2, 'Umbele Lama'),
+(72, 6, 4, 26, 2, 'Pulau Dua Darat'),
+(72, 6, 4, 27, 2, 'sainoa'),
+(72, 6, 4, 28, 2, 'polewali'),
+(72, 6, 4, 29, 2, 'jawi jawi'),
+(72, 6, 4, 30, 2, 'kaleroang'),
+(72, 6, 4, 31, 2, 'poo'),
+(72, 6, 4, 32, 2, 'paku'),
+(72, 6, 4, 33, 2, 'bakala'),
+(72, 6, 4, 34, 2, 'buton'),
+(72, 6, 4, 35, 2, 'waru waru'),
+(72, 6, 4, 37, 2, 'Lalemo'),
+(72, 6, 5, 1, 1, 'Ulunambo'),
+(72, 6, 5, 2, 2, 'Terebino'),
+(72, 6, 5, 3, 2, 'Torukuno'),
+(72, 6, 5, 4, 2, 'Ngapaea'),
+(72, 6, 5, 5, 2, 'Padalaa'),
+(72, 6, 5, 6, 2, 'Morompaitonga'),
+(72, 6, 5, 7, 2, 'Kofalagadi'),
+(72, 6, 5, 8, 2, 'Padei Laut'),
+(72, 6, 5, 9, 2, 'Samarengga'),
+(72, 6, 5, 10, 2, 'Masadian'),
+(72, 6, 5, 11, 2, 'Pulau Tiga'),
+(72, 6, 5, 12, 2, 'Matano'),
+(72, 6, 5, 13, 2, 'Matarape'),
+(72, 6, 5, 14, 2, 'Ulunipa'),
+(72, 6, 5, 15, 2, 'Wawongkolono'),
+(72, 6, 5, 16, 2, 'Buranga'),
+(72, 6, 5, 17, 2, 'Dongkalan'),
+(72, 6, 5, 18, 2, 'Tanjung Harapan'),
+(72, 6, 5, 19, 2, 'Tafagapi'),
+(72, 6, 5, 20, 2, 'Pulau Tengah'),
+(72, 6, 5, 21, 2, 'Mbokita'),
+(72, 6, 5, 22, 2, 'Tanjung Tiram'),
+(72, 6, 5, 23, 2, 'Tanona'),
+(72, 6, 5, 24, 2, 'Padei Darat'),
+(72, 6, 6, 1, 2, 'Bahoea Reko - reko'),
+(72, 6, 6, 2, 2, 'Wosu'),
+(72, 6, 6, 3, 2, 'Larobenu'),
+(72, 6, 6, 4, 2, 'Umpanga'),
+(72, 6, 6, 5, 2, 'Tondo'),
+(72, 6, 6, 6, 2, 'Topogaro'),
+(72, 6, 6, 7, 2, 'Ambunu'),
+(72, 6, 6, 8, 2, 'Wata'),
+(72, 6, 6, 9, 2, 'Marga Mulya'),
+(72, 6, 6, 10, 2, 'Uedago'),
+(72, 6, 7, 1, 2, 'Parilangke'),
+(72, 6, 7, 2, 2, 'Bahonsuai'),
+(72, 6, 7, 3, 2, 'Atananga'),
+(72, 6, 7, 4, 2, 'Pebatae'),
+(72, 6, 7, 5, 2, 'Umbele'),
+(72, 6, 7, 6, 2, 'Lambelu'),
+(72, 6, 7, 7, 2, 'Limbo Makmur'),
+(72, 6, 7, 8, 2, 'Beringin Jaya'),
+(72, 6, 7, 9, 2, 'Samarenda'),
+(72, 6, 7, 10, 2, 'Lasampi'),
+(72, 6, 7, 11, 2, 'Harapan Jaya'),
+(72, 6, 7, 12, 2, 'Pebotoa'),
+(72, 6, 7, 13, 2, 'Karaupa'),
+(72, 6, 8, 1, 2, 'Bete - bete'),
+(72, 6, 8, 2, 2, 'Padabaho'),
+(72, 6, 8, 3, 2, 'Labota'),
+(72, 6, 8, 4, 2, 'Fatufia'),
+(72, 6, 8, 5, 2, 'Keurea'),
+(72, 6, 8, 6, 2, 'Bahodopi'),
+(72, 6, 8, 7, 2, 'Lalampu'),
+(72, 6, 8, 8, 2, 'Siumbatu'),
+(72, 6, 8, 9, 2, 'Dampala'),
+(72, 6, 8, 10, 2, 'Lele'),
+(72, 6, 8, 11, 2, 'Bahomakmur'),
+(72, 6, 8, 12, 2, 'Makarti Jaya'),
+(72, 6, 9, 1, 2, 'Sampeantaba'),
+(72, 6, 9, 2, 2, 'Emea'),
+(72, 6, 9, 3, 2, 'Moahino'),
+(72, 6, 9, 4, 2, 'Salonsa'),
+(72, 6, 9, 5, 2, 'Laantula Jaya'),
+(72, 6, 9, 6, 2, 'Puntari Makmur'),
+(72, 6, 9, 7, 2, 'Bumi Harapan'),
+(72, 6, 9, 8, 2, 'Salonsa Jaya'),
+(72, 6, 9, 9, 2, 'Ungkaya');
+
 -- --------------------------------------------------------
 
 --
@@ -104,6 +250,13 @@ CREATE TABLE `tb_dewan` (
   `tb_dewan_nama` varchar(45) DEFAULT NULL,
   `tb_dewan_tahun` year(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_dewan`
+--
+
+INSERT INTO `tb_dewan` (`tb_dapil_kode`, `tb_dewan_kode`, `tb_dewan_nama`, `tb_dewan_tahun`) VALUES
+(0, 1, 'dewan', 2020);
 
 -- --------------------------------------------------------
 
@@ -165,6 +318,522 @@ CREATE TABLE `tb_kabupaten` (
   `tb_kabupaten_nama` varchar(105) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tb_kabupaten`
+--
+
+INSERT INTO `tb_kabupaten` (`tb_provinsi_kode`, `tb_kabupaten_kode`, `tb_kabupaten_nama`) VALUES
+(64, 0, 'KOTA TARAKAN'),
+(11, 1, 'Kab. Aceh Selatan'),
+(12, 1, 'KAB. TAPANULI TENGAH'),
+(13, 1, 'KAB. PESISIR SELATAN'),
+(14, 1, 'KAB. KAMPAR'),
+(15, 1, 'KAB. KERINCI'),
+(16, 1, 'KAB. OGAN KOMERING ULU'),
+(17, 1, 'KAB. BENGKULU SELATAN'),
+(18, 1, 'KAB. LAMPUNG SELATAN'),
+(19, 1, 'KAB. BANGKA'),
+(21, 1, 'KAB. BINTAN'),
+(31, 1, 'KAB. ADM. KEP. SERIBU'),
+(32, 1, 'KAB. BOGOR'),
+(33, 1, 'KAB. CILACAP'),
+(34, 1, 'KAB. KULON PROGO'),
+(35, 1, 'KAB. PACITAN'),
+(36, 1, 'KAB. PANDEGLANG'),
+(51, 1, 'KAB. JEMBRANA'),
+(52, 1, 'KAB. LOMBOK BARAT'),
+(53, 1, 'KAB. KUPANG'),
+(61, 1, 'KAB. SAMBAS'),
+(62, 1, 'KAB. KOTAWARINGIN BARAT'),
+(63, 1, 'KAB. TANAH LAUT'),
+(64, 1, 'KAB. PASER'),
+(71, 1, 'KAB. BOLAANG MONGONDOW'),
+(72, 1, 'KAB. BANGGAI'),
+(73, 1, 'KAB. KEPULAUAN SELAYAR'),
+(74, 1, 'KAB. KOLAKA'),
+(75, 1, 'KAB. GORONTALO'),
+(76, 1, 'KAB. MAMUJU UTARA'),
+(81, 1, 'KAB. MALUKU TENGAH'),
+(82, 1, 'KAB. HALMAHERA BARAT'),
+(91, 1, 'KAB. MERAUKE'),
+(92, 1, 'KAB. SORONG'),
+(11, 2, 'Kab. Aceh Tenggara'),
+(12, 2, 'KAB. TAPANULI UTARA'),
+(13, 2, 'KAB. SOLOK'),
+(14, 2, 'KAB. INDRAGIRI HULU'),
+(15, 2, 'KAB. MERANGIN'),
+(16, 2, 'KAB. OGAN KOMERING ILIR'),
+(17, 2, 'KAB. REJANG LEBONG'),
+(18, 2, 'KAB. LAMPUNG TENGAH'),
+(19, 2, 'KAB. BELITUNG'),
+(21, 2, '2 KAB. KARIMUN'),
+(32, 2, 'KAB. SUKABUMI'),
+(33, 2, 'KAB. BANYUMAS'),
+(34, 2, 'KAB. BANTUL'),
+(35, 2, 'KAB. PONOROGO'),
+(36, 2, 'KAB. LEBAK'),
+(51, 2, 'KAB. TABANAN'),
+(52, 2, 'KAB. LOMBOK TENGAH'),
+(53, 2, 'KAB TIMOR TENGAH SELATAN'),
+(61, 2, 'KAB. MEMPAWAH'),
+(62, 2, 'KAB. KOTAWARINGIN TIMUR'),
+(63, 2, 'KAB. KOTABARU'),
+(64, 2, 'KAB. KUTAI KARTANEGARA'),
+(71, 2, 'KAB. MINAHASA'),
+(72, 2, 'KAB. POSO'),
+(73, 2, 'KAB. BULUKUMBA'),
+(74, 2, 'KAB. KONAWE'),
+(75, 2, 'KAB. BOALEMO'),
+(76, 2, 'KAB. MAMUJU'),
+(81, 2, 'KAB. MALUKU TENGGARA'),
+(82, 2, 'KAB. HALMAHERA TENGAH'),
+(91, 2, 'KAB. JAYAWIJAYA'),
+(92, 2, 'KAB. MANOKWARI'),
+(11, 3, 'Kab. Aceh Timur'),
+(12, 3, 'KAB. TAPANULI TENGAH'),
+(13, 3, 'KAB. SIJUNJUNG'),
+(14, 3, 'KAB. BENGKALIS'),
+(15, 3, 'KAB. SAROLANGUN'),
+(16, 3, 'KAB. MUARA ENIM'),
+(17, 3, 'KAB. BENGKULU UTARA'),
+(18, 3, 'KAB. LAMPUNG UTARA'),
+(19, 3, 'KAB. BANGKA SELATAN'),
+(21, 3, 'KAB. NATUNA'),
+(32, 3, 'KAB. CIANJUR'),
+(33, 3, 'KAB. PURBALINGGA'),
+(34, 3, 'KAB. GUNUNGKIDUL'),
+(35, 3, 'KAB. TRENGGALEK'),
+(36, 3, 'KAB. TANGERANG'),
+(51, 3, 'KAB. BADUNG'),
+(52, 3, 'KAB. LOMBOK TIMUR'),
+(53, 3, 'KAB. TIMOR TENGAH UTARA'),
+(61, 3, 'KAB. SANGGAU'),
+(62, 3, 'KAB. KAPUAS'),
+(63, 3, 'KAB. BANJAR'),
+(64, 3, 'KAB. BERAU'),
+(71, 3, 'KAB. KEPULAUAN SANGIHE'),
+(72, 3, 'KAB. DONGGALA'),
+(73, 3, 'KAB. BANTAENG'),
+(74, 3, 'KAB. MUNA'),
+(75, 3, 'KAB. BONE BOLANGO'),
+(76, 3, 'KAB. MAMASA'),
+(81, 3, 'KAB MALUKU TENGGARA BARAT'),
+(82, 3, 'KAB. HALMAHERA UTARA'),
+(91, 3, 'KAB. JAYAPURA'),
+(92, 3, 'KAB. FAK FAK'),
+(11, 4, 'Kab. Aceh Tengah'),
+(12, 4, 'KAB. NIAS'),
+(13, 4, 'KAB. TANAH DATAR'),
+(14, 4, 'KAB. INDRAGIRI HILIR'),
+(15, 4, 'KAB. BATANGHARI'),
+(16, 4, 'KAB. LAHAT'),
+(17, 4, 'KAB. KAUR'),
+(18, 4, 'KAB. LAMPUNG BARAT'),
+(19, 4, 'KAB. BANGKA TENGAH'),
+(21, 4, 'KAB. LINGGA'),
+(32, 4, 'KAB. BANDUNG'),
+(33, 4, 'KAB. BANJARNEGARA'),
+(34, 4, 'KAB. SLEMAN'),
+(35, 4, 'KAB. TULUNGAGUNG'),
+(36, 4, 'KAB. SERANG'),
+(51, 4, 'KAB. GIANYAR'),
+(52, 4, 'KAB. SUMBAWA'),
+(53, 4, 'KAB. BELU'),
+(61, 4, 'KAB. KETAPANG'),
+(62, 4, 'KAB. BARITO SELATAN'),
+(63, 4, 'KAB. BARITO KUALA'),
+(71, 4, 'KAB. KEPULAUAN TALAUD'),
+(72, 4, 'KAB. TOLI TOLI'),
+(73, 4, 'KAB. JENEPONTO'),
+(74, 4, 'KAB. BUTON'),
+(75, 4, 'KAB. PAHUWATO'),
+(76, 4, 'KAB. POLEWALI MANDAR'),
+(81, 4, 'KAB. BURU'),
+(82, 4, 'KAB. HALMAHERA SELATAN'),
+(91, 4, 'KAB. NABIRE'),
+(92, 4, 'KAB. SORONG SELATAN'),
+(11, 5, 'Kab. Aceh Barat'),
+(12, 5, 'KAB. LANGKAT'),
+(13, 5, 'KAB. PADANG PARIAMAN'),
+(14, 5, 'KAB. PELALAWAN'),
+(15, 5, 'KAB. MUARO JAMBI'),
+(16, 5, 'KAB. MUSI RAWAS'),
+(17, 5, 'KAB. SELUMA'),
+(18, 5, 'KAB. TULANG BAWANG'),
+(19, 5, 'KAB. BANGKA BARAT'),
+(21, 5, 'KAB. KEPULAUAN ANAMBAS'),
+(32, 5, 'KAB. GARUT'),
+(33, 5, 'KAB. KEBUMEN'),
+(35, 5, 'KAB. BLITAR'),
+(51, 5, 'KAB. KLUNGKUNG'),
+(52, 5, 'KAB. DOMPU'),
+(53, 5, 'KAB. ALOR'),
+(61, 5, 'KAB. SINTANG'),
+(62, 5, 'KAB. BARITO UTARA'),
+(63, 5, 'KAB. TAPIN'),
+(71, 5, 'KAB. MINAHASA SELATAN'),
+(72, 5, 'KAB. BUOL'),
+(73, 5, 'KAB. TAKALAR'),
+(74, 5, 'KAB. KONAWE SELATAN'),
+(75, 5, 'KAB. GORONTALO UTARA'),
+(76, 5, 'KAB. MAJENE'),
+(81, 5, 'KAB. SERAM BAGIAN TIMUR'),
+(82, 5, 'KAB. KEPULAUAN SULA'),
+(91, 5, 'KAB. KEPULAUAN YAPEN'),
+(92, 5, 'KAB. RAJA AMPAT'),
+(11, 6, 'Kab. Aceh Besar'),
+(12, 6, 'KAB. KARO'),
+(13, 6, 'KAB. AGAM'),
+(14, 6, 'KAB. ROKAN HULU'),
+(15, 6, 'KAB. TANJUNG JABUNG BARAT'),
+(16, 6, 'KAB. MUSI BANYUASIN'),
+(17, 6, 'KAB. MUKO MUKO'),
+(18, 6, 'KAB. TANGGAMUS'),
+(19, 6, 'KAB. BELITUNG TIMUR'),
+(32, 6, 'KAB. TASIKMALAYA'),
+(33, 6, 'KAB. PURWOREJO'),
+(35, 6, 'KAB. KEDIRI'),
+(51, 6, 'KAB. BANGLI'),
+(52, 6, 'KAB. BIMA'),
+(53, 6, 'KAB. FLORES TIMUR'),
+(61, 6, 'KAB. KAPUAS HULU'),
+(62, 6, 'KAB. KATINGAN'),
+(63, 6, 'KAB. HULU SUNGAI SELATAN'),
+(71, 6, 'KAB. MINAHASA UTARA'),
+(72, 6, 'KAB. MOROWALI'),
+(73, 6, 'KAB. GOWA'),
+(74, 6, 'KAB. BOMBANA'),
+(75, 6, 'KOTA GORONTALO'),
+(76, 6, 'KAB. MAMUJU TENGAH'),
+(81, 6, 'KAB. SERAM BAGIAN BARAT'),
+(82, 6, 'KAB. HALMAHERA TIMUR'),
+(91, 6, 'KAB. BIAK NUMFOR'),
+(92, 6, 'KAB. TELUK BINTUNI'),
+(11, 7, 'Kab. Pidie'),
+(12, 7, 'KAB. DELI SERDANG'),
+(13, 7, 'KAB. LIMA PULUH KOTA'),
+(14, 7, 'KAB. ROKAN HILIR'),
+(15, 7, 'KAB. TANJUNG JABUNG TIMUR'),
+(16, 7, 'KAB. BANYUASIN'),
+(17, 7, 'KAB. LEBONG'),
+(18, 7, 'KAB. LAMPUNG TIMUR'),
+(32, 7, 'KAB. CIAMIS'),
+(33, 7, 'KAB. WONOSOBO'),
+(35, 7, 'KAB. MALANG'),
+(51, 7, 'KAB. KARANGASEM'),
+(52, 7, 'KAB. SUMBAWA BARAT'),
+(53, 7, 'KAB. SIKKA'),
+(61, 7, 'KAB. BENGKAYANG'),
+(62, 7, 'KAB. SERUYAN'),
+(63, 7, 'KAB. HULU SUNGAI TENGAH'),
+(64, 7, 'KAB. KUTAI BARAT'),
+(71, 7, 'KAB. MINAHASA UTARA'),
+(72, 7, 'KAB. BANGGAI KEPULAUAN'),
+(73, 7, 'KAB. SINJAI'),
+(74, 7, 'KAB. WAKATOBI'),
+(81, 7, 'KAB. KEPULAUAN ARU'),
+(82, 7, 'KAB. PULAU MOROTAI'),
+(91, 7, 'KAB. PUNCAK JAYA'),
+(92, 7, 'KAB. TELUK WONDAMA'),
+(11, 8, 'Kab. Aceh Utara'),
+(12, 8, 'KAB. SIMALUNGUN'),
+(13, 8, 'KAB. PASAMAN'),
+(14, 8, 'KAB. SIAK'),
+(15, 8, 'KAB. BUNGO'),
+(16, 8, 'KAB. OGAN KOMERING ULU TIMUR'),
+(17, 8, 'KAB. KEPAHIANG'),
+(18, 8, 'KAB. WAY KANAN'),
+(32, 8, 'KAB. KUNINGAN'),
+(33, 8, 'KAB. MAGELANG'),
+(35, 8, 'KAB. LUMAJANG'),
+(51, 8, '8 KAB. BULELENG'),
+(52, 8, 'KAB. LOMBOK UTARA'),
+(53, 8, 'KAB. ENDE'),
+(61, 8, 'KAB. LANDAK'),
+(62, 8, 'KAB. SUKAMARA'),
+(63, 8, 'KAB. HULU SUNGAI UTARA'),
+(64, 8, 'KAB. KUTAI TIMUR'),
+(71, 8, 'KAB. BOLAANG MONGONDOW UTARA'),
+(72, 8, 'KAB. PARIGI MOUTONG'),
+(73, 8, 'KAB. BONE'),
+(74, 8, 'KAB. KOLAKA UTARA'),
+(81, 8, '8 KAB. MALUKU BARAT DAYA'),
+(82, 8, 'KAB. PULAU TALIABU'),
+(91, 8, 'KAB. PANIAI'),
+(92, 8, 'KAB. KAIMANA'),
+(11, 9, 'Kab. Simeulue'),
+(12, 9, 'KAB. ASAHAN'),
+(13, 9, 'KAB. KEPULAUAN MENTAWAI'),
+(14, 9, 'KAB. KUANTAN SINGINGI'),
+(15, 9, 'KAB. TEBO'),
+(16, 9, 'KAB. OGAN KOMERING ULU SELATAN'),
+(17, 9, 'KAB. BENGKULU TENGAH'),
+(18, 9, 'KAB. PESAWARAN'),
+(32, 9, 'KAB. CIREBON'),
+(33, 9, 'KAB. MAGELANG'),
+(35, 9, 'KAB. JEMBER'),
+(53, 9, 'KAB. NGADA'),
+(61, 9, 'KAB. SEKADAU'),
+(62, 9, 'KAB. LAMANDAU'),
+(63, 9, 'KAB. TABALONG'),
+(64, 9, 'KAB. PENAJAM PASER UTARA'),
+(71, 9, 'KAB. KEP. SIAU TAGULANDANG BIARO'),
+(72, 9, 'KAB. TOJO UNA UNA'),
+(73, 9, 'KAB. MAROS'),
+(74, 9, 'KAB. KONAWE UTARA'),
+(81, 9, 'KAB. BURU SELATAN'),
+(82, 9, 'KOTA TERNATE'),
+(91, 9, 'KAB. MIMIKA'),
+(92, 9, 'KAB. TAMBRAUW'),
+(11, 10, 'Kab. Aceh Singkil'),
+(12, 10, 'KAB. LABUHAN BATU '),
+(13, 10, 'KAB. DHARMASRAYA'),
+(14, 10, 'KAB. KEPULAUAN MERANTI'),
+(15, 10, 'KOTA JAMBI'),
+(16, 10, 'KAB. OGAN ILIR'),
+(18, 10, 'KAB. PRINGSEWU'),
+(32, 10, 'KAB. MAJALENGKA'),
+(33, 10, 'KAB. KLATEN'),
+(35, 10, 'KAB. BANYUWANGI'),
+(53, 10, 'KAB. MANGGARAI'),
+(61, 10, 'KAB. MELAWI'),
+(62, 10, 'KAB. GUNUNG MAS'),
+(63, 10, 'KAB. TANAH BUMBU'),
+(71, 10, 'KAB. BOLAANG MONGONDOW TIMUR'),
+(72, 10, 'KAB. SIGI'),
+(73, 10, 'KAB. PANGKAJENE KEPULAUAN'),
+(74, 10, 'KAB. BUTON UTARA'),
+(81, 10, 'KOTA AMBON'),
+(82, 10, 'KOTA TIDORE KEPULAUAN'),
+(91, 10, 'KAB. SARMI'),
+(92, 10, 'KAB. MAYBRAT'),
+(11, 11, 'Kab. Biruen'),
+(12, 11, 'KAB. DAIRI '),
+(13, 11, 'KAB. SOLOK SELATAN'),
+(15, 11, 'KOTA SUNGAI PENUH'),
+(16, 11, 'KAB. EMPAT LAWANG'),
+(18, 11, 'KAB. MESUJI'),
+(32, 11, 'KAB. SUMEDANG'),
+(33, 11, 'KAB. SUKOHARJO'),
+(35, 11, 'KAB. BONDOWOSO'),
+(53, 11, 'KAB. SUMBA TIMUR'),
+(61, 11, 'KAB. KAYONG UTARA'),
+(62, 11, 'KAB. PULANG PISAU'),
+(63, 11, 'KAB. BALANGAN'),
+(64, 11, 'KAB. MAHAKAM ULU'),
+(71, 11, 'KAB. BOLAANG MONGONDOW SELATAN'),
+(72, 11, 'KAB. BANGGAI LAUT'),
+(73, 11, 'KAB. BARRU'),
+(74, 11, 'KAB. KOLAKA TIMUR'),
+(81, 11, 'KOTA TUAL'),
+(91, 11, 'KAB. KEEROM'),
+(92, 11, 'KAB. MANOKWARI SELATAN'),
+(11, 12, 'Kab. Aceh Barat Daya'),
+(12, 12, 'KAB. TOBA SAMOSIR'),
+(13, 12, 'KAB. PASAMAN BARAT'),
+(16, 12, 'KAB. PENUKAL ABAB LEMATANG ILIR'),
+(18, 12, 'KAB. TULANG BAWANG BARAT'),
+(32, 12, 'KAB. INDRAMAYU'),
+(33, 12, 'KAB. WONOGIRI'),
+(35, 12, 'KAB. SITUBONDO'),
+(53, 12, 'KAB. SUMBA BARAT'),
+(61, 12, 'KAB. KUBU RAYA'),
+(62, 12, 'KAB. MURUNG RAYA'),
+(72, 12, 'KAB. MOROWALI UTARA'),
+(73, 12, 'KAB. SOPPENG'),
+(74, 12, 'KAB. KONAWE KEPULAUAN'),
+(91, 12, 'KAB PEGUNUNGAN BINTANG'),
+(92, 12, 'KAB. PEGUNUNGAN ARFAK'),
+(11, 13, 'Kab. Gayo Lues'),
+(12, 13, 'KAB. MANDAILING NATAL'),
+(16, 13, 'KAB. MUSI RAWAS UTARA'),
+(18, 13, 'KAB. PESISIR BARAT'),
+(32, 13, 'KAB. SUBANG'),
+(33, 13, 'KAB. KARANGANYAR'),
+(35, 13, 'KAB. PROBOLINGGO'),
+(53, 13, 'KAB. LEMBATA'),
+(62, 13, 'KAB. BARITO TIMUR'),
+(72, 13, 'KOTA PALU'),
+(73, 13, 'KAB. WAJO'),
+(74, 13, 'KAB. MUNA BARAT'),
+(91, 13, 'KAB. YAHUKIMO'),
+(92, 13, 'KOTA SORONG'),
+(11, 14, 'Kab. Aceh Jaya'),
+(12, 14, 'KAB. NIAS SELATAN'),
+(32, 14, 'KAB. PURWAKARTA'),
+(33, 14, 'KAB. SRAGEN'),
+(35, 14, 'KAB. PASURUAN'),
+(53, 14, 'KAB. ROTE NDAO'),
+(73, 14, 'KAB. SIDENRENG RAPPANG'),
+(74, 14, 'KAB. BUTON TENGAH'),
+(91, 14, 'KAB. TOLIKARA'),
+(11, 15, 'Kab. Nagan Raya'),
+(12, 15, 'KAB. PAKPAK BHARAT'),
+(32, 15, 'KAB. KARAWANG'),
+(33, 15, 'KAB. GROBOGAN'),
+(35, 15, 'KAB. SIDOARJO'),
+(53, 15, 'KAB. MANGGARAI BARAT'),
+(73, 15, 'KAB. PINRANG'),
+(74, 15, 'KAB. BUTON SELATAN'),
+(91, 15, 'KAB. WAROPEN'),
+(11, 16, 'Kab. Aceh Tamiang'),
+(12, 16, 'KAB. HUMBANG HASUNDUTAN'),
+(32, 16, 'KAB. BEKASI'),
+(33, 16, 'KAB. BLORA'),
+(35, 16, 'KAB. MOJOKERTO'),
+(53, 16, 'KAB. NAGEKEO'),
+(73, 16, 'KAB. ENREKANG'),
+(74, 16, 'KOTA KENDARI'),
+(91, 16, 'KAB. BOVEN DIGOEL'),
+(11, 17, 'Kab. Bener Meriah'),
+(12, 17, 'KAB SAMOSIR'),
+(32, 17, 'KAB. BANDUNG BARAT'),
+(33, 17, 'KAB. REMBANG'),
+(35, 17, 'KAB. JOMBANG'),
+(53, 17, 'KAB. SUMBA TENGAH'),
+(73, 17, 'KAB. LUWU'),
+(74, 17, 'KOTA BAU BAU'),
+(91, 17, 'KAB. MAPPI'),
+(11, 18, 'Kab. Pidie Jaya'),
+(12, 18, 'KAB. SERDANG BEDAGAI'),
+(32, 18, 'KAB. PANGANDARAN'),
+(33, 18, 'KAB. PATI'),
+(35, 18, 'KAB. NGANJUK'),
+(53, 18, 'KAB. SUMBA BARAT DAYA'),
+(73, 18, 'KAB. TANA TORAJA'),
+(91, 18, 'KAB. ASMAT'),
+(12, 19, 'KAB BATU BARA'),
+(33, 19, 'KAB. KUDUS'),
+(35, 19, 'KAB. MADIUN'),
+(53, 19, 'KAB. MANGGARAI TIMUR'),
+(73, 19, 'KAB. POLEWALI MAMASA'),
+(91, 19, 'KAB. SUPIORI'),
+(12, 20, 'KAB. PADANG LAWAS UTARA'),
+(33, 20, 'KAB. JEPARA'),
+(35, 20, 'KAB. MAGETAN'),
+(53, 20, 'KAB. SABU RAIJUA'),
+(91, 20, 'KAB. MAMBERAMO RAYA'),
+(12, 21, 'KAB. PADANG LAWAS'),
+(33, 21, 'KAB. DEMAK'),
+(35, 21, 'KAB. NGAWI'),
+(53, 21, 'KAB. MALAKA'),
+(91, 21, 'KAB. MAMBERAMO TENGAH'),
+(12, 22, 'KAB. LABUHANBATU SELATAN'),
+(33, 22, 'KAB. SEMARANG'),
+(35, 22, 'KAB. BOJONEGORO'),
+(73, 22, 'KAB. LUWU UTARA'),
+(91, 22, 'KAB. YALIMO'),
+(12, 23, 'KAB. LABUHANBATU UTARA'),
+(33, 23, 'KAB. TEMANGGUNG'),
+(35, 23, 'KAB. TUBAN'),
+(73, 23, 'KOTA MAKASSAR'),
+(91, 23, 'KAB. LANNY JAYA'),
+(12, 24, 'KAB. NIAS UTARA'),
+(33, 24, 'KAB. KENDAL'),
+(35, 24, 'KAB. LAMONGAN'),
+(73, 24, 'KAB. LUWU TIMUR'),
+(91, 24, 'KAB. NDUGA'),
+(12, 25, 'KAB. NIAS BARAT'),
+(33, 25, 'KAB. BATANG'),
+(35, 25, 'KAB. GRESIK'),
+(91, 25, 'KAB. PUNCAK'),
+(33, 26, 'KAB. PEKALONGAN'),
+(35, 26, 'KAB. BANGKALAN'),
+(73, 26, 'KAB. TORAJA UTARA'),
+(91, 26, 'KAB. DOGIYAI'),
+(33, 27, 'KAB. PEMALANG'),
+(35, 27, 'KAB. SAMPANG'),
+(91, 27, 'KAB. INTAN JAYA'),
+(33, 28, 'KAB. TEGAL'),
+(35, 28, 'KAB. PAMEKASAN'),
+(73, 28, 'KOTA PARE PARE'),
+(91, 28, 'KAB. DEIYAI'),
+(35, 29, 'KAB. SUMENEP'),
+(73, 29, 'KOTA PALOPO'),
+(91, 29, 'KOTA JAYAPURA'),
+(11, 71, 'Kota Banda Aceh'),
+(12, 71, 'KOTA MEDAN'),
+(13, 71, 'KOTA PADANG'),
+(14, 71, 'KOTA PEKANBARU'),
+(16, 71, 'KOTA PALEMBANG'),
+(17, 71, 'KOTA BENGKULU'),
+(18, 71, 'KOTA BANDAR LAMPUNG'),
+(19, 71, 'KOTA PANGKAL PINANG'),
+(21, 71, 'KOTA BATAM'),
+(31, 71, 'KOTA ADM. JAKARTA PUSAT'),
+(32, 71, 'KOTA BOGOR'),
+(33, 71, 'KOTA MAGELANG'),
+(34, 71, 'KOTA YOGYAKARTA'),
+(35, 71, 'KOTA KEDIRI'),
+(36, 71, 'KOTA TANGERANG'),
+(51, 71, 'KOTA DENPASAR'),
+(52, 71, 'KOTA MATARAM'),
+(53, 71, 'KOTA KUPANG'),
+(61, 71, 'KOTA PONTIANAK'),
+(62, 71, 'KOTA PALANGKARAYA'),
+(63, 71, 'KOTA BANJARMASIN'),
+(64, 71, 'KOTA BALIKPAPAN'),
+(71, 71, 'KOTA MANADO'),
+(11, 72, 'Kota Sabang'),
+(12, 72, 'KOTA PEMATANG SIANTAR'),
+(13, 72, 'KOTA SOLOK'),
+(14, 72, 'KOTA DUMAI'),
+(16, 72, 'KOTA PAGAR ALAM'),
+(18, 72, 'KOTA METRO'),
+(21, 72, 'KOTA TANJUNG PINANG'),
+(31, 72, 'KOTA ADM. JAKARTA UTARA'),
+(32, 72, 'KOTA SUKABUMI'),
+(33, 72, 'KOTA SURAKARTA'),
+(35, 72, 'KOTA BLITAR'),
+(36, 72, 'KOTA CILEGON'),
+(52, 72, 'KOTA BIMA'),
+(61, 72, 'KOTA SINGKAWANG'),
+(63, 72, 'KOTA BANJARBARU'),
+(64, 72, 'KOTA SAMARINDA'),
+(71, 72, 'KOTA BITUNG'),
+(11, 73, 'Kota Lhokseumawe'),
+(12, 73, 'KOTA SIBOLGA'),
+(13, 73, 'KOTA SAWAHLUNTO'),
+(16, 73, 'KOTA LUBUK LINGGAU'),
+(31, 73, 'KOTA ADM. JAKARTA BARAT'),
+(32, 73, 'KOTA BANDUNG'),
+(33, 73, 'KOTA SALATIGA'),
+(35, 73, 'KOTA MALANG'),
+(36, 73, 'KOTA SERANG'),
+(71, 73, 'KOTA TOMOHON'),
+(11, 74, 'Kota Langsa'),
+(12, 74, 'KOTA TANJUNG BALAI'),
+(13, 74, 'KOTA PADANG PANJANG'),
+(16, 74, 'KOTA PRABUMULIH'),
+(31, 74, 'KOTA ADM. JAKARTA SELATAN'),
+(32, 74, 'KOTA CIREBON'),
+(33, 74, 'KOTA SEMARANG'),
+(35, 74, 'KOTA PROBOLINGGO'),
+(36, 74, 'KOTA TANGERANG SELATAN'),
+(64, 74, 'KOTA BONTANG'),
+(71, 74, 'KOTA KOTAMOBAGU'),
+(11, 75, 'Kota Subusalam'),
+(12, 75, 'KOTA BINJAI'),
+(13, 75, 'KOTA BUKITTINGGI'),
+(31, 75, 'KOTA ADM. JAKARTA TIMUR'),
+(32, 75, 'KOTA BEKASI'),
+(33, 75, 'KOTA PEKALONGAN'),
+(35, 75, 'KOTA PASURUAN'),
+(12, 76, 'KOTA TEBING TINGGI'),
+(13, 76, 'KOTA PAYAKUMBUH'),
+(32, 76, ' KOTA DEPOK'),
+(33, 76, 'KOTA TEGAL'),
+(35, 76, 'KOTA MOJOKERTO'),
+(12, 77, 'KOTA PADANGSIDIMPUAN'),
+(13, 77, 'KOTA PARIAMAN'),
+(32, 77, 'KOTA CIMAHI'),
+(35, 77, 'KOTA MADIUN'),
+(12, 78, 'KOTA GUNUNGSITOLI'),
+(32, 78, 'KOTA TASIKMALAYA'),
+(35, 78, 'KOTA SURABAYA'),
+(32, 79, 'KOTA BANJAR'),
+(35, 79, 'KOTA BATU');
+
 -- --------------------------------------------------------
 
 --
@@ -192,6 +861,505 @@ CREATE TABLE `tb_kecamatan` (
   `tb_kecamatan_kode` int(11) NOT NULL,
   `tb_kecamatan_nama` varchar(105) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_kecamatan`
+--
+
+INSERT INTO `tb_kecamatan` (`tb_provinsi_kode`, `tb_kabupaten_kode`, `tb_kecamatan_kode`, `tb_kecamatan_nama`) VALUES
+(12, 2, 6, 'Pahae Jae'),
+(12, 2, 15, 'Muara'),
+(12, 3, 1, 'Angkola Barat'),
+(12, 3, 2, 'Batang Toru'),
+(12, 3, 3, 'Angkola Timur'),
+(12, 3, 4, 'Sipirok'),
+(12, 3, 5, 'Saipar Dolok Hole'),
+(12, 3, 6, 'Angkola Selatan'),
+(12, 3, 7, 'Batang Angkola'),
+(12, 3, 8, 'Padang Bolak'),
+(12, 3, 9, 'Dolok'),
+(12, 3, 10, 'Barumun Tengah'),
+(12, 3, 11, 'Sosopan'),
+(12, 3, 12, 'Barumun'),
+(12, 3, 13, 'Sosa'),
+(12, 3, 14, 'Arse'),
+(12, 3, 15, 'Halongonan'),
+(12, 3, 16, 'PadangBolak Julu'),
+(12, 3, 17, 'Batang Onang'),
+(12, 3, 18, 'Dolok Sigompulon'),
+(12, 3, 19, 'Huta Raja Tinggi'),
+(12, 3, 20, 'Marancar'),
+(12, 3, 21, 'Sayur Matinggi'),
+(12, 3, 22, 'Aek Bilah'),
+(12, 3, 23, 'Portibi'),
+(12, 3, 24, 'Huristak'),
+(12, 3, 25, 'Simangambat'),
+(12, 3, 26, 'Ulu Barumun'),
+(12, 3, 27, 'Lubuk Barumun'),
+(12, 3, 28, 'Batang Lubu Sutam'),
+(12, 3, 29, 'Muara Batang Toru'),
+(12, 3, 30, 'Tano Tombangan Angkola'),
+(12, 3, 31, 'Angkola Sangkunur'),
+(12, 4, 1, 'Gunung Sitoli'),
+(12, 4, 2, 'Tuhemberua'),
+(12, 4, 3, 'Lahewa'),
+(12, 4, 4, 'Alasa'),
+(12, 4, 5, 'Hiliduho'),
+(12, 4, 6, 'Gido'),
+(12, 4, 7, 'Lolofitu Moi'),
+(12, 4, 8, 'Mandrehe'),
+(12, 4, 9, 'Sirombu'),
+(12, 4, 10, 'Idanogawo'),
+(12, 4, 11, 'Bawolato'),
+(12, 4, 12, 'Namohalu Esiwa'),
+(12, 4, 13, 'Lotu'),
+(12, 4, 14, 'Afulu'),
+(12, 4, 15, 'Gunungsitoli Selatan'),
+(12, 4, 16, 'Gunungsitoli Utara'),
+(12, 4, 17, 'Gunungsitoli Idanoi/ Idanoi'),
+(12, 4, 18, 'Mandrehe Utara'),
+(12, 4, 19, 'Gunungsitoli Alo`oa'),
+(12, 4, 20, 'Hiliserangkai'),
+(12, 4, 21, 'Botomuzoi'),
+(12, 4, 22, 'Mandrehe Barat'),
+(12, 4, 23, 'Moro`o'),
+(12, 4, 24, 'Ulu Moro`o/ Ulu Narwo'),
+(12, 4, 25, 'Lahewa Timur'),
+(12, 4, 26, 'Alasa Talumuzoi'),
+(12, 4, 27, 'Ulugawo'),
+(12, 4, 28, 'Ma`u'),
+(12, 4, 29, 'Somolo-molo'),
+(12, 4, 30, 'Sawo'),
+(12, 4, 31, 'Lahomi/ Gahori'),
+(12, 4, 32, 'Sitolu Ori'),
+(12, 4, 33, 'Tugala Oyo'),
+(12, 4, 34, 'Gunungsitoli Barat'),
+(12, 4, 35, 'Sogae`adu'),
+(12, 5, 1, 'Bahorok'),
+(12, 5, 2, 'Salapian'),
+(12, 5, 3, 'Kuala'),
+(12, 5, 4, 'Sei Bingei'),
+(12, 5, 5, 'Binjai'),
+(12, 5, 6, 'Selesai'),
+(12, 5, 7, 'Stabat'),
+(12, 5, 8, 'Wampu'),
+(12, 5, 9, 'Secanggang'),
+(12, 5, 10, 'Hinai'),
+(12, 5, 11, 'Tanjung Pura'),
+(12, 5, 12, 'Padang Tualang'),
+(12, 5, 13, 'Gebang'),
+(12, 5, 14, 'Babalan'),
+(12, 5, 15, 'Pangkalan Susu'),
+(12, 5, 16, 'Besitang'),
+(12, 5, 17, 'Sei Lepan'),
+(12, 5, 18, 'Brandan Barat'),
+(12, 5, 19, 'Batang Serangan'),
+(12, 5, 20, 'Sawit Seberang'),
+(12, 5, 21, 'Sirapit'),
+(12, 5, 22, 'Kutambaru'),
+(12, 5, 23, 'Pematang Jaya'),
+(12, 6, 1, 'Kabanjahe'),
+(12, 6, 2, 'Berastagi'),
+(12, 6, 3, 'Barusjahe'),
+(12, 6, 4, 'Tigapanah'),
+(12, 6, 5, 'Merek'),
+(12, 6, 6, 'Munte'),
+(12, 6, 7, 'Juhar'),
+(12, 6, 8, 'Tigabinanga'),
+(12, 6, 9, 'Laubaleng'),
+(12, 6, 10, 'Mardingding'),
+(12, 6, 11, 'Payung'),
+(12, 6, 12, 'Simpang Empat'),
+(12, 6, 13, 'Kutabuluh'),
+(12, 6, 14, 'Dolat Rayat'),
+(12, 6, 15, 'Merdeka'),
+(12, 6, 16, 'Naman Teran'),
+(12, 6, 17, 'Tiganderket'),
+(12, 7, 1, 'Gunung Meriah'),
+(12, 7, 2, 'Tanjung Morawa'),
+(12, 7, 3, 'Sibolangit'),
+(12, 7, 4, 'Kutalimbaru'),
+(12, 7, 5, 'Pancur Batu'),
+(12, 7, 6, 'Namorambe'),
+(12, 7, 7, 'Sibiru-biru'),
+(12, 7, 8, 'STM Hilir'),
+(12, 7, 9, 'Bangun Purba'),
+(12, 7, 10, 'Kutarih'),
+(12, 7, 11, 'Dolok Masihul'),
+(12, 7, 12, 'Sipis-pis'),
+(12, 7, 13, 'Dolok Merawan'),
+(12, 7, 14, 'Tebing Tinggi'),
+(12, 7, 15, 'Bandar Khalifah'),
+(12, 7, 16, 'Tanjung Beringin'),
+(12, 7, 17, 'Teluk Mengkudu'),
+(12, 7, 18, 'Sei. Rampah'),
+(12, 7, 19, 'Galang'),
+(12, 7, 20, 'STM Hulu'),
+(12, 7, 21, 'Patumbak'),
+(12, 7, 22, 'Deli Tua'),
+(12, 7, 23, 'Sunggal'),
+(12, 7, 24, 'Hamparan Perak'),
+(12, 7, 25, 'Labuhan Deli'),
+(12, 7, 26, 'Percut Sei Tuan'),
+(12, 7, 27, 'Batang Kuis'),
+(12, 7, 28, 'Lubuk Pakam'),
+(12, 7, 29, 'Perbaungan'),
+(12, 7, 30, 'Pantai Cermin'),
+(12, 7, 31, 'Pagar Merbau'),
+(12, 7, 32, 'Pantai Labu'),
+(12, 7, 33, 'Beringin'),
+(12, 8, 1, 'Siantar'),
+(12, 8, 2, 'Gunung Malela'),
+(12, 8, 3, 'Gunung Maligas'),
+(12, 8, 4, 'Panei'),
+(12, 8, 5, 'Panombeian Pane'),
+(12, 8, 6, 'Jorlang Hataran'),
+(12, 8, 7, 'Raya Kahean'),
+(12, 8, 8, 'Bosar Maligas'),
+(12, 8, 9, 'Sidamanik'),
+(12, 8, 10, 'Pematang Sidamanik'),
+(12, 8, 11, 'Tanah Jawa'),
+(12, 8, 12, 'Hatonduhan'),
+(12, 8, 13, 'Dolok Panribuan'),
+(12, 8, 14, 'Purba'),
+(12, 8, 15, 'Haranggaol Horison'),
+(12, 8, 16, 'Girsang Sipangan Bolon'),
+(12, 8, 17, 'Dolok Batu Nanggar'),
+(12, 8, 18, 'Huta Bayu Raja'),
+(12, 8, 19, 'Jawa Maraja Bah Jambi'),
+(12, 8, 20, 'Dolok Pardamean'),
+(12, 8, 21, 'Pematang Bandar'),
+(12, 8, 22, 'Bandar Huluan'),
+(12, 8, 23, 'Bandar'),
+(12, 8, 24, 'Bandar Masilam'),
+(12, 8, 25, 'Silimakuta'),
+(12, 8, 26, 'Dolok Silau'),
+(12, 8, 27, 'Silou Kahean'),
+(12, 8, 28, 'Tapian Dolok'),
+(12, 8, 29, 'Raya'),
+(12, 8, 30, 'Ujung Padang'),
+(12, 8, 31, 'Pamatang Silima Huta'),
+(12, 9, 1, 'Madang beras'),
+(12, 9, 2, 'Air Putih'),
+(12, 9, 3, 'Lima Puluh'),
+(12, 9, 4, 'Tanjung Tiram'),
+(12, 9, 5, 'Talawi'),
+(12, 9, 6, 'Sei Suka'),
+(12, 9, 7, 'Sei Balai'),
+(12, 9, 8, 'Meranti'),
+(12, 9, 9, 'Air Joman'),
+(12, 9, 10, 'Tanjung Balai'),
+(12, 9, 11, 'Sei Kepayang'),
+(12, 9, 12, 'Simpang Empat'),
+(12, 9, 13, 'Air Batu'),
+(12, 9, 14, 'Pulau Rakyat'),
+(12, 9, 15, 'Bandar Pulau'),
+(12, 9, 16, 'Buntu Pane'),
+(12, 9, 17, 'Bandar Pasir Mandoge'),
+(12, 9, 18, 'Aek Kuasan'),
+(12, 9, 19, 'Kota Kisaran Barat'),
+(12, 9, 20, 'Kota Kisaran Timur'),
+(12, 9, 21, 'Aek Songsongan'),
+(12, 9, 22, 'Rahunig'),
+(12, 9, 23, 'Sei Dadap'),
+(12, 9, 24, 'Sei Kepayang Barat'),
+(12, 9, 25, 'Sei Kepayang Timur'),
+(12, 9, 26, 'Tinggi Raja'),
+(12, 9, 27, 'Setia Janji'),
+(12, 9, 28, 'Silau Laut'),
+(12, 9, 29, 'Rawang Panca Arga'),
+(12, 9, 30, 'Pulo Bandring'),
+(12, 9, 31, 'Teluk Dalam'),
+(12, 9, 32, 'Aek Ledong'),
+(12, 10, 1, 'Rantau Utara'),
+(12, 10, 2, 'Rantau Selatan'),
+(12, 10, 3, 'Kualuh Hulu'),
+(12, 10, 4, 'Aek Natas'),
+(12, 10, 5, 'NA. IX-X'),
+(12, 10, 6, 'Marbau'),
+(12, 10, 7, 'Bilah Barat'),
+(12, 10, 8, 'Bilah Hilir'),
+(12, 10, 9, 'Bilah Hulu'),
+(12, 10, 10, 'Kampung Rakyat'),
+(12, 10, 11, 'Silangkitang'),
+(12, 10, 12, 'Kota Pinang'),
+(12, 10, 13, 'Torgamba'),
+(12, 10, 14, 'Pangkatan'),
+(12, 10, 15, 'Sei Kanan'),
+(12, 10, 16, 'Kualuh Hilir'),
+(12, 10, 17, 'Kuala Leidong'),
+(12, 10, 18, 'Panai Tengah'),
+(12, 10, 19, 'Panai Hilir'),
+(12, 10, 20, 'Panai Hulu'),
+(12, 10, 21, 'Kualuh Selatan'),
+(12, 10, 22, 'Aek Kuo'),
+(12, 11, 1, 'Sidikalang'),
+(12, 11, 2, 'Sumbul'),
+(12, 11, 3, 'Tigalingga'),
+(12, 11, 4, 'Siempat Nempu'),
+(12, 11, 5, 'Silima Pungga Pungga'),
+(12, 11, 6, 'Tanah Pinem'),
+(12, 11, 7, 'Siempat Nempu Hulu'),
+(12, 11, 8, 'Siempat Nempu Hilir'),
+(12, 11, 9, 'Pegagan Hilir'),
+(12, 11, 10, 'Parbuluan'),
+(12, 11, 11, 'Lae Parira'),
+(12, 11, 12, 'Gunung Sitember'),
+(12, 11, 13, 'Berampu'),
+(12, 11, 14, 'Silahisabungan'),
+(12, 11, 15, 'Sitinjo'),
+(12, 12, 1, 'Balige'),
+(12, 12, 2, 'Laguboti'),
+(12, 12, 3, 'Silaen'),
+(12, 12, 4, 'Habinsaran'),
+(12, 12, 5, 'Pintu Pohan Meranti'),
+(12, 12, 6, 'Borbor'),
+(12, 12, 7, 'Porsea'),
+(12, 12, 8, 'Ajibata'),
+(12, 12, 9, 'Lumban Julu'),
+(12, 12, 10, 'Uluan'),
+(12, 12, 11, 'Ronggur Nihuta'),
+(12, 12, 12, 'Sianjar Mula Mula'),
+(12, 12, 13, 'Pangururan'),
+(12, 12, 14, 'Harian'),
+(12, 12, 15, 'Palipi'),
+(12, 12, 16, 'Nainggolan'),
+(12, 12, 17, 'Onan Runggu'),
+(12, 12, 18, 'Simanindo'),
+(12, 12, 19, 'Sigumpar'),
+(12, 12, 20, 'Siantar Narumonda'),
+(12, 12, 21, 'Nassau'),
+(12, 12, 22, 'Tampahan'),
+(12, 12, 23, 'Bonatua Lunasi'),
+(12, 12, 24, 'Parmaksian'),
+(12, 13, 1, 'Panyabungan'),
+(12, 13, 2, 'Panyabungan Utara'),
+(12, 13, 3, 'Panyabungan Timur'),
+(12, 13, 4, 'Panyabungan Selatan'),
+(12, 13, 5, 'Panyabungan Barat'),
+(12, 13, 6, 'Siabu'),
+(12, 13, 7, 'Bukit Malintang'),
+(12, 13, 8, 'Kotanopan'),
+(12, 13, 9, 'Lembah Sorik Marapi'),
+(12, 13, 10, 'Tambangan'),
+(12, 13, 11, 'Ulu Pungkut'),
+(12, 13, 12, 'Muara Sipongi'),
+(12, 13, 13, 'Batang Natal'),
+(12, 13, 14, 'Lingga Bayu'),
+(12, 13, 15, 'Batahan'),
+(12, 13, 16, 'Natal'),
+(12, 13, 17, 'Muara Batang Gadis'),
+(12, 13, 18, 'Ranto Baek'),
+(12, 13, 19, 'Huta Bargot'),
+(12, 13, 20, 'Puncak Sorik Marapi'),
+(12, 13, 21, 'Pakantan'),
+(12, 13, 22, 'Sinunukan'),
+(12, 13, 23, 'Naga Juang'),
+(12, 14, 1, 'Lolomatua'),
+(12, 14, 2, 'Gomo'),
+(12, 14, 3, 'Lahusa'),
+(12, 14, 4, 'Hibala'),
+(12, 14, 5, 'Pulau-Pulau Batu'),
+(12, 14, 6, 'Teluk Dalam'),
+(12, 14, 7, 'Amandraya'),
+(12, 14, 8, 'Lalowau'),
+(12, 14, 9, 'Susua'),
+(12, 14, 10, 'Maniamolo'),
+(12, 14, 11, 'Hilimegai'),
+(12, 14, 12, 'Toma'),
+(12, 14, 13, 'Mazino'),
+(12, 14, 14, 'Umbunasi'),
+(12, 14, 15, 'Aramo'),
+(12, 14, 16, 'Pulau-Pulau Batu Timur'),
+(12, 14, 17, 'Mazo'),
+(12, 14, 18, 'Fanayama'),
+(12, 14, 19, 'Ulunoyo'),
+(12, 14, 20, 'Huruna'),
+(12, 14, 21, 'O`o`u'),
+(12, 14, 22, 'Onohazumba'),
+(12, 14, 23, 'Hilisalawa`ahe'),
+(12, 14, 24, 'Ulususua'),
+(12, 14, 25, 'Sidua`ori'),
+(12, 14, 26, 'Somambawa'),
+(12, 14, 27, 'Boronadu'),
+(12, 14, 28, 'Simuk'),
+(12, 14, 29, 'Pulau-Pulau Batu Barat'),
+(12, 14, 30, 'Pulau-Pulau Batu Utara'),
+(12, 14, 31, 'Tanah Masa'),
+(12, 15, 1, 'Sitelu Tali Urang Jehe'),
+(12, 15, 2, 'Kerajaan'),
+(12, 15, 3, 'Salak'),
+(12, 15, 4, 'Sitelu Tali Urang Julu'),
+(12, 15, 5, 'Pergetteng Getteng Sengkut'),
+(12, 15, 6, 'Pagindar'),
+(12, 15, 7, 'Tinada'),
+(12, 15, 8, 'Siempat Rube'),
+(12, 16, 1, 'Parlilitan'),
+(12, 16, 2, 'Pollung'),
+(12, 16, 3, 'Baktiraja'),
+(12, 16, 4, 'Paranginan'),
+(12, 16, 5, 'Lintong Nihuta'),
+(12, 16, 6, 'Dolok Sanggul'),
+(12, 16, 7, 'Sijamapolang'),
+(12, 16, 8, 'Onan Ganjang'),
+(12, 16, 9, 'Pakkat'),
+(12, 16, 10, 'Tarabintang'),
+(12, 17, 1, 'Simanindo'),
+(12, 17, 2, 'Onan Runggu'),
+(12, 17, 3, 'Nainggolan'),
+(12, 17, 4, 'Palipi'),
+(12, 17, 5, 'Harian'),
+(12, 17, 6, 'Sianjar Mula Mula'),
+(12, 17, 7, 'Ronggur Nihuta'),
+(12, 17, 8, 'Pangururan'),
+(12, 17, 9, 'Sitio-tio'),
+(12, 18, 1, 'Pantai Cermin'),
+(12, 18, 2, 'Perbaungan'),
+(12, 18, 3, 'Teluk Mengkudu'),
+(12, 18, 4, 'Sei. Rampah'),
+(12, 18, 5, 'Tanjung Beringin'),
+(12, 18, 6, 'Bandar Khalifah'),
+(12, 18, 7, 'Dolok Merawan'),
+(12, 18, 8, 'Sipispis'),
+(12, 18, 9, 'Dolok Masihul'),
+(12, 18, 10, 'Kotarih'),
+(12, 18, 11, 'Silinda'),
+(12, 18, 12, 'Serba Jadi'),
+(12, 18, 13, 'Tebing Tinggi'),
+(12, 18, 14, 'Pegajahan'),
+(12, 18, 15, 'Sei Bamban'),
+(12, 18, 16, 'Tebing Syahbandar'),
+(12, 18, 17, 'Bintang Bayu'),
+(12, 19, 1, 'Medang Deras'),
+(12, 19, 2, 'Sei Suka'),
+(12, 19, 3, 'Air Putih'),
+(12, 19, 4, 'Lima Puluh'),
+(12, 19, 5, 'Talawi'),
+(12, 19, 6, 'Tanjung Tiram'),
+(12, 19, 7, 'Sei Balai'),
+(12, 20, 1, 'Dolok Sigompulon'),
+(12, 20, 2, 'Dolok'),
+(12, 20, 3, 'Halongonan'),
+(12, 20, 4, 'Padang Bolak'),
+(12, 20, 5, 'Padang Bolak Julu'),
+(12, 20, 6, 'Portibi'),
+(12, 20, 7, 'Batang Onang'),
+(12, 20, 8, 'Simangambat'),
+(12, 20, 9, 'Hulu Sihapas'),
+(12, 21, 1, 'Sosopan'),
+(12, 21, 2, 'Barumun Tengah'),
+(12, 21, 3, 'Huristak'),
+(12, 21, 4, 'Lubuk Barumun'),
+(12, 21, 5, 'Huta Raja Tinggi'),
+(12, 21, 6, 'Ulu Barumun'),
+(12, 21, 7, 'Barumun'),
+(12, 21, 8, 'Sosa'),
+(12, 21, 9, 'Batang Lubu Sutam'),
+(12, 21, 10, 'Barumun Selatan'),
+(12, 21, 11, 'Aek Nabara Barumun'),
+(12, 21, 12, 'Sihapas Barumun'),
+(12, 22, 1, 'Kotapinang'),
+(12, 22, 2, 'Kampung Rakyat'),
+(12, 22, 3, 'Torgamba'),
+(12, 22, 4, 'Sungai Kanan'),
+(12, 22, 5, 'Silangkitang'),
+(12, 23, 1, 'Kualuh Hulu'),
+(12, 23, 2, 'Kualuh Leidong'),
+(12, 23, 3, 'Kualuh Hilir'),
+(12, 23, 4, 'Aek Kuo'),
+(12, 23, 5, 'Marbau'),
+(12, 23, 6, 'Na IX - X'),
+(12, 23, 7, 'Aek Natas'),
+(12, 23, 8, 'Kualuh Selatan'),
+(12, 24, 1, 'Lotu'),
+(12, 24, 2, 'Sawo'),
+(12, 24, 3, 'Tuhemberua'),
+(12, 24, 4, 'Sitolu Ori'),
+(12, 24, 5, 'Namohalu Esiwa'),
+(12, 24, 6, 'Alasa Talumuzoi'),
+(12, 24, 7, 'Alasa'),
+(12, 24, 8, 'Tugala Oyo'),
+(12, 24, 9, 'Afulu'),
+(12, 24, 10, 'Lahewa'),
+(12, 24, 11, 'Lahewa Timur'),
+(12, 25, 1, 'Lahomi'),
+(12, 25, 2, 'Sirombu'),
+(12, 25, 3, 'Mandrehe Barat'),
+(12, 25, 4, 'Moro`o'),
+(12, 25, 5, 'Mandrehe'),
+(12, 25, 6, 'Mandrehe Utara'),
+(12, 25, 7, 'Lolofitu Moi'),
+(12, 25, 8, 'Ulu Moro`o'),
+(12, 71, 1, 'Medan Kota'),
+(12, 71, 2, 'Medan Sunggal'),
+(12, 71, 3, 'Medan Helvetia'),
+(12, 71, 4, 'Medan Denai'),
+(12, 71, 5, 'Medan Barat'),
+(12, 71, 6, 'Medan Deli'),
+(12, 71, 7, 'Medan Tuntungan'),
+(12, 71, 8, 'Medan Belawan'),
+(12, 71, 9, 'Medan Amplas'),
+(12, 71, 10, 'Medan Area'),
+(12, 71, 11, 'Medan Johor'),
+(12, 71, 12, 'Medan Marelan'),
+(12, 71, 13, 'Medan Labuhan'),
+(12, 71, 14, 'Medan Tembung'),
+(12, 71, 15, 'Medan Maimun'),
+(12, 71, 16, 'Medan Polonia'),
+(12, 71, 17, 'Medan Baru'),
+(12, 71, 18, 'Medan Perjuangan'),
+(12, 71, 19, 'Medan Petisah'),
+(12, 71, 20, 'Medan Timur'),
+(12, 71, 21, 'Medan Selayang'),
+(12, 72, 1, 'Siantar Timur'),
+(12, 72, 2, 'Siantar Barat'),
+(12, 72, 3, 'Siantar Utara'),
+(12, 72, 4, 'Siantar Selatan'),
+(12, 72, 5, 'Siantar Marihat'),
+(12, 72, 6, 'Siantar Martoba'),
+(12, 72, 7, 'Siantar Sitalasari'),
+(12, 72, 8, 'Siantar Marimbun'),
+(12, 73, 1, 'Sibolga Utara'),
+(12, 73, 2, 'Sibolga Kota'),
+(12, 73, 3, 'Sibolga Selatan'),
+(12, 73, 4, 'Sibolga Sambas'),
+(12, 74, 1, 'Tanjung Balai Selatan'),
+(12, 74, 2, 'Tanjung Balai Utara'),
+(12, 74, 3, 'Sei Tualang Raso'),
+(12, 74, 4, 'Teluk Nibung'),
+(12, 74, 5, 'Datuk Bandar'),
+(12, 74, 6, 'Datuk Bandar Timur'),
+(12, 75, 1, 'Binjai Utara'),
+(12, 75, 2, 'Binjai Kota'),
+(12, 75, 3, 'Binjai Barat'),
+(12, 75, 4, 'Binjai Timur'),
+(12, 75, 5, 'Binjai Selatan'),
+(12, 76, 1, 'Padang Hulu'),
+(12, 76, 2, 'Rambutan'),
+(12, 76, 3, 'Padang Hilir'),
+(12, 76, 4, 'Bajenis'),
+(12, 76, 5, 'Tebing Tinggi Kota'),
+(12, 77, 1, 'Padangsidimpuan Utara'),
+(12, 77, 2, 'Padangsidimpuan Selatan'),
+(12, 77, 3, 'Padangsidimpuan Batunadua'),
+(12, 77, 4, 'Padangsidimpuan Hutaimbaru'),
+(12, 77, 5, 'Padangsidimpuan Tenggara'),
+(12, 77, 6, 'Padangsidimpuan Angkola Julu'),
+(12, 78, 1, 'Gunungsitoli'),
+(12, 78, 2, 'Gunungsitoli Selatan'),
+(12, 78, 3, 'Gunungsitoli Utara'),
+(12, 78, 4, 'Gunungsitoli Idanoi'),
+(12, 78, 5, 'Gunungsitoli Alo`oa'),
+(12, 78, 6, 'Gunungsitoli Barat'),
+(72, 6, 1, 'Bungku Tengah'),
+(72, 6, 2, 'Bungku Timur'),
+(72, 6, 3, 'Bungku Pesisir'),
+(72, 6, 4, 'Bungku Selatan'),
+(72, 6, 5, 'Menui Kepulauan'),
+(72, 6, 6, 'Bungku Barat'),
+(72, 6, 7, 'Bumi Raya'),
+(72, 6, 8, 'Bahodopi'),
+(72, 6, 9, 'Witaponda');
 
 -- --------------------------------------------------------
 
@@ -3795,6 +4963,50 @@ CREATE TABLE `tb_kriteria_bobot` (
   `tb_kriteria_bobot_skor` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tb_kriteria_bobot`
+--
+
+INSERT INTO `tb_kriteria_bobot` (`id_tb_kriteria_bobot`, `id_tb_kriteria_pembobotan`, `tb_kriteria_bobot_level`, `tb_kriteria_bobot_range`, `tb_kriteria_bobot_skor`) VALUES
+(1, 1, 1, 'Sangat Tidak Mendesak', 0.25),
+(2, 1, 2, 'Tidak Mendesak', 0.5),
+(3, 1, 3, 'Cukup Mendesak', 0.75),
+(4, 1, 4, 'Mendesak', 1),
+(5, 1, 5, 'Sangat Mendesak', 1.25),
+(11, 3, 1, 'Sangat Tidak Mendukung', 0.1),
+(12, 3, 2, 'Tidak Mendukung', 0.2),
+(13, 3, 3, 'Cukup Mendukung', 0.3),
+(14, 3, 4, 'Mendukung', 0.4),
+(15, 3, 5, 'Sangat Mendukung', 0.5),
+(16, 4, 1, 'Sangat Tidak Mendukung', 0.1),
+(17, 4, 2, 'Tidak Mendukung', 0.3),
+(18, 4, 3, 'Cukup Mendukung', 0.45),
+(19, 4, 4, 'Mendukung', 0.6),
+(20, 4, 5, 'Sangat Mendukung', 0.75),
+(21, 5, 1, '1', 0.15),
+(22, 5, 2, '2', 0.3),
+(23, 5, 3, '3', 0.45),
+(24, 5, 4, '4', 0.6),
+(25, 5, 5, '5', 0.75),
+(31, 7, 1, 'Sangat Sulit', 0.1),
+(32, 7, 2, 'Sulit', 0.2),
+(33, 7, 3, 'Biasa', 0.3),
+(34, 7, 4, 'Mudah', 0.4),
+(35, 7, 5, 'Sangat Mudah', 0.5),
+(41, 8, 1, 'Tidak Ada', 0.05),
+(42, 8, 2, 'Ada, Tapi Tidak Sesuai', 0.1),
+(43, 8, 3, 'Sesuai', 0.15),
+(44, 2, 0, 'Tidak Berdampak', 0.1),
+(45, 2, 1, 'Kurang Berdampak', 0.2),
+(46, 2, 2, 'Cukup Berdampak', 0.3),
+(47, 2, 3, 'Berdampak', 0.4),
+(48, 2, 4, 'Sangat Berdampak', 0.5),
+(49, 6, 0, 'Sangat Rendah', 0.1),
+(50, 6, 1, 'Rendah', 0.2),
+(51, 6, 2, 'Cukup Rendah', 0.3),
+(52, 6, 3, 'Cukup TInggi', 0.4),
+(53, 6, 4, 'Sangat Tinggi', 0.5);
+
 -- --------------------------------------------------------
 
 --
@@ -3807,6 +5019,20 @@ CREATE TABLE `tb_kriteria_pembobotan` (
   `tb_kriteria_pembobotan_bobot` double DEFAULT NULL,
   `tb_kriteria_pembobotan_ket` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_kriteria_pembobotan`
+--
+
+INSERT INTO `tb_kriteria_pembobotan` (`id_tb_kriteria_pembobotan`, `tb_kriteria_pembobotan_nama`, `tb_kriteria_pembobotan_bobot`, `tb_kriteria_pembobotan_ket`) VALUES
+(1, 'KETERDESAKAN\n', 25, '-'),
+(2, 'DAMPAK TERHADAP PERTUMBUHAN EKONOMI MASYARAKAT', 10, '-'),
+(3, 'PENGEMBANGAN POTENSI LOKAL KECAMATAN\n', 10, '-'),
+(4, 'PENANGGULANGAN KEMISKINAN', 15, '-'),
+(5, 'MANFAAT/DAMPAK', 15, '-'),
+(6, 'PARTISIPASI / KETERLIBATAN MASYARAKAT', 10, '-'),
+(7, 'KEMUDAHAN PELAKSANAAN\n', 10, '-'),
+(8, 'KELENGKAPAN DOKUMEN/BUKTI PENDUKUNG\n', 5, '-');
 
 -- --------------------------------------------------------
 
@@ -4072,6 +5298,18 @@ CREATE TABLE `tb_monev_lra_rek2_kegiatan` (
   `tb_monev_lra_rek2_kegiatan_fisik` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tb_monev_lra_rek2_kegiatan`
+--
+
+INSERT INTO `tb_monev_lra_rek2_kegiatan` (`id_tb_rpjmd`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_monev_lra_tahun`, `tb_rekening1_kode`, `tb_rekening2_kode`, `tb_program_kode`, `tb_kegiatan_kode`, `tb_monev_lra_rek2_kegiatan_fisik`) VALUES
+(1, 1, 1, 1, 1, 1, 5, 2, 1, 1, '-'),
+(1, 1, 1, 1, 1, 1, 5, 2, 1, 2, '-'),
+(1, 1, 1, 1, 1, 1, 5, 2, 2, 4, '-'),
+(1, 1, 1, 1, 1, 4, 5, 2, 1, 2, '-'),
+(1, 1, 1, 1, 1, 4, 5, 2, 1, 3, '-'),
+(1, 4, 1, 3, 1, 1, 5, 2, 1, 2, '-');
+
 -- --------------------------------------------------------
 
 --
@@ -4090,6 +5328,17 @@ CREATE TABLE `tb_monev_lra_rek2_program` (
   `tb_program_kode` int(11) NOT NULL,
   `tb_monev_lra_rek2_program_fisik` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_monev_lra_rek2_program`
+--
+
+INSERT INTO `tb_monev_lra_rek2_program` (`id_tb_rpjmd`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_monev_lra_tahun`, `tb_rekening1_kode`, `tb_rekening2_kode`, `tb_program_kode`, `tb_monev_lra_rek2_program_fisik`) VALUES
+(1, 1, 1, 1, 1, 1, 5, 2, 1, '-'),
+(1, 1, 1, 1, 1, 1, 5, 2, 2, '-'),
+(1, 1, 1, 1, 1, 4, 5, 2, 1, '-'),
+(1, 1, 1, 1, 1, 4, 5, 2, 22, '-'),
+(1, 4, 1, 3, 1, 1, 5, 2, 1, '-');
 
 -- --------------------------------------------------------
 
@@ -4112,6 +5361,17 @@ CREATE TABLE `tb_monev_lra_rek3` (
   `tb_monev_lra_rek3_ket` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tb_monev_lra_rek3`
+--
+
+INSERT INTO `tb_monev_lra_rek3` (`id_tb_rpjmd`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_monev_lra_tahun`, `tb_rekening1_kode`, `tb_rekening2_kode`, `tb_program_kode`, `tb_kegiatan_kode`, `tb_rekening3_kode`, `tb_monev_lra_rek3_ket`) VALUES
+(1, 1, 1, 1, 1, 1, 5, 2, 1, 1, 1, NULL),
+(1, 1, 1, 1, 1, 1, 5, 2, 1, 2, 1, NULL),
+(1, 1, 1, 1, 1, 1, 5, 2, 2, 4, 1, NULL),
+(1, 1, 1, 1, 1, 4, 5, 2, 1, 3, 2, NULL),
+(1, 4, 1, 3, 1, 1, 5, 2, 1, 2, 1, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -4132,6 +5392,17 @@ CREATE TABLE `tb_monev_lra_rek4` (
   `tb_rekening3_kode` int(11) NOT NULL,
   `tb_rekening4_kode` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_monev_lra_rek4`
+--
+
+INSERT INTO `tb_monev_lra_rek4` (`id_tb_rpjmd`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_monev_lra_tahun`, `tb_rekening1_kode`, `tb_rekening2_kode`, `tb_program_kode`, `tb_kegiatan_kode`, `tb_rekening3_kode`, `tb_rekening4_kode`) VALUES
+(1, 1, 1, 1, 1, 1, 5, 2, 1, 1, 1, 1),
+(1, 1, 1, 1, 1, 1, 5, 2, 1, 2, 1, 1),
+(1, 1, 1, 1, 1, 1, 5, 2, 2, 4, 1, 2),
+(1, 1, 1, 1, 1, 4, 5, 2, 1, 3, 2, 2),
+(1, 4, 1, 3, 1, 1, 5, 2, 1, 2, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -4161,6 +5432,17 @@ CREATE TABLE `tb_monev_lra_rek5` (
   `id_tb_sumber_dana` int(11) NOT NULL,
   `tb_monev_lra_rek5_lokasi` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_monev_lra_rek5`
+--
+
+INSERT INTO `tb_monev_lra_rek5` (`id_tb_rpjmd`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_monev_lra_tahun`, `tb_rekening1_kode`, `tb_rekening2_kode`, `tb_program_kode`, `tb_kegiatan_kode`, `tb_rekening3_kode`, `tb_rekening4_kode`, `tb_rekening5_kode`, `tb_monev_lra_rek5_bulan`, `tb_monev_lra_rek5_anggaran`, `tb_monev_lra_rek5_realisasi`, `tb_monev_lra_rek5_fisik`, `tb_monev_lra_rek5_pelaksana`, `id_tb_sumber_dana`, `tb_monev_lra_rek5_lokasi`) VALUES
+(1, 1, 1, 1, 1, 1, 5, 2, 1, 1, 1, 1, 1, 1, 1000000000, 1000000, 'fisik', 'pelaksana', 1, '-'),
+(1, 1, 1, 1, 1, 1, 5, 2, 1, 2, 1, 1, 1, 1, 1000000000, 1000000, 'fisik', 'pelaksana', 1, '-'),
+(1, 1, 1, 1, 1, 1, 5, 2, 2, 4, 1, 2, 1, 1, 1000000000, 1000000, 'fisik', 'pelaksana', 1, '-'),
+(1, 1, 1, 1, 1, 1, 5, 2, 2, 4, 1, 2, 3, 2, 1000000000, 1000000, 'fisik', 'pelaksana', 1, '-'),
+(1, 4, 1, 3, 1, 1, 5, 2, 1, 2, 1, 2, 1, 1, 1000000000, 1000000, 'fisik', 'pelaksana', 1, '-');
 
 -- --------------------------------------------------------
 
@@ -4686,6 +5968,45 @@ CREATE TABLE `tb_provinsi` (
   `tb_provinsi_kode` int(11) NOT NULL,
   `tb_provinsi_nama` varchar(105) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_provinsi`
+--
+
+INSERT INTO `tb_provinsi` (`tb_provinsi_kode`, `tb_provinsi_nama`) VALUES
+(11, 'ACEH'),
+(12, 'SUMATERA UTARA'),
+(13, 'SUMATERA BARAT'),
+(14, 'RIAU'),
+(15, 'JAMBI'),
+(16, 'SUMATERA SELATAN'),
+(17, 'BENGKULU'),
+(18, 'LAMPUNG'),
+(19, 'KEPULAUAN BANGKA BELITUNG'),
+(21, 'KEPULAUAN RIAU'),
+(31, 'DAERAH KHUSUS IBUKOTA JAKARTA'),
+(32, 'JAWA BARAT'),
+(33, 'JAWA TENGAH'),
+(34, 'DAERAH ISTIMEWA YOGYAKARTA'),
+(35, 'JAWA TIMUR'),
+(36, 'BANTEN'),
+(51, 'BALI'),
+(52, 'NUSA TENGGARA BARAT'),
+(53, 'NUSA TENGGARA TIMUR'),
+(61, 'KALIMANTAN BARAT'),
+(62, 'KALIMANTAN TENGAH'),
+(63, 'KALIMANTAN SELATAN'),
+(64, 'KALIMANTAN TIMUR'),
+(71, 'SULAWESI UTARA'),
+(72, 'SULAWESI TENGAH'),
+(73, 'SULAWESI SELATAN'),
+(74, 'SULAWESI TENGGARA'),
+(75, 'GORONTALO'),
+(76, 'SULAWESI BARAT'),
+(81, 'MALUKU'),
+(82, 'MALUKU UTARA'),
+(91, 'PAPUA'),
+(92, 'PAPUA BARAT');
 
 -- --------------------------------------------------------
 
@@ -7528,7 +8849,7 @@ CREATE TABLE `tb_rpjmd` (
 --
 
 INSERT INTO `tb_rpjmd` (`id_tb_rpjmd`, `tb_rpjmd_visi`, `tb_rpjmd_tahun`, `tb_rpjmd_status_tahun`, `tb_rpjmd_status_bulan`, `tb_rpjmd_status_rkpd`, `tb_rpjmd_status_json`) VALUES
-(1, 'Terwujudnya Masyarakat Kabupaten Morowali yang Sejahtera Bersama', 2019, 1, 1, 1, '{\"tahun1\":{\"bulan1\":1,\"bulan2\":2,\"bulan3\":2,\"bulan4\":2,\"bulan5\":2,\"bulan6\":2,\"bulan7\":3,\"bulan8\":3,\"bulan9\":3,\"bulan10\":3,\"bulan11\":3,\"bulan12\":3},\"tahun2\":{\"bulan1\":1,\"bulan2\":2,\"bulan3\":2,\"bulan4\":2,\"bulan5\":2,\"bulan6\":2,\"bulan7\":3,\"bulan8\":3,\"bulan9\":3,\"bulan10\":3,\"bulan11\":3,\"bulan12\":3},\"tahun3\":{\"bulan1\":1,\"bulan2\":2,\"bulan3\":2,\"bulan4\":2,\"bulan5\":2,\"bulan6\":2,\"bulan7\":3,\"bulan8\":3,\"bulan9\":3,\"bulan10\":3,\"bulan11\":3,\"bulan12\":3},\"tahun4\":{\"bulan1\":1,\"bulan2\":2,\"bulan3\":2,\"bulan4\":2,\"bulan5\":2,\"bulan6\":2,\"bulan7\":3,\"bulan8\":3,\"bulan9\":3,\"bulan10\":3,\"bulan11\":3,\"bulan12\":3},\"tahun5\":{\"bulan1\":1,\"bulan2\":2,\"bulan3\":2,\"bulan4\":2,\"bulan5\":2,\"bulan6\":2,\"bulan7\":3,\"bulan8\":3,\"bulan9\":3,\"bulan10\":3,\"bulan11\":3,\"bulan12\":3}}');
+(1, 'Terwujudnya Masyarakat Kabupaten Morowali yang Sejahtera Bersama', 2019, 4, 1, 1, '{\"tahun1\":{\"bulan1\":1,\"bulan2\":2,\"bulan3\":2,\"bulan4\":2,\"bulan5\":2,\"bulan6\":2,\"bulan7\":3,\"bulan8\":3,\"bulan9\":3,\"bulan10\":3,\"bulan11\":3,\"bulan12\":3},\"tahun2\":{\"bulan1\":1,\"bulan2\":2,\"bulan3\":2,\"bulan4\":2,\"bulan5\":2,\"bulan6\":2,\"bulan7\":3,\"bulan8\":3,\"bulan9\":3,\"bulan10\":3,\"bulan11\":3,\"bulan12\":3},\"tahun3\":{\"bulan1\":1,\"bulan2\":2,\"bulan3\":2,\"bulan4\":2,\"bulan5\":2,\"bulan6\":2,\"bulan7\":3,\"bulan8\":3,\"bulan9\":3,\"bulan10\":3,\"bulan11\":3,\"bulan12\":3},\"tahun4\":{\"bulan1\":1,\"bulan2\":2,\"bulan3\":2,\"bulan4\":2,\"bulan5\":2,\"bulan6\":2,\"bulan7\":3,\"bulan8\":3,\"bulan9\":3,\"bulan10\":3,\"bulan11\":3,\"bulan12\":3},\"tahun5\":{\"bulan1\":1,\"bulan2\":2,\"bulan3\":2,\"bulan4\":2,\"bulan5\":2,\"bulan6\":2,\"bulan7\":3,\"bulan8\":3,\"bulan9\":3,\"bulan10\":3,\"bulan11\":3,\"bulan12\":3}}');
 
 -- --------------------------------------------------------
 
@@ -7608,6 +8929,18 @@ CREATE TABLE `tb_rpjmd_kegiatan` (
   `tb_rpjmd_kegiatan_th_akhir_capaian_realisasi` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tb_rpjmd_kegiatan`
+--
+
+INSERT INTO `tb_rpjmd_kegiatan` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_tujuan_kode`, `tb_rpjmd_sasaran_kode`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_program_kode`, `tb_kegiatan_kode`, `tb_rpjmd_kegiatan_nama`, `tb_rpjmd_kegiatan_indikator`, `tb_rpjmd_kegiatan_th1_target_kinerja`, `tb_rpjmd_kegiatan_th2_target_kinerja`, `tb_rpjmd_kegiatan_th3_target_kinerja`, `tb_rpjmd_kegiatan_th4_target_kinerja`, `tb_rpjmd_kegiatan_th5_target_kinerja`, `tb_rpjmd_kegiatan_th1_target_realisasi`, `tb_rpjmd_kegiatan_th2_target_realisasi`, `tb_rpjmd_kegiatan_th3_target_realisasi`, `tb_rpjmd_kegiatan_th4_target_realisasi`, `tb_rpjmd_kegiatan_th5_target_realisasi`, `tb_rpjmd_kegiatan_th1_capaian_kinerja`, `tb_rpjmd_kegiatan_th2_capaian_kinerja`, `tb_rpjmd_kegiatan_th3_capaian_kinerja`, `tb_rpjmd_kegiatan_th4_capaian_kinerja`, `tb_rpjmd_kegiatan_th5_capaian_kinerja`, `tb_rpjmd_kegiatan_th1_capaian_realisasi`, `tb_rpjmd_kegiatan_th2_capaian_realisasi`, `tb_rpjmd_kegiatan_th3_capaian_realisasi`, `tb_rpjmd_kegiatan_th4_capaian_realisasi`, `tb_rpjmd_kegiatan_th5_capaian_realisasi`, `tb_rpjmd_kegiatan_th_awal_target_kinerja`, `tb_rpjmd_kegiatan_th_awal_target_realisasi`, `tb_rpjmd_kegiatan_th_akhir_target_kinerja`, `tb_rpjmd_kegiatan_th_akhir_target_realisasi`, `id_tb_satuan`, `tb_rpjmd_kegiatan_th_awal_capaian_kinerja`, `tb_rpjmd_kegiatan_th_awal_capaian_realisasi`, `tb_rpjmd_kegiatan_th_akhir_capaian_kinerja`, `tb_rpjmd_kegiatan_th_akhir_capaian_realisasi`) VALUES
+(1, 1, 1, 1, 4, 1, 3, 1, 1, 2, NULL, NULL, '100', '100', '100', '100', '100', 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, '60', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', 0, NULL, NULL, 1, NULL, NULL, NULL, NULL),
+(1, 1, 1, 1, 4, 1, 3, 1, 1, 22, NULL, NULL, '100', '100', '100', '100', '100', 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, '100', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', 0, NULL, NULL, 1, NULL, NULL, NULL, NULL),
+(1, 2, 1, 1, 2, 11, 1, 1, 15, 1, NULL, NULL, '100', '100', '100', '100', '100', 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', 0, NULL, NULL, 1, NULL, NULL, NULL, NULL),
+(1, 3, 1, 1, 1, 1, 1, 1, 15, 1, NULL, NULL, '100', '100', '100', '100', '100', 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, NULL, NULL, NULL, '100', NULL, NULL, NULL, NULL, NULL, NULL, '0', 0, NULL, NULL, 3, NULL, NULL, NULL, NULL),
+(1, 3, 1, 1, 1, 1, 1, 1, 15, 19, NULL, NULL, '100', '100', '100', '100', '100', 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', 0, NULL, NULL, 3, NULL, NULL, NULL, NULL),
+(1, 4, 1, 1, 1, 2, 1, 1, 15, 1, NULL, NULL, '100', '100', '100', '100', '100', 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', 0, NULL, NULL, 1, NULL, NULL, NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -7628,6 +8961,22 @@ CREATE TABLE `tb_rpjmd_kegiatan_indikator` (
   `tb_rpjmd_kegiatan_indikator_kode` int(11) NOT NULL,
   `tb_rpjmd_kegiatan_indikator_nama` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_rpjmd_kegiatan_indikator`
+--
+
+INSERT INTO `tb_rpjmd_kegiatan_indikator` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_tujuan_kode`, `tb_rpjmd_sasaran_kode`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_program_kode`, `tb_kegiatan_kode`, `tb_rpjmd_kegiatan_indikator_kode`, `tb_rpjmd_kegiatan_indikator_nama`) VALUES
+(1, 1, 1, 1, 4, 1, 3, 1, 1, 2, 1, 'sdf1'),
+(1, 1, 1, 1, 4, 1, 3, 1, 1, 2, 2, 'sdf2'),
+(1, 1, 1, 1, 4, 1, 3, 1, 1, 2, 3, 'tes'),
+(1, 1, 1, 1, 4, 1, 3, 1, 1, 22, 1, 'tes1'),
+(1, 1, 1, 1, 4, 1, 3, 1, 1, 22, 2, 'dsfgd1'),
+(1, 2, 1, 1, 2, 11, 1, 1, 15, 1, 1, 'tes'),
+(1, 2, 1, 1, 2, 11, 1, 1, 15, 1, 2, 'tes2'),
+(1, 3, 1, 1, 1, 1, 1, 1, 15, 19, 1, 'tes'),
+(1, 4, 1, 1, 1, 2, 1, 1, 15, 1, 1, 'indikator 1'),
+(1, 4, 1, 1, 1, 2, 1, 1, 15, 1, 2, 'indikator 2');
 
 -- --------------------------------------------------------
 
@@ -7651,6 +9000,18 @@ CREATE TABLE `tb_rpjmd_kegiatan_indikator_penetapan` (
   `tb_rpjmd_kegiatan_indikator_nama` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tb_rpjmd_kegiatan_indikator_penetapan`
+--
+
+INSERT INTO `tb_rpjmd_kegiatan_indikator_penetapan` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_tujuan_kode`, `tb_rpjmd_sasaran_kode`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_program_kode`, `tb_rpjmd_program_tahun`, `tb_kegiatan_kode`, `tb_rpjmd_kegiatan_indikator_kode`, `tb_rpjmd_kegiatan_indikator_nama`) VALUES
+(1, 1, 1, 1, 4, 1, 3, 1, 1, 1, 9, 1, 'tes2'),
+(1, 1, 1, 1, 4, 1, 3, 1, 1, 1, 9, 2, 'tes'),
+(1, 1, 1, 1, 4, 1, 3, 1, 1, 1, 21, 1, 'sdf'),
+(1, 1, 1, 1, 4, 1, 3, 1, 1, 1, 21, 2, 'ye'),
+(1, 1, 1, 2, 4, 1, 3, 1, 2, 1, 1, 1, 'tes'),
+(1, 1, 1, 2, 4, 1, 3, 1, 2, 1, 46, 1, 'tes');
+
 -- --------------------------------------------------------
 
 --
@@ -7672,6 +9033,18 @@ CREATE TABLE `tb_rpjmd_kegiatan_indikator_perubahan` (
   `tb_rpjmd_kegiatan_indikator_kode` int(11) NOT NULL,
   `tb_rpjmd_kegiatan_indikator_nama` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_rpjmd_kegiatan_indikator_perubahan`
+--
+
+INSERT INTO `tb_rpjmd_kegiatan_indikator_perubahan` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_tujuan_kode`, `tb_rpjmd_sasaran_kode`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_program_kode`, `tb_rpjmd_program_tahun`, `tb_kegiatan_kode`, `tb_rpjmd_kegiatan_indikator_kode`, `tb_rpjmd_kegiatan_indikator_nama`) VALUES
+(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 'tes'),
+(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 'tes2'),
+(1, 1, 1, 2, 4, 1, 3, 1, 2, 1, 3, 1, 'tes'),
+(1, 1, 1, 2, 4, 1, 3, 1, 2, 1, 3, 2, 'tes2'),
+(1, 1, 1, 2, 4, 1, 3, 1, 2, 1, 43, 1, '1'),
+(1, 1, 1, 2, 4, 1, 3, 1, 2, 1, 43, 2, '22');
 
 -- --------------------------------------------------------
 
@@ -7703,6 +9076,17 @@ CREATE TABLE `tb_rpjmd_kegiatan_penetapan` (
   `id_tb_satuan` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tb_rpjmd_kegiatan_penetapan`
+--
+
+INSERT INTO `tb_rpjmd_kegiatan_penetapan` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_tujuan_kode`, `tb_rpjmd_sasaran_kode`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_program_kode`, `tb_rpjmd_program_tahun`, `tb_kegiatan_kode`, `tb_rpjmd_kegiatan_nama`, `tb_rpjmd_kegiatan_indikator`, `tb_rpjmd_kegiatan_awal_target_kinerja`, `tb_rpjmd_kegiatan_awal_target_realisasi`, `tb_rpjmd_kegiatan_target_kinerja`, `tb_rpjmd_kegiatan_target_realisasi`, `tb_rpjmd_kegiatan_capaian_kinerja`, `tb_rpjmd_kegiatan_capaian_realisasi`, `tb_rpjmd_kegiatan_catatan`, `id_tb_satuan`) VALUES
+(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, NULL, NULL, NULL, NULL, '100', 5000000000, NULL, NULL, '-', 1),
+(1, 1, 1, 1, 4, 1, 3, 1, 1, 1, 9, NULL, NULL, NULL, NULL, '100', 5000000000, NULL, NULL, '-', 1),
+(1, 1, 1, 1, 4, 1, 3, 1, 1, 1, 21, NULL, NULL, NULL, NULL, '100', 5000000000, NULL, NULL, '-2', 1),
+(1, 1, 1, 2, 4, 1, 3, 1, 2, 1, 1, NULL, 'kegiatan indikator', NULL, NULL, '100', 5000000000, NULL, NULL, '-', 1),
+(1, 1, 1, 2, 4, 1, 3, 1, 2, 1, 46, NULL, NULL, NULL, NULL, '100', 5000000000, NULL, NULL, '-', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -7733,6 +9117,16 @@ CREATE TABLE `tb_rpjmd_kegiatan_perubahan` (
   `id_tb_satuan` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tb_rpjmd_kegiatan_perubahan`
+--
+
+INSERT INTO `tb_rpjmd_kegiatan_perubahan` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_tujuan_kode`, `tb_rpjmd_sasaran_kode`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_program_kode`, `tb_rpjmd_program_tahun`, `tb_kegiatan_kode`, `tb_rpjmd_kegiatan_nama`, `tb_rpjmd_kegiatan_indikator`, `tb_rpjmd_kegiatan_awal_target_kinerja`, `tb_rpjmd_kegiatan_awal_target_realisasi`, `tb_rpjmd_kegiatan_target_kinerja`, `tb_rpjmd_kegiatan_target_realisasi`, `tb_rpjmd_kegiatan_capaian_kinerja`, `tb_rpjmd_kegiatan_capaian_realisasi`, `tb_rpjmd_kegiatan_catatan`, `id_tb_satuan`) VALUES
+(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, NULL, NULL, NULL, NULL, '100', 5000000000, NULL, NULL, '-', 1),
+(1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, NULL, NULL, NULL, NULL, '100', 5000000000, NULL, NULL, '-', 1),
+(1, 1, 1, 2, 4, 1, 3, 1, 2, 1, 3, NULL, NULL, NULL, NULL, '100', 5000000000, NULL, NULL, '-2', 1),
+(1, 1, 1, 2, 4, 1, 3, 1, 2, 1, 43, NULL, NULL, NULL, NULL, '100', 5000000000, NULL, NULL, '-23', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -7756,7 +9150,8 @@ INSERT INTO `tb_rpjmd_misi` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_misi
 (1, 4, 'Meningkatkan pelayanan kesehatan melalui Pembiayaan kesehatan Gratis, peningkatan kuantitas dan kualitas fasilitas kesehatan, tenaga Kesehatan dan ketersediaan obat yang berkualitas, serta mendorong kebersihan, Kesehatan dan keindahan lingkungan agar tercipta suasana sehat dan nyaman.'),
 (1, 5, 'Meningkatkan produksi pangan melalui peningkatan dan pengembangan bidang infrastruktur pertanian, peternakan, perikanan, kehutanan dan kelautan yang didukung oleh kemudahan modal usaha dan TTG agar tercipta kepastian harga dan pasar.'),
 (1, 6, 'Meningkatkan kualitas hidup masyarakat melalui peningkatan fasilitas air bersih, Listrik, fasilitas olahraga, perumahan, obyek wisata, serta seni dan budaya sehingga tercipta kehidupan masyarakat yang harmonis dan bahagia.'),
-(1, 7, 'Mewujudkan kehidupan masyarakat yang beriman dan bertaqwa melalui peningkatan pembinaan agama, sarana dan prasana tempat ibadah sehingga tercipta kerukunan hidup antar umat beragama.');
+(1, 7, 'Mewujudkan kehidupan masyarakat yang beriman dan bertaqwa melalui peningkatan pembinaan agama, sarana dan prasana tempat ibadah sehingga tercipta kerukunan hidup antar umat beragama.'),
+(1, 8, 'tes');
 
 -- --------------------------------------------------------
 
@@ -7772,36 +9167,41 @@ CREATE TABLE `tb_rpjmd_opd` (
   `tb_urusan_kode` int(11) NOT NULL,
   `tb_bidang_kode` int(11) NOT NULL,
   `tb_unit_kode` int(11) NOT NULL,
-  `tb_sub_unit_kode` int(11) NOT NULL
+  `tb_sub_unit_kode` int(11) NOT NULL,
+  `tb_rpjmd_opd_th1_capaian_kinerja` varchar(45) NOT NULL,
+  `tb_rpjmd_opd_th2_capaian_kinerja` varchar(45) NOT NULL,
+  `tb_rpjmd_opd_th3_capaian_kinerja` varchar(45) NOT NULL,
+  `tb_rpjmd_opd_th4_capaian_kinerja` varchar(45) NOT NULL,
+  `tb_rpjmd_opd_th5_capaian_kinerja` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tb_rpjmd_opd`
 --
 
-INSERT INTO `tb_rpjmd_opd` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_tujuan_kode`, `tb_rpjmd_sasaran_kode`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`) VALUES
-(1, 1, 1, 1, 4, 1, 3, 1),
-(1, 1, 1, 1, 4, 1, 3, 2),
-(1, 1, 1, 1, 4, 1, 3, 5),
-(1, 2, 1, 1, 2, 11, 1, 1),
-(1, 2, 1, 1, 2, 13, 1, 1),
-(1, 2, 1, 1, 3, 6, 1, 1),
-(1, 2, 1, 1, 4, 1, 3, 4),
-(1, 2, 2, 1, 2, 1, 1, 1),
-(1, 2, 2, 1, 2, 12, 1, 1),
-(1, 3, 1, 1, 1, 1, 1, 1),
-(1, 3, 1, 2, 1, 1, 1, 1),
-(1, 3, 1, 2, 2, 13, 1, 1),
-(1, 3, 1, 2, 2, 17, 1, 1),
-(1, 4, 1, 1, 1, 2, 1, 1),
-(1, 4, 1, 2, 1, 2, 1, 1),
-(1, 4, 1, 2, 1, 6, 1, 1),
-(1, 4, 1, 2, 2, 7, 1, 1),
-(1, 6, 1, 1, 1, 3, 1, 1),
-(1, 6, 1, 1, 1, 4, 1, 1),
-(1, 6, 1, 1, 2, 9, 1, 1),
-(1, 6, 1, 2, 1, 6, 2, 1),
-(1, 6, 1, 2, 2, 5, 1, 1);
+INSERT INTO `tb_rpjmd_opd` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_tujuan_kode`, `tb_rpjmd_sasaran_kode`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_rpjmd_opd_th1_capaian_kinerja`, `tb_rpjmd_opd_th2_capaian_kinerja`, `tb_rpjmd_opd_th3_capaian_kinerja`, `tb_rpjmd_opd_th4_capaian_kinerja`, `tb_rpjmd_opd_th5_capaian_kinerja`) VALUES
+(1, 1, 1, 1, 4, 1, 3, 1, 'WTB', '', '', '', ''),
+(1, 1, 1, 1, 4, 1, 3, 2, '', '', '', '', ''),
+(1, 1, 1, 1, 4, 1, 3, 5, '', '', '', '', ''),
+(1, 2, 1, 1, 2, 11, 1, 1, '', '', '', '', ''),
+(1, 2, 1, 1, 2, 13, 1, 1, '', '', '', '', ''),
+(1, 2, 1, 1, 3, 6, 1, 1, '', '', '', '', ''),
+(1, 2, 1, 1, 4, 1, 3, 4, '', '', '', '', ''),
+(1, 2, 2, 1, 2, 1, 1, 1, '', '', '', '', ''),
+(1, 2, 2, 1, 2, 12, 1, 1, '', '', '', '', ''),
+(1, 3, 1, 1, 1, 1, 1, 1, '55', '100', '', 'WTB', ''),
+(1, 3, 1, 2, 1, 1, 1, 1, '', '', '', '', ''),
+(1, 3, 1, 2, 2, 13, 1, 1, '', '', '', '', ''),
+(1, 3, 1, 2, 2, 17, 1, 1, '', '', '', '', ''),
+(1, 4, 1, 1, 1, 2, 1, 1, '', '', '', '', ''),
+(1, 4, 1, 2, 1, 2, 1, 1, '', '', '', '', ''),
+(1, 4, 1, 2, 1, 6, 1, 1, '', '', '', '', ''),
+(1, 4, 1, 2, 2, 7, 1, 1, '', '', '', '', ''),
+(1, 6, 1, 1, 1, 3, 1, 1, '', '', '', '', ''),
+(1, 6, 1, 1, 1, 4, 1, 1, '', '', '', '', ''),
+(1, 6, 1, 1, 2, 9, 1, 1, '', '', '', '', ''),
+(1, 6, 1, 2, 1, 6, 2, 1, '', '', '', '', ''),
+(1, 6, 1, 2, 2, 5, 1, 1, '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -7861,48 +9261,28 @@ CREATE TABLE `tb_rpjmd_program` (
 --
 
 INSERT INTO `tb_rpjmd_program` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_tujuan_kode`, `tb_rpjmd_sasaran_kode`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_program_kode`, `tb_rpjmd_program_nama`, `tb_rpjmd_program_indikator`, `tb_rpjmd_program_th1_target_kinerja`, `tb_rpjmd_program_th2_target_kinerja`, `tb_rpjmd_program_th3_target_kinerja`, `tb_rpjmd_program_th4_target_kinerja`, `tb_rpjmd_program_th5_target_kinerja`, `tb_rpjmd_program_th1_target_realisasi`, `tb_rpjmd_program_th2_target_realisasi`, `tb_rpjmd_program_th3_target_realisasi`, `tb_rpjmd_program_th4_target_realisasi`, `tb_rpjmd_program_th5_target_realisasi`, `tb_rpjmd_program_th1_capaian_kinerja`, `tb_rpjmd_program_th2_capaian_kinerja`, `tb_rpjmd_program_th3_capaian_kinerja`, `tb_rpjmd_program_th4_capaian_kinerja`, `tb_rpjmd_program_th5_capaian_kinerja`, `tb_rpjmd_program_th1_capaian_realisasi`, `tb_rpjmd_program_th2_capaian_realisasi`, `tb_rpjmd_program_th3_capaian_realisasi`, `tb_rpjmd_program_th4_capaian_realisasi`, `tb_rpjmd_program_th5_capaian_realisasi`, `tb_rpjmd_program_th_awal_target_realisasi`, `tb_rpjmd_program_th_awal_target_kinerja`, `tb_rpjmd_program_th_akhir_target_realisasi`, `tb_rpjmd_program_th_akhir_target_kinerja`, `id_tb_satuan`, `tb_rpjmd_program_th_awal_capaian_kinerja`, `tb_rpjmd_program_th_awal_capaian_realisasi`, `tb_rpjmd_program_th_akhirl_capaian_kinerja`, `tb_rpjmd_program_th_akhir_capaian_realisasi`, `tb_rpjmd_program_status_tahun`, `tb_rpjmd_program_status_bulan`, `tb_rpjmd_program_status_jenis`, `tb_rpjmd_program_status_ke`) VALUES
+(1, 1, 1, 1, 4, 1, 3, 1, 1, NULL, NULL, '100', '100', '100', '100', '100', 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, '70', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '0', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 2, 1, 1, 2, 11, 1, 1, 15, NULL, 'Persentase pelaku UMKM yang memperoleh bantuan', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 2, 1, 1, 2, 11, 1, 1, 16, NULL, 'Persentase usaha mikro yang naik kelas', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 2, 1, 1, 2, 11, 1, 1, 17, NULL, 'Persentase promosi produk UMKM', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 2, 1, 1, 2, 11, 1, 1, 18, NULL, '\"Persentase koperasi yang sehat/aktif \"', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 2, 1, 1, 2, 13, 1, 1, 22, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 2, 1, 1, 2, 13, 1, 1, 23, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 2, 1, 1, 2, 13, 1, 1, 25, NULL, 'Persentase Destinasi Wisata Dalam Kondisi Baik', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 2, 1, 1, 2, 13, 1, 1, 26, NULL, 'Persentase pertumbuhan wisatawan', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 2, 1, 1, 2, 13, 1, 1, 27, NULL, 'Tingkat kepuasan pengunjung atas ketersediaan akomodasi dan konsumsi', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 2, 1, 1, 3, 6, 1, 1, 17, NULL, 'Persentase Produk unggulan yang diperdagangkan keluar Morowali', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 2, 1, 1, 3, 6, 1, 1, 18, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 2, 1, 1, 3, 6, 1, 1, 21, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 2, 1, 1, 3, 6, 1, 1, 22, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 2, 1, 1, 3, 6, 1, 1, 23, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 2, 1, 1, 3, 6, 1, 1, 24, NULL, 'Persentase Sarana dan Prasarana Perdagangan dalam kondisi layak', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 2, 1, 1, 3, 6, 1, 1, 25, NULL, 'perubahan harga barang pokok di pasar', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 2, 1, 1, 4, 1, 3, 4, 15, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 2, 2, 1, 2, 1, 1, 1, 15, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 2, 2, 1, 2, 1, 1, 1, 16, NULL, 'Persentase tenaga kerja terserap yang mendapat pelatihan yang bekerja', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 2, 2, 1, 2, 1, 1, 1, 17, NULL, 'Persentase kasus ketenaga kerjaan yang diselesaikan dengan perjanjian bersama', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 2, 2, 1, 2, 12, 1, 1, 15, NULL, 'Nilai Investasi berdasarkan sektor', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 2, 2, 1, 2, 12, 1, 1, 16, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 3, 1, 1, 1, 1, 1, 1, 15, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 3, 1, 1, 1, 1, 1, 1, 15, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, 'WTB', NULL, '100', NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 3, 1, 1, 1, 1, 1, 1, 16, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 3, 1, 1, 1, 1, 1, 1, 18, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 3, 1, 1, 1, 1, 1, 1, 19, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 3, 1, 1, 1, 1, 1, 1, 20, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 3, 1, 1, 1, 1, 1, 1, 22, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 3, 1, 1, 1, 1, 1, 1, 23, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 3, 1, 1, 1, 1, 1, 1, 26, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 3, 1, 1, 1, 1, 1, 1, 27, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 3, 1, 1, 1, 1, 1, 1, 28, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 3, 1, 2, 1, 1, 1, 1, 29, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 3, 1, 2, 1, 1, 1, 1, 30, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 3, 1, 2, 1, 1, 1, 1, 31, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 3, 1, 2, 2, 13, 1, 1, 16, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 3, 1, 2, 2, 13, 1, 1, 20, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 3, 1, 2, 2, 13, 1, 1, 21, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 3, 1, 2, 2, 13, 1, 1, 28, NULL, 'Persentase organisasi pemuda yang aktif', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 3, 1, 2, 2, 17, 1, 1, 15, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 3, 1, 2, 2, 17, 1, 1, 17, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 3, 1, 2, 2, 17, 1, 1, 18, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 4, 1, 1, 1, 2, 1, 1, 15, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 4, 1, 1, 1, 2, 1, 1, 16, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 4, 1, 1, 1, 2, 1, 1, 17, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -7914,34 +9294,16 @@ INSERT INTO `tb_rpjmd_program` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_t
 (1, 4, 1, 1, 1, 2, 1, 1, 28, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 4, 1, 1, 1, 2, 1, 1, 30, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 4, 1, 1, 1, 2, 1, 1, 32, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 4, 1, 1, 1, 2, 1, 1, 35, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 4, 1, 1, 1, 2, 1, 1, 36, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 4, 1, 1, 1, 2, 1, 1, 37, NULL, 'Rasio tenaga kesehatan terhadap jumlah penduduk', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 4, 1, 1, 1, 2, 1, 1, 38, NULL, 'Persentase sarana apotek, toko obat, toko alkes, optikal, UMOT, IRTP dan TTU Mamin yang memenuhi standar', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 4, 1, 1, 1, 2, 1, 1, 39, NULL, 'Persentase stunting yang tertanggulangi', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 4, 1, 2, 1, 2, 1, 1, 40, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 4, 1, 2, 1, 2, 1, 1, 41, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 4, 1, 2, 1, 2, 1, 1, 42, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 4, 1, 2, 1, 2, 1, 1, 43, NULL, 'Cakupan PUS peserta KB anggota Usaha Peningkatan Pendapatan Keluarga Sejahtera (UPPKS) yang ber-KB mandiri', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 4, 1, 2, 1, 6, 1, 1, 15, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 4, 1, 2, 1, 6, 1, 1, 16, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 4, 1, 2, 1, 6, 1, 1, 17, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 4, 1, 2, 1, 6, 1, 1, 18, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 4, 1, 2, 1, 6, 1, 1, 27, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 4, 1, 2, 1, 6, 1, 1, 28, NULL, 'Persentase korban bencana yang menerima bantuan sosial selama masa tanggap darurat', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 4, 1, 2, 1, 6, 1, 1, 29, NULL, 'Persentase korban bencana yang menerima bantuan sosial selama masa tanggap darurat', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 4, 1, 2, 2, 7, 1, 1, 15, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 4, 1, 2, 2, 7, 1, 1, 16, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 4, 1, 2, 2, 7, 1, 1, 17, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 4, 1, 2, 2, 7, 1, 1, 18, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 4, 1, 2, 2, 7, 1, 1, 21, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 4, 1, 2, 2, 7, 1, 1, 22, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 4, 1, 2, 2, 7, 1, 1, 23, NULL, 'Indeks Pemberdayaan Gender', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 4, 1, 2, 2, 7, 1, 1, 24, NULL, 'Jumlah kasus laporan kekerasan terhadap perempuan yang terselesaikan', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 4, 1, 2, 2, 7, 1, 1, 25, NULL, 'Partisipasi Angkatan Kerja Perempuan', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 4, 1, 2, 2, 7, 1, 1, 26, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 4, 1, 2, 2, 7, 1, 1, 27, NULL, 'Persentase desa yang menerapkan administrasi pemerintahan desa yang baik dan benar', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 4, 1, 2, 2, 7, 1, 1, 28, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 6, 1, 1, 1, 3, 1, 1, 15, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 6, 1, 1, 1, 3, 1, 1, 16, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 6, 1, 1, 1, 3, 1, 1, 17, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -7953,40 +9315,21 @@ INSERT INTO `tb_rpjmd_program` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_t
 (1, 6, 1, 1, 1, 3, 1, 1, 29, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 6, 1, 1, 1, 3, 1, 1, 31, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 6, 1, 1, 1, 3, 1, 1, 35, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 6, 1, 1, 1, 3, 1, 1, 36, NULL, 'Persentase kondisi jalan dan jembatan dalam kondisi baik', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 6, 1, 1, 1, 3, 1, 1, 37, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 6, 1, 1, 1, 3, 1, 1, 38, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 6, 1, 1, 1, 3, 1, 1, 39, NULL, '-', 'Persentase ketaatan terhadap RTRW ', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 6, 1, 1, 1, 3, 1, 1, 40, NULL, 'Indeks kualitas jasa konstruksi', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 6, 1, 1, 1, 4, 1, 1, 15, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 6, 1, 1, 1, 4, 1, 1, 16, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 6, 1, 1, 1, 4, 1, 1, 17, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 6, 1, 1, 1, 4, 1, 1, 20, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 6, 1, 1, 1, 4, 1, 1, 22, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 6, 1, 1, 1, 4, 1, 1, 23, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 6, 1, 1, 1, 4, 1, 1, 24, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 6, 1, 1, 1, 4, 1, 1, 25, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 6, 1, 1, 1, 4, 1, 1, 26, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 6, 1, 1, 1, 4, 1, 1, 27, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 6, 1, 1, 2, 9, 1, 1, 15, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 6, 1, 1, 2, 9, 1, 1, 18, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 6, 1, 1, 2, 9, 1, 1, 21, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 6, 1, 1, 2, 9, 1, 1, 22, NULL, 'Persentase prasarana perhubungan dalam kondisi baik', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 6, 1, 1, 2, 9, 1, 1, 23, NULL, 'Persentase moda transportasi yang layak', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 6, 1, 1, 2, 9, 1, 1, 24, NULL, 'Persentase ketersediaan sarana perhubungan', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 6, 1, 2, 1, 6, 2, 1, 22, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 6, 1, 2, 1, 6, 2, 1, 23, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 6, 1, 2, 1, 6, 2, 1, 24, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 6, 1, 2, 1, 6, 2, 1, 25, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 6, 1, 2, 1, 6, 2, 1, 30, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 6, 1, 2, 2, 5, 1, 1, 15, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 6, 1, 2, 2, 5, 1, 1, 16, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 6, 1, 2, 2, 5, 1, 1, 17, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 6, 1, 2, 2, 5, 1, 1, 24, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 6, 1, 2, 2, 5, 1, 1, 25, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 6, 1, 2, 2, 5, 1, 1, 26, NULL, 'Persentase sampah yang tertangani', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 6, 1, 2, 2, 5, 1, 1, 27, NULL, 'Indeks Kualitas Tanah', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 6, 1, 2, 2, 5, 1, 1, 28, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(1, 6, 1, 2, 2, 5, 1, 1, 24, NULL, '-', '-', '-', '-', '-', '-', 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '-', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -8007,6 +9350,15 @@ CREATE TABLE `tb_rpjmd_program_indikator` (
   `tb_rpjmd_program_indikator_kode` int(11) NOT NULL,
   `tb_rpjmd_program_indikator_nama` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_rpjmd_program_indikator`
+--
+
+INSERT INTO `tb_rpjmd_program_indikator` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_tujuan_kode`, `tb_rpjmd_sasaran_kode`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_program_kode`, `tb_rpjmd_program_indikator_kode`, `tb_rpjmd_program_indikator_nama`) VALUES
+(1, 1, 1, 1, 4, 1, 3, 1, 1, 1, 'tes'),
+(1, 1, 1, 1, 4, 1, 3, 1, 1, 2, 'tes'),
+(1, 4, 1, 1, 1, 2, 1, 1, 15, 1, '-');
 
 -- --------------------------------------------------------
 
@@ -8029,6 +9381,20 @@ CREATE TABLE `tb_rpjmd_program_indikator_penetapan` (
   `tb_rpjmd_program_indikator_nama` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tb_rpjmd_program_indikator_penetapan`
+--
+
+INSERT INTO `tb_rpjmd_program_indikator_penetapan` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_tujuan_kode`, `tb_rpjmd_sasaran_kode`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_program_kode`, `tb_rpjmd_program_tahun`, `tb_rpjmd_program_indikator_kode`, `tb_rpjmd_program_indikator_nama`) VALUES
+(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 'tes'),
+(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 'tes'),
+(1, 1, 1, 1, 2, 11, 1, 1, 1, 1, 1, 'tes'),
+(1, 1, 1, 1, 2, 11, 1, 1, 1, 1, 2, 'tes'),
+(1, 1, 1, 1, 2, 11, 1, 1, 1, 1, 3, 'trs2'),
+(1, 1, 1, 1, 4, 1, 3, 1, 1, 1, 1, 'tes1'),
+(1, 1, 1, 1, 4, 1, 3, 1, 1, 1, 2, 'tes2'),
+(1, 1, 1, 2, 4, 1, 3, 1, 2, 1, 1, 'tes');
+
 -- --------------------------------------------------------
 
 --
@@ -8049,6 +9415,16 @@ CREATE TABLE `tb_rpjmd_program_indikator_perubahan` (
   `tb_rpjmd_program_indikator_kode` int(11) NOT NULL,
   `tb_rpjmd_program_indikator_nama` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_rpjmd_program_indikator_perubahan`
+--
+
+INSERT INTO `tb_rpjmd_program_indikator_perubahan` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_tujuan_kode`, `tb_rpjmd_sasaran_kode`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_program_kode`, `tb_rpjmd_program_tahun`, `tb_rpjmd_program_indikator_kode`, `tb_rpjmd_program_indikator_nama`) VALUES
+(1, 1, 1, 2, 4, 1, 3, 1, 2, 1, 1, 'tes'),
+(1, 1, 1, 2, 4, 1, 3, 1, 2, 1, 2, '1112'),
+(1, 1, 1, 3, 4, 1, 3, 1, 3, 1, 1, 'tes22'),
+(1, 1, 1, 3, 4, 1, 3, 1, 3, 1, 2, 'tes');
 
 -- --------------------------------------------------------
 
@@ -8079,6 +9455,19 @@ CREATE TABLE `tb_rpjmd_program_penetapan` (
   `id_tb_satuan` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tb_rpjmd_program_penetapan`
+--
+
+INSERT INTO `tb_rpjmd_program_penetapan` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_tujuan_kode`, `tb_rpjmd_sasaran_kode`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_program_kode`, `tb_rpjmd_program_tahun`, `tb_rpjmd_program_nama`, `tb_rpjmd_program_indikator`, `tb_rpjmd_program_awal_target_kinerja`, `tb_rpjmd_program_awal_target_realisasi`, `tb_rpjmd_program_target_kinerja`, `tb_rpjmd_program_target_realisasi`, `tb_rpjmd_program_capaian_kinerja`, `tb_rpjmd_program_capaian_realisasi`, `tb_rpjmd_program_catatan`, `id_tb_satuan`) VALUES
+(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, NULL, NULL, NULL, NULL, '100', 1000000000, NULL, NULL, '-', 1),
+(1, 1, 1, 1, 1, 1, 1, 1, 1, 2, NULL, NULL, NULL, NULL, '100', 1000000001, NULL, NULL, '-', 2),
+(1, 1, 1, 1, 1, 1, 1, 1, 3, 1, NULL, NULL, NULL, NULL, '100', 1000000000, NULL, NULL, '-', 2),
+(1, 1, 1, 1, 2, 11, 1, 1, 1, 1, NULL, NULL, NULL, NULL, '100', 1000000001, NULL, NULL, '-', 1),
+(1, 1, 1, 1, 4, 1, 3, 1, 1, 1, NULL, NULL, NULL, NULL, '100', 1000000001, NULL, NULL, '-23', 1),
+(1, 1, 1, 2, 4, 1, 3, 1, 2, 1, NULL, NULL, NULL, NULL, '100', 1000000001, NULL, NULL, '---', 1),
+(1, 4, 1, 4, 1, 1, 1, 1, 2, 2, NULL, NULL, NULL, NULL, '100', 1000000000, NULL, NULL, '-', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -8107,6 +9496,16 @@ CREATE TABLE `tb_rpjmd_program_perubahan` (
   `tb_rpjmd_program_catatan` text,
   `id_tb_satuan` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_rpjmd_program_perubahan`
+--
+
+INSERT INTO `tb_rpjmd_program_perubahan` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_tujuan_kode`, `tb_rpjmd_sasaran_kode`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `tb_program_kode`, `tb_rpjmd_program_tahun`, `tb_rpjmd_program_nama`, `tb_rpjmd_program_indikator`, `tb_rpjmd_program_awal_target_kinerja`, `tb_rpjmd_program_awal_target_realisasi`, `tb_rpjmd_program_target_kinerja`, `tb_rpjmd_program_target_realisasi`, `tb_rpjmd_program_capaian_kinerja`, `tb_rpjmd_program_capaian_realisasi`, `tb_rpjmd_program_catatan`, `id_tb_satuan`) VALUES
+(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, NULL, NULL, NULL, NULL, '100', 1000000000, NULL, NULL, '-', 1),
+(1, 1, 1, 1, 1, 1, 1, 1, 1, 4, NULL, NULL, NULL, NULL, '100', 1000001001, NULL, NULL, '-', 1),
+(1, 1, 1, 2, 4, 1, 3, 1, 2, 1, NULL, NULL, NULL, NULL, '100', 1000000001, NULL, NULL, '-2', 1),
+(1, 1, 1, 3, 4, 1, 3, 1, 3, 1, NULL, NULL, NULL, NULL, '100', 1000000000, NULL, NULL, 'tes', 1);
 
 -- --------------------------------------------------------
 
@@ -8151,8 +9550,8 @@ CREATE TABLE `tb_rpjmd_sasaran` (
 --
 
 INSERT INTO `tb_rpjmd_sasaran` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_tujuan_kode`, `tb_rpjmd_sasaran_kode`, `tb_rpjmd_sasaran_nama`, `tb_rpjmd_sasaran_indikator`, `tb_rpjmd_sasaran_th1_target_kinerja`, `tb_rpjmd_sasaran_th2_target_kinerja`, `tb_rpjmd_sasaran_th3_target_kinerja`, `tb_rpjmd_sasaran_th4_target_kinerja`, `tb_rpjmd_sasaran_th5_target_kinerja`, `tb_rpjmd_sasaran_th1_target_realisasi`, `tb_rpjmd_sasaran_th2_target_realisasi`, `tb_rpjmd_sasaran_th3_target_realisasi`, `tb_rpjmd_sasaran_th4_target_realisasi`, `tb_rpjmd_sasaran_th5_target_realisasi`, `tb_rpjmd_sasaran_th1_capaian_kinerja`, `tb_rpjmd_sasaran_th2_capaian_kinerja`, `tb_rpjmd_sasaran_th3_capaian_kinerja`, `tb_rpjmd_sasaran_th4_capaian_kinerja`, `tb_rpjmd_sasaran_th5_capaian_kinerja`, `tb_rpjmd_sasaran_th_awal_target_kinerja`, `tb_rpjmd_sasaran_th_awal_capaian_kinerja`, `tb_rpjmd_sasaran_th_akhir_target_kinerja`, `tb_rpjmd_sasaran_th_akhir_capaian_kinerja`, `tb_rpjmd_sasaran_th_awal_target_realisasi`, `tb_rpjmd_sasaran_th_awal_capaian_realisasi`, `tb_rpjmd_sasaran_th_akhir_target_realisasi`, `tb_rpjmd_sasaran_th_akhir_capaian_realisasi`) VALUES
-(1, 1, 1, 1, 'Terciptanya tata kelola pemerintahan yang baik dan bersih ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 1, 1, 2, 'Meningkatnya Kapabilitas professional', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 1, 1, 1, 'Terciptanya tata kelola pemerintahan yang baik dan bersih ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '99', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 1, 1, 2, 'Meningkatnya Kapabilitas professional', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '100', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 1, 1, 3, 'Meningkatnya kesejahteraan aparatur pemerintah ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 1, 2, 1, 'Meningkatnya pelayanan Publik yang cepat dan Prima ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 2, 1, 1, 'Meningkatnya Pendapatan Asli Daerah (PAD)', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -8224,8 +9623,7 @@ CREATE TABLE `tb_rpjmd_sasaran_indikator` (
 INSERT INTO `tb_rpjmd_sasaran_indikator` (`id_tb_rpjmd`, `tb_rpjmd_misi_kode`, `tb_rpjmd_tujuan_kode`, `tb_rpjmd_sasaran_kode`, `tb_rpjmd_sasaran_indikator_kode`, `tb_rpjmd_sasaran_indikator_nama`) VALUES
 (1, 1, 1, 1, 1, '-'),
 (1, 1, 1, 2, 1, '-'),
-(1, 1, 1, 3, 1, 'yrd'),
-(1, 1, 1, 3, 2, '-');
+(1, 1, 1, 3, 1, '-');
 
 -- --------------------------------------------------------
 
@@ -8451,7 +9849,310 @@ CREATE TABLE `tb_satuan` (
 --
 
 INSERT INTO `tb_satuan` (`id_tb_satuan`, `tb_satuan_nama`, `tb_satuan_ket`) VALUES
-(1, '%', NULL);
+(1, '%', NULL),
+(2, 'batang', NULL),
+(3, 'blok', NULL),
+(4, 'botol', NULL),
+(5, 'box', NULL),
+(6, 'btl', NULL),
+(7, 'buah', NULL),
+(8, 'bungkus', NULL),
+(9, 'butir', NULL),
+(10, 'cc', NULL),
+(11, 'derigen', NULL),
+(12, 'dosis', NULL),
+(13, 'dus', NULL),
+(14, 'ekor', NULL),
+(15, 'gram', NULL),
+(16, 'gulung', NULL),
+(17, 'ikat', NULL),
+(18, 'kaleng', NULL),
+(19, 'kilogram', NULL),
+(20, 'kotak', NULL),
+(21, 'lembar', NULL),
+(22, 'liter', NULL),
+(23, 'lusin', NULL),
+(24, 'meter', NULL),
+(25, 'miligram', NULL),
+(26, 'milimeter', NULL),
+(27, 'mililiter', NULL),
+(28, 'Mug', NULL),
+(29, 'pack', NULL),
+(30, 'Pad', NULL),
+(31, 'pak', NULL),
+(32, 'paket', NULL),
+(33, 'pasang', NULL),
+(34, 'pc', NULL),
+(35, 'pcs', NULL),
+(36, 'plastik', NULL),
+(37, 'rim', NULL),
+(38, 'rol', NULL),
+(39, 'sachet', NULL),
+(40, 'Sack', NULL),
+(41, 'set', NULL),
+(42, 'sheet', NULL),
+(43, 'slop', NULL),
+(44, 'stel', NULL),
+(45, 'Tabung', NULL),
+(46, 'Tube', NULL),
+(47, 'unit', NULL),
+(48, 'orang', NULL),
+(49, 'orang', NULL),
+(50, 'Karung', NULL),
+(51, 'Buku', NULL),
+(52, 'Galon', NULL),
+(53, 'Keping', NULL),
+(54, 'Booklet', NULL),
+(55, 'Exemplar', NULL),
+(56, '5 Pcs', NULL),
+(57, '10 Pcs', NULL),
+(58, '25 Pcs', NULL),
+(59, '50 Pcs', NULL),
+(60, '100 Pcs', NULL),
+(61, '5 Buah', NULL),
+(62, '10 Buah', NULL),
+(63, '25 Buah', NULL),
+(64, '50 Buah', NULL),
+(65, '100 Buah', NULL),
+(66, '500 Buah', NULL),
+(67, '5 Lembar', NULL),
+(68, '10 Lembar', NULL),
+(69, '25 Lembar', NULL),
+(70, '50 Lembar', NULL),
+(71, '100 Lembar', NULL),
+(72, '5 Biji', NULL),
+(73, '10 Biji', NULL),
+(74, '25 Biji', NULL),
+(75, '50 Biji', NULL),
+(76, '100 Biji', NULL),
+(77, '500 Biji', NULL),
+(78, 'Meter Kuadrat', NULL),
+(79, 'Isi 10', NULL),
+(80, 'Isi 50', NULL),
+(81, 'Isi 100', NULL),
+(82, '1 Ikat', NULL),
+(83, '10 Ikat', NULL),
+(84, 'Bag', NULL),
+(85, 'Pail', NULL),
+(86, 'Doze', NULL),
+(87, 'Stell', NULL),
+(88, 'Kayu', NULL),
+(89, '30*30 cm', NULL),
+(90, 'Biji', NULL),
+(91, 'potong', NULL),
+(92, 'lipat', NULL),
+(93, 'cup', NULL),
+(94, 'Polibeg', NULL),
+(95, 'Pohon', NULL),
+(96, 'Meter Kubik', NULL),
+(97, '10 gr', NULL),
+(98, '100 gr', NULL),
+(99, '100 lbr / Blok', NULL),
+(100, '250 gr', NULL),
+(101, '500 gr', NULL),
+(102, '1000 gr', NULL),
+(103, 'ml', NULL),
+(104, '1000 ml', NULL),
+(105, 'induk', NULL),
+(106, '100 m', NULL),
+(107, 'Drum', NULL),
+(108, 'Metric Ton', NULL),
+(109, 'ton', NULL),
+(110, 'Zak', NULL),
+(111, 'titik', NULL),
+(112, 'kaki', NULL),
+(113, 'jam', NULL),
+(114, 'OH', NULL),
+(115, 'Kegiatan', NULL),
+(116, 'doze', NULL),
+(117, 'helai', NULL),
+(118, 'Tidak Ada', NULL),
+(119, 'tungkul', NULL),
+(120, 'kayu', NULL),
+(121, '12 pasang', NULL),
+(122, '6 Unit', NULL),
+(123, '4 Unit ', NULL),
+(124, 'ampul', NULL),
+(125, 'kotak koloni', NULL),
+(126, 'rpn', NULL),
+(127, 'pick up', NULL),
+(128, '100/meter', NULL),
+(129, '50/meter', NULL),
+(130, 'buah/set', NULL),
+(131, 'buah/meter', NULL),
+(132, '10Kg', NULL),
+(133, '15Kg', NULL),
+(134, '2 Meter Kubik', NULL),
+(135, 'kpg', NULL),
+(136, 'BA', NULL),
+(137, 'set m', NULL),
+(138, '40kg/zak', NULL),
+(139, '50kg/zak', NULL),
+(140, '5kg', NULL),
+(141, '2,5 liter', NULL),
+(142, '20kg', NULL),
+(143, '3 paket', NULL),
+(144, '2 set', NULL),
+(145, 'spot/60 detik', NULL),
+(146, 'jam/acara', NULL),
+(147, 'jam/2radio', NULL),
+(148, '10menit', NULL),
+(149, '30menit', NULL),
+(150, 'acara', NULL),
+(151, '60menit', NULL),
+(152, '2tv', NULL),
+(153, '30detik', NULL),
+(154, 'spanduk', NULL),
+(155, 'cm', NULL),
+(156, '0,6M3', NULL),
+(157, 'amp', NULL),
+(158, 'Bait', NULL),
+(159, 'Bendel', NULL),
+(160, 'Berkas', NULL),
+(161, 'Bulan', NULL),
+(162, 'Bulan Titik', NULL),
+(163, 'Can', NULL),
+(164, 'Case', NULL),
+(165, 'Cm2', NULL),
+(166, 'Core', NULL),
+(167, 'Dokumen', NULL),
+(168, 'Dos', NULL),
+(169, 'Dosen', NULL),
+(170, 'Dosin', NULL),
+(171, 'Doss', NULL),
+(172, 'Doz', NULL),
+(173, 'Dudukan', NULL),
+(174, 'Edisi/bulan', NULL),
+(175, 'Eksemplar', NULL),
+(176, 'Eksemplar Bulan', NULL),
+(177, 'Eksemplar/bulan', NULL),
+(178, 'Exemplar/Bulan', NULL),
+(179, 'Fls', NULL),
+(180, 'Gelas', NULL),
+(181, 'Group', NULL),
+(182, 'Grup', NULL),
+(183, 'Ha', NULL),
+(184, 'Hari', NULL),
+(185, 'Jenis', NULL),
+(186, 'Jurigen', NULL),
+(187, 'Kali', NULL),
+(188, 'Kali Tahun', NULL),
+(189, 'Kantong', NULL),
+(190, 'Kapsul', NULL),
+(191, 'Karton', NULL),
+(192, 'Kasus', NULL),
+(193, 'Kg', NULL),
+(194, 'Kit', NULL),
+(195, 'Kolom', NULL),
+(196, 'Kwh', NULL),
+(197, 'Lajur', NULL),
+(198, 'Lembaga', NULL),
+(199, 'Lisensi', NULL),
+(200, 'Log', NULL),
+(201, 'Lokasi', NULL),
+(202, 'Lonjor', NULL),
+(203, 'Lot', NULL),
+(204, 'LS', NULL),
+(205, 'Ltr', NULL),
+(206, 'M', NULL),
+(207, 'M(lari)', NULL),
+(208, 'M1', NULL),
+(209, 'M2', NULL),
+(210, 'm2/Hari', NULL),
+(211, 'M3', NULL),
+(212, 'Materi', NULL),
+(213, 'Menit', NULL),
+(214, 'Merk', NULL),
+(215, 'Minggu', NULL),
+(216, 'Mmk', NULL),
+(217, 'muat', NULL),
+(218, 'Obyek', NULL),
+(219, 'Ons', NULL),
+(220, 'Orang /Kegiatan', NULL),
+(221, 'Orang /paket', NULL),
+(222, 'Orang Bulan', NULL),
+(223, 'Orang Datang', NULL),
+(224, 'Orang Hari', NULL),
+(225, 'Orang Jam', NULL),
+(226, 'Orang Kedatangan', NULL),
+(227, 'Orang Kegiatan', NULL),
+(228, 'Orang Modul', NULL),
+(229, 'Orang Paket', NULL),
+(230, 'Orang PP', NULL),
+(231, 'Orang Semester', NULL),
+(232, 'Orang/ 3 Busana', NULL),
+(233, 'Orang/ Tahun', NULL),
+(234, 'Orang/Group', NULL),
+(235, 'Orang/kegiatan', NULL),
+(236, 'Orang/PP', NULL),
+(237, 'OrangBulan', NULL),
+(238, 'Paket Orang', NULL),
+(239, 'Per Alamat', NULL),
+(240, 'Per edisi pe rbulan', NULL),
+(241, 'Per Kaleng', NULL),
+(242, 'Per mmk', NULL),
+(243, 'per tahun', NULL),
+(244, 'per Titik', NULL),
+(245, 'Perkara', NULL),
+(246, 'Peserta', NULL),
+(247, 'Pihak', NULL),
+(248, 'Poin', NULL),
+(249, 'Pot', NULL),
+(250, 'Pot / Bulan', NULL),
+(251, 'Press', NULL),
+(252, 'produk', NULL),
+(253, 'Produksi / kali', NULL),
+(254, 'Pulsa (1 menit)', NULL),
+(255, 'Rean', NULL),
+(256, 'Roda', NULL),
+(257, 'Roll', NULL),
+(258, 'Ruang Bulan', NULL),
+(259, 'Rupiah', NULL),
+(260, 'Sak', NULL),
+(261, 'Sampel', NULL),
+(262, 'Sample', NULL),
+(263, 'seat/duduk', NULL),
+(264, 'Semester', NULL),
+(265, 'Sisir', NULL),
+(266, 'Sistem', NULL),
+(267, 'Sit/Duduk', NULL),
+(268, 'Slot', NULL),
+(269, 'Soal', NULL),
+(270, 'Spot / Bulan', NULL),
+(271, 'Stan', NULL),
+(272, 'Stasiun', NULL),
+(273, 'Stik', NULL),
+(274, 'Supp', NULL),
+(275, 'Suppositoria', NULL),
+(276, 'Surat', NULL),
+(277, 'Tablet', NULL),
+(278, 'Tablet Salut', NULL),
+(279, 'Tahun', NULL),
+(280, 'Tangki', NULL),
+(281, 'Test', NULL),
+(282, 'titik / bulan', NULL),
+(283, 'Titik Bulan', NULL),
+(284, 'titik/bulan', NULL),
+(285, 'Truck', NULL),
+(286, 'Unit Bulan', NULL),
+(287, 'Unit Hari', NULL),
+(288, 'Unit Jam', NULL),
+(289, 'Unit Minggu', NULL),
+(290, 'Unit Tahun', NULL),
+(291, 'unit/hari', NULL),
+(292, 'unit/tahun', NULL),
+(293, 'VA', NULL),
+(294, 'Vial', NULL),
+(295, 'Tim', NULL),
+(296, 'Alamat', NULL),
+(297, 'Triwulan', NULL),
+(298, 'Angkatan', NULL),
+(301, 'Media', NULL),
+(302, 'Kategori', NULL),
+(303, 'Radio', NULL),
+(304, 'Berita', NULL),
+(305, 'Tingkat', NULL),
+(306, 'are', NULL);
 
 -- --------------------------------------------------------
 
@@ -8632,17 +10333,25 @@ CREATE TABLE `tb_user` (
   `tb_user_hp` varchar(20) DEFAULT NULL,
   `tb_user_akun` tinyint(4) DEFAULT NULL COMMENT '(1) referensi\n(2) userlevel\n(3) rpjmd\n(4) renstra\n(5) rkpd\n(6) renja\n(7) emonev\n(8) elakip\n(9) aduan publik\n(10) emusrenbang',
   `tb_user_level` tinyint(4) DEFAULT NULL,
-  `tb_user_date` date DEFAULT NULL
+  `tb_user_date` date DEFAULT NULL,
+  `tb_user_hak` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tb_user`
 --
 
-INSERT INTO `tb_user` (`id_tb_user`, `tb_user_username`, `tb_user_password`, `tb_user_hp`, `tb_user_akun`, `tb_user_level`, `tb_user_date`) VALUES
-(1, 'admin', '$2y$13$ZtzUVhoI/bLqKmpetdHWW.ozUXArLlGrHbX7uCa68du.WSGZX8SQS', '085756733113', 3, 1, NULL),
-(2, 'userlevel', '$2y$13$ZtzUVhoI/bLqKmpetdHWW.ozUXArLlGrHbX7uCa68du.WSGZX8SQS', NULL, 2, 1, NULL),
-(3, 'monev', '$2y$13$ZtzUVhoI/bLqKmpetdHWW.ozUXArLlGrHbX7uCa68du.WSGZX8SQS', NULL, 7, 1, NULL);
+INSERT INTO `tb_user` (`id_tb_user`, `tb_user_username`, `tb_user_password`, `tb_user_hp`, `tb_user_akun`, `tb_user_level`, `tb_user_date`, `tb_user_hak`) VALUES
+(1, 'admin', '$2y$13$ZtzUVhoI/bLqKmpetdHWW.ozUXArLlGrHbX7uCa68du.WSGZX8SQS', '085756733113', 3, 1, NULL, '{\"rpjmd\":{\"misi\":1,\"tujuan\":1,\"sasaran\":1,\"opd\":1,\"program\":1},\"renstra\":{\"kegiatan\":1},\"rkpdPenetapan\":{\"program\":1,\"kegiatan\":1,\"tahun\":[1,2,3,4,5]},\"rkpdPerubahan\":{\"program\":1,\"kegiatan\":1,\"tahun\":[1,3,4,5]},\"lra\":{\"program\":1,\"kegiatan\":1,\"rek3\":1,\"rek4\":1,\"rek5\":1,\"tahun\":[1,2,3,4,5],\"bulan\":[1,2,3,4,5,6,7,8,9,10,11,12]},\"pk\":{\"sasaran\":1,\"program\":1,\"kegiatan\":1,\"tahun\":[1,2,3,4,5]}}'),
+(2, 'userlevel', '$2y$13$ZtzUVhoI/bLqKmpetdHWW.ozUXArLlGrHbX7uCa68du.WSGZX8SQS', NULL, 2, 1, NULL, '{\"rpjmd\":{\"misi\":true,\"tujuan\":true,\"sasaran\":true,\"opd\":true,\"program\":true},\"renstra\":{\"kegiatan\":true},\"rkpdPenetapan\":{\"program\":true,\"kegiatan\":true,\"tahun\":[1,2,3,4,5]},\"rkpdPerubahan\":{\"program\":true,\"kegiatan\":true,\"tahun\":[1,2,3,4,5]},\"lra\":{\"program\":true,\"kegiatan\":true,\"rek3\":true,\"rek4\":true,\"rek5\":true,\"tahun\":[1,2,3,4,5],\"bulan\":[1,2,3,4,5,6,7,8,9,10,11,12]},\"pk\":{\"sasaran\":true,\"program\":true,\"kegiatan\":true,\"tahun\":[1,2,3,4,5]}}'),
+(3, 'monev', '$2y$10$Mn6uOG9zGqlPEHGIfYjMku/no.XbZ6nJXIHVV0k.4ekd9YW/M7cD6', '0', 7, 1, NULL, '{\"rpjmd\":{\"misi\":0,\"tujuan\":1,\"sasaran\":0,\"opd\":0,\"program\":1},\"renstra\":{\"kegiatan\":1},\"rkpdPenetapan\":{\"program\":1,\"kegiatan\":1,\"tahun\":[1,2,3,4,5]},\"rkpdPerubahan\":{\"program\":1,\"kegiatan\":1,\"tahun\":[1,2,3,4,5]},\"lra\":{\"program\":0,\"kegiatan\":1,\"rek3\":1,\"rek4\":1,\"rek5\":1,\"tahun\":[3],\"bulan\":[1,2]},\"pk\":{\"sasaran\":0,\"program\":0,\"kegiatan\":0,\"tahun\":[]}}'),
+(4, 'pendidikan', '$2y$10$Mn6uOG9zGqlPEHGIfYjMku/no.XbZ6nJXIHVV0k.4ekd9YW/M7cD6', '0', 7, 3, NULL, '{\"rpjmd\":{\"misi\":0,\"tujuan\":0,\"sasaran\":0,\"opd\":0,\"program\":0},\"renstra\":{\"kegiatan\":1},\"rkpdPenetapan\":{\"program\":0,\"kegiatan\":0,\"tahun\":[]},\"rkpdPerubahan\":{\"program\":0,\"kegiatan\":0,\"tahun\":[]},\"lra\":{\"program\":1,\"kegiatan\":1,\"rek3\":1,\"rek4\":1,\"rek5\":1,\"tahun\":[1],\"bulan\":[1,2,3,4,5,6,7,8,9,10,11,12]},\"pk\":{\"sasaran\":1,\"program\":1,\"kegiatan\":1,\"tahun\":[1]}}'),
+(5, 'admin', '$2y$10$bQe7fdMH4hdcubKE3AdOeOPQQ2pGkoau1CMcpj78vcZ5wMFHQM7Ii', '0', 7, 2, NULL, '{\"rpjmd\":{\"misi\":1,\"tujuan\":1,\"sasaran\":1,\"opd\":1,\"program\":1},\"renstra\":{\"kegiatan\":1},\"rkpdPenetapan\":{\"program\":1,\"kegiatan\":1,\"tahun\":[1,2,3,4,5]},\"rkpdPerubahan\":{\"program\":1,\"kegiatan\":1,\"tahun\":[1,2,3,4,5]},\"lra\":{\"program\":0,\"kegiatan\":0,\"rek3\":0,\"rek4\":0,\"rek5\":0,\"tahun\":[],\"bulan\":[]},\"pk\":{\"sasaran\":0,\"program\":0,\"kegiatan\":0,\"tahun\":[]}}'),
+(6, 'pahae', '$2y$10$rTWGxnghzRYcTcOj6H9tKeBkGnRbNVsVmd/dIVKqrSh3FJZQ7ERxG', '0', 10, 1, '2020-01-22', ''),
+(7, 'bahoea', '$2y$10$9NXuOEwoHG6GB5Z.0mHRnemsPmM1rRZu/E9k.16UDe3DUe7mv8p1m', '0', 10, 2, '2020-01-22', ''),
+(8, 'pokir', '$2y$10$UjLv8OUkW4SS7l7xmUzJ6OA6ekDslTmFuflqXfaY5dO2q/lJN2SFm', '0', 10, 3, '2020-01-23', ''),
+(10, 'tes', '$2y$10$ZEz4X/ifAQ/7IfiwSdCti.qeOxBA7CKXj6j/u.BuIQxq3dwlwWHQG', '0', 7, 2, NULL, '{\"rpjmd\":{\"misi\":0,\"tujuan\":0,\"sasaran\":0,\"opd\":0,\"program\":0},\"renstra\":{\"kegiatan\":0},\"rkpdPenetapan\":{\"program\":0,\"kegiatan\":0,\"tahun\":[]},\"rkpdPerubahan\":{\"program\":0,\"kegiatan\":0,\"tahun\":[]},\"lra\":{\"program\":0,\"kegiatan\":0,\"rek3\":0,\"rek4\":0,\"rek5\":0,\"tahun\":[],\"bulan\":[]},\"pk\":{\"sasaran\":0,\"program\":0,\"kegiatan\":0,\"tahun\":[]}}'),
+(11, 'tes2', '$2y$10$Dyz/5qtGmXN06AxsaW7mBenFG5pFicx9IT.ccqzxjcOiVaq2zRWrq', '0', 7, 3, NULL, '{\"rpjmd\":{\"misi\":1,\"tujuan\":0,\"sasaran\":0,\"opd\":0,\"program\":0},\"renstra\":{\"kegiatan\":0},\"rkpdPenetapan\":{\"program\":0,\"kegiatan\":0,\"tahun\":[]},\"rkpdPerubahan\":{\"program\":0,\"kegiatan\":0,\"tahun\":[]},\"lra\":{\"program\":0,\"kegiatan\":0,\"rek3\":0,\"rek4\":0,\"rek5\":0,\"tahun\":[],\"bulan\":[]},\"pk\":{\"sasaran\":0,\"program\":0,\"kegiatan\":0,\"tahun\":[]}}');
 
 -- --------------------------------------------------------
 
@@ -8670,6 +10379,13 @@ CREATE TABLE `tb_user_dapil` (
   `tb_user_dapil_nama` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tb_user_dapil`
+--
+
+INSERT INTO `tb_user_dapil` (`id_tb_user_dapil`, `tb_dapil_kode`, `tb_dewan_kode`, `id_tb_user`, `tb_user_dapil_nama`) VALUES
+(1, 0, 1, 8, 'pokir');
+
 -- --------------------------------------------------------
 
 --
@@ -8686,6 +10402,14 @@ CREATE TABLE `tb_user_lokasi` (
   `tb_deskel_level` tinyint(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tb_user_lokasi`
+--
+
+INSERT INTO `tb_user_lokasi` (`id_tb_user_kelompok`, `id_tb_user`, `tb_provinsi_kode`, `tb_kabupaten_kode`, `tb_kecamatan_kode`, `tb_deskel_kode`, `tb_deskel_level`) VALUES
+(1, 6, 12, 2, 6, 0, 0),
+(2, 7, 72, 6, 6, 1, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -8700,6 +10424,14 @@ CREATE TABLE `tb_user_opd` (
   `tb_sub_unit_kode` int(11) NOT NULL,
   `id_tb_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_user_opd`
+--
+
+INSERT INTO `tb_user_opd` (`id_tb_user_opd`, `tb_urusan_kode`, `tb_bidang_kode`, `tb_unit_kode`, `tb_sub_unit_kode`, `id_tb_user`) VALUES
+(1, 1, 1, 1, 1, 4),
+(2, 4, 1, 3, 3, 11);
 
 --
 -- Indexes for dumped tables
@@ -9275,7 +11007,7 @@ ALTER TABLE `tb_kategori_laporan`
 -- AUTO_INCREMENT for table `tb_kriteria_bobot`
 --
 ALTER TABLE `tb_kriteria_bobot`
-  MODIFY `id_tb_kriteria_bobot` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_tb_kriteria_bobot` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 --
 -- AUTO_INCREMENT for table `tb_laporan`
 --
@@ -9340,7 +11072,7 @@ ALTER TABLE `tb_rpjmd_visi_penjelasan`
 -- AUTO_INCREMENT for table `tb_satuan`
 --
 ALTER TABLE `tb_satuan`
-  MODIFY `id_tb_satuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_tb_satuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=307;
 --
 -- AUTO_INCREMENT for table `tb_sumber_dana`
 --
@@ -9350,7 +11082,7 @@ ALTER TABLE `tb_sumber_dana`
 -- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id_tb_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_tb_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `tb_user_bappeda`
 --
@@ -9360,17 +11092,17 @@ ALTER TABLE `tb_user_bappeda`
 -- AUTO_INCREMENT for table `tb_user_dapil`
 --
 ALTER TABLE `tb_user_dapil`
-  MODIFY `id_tb_user_dapil` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_tb_user_dapil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `tb_user_lokasi`
 --
 ALTER TABLE `tb_user_lokasi`
-  MODIFY `id_tb_user_kelompok` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_tb_user_kelompok` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `tb_user_opd`
 --
 ALTER TABLE `tb_user_opd`
-  MODIFY `id_tb_user_opd` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_tb_user_opd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- Constraints for dumped tables
 --

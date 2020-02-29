@@ -1,0 +1,25 @@
+marsaoleh
+
+kecamatan bungku tengah
+
+Kelurahan 
+1. Sdah download berita acara 
+2. Sdah mengisi usulan 
+3. Sudah download usulan 
+4. Upload usulan 
+5. Kirim usulan ke kecamatan 
+
+Kecamatan 
+6. Sdah download berita acara 
+7. Sdah mengisi usulan 
+8. Sdah Mengisi Skor dan OPD
+9. Sdah download usulan 
+10. Upload usulan 
+11. Kirim usulan ke opd 
+
+Pokir 
+12. Sdah mengisi usulan 
+13. Sdah Mengisi Skor dan OPD
+14. Sdah download usulan 
+15. Upload usulan 
+16. Kirim usulan ke opd 

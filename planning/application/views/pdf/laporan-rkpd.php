@@ -47,7 +47,24 @@
                 <span>Tahun <?=$tahun?></span>
             </div>
         </div>
-        <div>
+        <div style="padding-top: <?=@$print?'100':'0'?>px;">
+            <table>
+                <tr>
+                    <td>Urusan</td>
+                    <td>:</td>
+                    <td><?=@$dataOpd->tb_urusan_nama?></td>
+                </tr>
+                <tr>
+                    <td>Bidang</td>
+                    <td>:</td>
+                    <td><?=@$dataOpd->tb_bidang_nama?></td>
+                </tr>
+                <tr>
+                    <td>OPD</td>
+                    <td>:</td>
+                    <td><?=@$dataOpd->tb_sub_unit_nama?></td>
+                </tr>
+            </table>
         </div>
         <br>
         <div style="width: 100%;">
@@ -167,5 +184,24 @@
 
             </table>
         </div>
+        <br>
+        <div style="padding-left: 80%">
+            <table>
+                <tr>
+                    <td>Kepala BAPPEDA</td>
+                </tr>
+                <tr>
+                    <td>Kab. Morowali</td>
+                </tr>
+                <tr>
+                    <td style="padding: 40px"></td>
+                </tr>
+                <tr>
+                    <td>____________________</td>
+                </tr>
+            </table>
+        </div>
+        <br>
+        <br>
     </body>
 </html>

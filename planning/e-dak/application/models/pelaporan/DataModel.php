@@ -151,20 +151,20 @@ class DataModel extends CI_Model
 
     public function getDataPerTahun($post){
         $this->db->select('detail_rincian.*, bidang.bidang_nama');
-        $this->db->join('bidang', 'bidang.bidang_kode = detail_rincian.bidang_kode', 'left');
+        $this->db->join('bidang', 'bidang.bidang_kode = detail_rincian.bidang_kode
+                                    AND bidang.tahun = detail_rincian.tahun', 'left');
 
         if($_SESSION['level'] == 1){
             // $this->db->where('bidang.bidang_verifikasi', 1);
             // $this->db->where('bidang.bidang_verifikasi_bappeda', 1);
         }
-
         if(@$post['userKode']){
             if($_SESSION['level'] == 2){
                 $this->db->where('bidang.id_indikator', $post['userKode']);
                 // $this->db->where('bidang.bidang_verifikasi', 1);
             }else if($_SESSION['level'] == 3){
-                
-                $this->db->join('kegiatan', 'kegiatan.bidang_kode = bidang.bidang_kode', 'left');
+                $this->db->join('kegiatan', 'kegiatan.bidang_kode = bidang.bidang_kode
+                                            AND kegiatan.tahun = bidang.tahun', 'left');
                 $this->db->where('kegiatan.id_opd', $post['userKode']);
             }else if($_SESSION['level'] == 4){
                 $this->db->where('detail_rincian.bidang_kode', $post['userKode'][0]['bidang_kode']);

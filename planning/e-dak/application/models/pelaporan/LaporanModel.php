@@ -37,6 +37,8 @@ class LaporanModel extends CI_Model
 
         if(@$post['id_jenis'] && $post['id_jenis'] > 0){
             $this->db->where("kegiatan.id_jenis", $post['id_jenis']);
+        }else{
+            // $this->db->where("kegiatan.id_jenis", 1);
         }
 
         if(@$post['tahun'] && $post['tahun'] > 0){

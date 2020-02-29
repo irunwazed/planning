@@ -82,7 +82,7 @@ class HomeController extends CI_Controller {
             $post['userKode'] = @$this->DataModel->getUserKode($_SESSION['id'], $_SESSION['level']);
         }
 
-        $post['tahun'] = 2019;
+        $post['tahun'] = date("Y");
         $data = $this->DataModel->getDataPerTahun($post);
 
         // $dataPenunjang = $this->DataModel->getDataPenunjangPerTahun($post);

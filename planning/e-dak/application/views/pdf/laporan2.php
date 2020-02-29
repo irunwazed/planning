@@ -246,7 +246,7 @@
                                 $totalKonstraktual += $row['detail_rincian_konstraktual_rp'];
                                 $totalSwakelola += $row['detail_rincian_swakelola_rp'];
                                 
-                                array_push($arrPersen, $row['detail_rincian_tw'.$triwulan.'_fisik_persen']);
+                                array_push($arrPersen, @$row['detail_rincian_tw'.$triwulan.'_fisik_persen']);
                                 $noIsi++;
                             }
                         

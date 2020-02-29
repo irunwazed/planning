@@ -54,6 +54,7 @@
             }else{
                 pagu = element['detail_rincian_konstraktual_rp'];
             }
+            
             uang = parseInt(element['detail_rincian_tw'+triwulan+'_keuangan_rp']);
             persen = (100*(uang/pagu));
 
@@ -66,13 +67,17 @@
             if(element['pegawai_nama'] == null){
                 element['pegawai_nama'] = '';
             }
+
             urlKode = element['bidang_kode']+'-'+element['sub_bidang_kode']+'-'+element['kegiatan_kode']+'-'+element['rincian_kode']+'-'+element['detail_rincian_kode'];
             isiKode = urlKode.split("-").join(".");
             setKode = tahun+'-'+urlKode;
-            if(userLevel==4){
+            if(userLevel==4 || userLevel==3){
+                action = '';
                 setIsiTriwulan = '<a class="fa fa-file-text-o" style="padding:5px;" href="#" onclick="setTriwulan(\''+setKode+'\')" data-toggle="modal" data-target="#modal-triwulan" > </a>';
             }else{
                 setIsiTriwulan = '';
+                action = '<a class="fa fa-pencil" style="padding:5px;" href="#" onclick="setUpdate(\''+setKode+'\')" data-toggle="modal" data-target="#modal-form" > </a>'+
+                '<a class="fa fa-trash" style="padding:5px;" href="#"  data-setFunction="doDelete(\''+setKode+'\')" data-judul="Hapus Data!" data-isi="Apakah anda yakin menghapus data?" onclick="setPesan(this)" data-toggle="modal" data-target="#modal-pesan"></a>';
             }
             
 
@@ -96,8 +101,7 @@
                 element['masalah_nama'], 
                 setIsiTriwulan+
                 // '<a class="fa fa-file-image-o" style="padding:5px;" href="#" onclick="setFile(\''+setKode+'\')" data-toggle="modal" data-target="#modal-file" > </a>'+
-                '<a class="fa fa-pencil" style="padding:5px;" href="#" onclick="setUpdate(\''+setKode+'\')" data-toggle="modal" data-target="#modal-form" > </a>'+
-                '<a class="fa fa-trash" style="padding:5px;" href="#"  data-setFunction="doDelete(\''+setKode+'\')" data-judul="Hapus Data!" data-isi="Apakah anda yakin menghapus data?" onclick="setPesan(this)" data-toggle="modal" data-target="#modal-pesan"></a>',
+                action,
             ]
             myTable.row.add(tempData).draw(  );
             no++;

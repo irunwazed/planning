@@ -226,19 +226,24 @@
         zIndex: "1"
       });
     }
+    setTimeout(function() {
+      $("#preloader")
+        .css("visibility", "hidden")
+        .fadeOut();
+    }, 300);
 
-    $("#preloader").animate(
-      {
-        opacity: "0"
-      },
-      600,
-      function() {
-        setTimeout(function() {
-          $("#preloader")
-            .css("visibility", "hidden")
-            .fadeOut();
-        }, 300);
-      }
-    );
+    // $("#preloader").animate(
+    //   {
+    //     opacity: "0"
+    //   },
+    //   600,
+    //   function() {
+    //     setTimeout(function() {
+    //       $("#preloader")
+    //         .css("visibility", "hidden")
+    //         .fadeOut();
+    //     }, 300);
+    //   }
+    // );
   });
 })(window.jQuery);

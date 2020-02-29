@@ -63,7 +63,7 @@ $route['importRek'] = 'ImportController/importRek';
 
 $route['pengaturan/set-opd'] = 'AdminController/setSessionOpd';
 
-
+$route['privacy-and-policy'] = 'HomeController/privacy';
 
 $route['rpjmd/penyusunan/misi'] = 'rpjmd/MisiController/view';
 $route['rpjmd/penyusunan/misi/get-data'] = 'rpjmd/MisiController/getData';
@@ -297,6 +297,31 @@ $route['pengaturan/data/hak/(:any)'] = 'setting/SetHakController/view/$1';
 $route['status/view'] = 'status/StatController/index';
 $route['status/get-data'] = 'status/StatController/getData';
 $route['status/ubah-data'] = 'status/StatController/update';
+
+
+
+
+
+// musrenbang
+
+
+$route['musrenbang/login'] = 'musrenbang/AdminController/loginView';
+$route['musrenbang/login-cek'] = 'musrenbang/AdminController/login';
+$route['musrenbang/logout'] = 'musrenbang/AdminController/logout';
+
+
+$route['musrenbang/beranda'] = 'musrenbang/AdminController/beranda';
+
+$route['musrenbang/kelurahan/buat-usulan/get-data'] = 'musrenbang/kelurahan/UsulanController/getData';
+$route['musrenbang/kelurahan/buat-usulan/create'] = 'musrenbang/kelurahan/UsulanController/action/create';
+$route['musrenbang/kelurahan/buat-usulan/update'] = 'musrenbang/kelurahan/UsulanController/action/update';
+$route['musrenbang/kelurahan/buat-usulan/delete'] = 'musrenbang/kelurahan/UsulanController/action/delete';
+$route['musrenbang/kelurahan/buat-usulan'] = 'musrenbang/kelurahan/UsulanController/view/$1';
+
+// . musrenbang
+
+
+
 
 $route['default_controller'] = 'HomeController';
 $route['404_override'] = '';

@@ -406,7 +406,7 @@ class DataModel extends CI_Model
     }
 
     
-    public function getOpdKegiatan($kode, $jenis){
+    public function getOpdKegiatan($kode, $jenis, $all = true){
 
         $table = 'tb_rpjmd_kegiatan';
         $tableProgram = 'tb_rpjmd_program';
@@ -449,7 +449,7 @@ class DataModel extends CI_Model
                                     AND tb_sub_unit.tb_unit_kode = '.$table.'.tb_unit_kode
                                     AND tb_sub_unit.tb_sub_unit_kode = '.$table.'.tb_sub_unit_kode', 'left');
 
-        if($jenis != 1){
+        if(!$all){
 
             $kode = explode("-", $kode);
             $this->db->where($table.'.tb_urusan_kode', $kode[0]);
@@ -834,6 +834,25 @@ class DataModel extends CI_Model
         $table = 'tb_user';
         $this->db->where($table.'.tb_user_akun', 7);
         $data = $this->db->get($table)->result_array();
+        return $data;
+
+    }
+
+    //
+    public function getOneOpd($kode){
+        $table = 'tb_sub_unit';
+        $kode = explode("-", $kode);
+
+        $this->db->join('tb_urusan', 'tb_urusan.tb_urusan_kode = '.$table.'.tb_urusan_kode', 'left');
+        $this->db->join('tb_bidang', 'tb_bidang.tb_urusan_kode = '.$table.'.tb_urusan_kode
+                                    AND tb_bidang.tb_bidang_kode = '.$table.'.tb_bidang_kode', 'left');
+        
+
+        $this->db->where($table.'.tb_urusan_kode', $kode[0]);
+        $this->db->where($table.'.tb_bidang_kode', $kode[1]);
+        $this->db->where($table.'.tb_unit_kode', $kode[2]);
+        $this->db->where($table.'.tb_sub_unit_kode', $kode[3]);
+        $data = $this->db->get($table)->row();
         return $data;
 
     }

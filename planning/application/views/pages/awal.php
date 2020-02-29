@@ -58,6 +58,7 @@ https://templatemo.com/tm-537-art-factory
                                 <ul>
                                     <li><a href="<?=base_url('login')?>">E-Monev</a></li>
                                     <li><a href="<?=base_url('e-dak')?>">E-DAK</a></li>
+                                    <li><a href="<?=base_url('../musrenbang')?>">E-Musrenbang</a></li>
                                 </ul>
                             </li>
                         </ul>

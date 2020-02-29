@@ -62,10 +62,13 @@ class RkpdController extends CI_Controller {
         }
 
         $dataAll = $this->setData($post);
+        $kodeOpd = $this->session->kodeOpd;
+        $dataOpd = $this->DataModel->getOneOpd($kodeOpd);
         // $dataAll = $this->DataModel->getLraOpd($post['cetakopd'], $post['cetaktahun']);
         // $dataOpd = $this->DataModel->selectOneOpdByKode($post['cetakopd']);
 
         $kirim = array(
+            "dataOpd" => $dataOpd,
             "dataRpjmd" => $dataRpjmd,
             "tahunKe" => $tahun,
             "bulanKe" => $bulan,
@@ -92,7 +95,7 @@ class RkpdController extends CI_Controller {
     public function setData($post){
 
 
-        $data = $this->DataModel->getOpdKegiatan($this->session->kodeOpd, $post['jenis']);
+        $data = $this->DataModel->getOpdKegiatan($this->session->kodeOpd, $post['jenis'], false);
 
         $tb_urusan_kode = 0;
         $tb_bidang_kode = 0;

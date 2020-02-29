@@ -24,7 +24,8 @@ class BidangModel extends CI_Model
                 // $this->db->where('bidang.bidang_verifikasi', 1);
             }else if($_SESSION['level'] == 3){
                 
-                $this->db->join('kegiatan', 'kegiatan.bidang_kode = bidang.bidang_kode', 'left');
+                $this->db->join('kegiatan', 'kegiatan.bidang_kode = bidang.bidang_kode
+                                        AND kegiatan.tahun = bidang.tahun', 'left');
                 $this->db->where('kegiatan.id_opd', $post['userKode']);
             }else if($_SESSION['level'] == 4){
                 for($i = 0; $i < count($post['userKode']); $i++){
@@ -33,13 +34,12 @@ class BidangModel extends CI_Model
                     }else{
                         $this->db->or_where('bidang.bidang_kode', $post['userKode'][$i]['bidang_kode']);
                     }
-                    
                 }
             }
             
         }
         
-        $this->db->group_by(array($this->table.".bidang_kode"), "asc");
+        $this->db->group_by(array($this->table.".bidang_kode", $this->table.".tahun"), "asc");
     }
 
     public function getCount($search = '', $post = array()){

@@ -1,0 +1,142 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title"><i class="mdi mdi-book-plus"></i> Membuat Usulan Baru</h4>
+                <hr>
+                <div class="row">
+                    <div class="table-responsive ml-3 mr-3" style="overflow: auto;">
+                    	<button class="btn btn-outline-success mb-2" onclick="initUsulan()"><i class="mdi mdi-buffer"></i> Memulai Usulan</button>
+	                    <table id="zero_config" class="table table-striped table-bordered table-hover">
+	                        <thead>
+	                            <tr class="text-white" style="background-color: #4fc3f7">
+	                                <th>Grup ID</th>
+	                                <th>Tanggal Pembuatan</th>
+	                                <th>Posisi</th>
+	                                <th class="text-center" width="200">Menu</th>
+	                            </tr>
+	                        </thead>
+	                        <tbody id="data-table">
+	                            
+	                        </tbody>
+	                    </table>
+	                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+	var dataAll = [];
+	
+  posisi = ['Usulan Baru', '', '', '', '', 
+  'Usulan Baru', 
+  'Sudah Download Berita Acara', 
+  'Sudah Mengisi Usulan', 
+  'Sudah Mengisi Skor dan OPD', 
+  'Sudah Download Usulan', 
+  '', 
+  '', 
+  'Sudah Mengisi Usulan', 
+  'Sudah Mengisi Skor dan OPD', 
+  'Sudah Download Usulan', 
+  'Sudah Upload Berkas', 
+  'Sudah Kirim Usulan ke OPD'];
+
+	getData();
+
+	function initPeriksa(obj){
+		idUsul = $(obj).attr('id');
+    $('#show-id').html('<button class="btn btn-outline-success">ID : '+idUsul+'</button>');
+		loadPage('masuk-usulan');
+		console.log(idUsul);
+  	}
+
+	function initUsulan(){
+		Swal.fire({
+            title: 'Memulai Usulan',
+            text: "Apakah Anda Yakin Memulai Usulan Baru?",
+            type: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'Batal',
+            confirmButtonText: 'Ya, Mulai!'
+        }).then((result) => {
+            if (result.value) {
+                Swal.fire(
+                    'Berhasil!',
+                    'Usulan Baru Dimulai.',
+                    'success'
+                );
+                var url = config.apiRoot+link+'usulanBaru';
+                var dataKirim = {
+                      id_user: dataSession.id_user,
+                      kode_lokasi: dataPokir.kode_pokir,
+                      level: level
+                    }
+                $.when(sendAjax(url, dataKirim)).done(function(x){
+                  getData();
+                });
+            }
+        })
+	}
+
+	function getData(){
+      var url = config.apiRoot+link+'dataAllUser';
+      //loading();
+      // console.log(dataLokasi.data.lokasi);
+      return $.ajax({
+        type: "POST",
+        url: url,
+        dataType: "JSON",
+        data: {
+          id_user: dataSession.id_user,
+          kode_lokasi: dataPokir.kode_pokir,
+          level: level,
+          session: getCookie('codexv-session')
+        },
+        success: function(respon)
+        {   
+          //setDataAll(respon);
+          // dataAll = respon.data;
+          inputData(respon.data);
+          //console.log(respon);
+          //loading(false);
+        },
+        error:function(error){
+          console.log(error);
+          //loading(false);
+        }
+      });
+    }
+
+    function inputData(data){
+        i = 1;
+        let setId;
+        let row
+        data.forEach(element => {
+          setId = element.id_tb_musrenbang_grub;
+          row += '<tr>'+
+                  '<td>'+setId+'</td>'+
+                  '<td>'+element.tb_musrenbang_grub_tgl_input+'</td>'+
+                  '<td>'+posisi[element.tb_musrenbang_grub_posisi]+'</td>'+
+                  '<td class="text-center"><button class="btn btn-info btn-block" id="'+setId+'" onclick="initPeriksa(this)"><i class="fa fa-eye"></i> Periksa</button>';
+                if (element.tb_musrenbang_grub_posisi == 16) {
+                  row += '<form class="form-export" method="post" action="" target="_blank"> <input type="hidden" name="idUsul" value="'+setId+'"> <input type="hidden" name="level" value="opd"> <input type="hidden" name="id_user" value=""> <button type="submit" class="btn btn-success btn-block mt-1" id=""><i class="fa fa-file-excel"></i> Export</button></form>';
+                }
+                  row += '</td>'+
+                '</tr>';
+          i++;
+        });
+        $("#zero_config").dataTable().fnDestroy();
+        $("#data-table").empty();
+        $("#data-table").append(row);
+        $('#zero_config').DataTable({
+          'ordering': false
+        });
+        var url = config.apiRoot+link+'exportUsulan';
+        $('.form-export').attr('action', url);
+    }
+</script>

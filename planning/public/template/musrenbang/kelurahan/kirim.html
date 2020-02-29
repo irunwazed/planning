@@ -1,0 +1,60 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title"><i class="mdi mdi-cube-send"></i> Kirim Ke Kecamatan</h4>
+                <hr>
+                <div id="alert"></div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <form id="form-kirim">
+                        <input type="hidden" name="level" id="levelx">
+                        <input type="hidden" name="id_user" id="id_userx">
+                        <input type="hidden" name="kode_lokasi" id="kode_lokasix">
+                        <input type="hidden" name="id_grub" id="id_grubx">
+	                    <button type="submit" class="btn btn-primary"> <i class="mdi mdi-send"></i> Kirim Berkas Ke Kecamatan</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $('#id_grubx').val(idUsul);
+    $('#id_userx').val(dataSession.id_user);
+    $('#kode_lokasix').val(dataLokasi.data.lokasi);
+    $('#levelx').val(level);
+
+    $("#form-kirim").on('submit', function(e){
+        e.preventDefault();
+        if (idUsul == false) {
+            $('#modal-tambah').modal('hide');
+            $('#alert').html('<div class="alert alert-warning"><button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button><i class="fa fa-exclamation-triangle"></i> Periksa/Pilih Usulan Terlebih Dahulu</div>');
+        }
+        else{
+            var url = config.apiRoot+link+'kirimKecamatan';
+            $.ajax({
+                url: url,
+                type: "POST",
+                data: $(this).serializeArray(),
+                dataType: "JSON",
+                success: function(r){
+                    if (r.data == 0) {
+                        $('#alert').html('<div class="alert alert-warning"><button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button><i class="fa fa-exclamation-triangle"></i> Berkas telah terkirim!</div>');
+                    }
+                    else if (r.data == 2) {
+                        $('#alert').html('<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button><i class="fa fa-exclamation-triangle"></i> Berkas belum terkirim, Periksa kembali berkas/usulan anda!</div>');
+                    }
+                    else{
+                        $('#alert').html('<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button><i class="fa fa-check"></i> Berkas berhasil dikirim</div>');
+                    }
+                    console.log(r);
+                },
+                error: function(e){
+                    console.log(e);
+                }          
+            });
+        }
+    });
+</script>

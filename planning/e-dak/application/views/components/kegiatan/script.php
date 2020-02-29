@@ -4,6 +4,7 @@
     var page = 1;
     var dataAll = [];
     var tahun = parseInt('<?=@$tahun?>');
+    var levelUser = parseInt('<?=@$_SESSION["level"]?>');
     var dataPilih = {};
     var kode = '<?=@$tahun."-".@$kode?>';
     getData();
@@ -40,14 +41,20 @@
             }else{
                 isi = "isi-tidak-ada";
             }
+
+            action = '';
+            if(levelUser == 1){
+                action = '<a class="fa fa-pencil" style="padding:5px;" href="#" onclick="setUpdate(\''+setKode+'\')" data-toggle="modal" data-target="#modal-form" > </a>'+
+                '<a class="fa fa-trash" style="padding:5px;" href="#"  data-setFunction="doDelete(\''+setKode+'\')" data-judul="Hapus Data!" data-isi="Apakah anda yakin menghapus data?" onclick="setPesan(this)" data-toggle="modal" data-target="#modal-pesan"></a>';
+            }
+
             tempData = [
                 no,
                 isiKode,
                 '<a href="'+base_url+'usulan/'+tahun+'/rincian/'+urlKode+'" class="'+isi+'">'+element['kegiatan_nama']+'</a>',
                 element['opd_nama'],
                 element['jenis_nama'],
-                '<a class="fa fa-pencil" style="padding:5px;" href="#" onclick="setUpdate(\''+setKode+'\')" data-toggle="modal" data-target="#modal-form" > </a>'+
-                '<a class="fa fa-trash" style="padding:5px;" href="#"  data-setFunction="doDelete(\''+setKode+'\')" data-judul="Hapus Data!" data-isi="Apakah anda yakin menghapus data?" onclick="setPesan(this)" data-toggle="modal" data-target="#modal-pesan"></a>',
+                action,
             ]
             myTable.row.add(tempData).draw(  );
             no++;
